@@ -20,6 +20,7 @@ if (isset($_POST['winkelmandje']))
     array_push($_SESSION['winkelmandje'],  $product);
     var_dump($_SESSION['winkelmandje']);
     //($id, $cat_naam, $naam, $prijs, $beschrijving, $datum_toegevoegd, $img_path)
+    header("location: http://localhost/Web-Project-2017/Views/");
 }
 
 ?>

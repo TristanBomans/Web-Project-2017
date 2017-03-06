@@ -1,3 +1,4 @@
+<?php require_once "../Controllers/ContentController.php"; ?>
 <!doctype HTML>
 <html lang="nl">
 	<head>
@@ -9,68 +10,28 @@
 
 	</head>
 	<body class="container-fluid">
-	<form action="../Controllers/RequestController" method="POST">
-		<input type="hidden" name="test" value="xd">
-		<input type="submit" name="submit" value="KRIJG U DATA XD" style="border: 1px solid black; display: block; width: 150px; border-radius: 20px; text-align: center; margin-top: 50px; background-color: green; font-family: 'comic sans ms'";>
-	</form>
-	<form action="../Controllers/RequestController" method="POST">
-		<input type="hidden" name="winkelmandje" value="true">
-		<input type="submit" name="submit" value="winkelmandje" onclick="cp()" style="border: 1px solid black; display: block; width: 150px; border-radius: 20px; text-align: center; margin-top: 50px; background-color: green; font-family: 'comic sans ms'">
-	</form>
+		<div style="margin-top: 20px; margin-bottom: 10px;">
+			<form action="../Controllers/RequestController" method="POST">
+				<input type="hidden" name="test" value="xd">
+				<input type="submit" name="submit" value="Test" class="btn btn-default btn-lg" style="float: left; margin-right: 5px;">
+			</form>
+			<form action="../Controllers/RequestController" method="POST">
+				<input type="hidden" name="winkelmandje" value="true">
+				<input type="submit" name="submit" value="Winkelmand" class="btn btn-default btn-lg">
+			</form>
+		</div>
 
-	<!-- <a href="./detail.php" style="border: 1px solid black; display: block; width: 150px; border-radius: 20px; text-align: center; margin-top: 50px; background-color: green; font-family: 'comic sans ms'">Detail Pagina</a> -->
+		<?php session_start();
+		if (isset($_SESSION['winkelmandje']) == false) {$_SESSION['winkelmandje']  = [];}
+		var_dump($_SESSION['winkelmandje']); ?>
 
-	<?php 
-	session_start();
-	if (isset($_SESSION['winkelmandje']) == false) {
-       $_SESSION['winkelmandje']  = [];
-   	}
-	var_dump($_SESSION['winkelmandje']);
-    ?>
-
-	<h1>Nieuwe: </h1><br>
-	<div id="producten-nieuw" class="row">
-		<?php
-			require "../Controllers/LogicController.php";
-			$Producten = LogicController::getAlleProducten();	
-			$e = 4;
-			if (sizeof($Producten) < 4){
-				$e = sizeof($Producten);
-			}							
-			for ($i=0; $i < $e; $i++) { 
-				$html = "<div class='col-lg-3 col-md-4 col-sm-4 col-xs-6'>"
-					. "<div class='thumbnail'>"
-					. "<img src='".$Producten[$i]->img_path."' alt='Deze afbeelding kon niet gevonden worden'>"
-					. "<div class='caption'>"
-					. "<h3>".$Producten[$i]->naam."</h3>"
-					. "<p style='text-align: justify;'>".$Producten[$i]->beschrijving."</p>"
-					."<p>".$Producten[$i]->datum_toegevoegd."</p>"
-					. "</div>"
-					. "</div>"
-					. "</div>";
-			 echo $html;
-			}
-		?>
-	</div>
-	<h1>Uitgelichte: </h1><br>
-	<div id="producten-uitgelicht" class="row">
-		<?php
-		echo "";
-		$Producten = LogicController::getAlleUitgelichteProducten();
-		foreach ($Producten as $product) {
-			$html = "<div class='col-lg-3 col-md-4 col-sm-4 col-xs-6'>"
-				. "<div class='thumbnail'>"
-				. "<img src='$product->img_path' alt='Deze afbeelding kon niet gevonden worden'>"
-				. "<div class='caption'>"
-				. "<h3>$product->naam</h3>"
-				. "<p style='text-align: justify;'>$product->beschrijving</p>"
-				."<p>".$product->datum_toegevoegd."</p>"
-				. "</div>"
-				. "</div>"
-				. "</div>";
-			 echo $html;
-			}
-		?>
-	</div>
+		<h1>Nieuwe: </h1><br>
+		<div id="producten-nieuw" class="row">
+			<?php echo ContentController::getContent("home-producten-nieuw"); ?>
+		</div>
+		<h1>Uitgelichte: </h1><br>
+		<div id="producten-uitgelicht" class="row">
+			<?php echo ContentController::getContent("home-producten-uitgelicht"); ?>
+		</div>
 	</body>
 </html>
