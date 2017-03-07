@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 06 mrt 2017 om 22:43
+-- Gegenereerd op: 07 mrt 2017 om 01:16
 -- Serverversie: 5.7.14
 -- PHP-versie: 5.6.25
 
@@ -89,7 +89,9 @@ CREATE TABLE `producten` (
 
 INSERT INTO `producten` (`id`, `cat_naam`, `naam`, `prijs`, `beschrijving`, `datum_toegevoegd`, `img_path`, `uitgelicht`) VALUES
 (4, 'Multi Media', 'iPhone 7', '50', 'iPhone 7 dramatically improves the most important aspects of the iPhone experience. It introduces advanced new camera systems. The best performance and battery life ever in an iPhone. Immersive stereo speakers. The brightest, most colorful iPhone display. Splash and water resistance.1 And it looks every bit as powerful as it is. This is iPhone 7.', '2017-03-08', '../Resources/iPhone7.png', 1),
-(5, 'Multi Media', 'Samsung xD', '90', 'So, Finally Samsung Galaxy S7 Series Smartphone’s are released and Yes they are really impressive. Both device are now available for sale. Take a look on design and curves of Samsung Galaxy S7 | S7 Edge from Samsung’s official Youtube channel here:\n\nWhat if your next phone could take photos like a professional?\nWhat if it worked in low light?\nWhat if it gave you enough expandable memory to store all your pictures?', '2016-09-12', '../Resources/GalaxyS7.jpg', 1);
+(5, 'Multi Media', 'Samsung S7', '90', 'So, Finally Samsung Galaxy S7 Series Smartphone’s are released and Yes they are really impressive. Both device are now available for sale. Take a look on design and curves of Samsung Galaxy S7 | S7 Edge from Samsung’s official Youtube channel here:\n\nWhat if your next phone could take photos like a professional?\nWhat if it worked in low light?\nWhat if it gave you enough expandable memory to store all your pictures?', '2016-09-12', '../Resources/GalaxyS7.jpg', 0),
+(6, 'Multi Media', 'OnePlus 3T', '347', 'The OnePlus 3T delivers the best user experience, thanks to the latest hardware upgrades and carefully tested software enhancements.', '2015-08-13', '../Resources/OnePlus.png', 1),
+(7, 'Multi Media', 'HTC 10', '749', '\r\nTHE POWER OF 10\r\n\r\nHTC 10. Alles wat jij zoekt in een toonaangevende telefoon; ongeëvenaarde prestaties, geweldig 24-bits Hi-Res audio, ’s werelds eerste voor- en hoofdcamera met optische beeldstabilisatie (OIS) en een van de hoogste scores voor telefooncamera ooit van DxOMark. Alles in een prachtig gevormd metalen behuizing.', '2017-06-15', '../Resources/htc10.png', 0);
 
 -- --------------------------------------------------------
 
@@ -155,7 +157,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT voor een tabel `producten`
 --
 ALTER TABLE `producten`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT voor een tabel `users`
 --
