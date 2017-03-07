@@ -1,22 +1,21 @@
+<?php require_once "../Controllers/ContentController.php";
+require_once "../Controllers/LogicController.php";?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>detail</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<?php echo ContentController::getContent("all_pages-head_includes"); ?>
 </head>
 <body class="container-fluid">
-		
 
+	<?php echo ContentController::getContent("all_pages-header"); ?>
 
-	<?php 
-	require "../Controllers/LogicController.php";
+	<?php
 	$product = LogicController::getProduct($_GET['opgevraagdProduct']);
-	echo "<p>".$product->naam."</p>";
+	echo "<div style='margin: auto; width: 50vw;'><h1>".$product->naam."</h1>";
 	echo "<p>".$product->beschrijving."</p>";
-	echo "<p>".$product->datum_toegevoegd."</p>";
+	echo "<b>".$product->datum_toegevoegd."</b></div>";
 	?>
 
 
@@ -27,5 +26,6 @@
 
 
 	</form>
+	<?php echo ContentController::getContent("all_pages-footer"); ?>
 </body>
 </html>

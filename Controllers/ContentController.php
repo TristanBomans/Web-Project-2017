@@ -50,7 +50,7 @@ class ContentController
              $html = "<div id='Titelbar' class='page-header red'><h1>Webshop</h1></div>"
             ."<div class='container-fluid'>"
             ."<ul class='nav nav-pills nav-justified'>"
-            ."<li role='presentation' class='active'><a href='#'>Home</a></li>"
+            ."<li role='presentation'><a href='#'>Home</a></li>"
             ."<li role='presentation'><a href='#'>Alle Producten</a></li>"
             ."<li role='presentation'><a href='#'>Profiel</a></li>"
             ."</ul>"
