@@ -1,44 +1,26 @@
-<?php require_once "../Controllers/ContentController.php"; ?>
 <!doctype HTML>
 <html lang="nl">
 	<head>
 		<title>Home</title>
-		<?php echo ContentController::getContent("all_pages-head_includes"); ?>
+		<?php include("partials/includes.php"); ?>
 	</head>
 	<body class="container-fluid">
 
-		<?php echo ContentController::getContent("all_pages-header"); ?>
-
-		<!-- <div style="margin-top: 20px; margin-bottom: 10px;">
-			<form action="../Controllers/RequestController" method="POST">
-				<input type="hidden" name="test" value="xd">
-				<input id="test-knop" type="submit" name="submit" value="Test" class="btn btn-default btn-lg">
-			</form>
-			<form action="../Controllers/RequestController" method="POST">
-				<input type="hidden" name="winkelmandje" value="true">
-				<input type="submit" name="submit" value="Winkelmand" class="btn btn-default btn-lg">
-			</form>
-		</div> -->
+ 		<?php include("partials/navbar.php"); ?>
 
 		<?phpif (isset($_SESSION['winkelmandje']) == false) {$_SESSION['winkelmandje']  = [];}
 		?>
 
-
-
-
-
-
-
 		<h1>Nieuw: </h1><br>
 		<div id="producten-nieuw" class="row">
-			<?php echo ContentController::getContent("home-producten-nieuw"); ?>
+			<?php include("partials/home-producten-nieuw.php"); ?>
 		</div>
 		<h1>Uitgelicht: </h1><br>
 		<div id="producten-uitgelicht" class="row">
-			<?php echo ContentController::getContent("home-producten-uitgelicht"); ?>
+			<?php include("partials/home-producten-uitgelicht.php"); ?>
 		</div>
 
-		<?php echo ContentController::getContent("all_pages-footer"); ?>
+		<?php include("partials/footer.php"); ?>
 
 	</body>
 </html>
