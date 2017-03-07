@@ -22,5 +22,8 @@ if (isset($_POST['winkelmandje']))
     //($id, $cat_naam, $naam, $prijs, $beschrijving, $datum_toegevoegd, $img_path)
     header("location: http://localhost/Web-Project-2017/Views/");
 }
-
+if (isset($_GET['opgevraagdProduct'])){
+    $url = "location: http://localhost/Web-Project-2017/Views/detail.php?opgevraagdProduct=".$_GET['opgevraagdProduct'];
+    header($url);
+}
 ?>

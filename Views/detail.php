@@ -13,8 +13,10 @@
 
 	<?php 
 	require "../Controllers/LogicController.php";
-	$product = LogicController::getProduct(4);
+	$product = LogicController::getProduct($_GET['opgevraagdProduct']);
 	echo "<p>".$product->naam."</p>";
+	echo "<p>".$product->beschrijving."</p>";
+	echo "<p>".$product->datum_toegevoegd."</p>";
 	?>
 
 

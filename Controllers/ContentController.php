@@ -19,6 +19,10 @@ class ContentController
                      . "<h3>".$producten[$i]->naam."</h3>"
                      . "<p style='text-align: justify;'>".$producten[$i]->beschrijving."</p>"
                      . "<b>".$producten[$i]->datum_toegevoegd."</b>"
+                     . "<form action='../Controllers/RequestController.php' method='GET'>"
+                     . "<input type='hidden' name='opgevraagdProduct' value='".$producten[$i]->id."'>"
+                     . "<input type='submit' value='Detail' class='btn btn-default btn-lg'>"
+                     . "</form>"
                      . "</div>"
                      . "</div>"
                      . "</div>";
