@@ -81,6 +81,14 @@ class MainDAO {
         mysqli_close($mysqli);
     }
 
+    static function addUser($username, $password, $naam, $voornaam, $authority, $emailadres)
+    {
+        require '../Credentials.php';
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("INSERT INTO users (username, password, naam, voornaam, authority, emailadres) VALUES ('$username', '$password', '$naam', '$voornaam', '$authority', '$emailadres')");
+        if(!($result)) die(mysqli_error($mysqli));
+        mysqli_close($mysqli);
+    }
 }
 
 ?>

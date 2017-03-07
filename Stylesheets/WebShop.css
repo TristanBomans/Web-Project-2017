@@ -1,26 +1,60 @@
-
+h1{
+    font-size: 25px;
+}
+h3{
+    font-size: 20px;
+}
 *:focus {
    outline: 0;
 }
+
 .navpils{
     margin-right: 20px;
 }
-#Titelbar{
-    color: #A99C9C;
+
+.navpils-color{
+    color: #921515;
+    font-style: oblique;
 }
+
+#titelbar{
+    color: #6F0101;
+    background-color: #921515;
+    height: 17vh;
+    /*text-align: center;*/
+    font-size: 30px;
+    display: block;
+    /*width: calc(100vw - 16px);*/
+    width: 100%;
+    margin-bottom: 15px;
+    /*line-height: 16vh;*/
+    border-radius: 10px;
+}
+
+#titelbar-tekst{
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    background-color: #881010;
+    box-sizing: border-box;
+    font-size: 40px;
+    /*opacity: 0.6;*/
+
+}
+
 #test-knop{
     float: left;
     margin-right: 5px;
 }
+
 .image-thumb{
     /*width: 50px;*/
     height: 200px !important;
-
 }
+
 .thumb-cont{
     height: 450px;
     overflow-y: scroll;
-    
 }
 
 .thumb-cont::-webkit-scrollbar {
@@ -32,13 +66,36 @@
     background: #EDEDED;
     height: 15px;
 }
+
 #footer{
-    background-color: #DBD6D6;
+    background-color: #921515;
     text-align: center;
     border-radius: 15px 15px 0 0;
-    width: 100%;
+    width: calc(100% - 30px);
     padding: 5px;
+    bottom: 0px;
+    position: fixed;
+    margin: auto;
+    color: #6F0101;
 }
+
+#detail-img-product{
+    height: 40vh;
+    display: block;
+    margin: auto;
+    display: block;
+}
+
+#product-detail-wrapper{
+    width: 60%;
+    margin: auto;
+    /*position: relative;*/
+}
+
+#producten-uitgelicht{
+    margin-bottom: 50px;
+}
+
 .winkelwagen-btn{
     background-image: url("../Resources/S-cart.png") !important;
     background-size: 35px 35px;
@@ -47,23 +104,27 @@
     background-repeat: no-repeat;
     position: absolute !important;
     top: 10px !important;
-    right: 25px !important;
+    right: 0px !important;
     display: none;
     transition: all 0.2s ease-in 0s;
 
     border:none;
     background-color: transparent !important;
 }
+
 .parent-thumb-cont:hover .winkelwagen-btn{
     display: block;
 }
+
 .winkelwagen-btn:hover {
     cursor: pointer;
     background-size: 50px 50px;
 }
+
 .parent-thumb-cont{
     position: relative;
 }
+
 #winkelmandje-dropdown {
     background-image: url("../Resources/S-cart.png");
     background-size: 50px 50px;
@@ -71,18 +132,18 @@
     height: 50px;
     background-repeat: no-repeat;
     position: absolute ;
-    top: 10px ;
-    right: 25px ;
+    top: -11px ;
+    right: 0px ;
     transition: all 0.2s ease-in 0s;
 
     /*Overriding shit, afblijven*/
     border:none;
     background-color: transparent !important;
 }
+
 #parent-winkelmandje-dropdown {
     position: relative;
 }
-
 
 #winkelmandje-dropdown-content {
     padding: 15px;
@@ -116,7 +177,6 @@
     height: 15px;
 }
 
-
 .individuele-item-div-dropdown{
     position: relative;
     height: 20px;
@@ -142,8 +202,8 @@
     height: 40px;
     background-repeat: no-repeat;
     position: absolute;
-    top: 20px ;
-    right: 85px ;
+    top: 0px;
+    right: 60px ;
     transition: all 0.2s ease-in 0s;
 
     /*Overriding shit, afblijven*/
@@ -164,6 +224,7 @@
     transition: all 0.2s ease-in 0s;
     overflow: hidden;
 }
+
 .instellingen-dropdown-content-line-item{
     width: 100%;
     padding: 10px;
@@ -173,10 +234,17 @@
 
 .instellingen-dropdown-content-line-item:hover {
     background-color: #BA9696;
+    cursor: pointer;
 }
 
-.link-dropdown-instellingen{
+.link-dropdown-instellingen {
     text-decoration: none;
+    color: black;
+}
+
+.link-dropdown-instellingen:hover {
+    text-decoration: none;
+    color: black;
 }
 
 .login-p {
@@ -195,7 +263,7 @@
     position: relative;
 }
 .login-line-content-submit-button{
-    width: 100%;
+    width: 100%;S
 }
 
 .login-line-content-submit-button input{
@@ -206,7 +274,7 @@
     margin: auto !important;
     border-radius: 15px;
     padding: 10px;
-    transition: all 0.4s ease-in 0s;
+    transition: all 0.2s ease-in 0s;
 }
 .login-line-content-submit-button input:hover{
     background-color: #BA9696;
@@ -219,16 +287,44 @@
     position: relative;
 }
 
-#detailwrap-log-reg{
+#detailwrap-log-reg {
     width: 40vw;
     padding: 40px;
     padding-top: 10px;
-    margin: auto; 
+    margin: auto;
+    margin-top: 10vh;
     border-radius: 40px;
     border: 1px solid black;
-    margin-bottom: 29.5vw;
+
+}
+
+#detailwrap-detail{
+    width: 40vw;
+    padding: 40px;
+    padding-top: 10px;
+    margin: auto;
+    margin-top: 3vh;
+    margin-bottom: 90px;
+    border-radius: 40px;
+    border: 1px solid black;
+
 }
 
 #h2-login{
-    margin-bottom: 90px;
+    margin-bottom: 30px;
+}
+
+#detail-product-prijs {
+    font-weight: bold;
+    font-size: 18px;
+    color: #23D123;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+#text-detail-product{
+    position: relative;
+}
+.p-styled-justify{
+    text-align: justify;
 }

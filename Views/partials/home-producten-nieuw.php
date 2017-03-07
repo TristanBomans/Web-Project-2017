@@ -14,7 +14,7 @@
          . "<img src='".$producten[$i]->img_path."'class='image-thumb' alt='Deze afbeelding kon niet gevonden worden'>"
          . "<div class='caption'>"
          . "<h3>".$producten[$i]->naam."</h3>"
-         . "<p style='text-align: justify;'>".$producten[$i]->beschrijving."</p>"
+         . "<p class='p-styled-justify'>".$producten[$i]->beschrijving."</p>"
          . "<b>".$producten[$i]->datum_toegevoegd."</b>"
          . "<form action='../Controllers/RequestController.php' method='GET'>"
          . "<input type='hidden' name='opgevraagdProduct' value='".$producten[$i]->id."'>"

@@ -8,9 +8,6 @@
 
  		<?php include("partials/navbar.php"); ?>
 
-		<?phpif (isset($_SESSION['winkelmandje']) == false) {$_SESSION['winkelmandje']  = [];}
-		?>
-
 		<h1>Nieuw: </h1><br>
 		<div id="producten-nieuw" class="row">
 			<?php include("partials/home-producten-nieuw.php"); ?>
