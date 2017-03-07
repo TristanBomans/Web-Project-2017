@@ -23,8 +23,12 @@ class ContentController
                      . "<input type='hidden' name='opgevraagdProduct' value='".$producten[$i]->id."'>"
                      . "<input type='submit' value='Detail' class='btn btn-default btn-lg'>"
                      . "</form>"
+                     . "</div>"   
                      . "</div>"
-                     . "</div>"
+                     . "<form action='../Controllers/RequestController.php' method='POST'>"
+                     . "<input type='hidden' name='toAddProduct' value='".$producten[$i]->id."'>"
+                     . "<input type='submit' value='' class='winkelwagen-btn' title='Voeg toe aan winkelmandje'>"
+                     ."</form>"
                      . "</div>";
              }
              return $html;
@@ -47,12 +51,25 @@ class ContentController
              return $html;
              break;
          case "all_pages-header":
+            session_start();
              $html = "<div id='Titelbar' class='page-header red'><h1>Webshop</h1></div>"
             ."<div class='container-fluid'>"
-            ."<ul class='nav nav-pills nav-justified'>"
-            ."<li role='presentation'><a href='#'>Home</a></li>"
+            ."<ul class='nav nav-pills' id='parent-winkelmandje-dropdown'>"
+            ."<li role='presentation'><a href='http://localhost/Web-Project-2017/Views/'>Home</a></li>"
             ."<li role='presentation'><a href='#'>Alle Producten</a></li>"
             ."<li role='presentation'><a href='#'>Profiel</a></li>"
+            ."<div id='instellingen-dropdown'>"
+            ."</div>"
+            ."<div id='winkelmandje-dropdown'>"
+            ."<div id='winkelmandje-dropdown-content'><b>Winkelmandje</b>";
+            $total = 0;
+            foreach ($_SESSION['winkelmandje'] as $product) {
+                $html .= "<div class='individuele-item-div-dropdown'><p  class='naam-product-dropdown'>".$product->naam."</p> <p class='prijs-product-dropdown'>€".$product->prijs. "</p></div>";
+                $total += $product->prijs;
+            }
+            $html .="<hr><div class='individuele-item-div-dropdown'><p  class='naam-product-dropdown'>Totaal: </p><p class='prijs-product-dropdown'><b>€".$total."</b></p></div>"; 
+
+            $html.= "</div></div>"
             ."</ul>"
             ."</div>";
              return $html;

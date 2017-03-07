@@ -7,7 +7,7 @@ class LogicController
 {
 	static function getAlleProducten(){
 		$alleProducten = MainDAO::getAll();
-		Util::compareByDatum($alleProducten,"asc");
+		Util::compareByDatum($alleProducten,"desc");
 		return $alleProducten;
 
 	}

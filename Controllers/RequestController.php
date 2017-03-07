@@ -26,4 +26,19 @@ if (isset($_GET['opgevraagdProduct'])){
     $url = "location: http://localhost/Web-Project-2017/Views/detail.php?opgevraagdProduct=".$_GET['opgevraagdProduct'];
     header($url);
 }
+
+if (isset($_POST['toAddProduct'])){
+
+    $product = MainDAO::getProduct($_POST['toAddProduct']);
+
+    session_start();
+    if (isset($_SESSION['winkelmandje']) == false) {
+    $_SESSION['winkelmandje']  = [];
+    } 
+    array_push($_SESSION['winkelmandje'],  $product);
+
+
+    $url = "location: http://localhost/Web-Project-2017/Views/index.php";
+    header($url);
+}
 ?>

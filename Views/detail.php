@@ -13,7 +13,7 @@ require_once "../Controllers/LogicController.php";?>
 
 	<?php
 	$product = LogicController::getProduct($_GET['opgevraagdProduct']);
-	echo "<div style='margin: auto; width: 50vw;'><h1>".$product->naam."</h1>";
+	echo "<div id='detailwrap'><h1>".$product->naam."</h1>";
 	echo "<p>".$product->beschrijving."</p>";
 	echo "<b>".$product->datum_toegevoegd."</b></div>";
 	?>
@@ -22,7 +22,9 @@ require_once "../Controllers/LogicController.php";?>
 
 
 	<form>
-			
+		<h2>Schrijg een Review: </h2>
+		<label>Rating: </label><input type="text" name="rating">
+		<label>Opmerking: </label>	
 
 
 	</form>

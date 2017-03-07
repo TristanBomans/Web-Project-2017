@@ -1,3 +1,7 @@
+
+*:focus {
+   outline: 0;
+}
 .navpils{
     margin-right: 20px;
 }
@@ -9,14 +13,16 @@
     margin-right: 5px;
 }
 .image-thumb{
-    width: 250px;
-    /*max-width:100%;*/
-    /*height:auto;*/
+    /*width: 50px;*/
+    height: 200px !important;
+
 }
 .thumb-cont{
     height: 450px;
     overflow-y: scroll;
+    
 }
+
 .thumb-cont::-webkit-scrollbar {
     width: 10px;
     margin-right: 5px;
@@ -32,4 +38,115 @@
     border-radius: 15px 15px 0 0;
     width: 100%;
     padding: 5px;
+}
+.winkelwagen-btn{
+    background-image: url("../Resources/S-cart.png") !important;
+    background-size: 35px 35px;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    position: absolute !important;
+    top: 10px !important;
+    right: 25px !important;
+    display: none;
+    transition: all 0.2s ease-in 0s;
+
+    border:none;
+    background-color: transparent !important;
+}
+.parent-thumb-cont:hover .winkelwagen-btn{
+    display: block;
+}
+.winkelwagen-btn:hover {
+    cursor: pointer;
+    background-size: 50px 50px;
+}
+.parent-thumb-cont{
+    position: relative;
+}
+#winkelmandje-dropdown {
+    background-image: url("../Resources/S-cart.png");
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    position: absolute ;
+    top: 10px ;
+    right: 25px ;
+    transition: all 0.2s ease-in 0s;
+
+    /*Overriding shit, afblijven*/
+    border:none;
+    background-color: transparent !important;
+}
+#parent-winkelmandje-dropdown {
+    position: relative;
+}
+
+
+#winkelmandje-dropdown-content {
+    padding: 15px;
+    width: 300px;
+    height: 200px;
+    background-color: grey;
+    position: absolute ;
+    top: 50px;
+    right: 0px;
+    z-index: 1000;
+    display: none;
+    border-radius: 15px;
+    background-color: #DBD6D6;
+    opacity: 0;
+    transition: all 0.2s ease-in 0s;
+    overflow-y: scroll;
+}
+
+#winkelmandje-dropdown:hover #winkelmandje-dropdown-content {
+    display: block;
+    opacity: 0.9;
+}
+
+#winkelmandje-dropdown-content::-webkit-scrollbar {
+    width: 10px;
+    margin-right: 5px;
+}
+
+#winkelmandje-dropdown-content::-webkit-scrollbar-thumb {
+    background: #EDEDED;
+    height: 15px;
+}
+
+
+.individuele-item-div-dropdown{
+    position: relative;
+    height: 20px;
+    width: 100%;
+}
+.prijs-product-dropdown{
+    position: absolute;
+    right: 10px;
+}
+.naam-product-dropdown{
+    position: absolute;
+    left: 10px;
+}
+#detailwrap { 
+    width: 70vw;
+    margin: auto; 
+}
+
+#instellingen-dropdown{
+    background-image: url("../Resources/settings.png");
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    position: absolute ;
+    top: 20px ;
+    right: 85px ;
+    transition: all 0.2s ease-in 0s;
+
+    /*Overriding shit, afblijven*/
+    border:none;
+    background-color: transparent !important;
 }
