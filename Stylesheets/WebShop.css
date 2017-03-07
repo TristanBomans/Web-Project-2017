@@ -1,7 +1,35 @@
+.navpils{
+    margin-right: 20px;
+}
 #Titelbar{
     color: #A99C9C;
 }
 #test-knop{
     float: left;
     margin-right: 5px;
+}
+.image-thumb{
+    width: 250px;
+    /*max-width:100%;*/
+    /*height:auto;*/
+}
+.thumb-cont{
+    height: 450px;
+    overflow-y: scroll;
+}
+.thumb-cont::-webkit-scrollbar {
+    width: 10px;
+    margin-right: 5px;
+}
+
+.thumb-cont::-webkit-scrollbar-thumb {
+    background: #EDEDED;
+    height: 15px;
+}
+#footer{
+    background-color: #DBD6D6;
+    text-align: center;
+    border-radius: 5px;
+    width: 100%;
+    padding: 5px;
 }

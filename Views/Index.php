@@ -32,5 +32,8 @@
 		<div id="producten-uitgelicht" class="row">
 			<?php echo ContentController::getContent("home-producten-uitgelicht"); ?>
 		</div>
+
+		<?php echo ContentController::getContent("all_pages-footer"); ?>
+
 	</body>
 </html>
