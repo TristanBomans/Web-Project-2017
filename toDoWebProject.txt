@@ -1,0 +1,7 @@
+[OK]- Functies naar util
+[OK]- Beschrijving weg doen & prijs op homepage // CSS aanpassen
+- css file cleaner maken?
+[OK]- DAO Object meesturen 
+[OK]- sorteer functies allemaal
+[OK]- Datum Fixen
+[OK]- categorie in CSS fixen (Bij detail en bij overzicht) 

@@ -2,5 +2,5 @@
 $user = "root";
 $database = "web project 2017";
 $host = "localhost";
-$passwd = "";
+$passwd = "1111";
 ?>

@@ -59,5 +59,41 @@ class Util{
 			});
 		}
 	}
+
+	static function productObjectToArray($Object)
+	{
+		$array = [];
+
+		for ($i=0; $i < sizeof($Object) ; $i++) 
+		{ 
+			$array[$i] = [];
+			$array[$i]['id'] = $Object[$i]->id;
+			$array[$i]['cat_naam'] = $Object[$i]->cat_naam;
+			$array[$i]['naam'] = $Object[$i]->naam;
+			$array[$i]['prijs'] = $Object[$i]->prijs;
+			$array[$i]['beschrijving'] = $Object[$i]->beschrijving;
+			$array[$i]['datum_toegevoegd'] = $Object[$i]->datum_toegevoegd;
+			$array[$i]['img_path'] = $Object[$i]->img_path;
+		}
+		
+		return $array;
+	}
+
+	// functie gebruikt van: http://stackoverflow.com/a/19366999
+	static function utf8ize($d) 
+	{
+	    if (is_array($d)) 
+    	{
+        	foreach ($d as $k => $v) 
+        	{
+            	$d[$k] = Util::utf8ize($v);
+        	}
+	    } else if (is_string ($d)) 
+	    {
+	        return utf8_encode($d);
+	    }
+	    return $d;
+	}
+
 }
 ?>

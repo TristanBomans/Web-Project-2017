@@ -74,21 +74,22 @@ class MainDAO {
         return $productenArray;
     }
 
-    static function addProduct($cat_id, $naam, $prijs, $beschrijving, $datum_toegevoegd, $img_path){
+    static function addProduct($toAddProduct){
     	require '../Credentials.php';
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("INSERT INTO producten (cat_id, naam, prijs, beschrijving, datum_toegevoegd, img_path) VALUES ('$cat_id', '$naam', '$prijs', '$beschrijving', '$datum_toegevoegd', '$img_path')");
+        $result = $mysqli->query("INSERT INTO producten (cat_id, naam, prijs, beschrijving, datum_toegevoegd, img_path) VALUES ('$toAddProduct->cat_id', '$toAddProduct->naam', '$toAddProduct->prijs', '$toAddProduct->beschrijving', '$toAddProduct->datum_toegevoegd', '$toAddProduct->img_path')");
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }
 
     // USERS
 
-    static function addUser($username, $password, $naam, $voornaam, $authority, $emailadres)
+    static function addUser($toAddUser)
     {
         require '../Credentials.php';
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("INSERT INTO users (username, password, naam, voornaam, authority, emailadres) VALUES ('$username', '$password', '$naam', '$voornaam', '$authority', '$emailadres')");
+        var_dump($toAddUser);
+        $result = $mysqli->query("INSERT INTO users (username, password, naam, voornaam, authority, emailadres) VALUES ('$toAddUser->username', '$toAddUser->password', '$toAddUser->naam', '$toAddUser->voornaam', '$toAddUser->authority', '$toAddUser->emailadres')");
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }

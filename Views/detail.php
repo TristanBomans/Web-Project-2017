@@ -13,6 +13,8 @@
 		<div id="product-detail-wrapper">
 			<?php
 			$product = LogicController::getProduct($_GET['opgevraagdProduct']);
+			$product->datum_toegevoegd =  explode("-",$product->datum_toegevoegd)[2]."-".explode("-",$product->datum_toegevoegd)[1]."-".explode("-",$product->datum_toegevoegd)[0];
+
 			echo "<img src='".$product->img_path."' id='detail-img-product'></img>";
 			echo "<div id='text-detail-product'>";
 			echo "<h1>".$product->naam."</h1>";
@@ -23,7 +25,7 @@
 		</div>
 		<div id='detailwrap-detail'>
 			<form action="../Controllers/RequestController.php" method="POST">
-				<h2 id="h2-login">Schrijg een Review: </h2>
+				<h2 id="h2-login">Schrijf een Review: </h2>
 				<div class="login-line-content">
 					<p class="login-p">Rating: </p>
 					<input type="text" name="rating" class="login-input">
