@@ -3,13 +3,17 @@ class Util{
 	static function compareByName(&$unsortedA,$order){
 		if ($order == "asc") {
 			return usort($unsortedA, function($a,$b){
-				return strcmp($a->naam, $b->naam);
+				$at = strtolower($a->naam);
+				$bt = strtolower($b->naam);
+				return strcmp($at, $bt);
 			});
 		}
 
 		if ($order == "desc") {
 			return usort($unsortedA, function($a,$b){
-				return strcmp($b->naam, $a->naam);
+				$at = strtolower($a->naam);
+				$bt = strtolower($b->naam);
+				return strcmp($bt, $at);
 			});
 		}
 	}

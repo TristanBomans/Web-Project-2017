@@ -1,6 +1,7 @@
 <?php
 require_once ("../Entities/ProductEntity.php");
 require_once ("../Models/MainDAO.php");
+require_once ("../Controllers/Util.php");
 
 define('URL',"location: http://localhost/Web-Project-2017/Views/" );
 
@@ -65,13 +66,51 @@ if (isset($_GET['action'])){
         header($url);
     }
 }
-if (isset($_POST['sortMethode'])){
+
+if (isset($_POST['sortMethode']))
+{
     $methode = $_POST['sortMethode'];
     $teSorteren = explode("-", $methode)[0];
     $directie =  explode("-",$methode)[1];
     $alleProducten = MainDAO::getAll();
-    
-    Util::compareByDatum($alleProducten,"desc");
-    return $alleProducten;
+   
+    if($teSorteren == "naam")
+    {
+        Util::compareByName($alleProducten,$directie);
+
+    }
+    elseif($teSorteren == "datum")
+    {
+        Util::compareByDatum($alleProducten,$directie);
+    }
+
+    $array = [];
+
+   for ($i=0; $i < sizeof($alleProducten) ; $i++) 
+   { 
+        $array[$i] = [];
+        $array[$i]['id'] = $alleProducten[$i]->id;
+        $array[$i]['cat_naam'] = $alleProducten[$i]->cat_naam;
+        $array[$i]['naam'] = $alleProducten[$i]->naam;
+        $array[$i]['prijs'] = $alleProducten[$i]->prijs;
+        $array[$i]['beschrijving'] = $alleProducten[$i]->beschrijving;
+        $array[$i]['datum_toegevoegd'] = $alleProducten[$i]->datum_toegevoegd;
+        $array[$i]['img_path'] = $alleProducten[$i]->img_path;
+   }
+
+    echo json_encode(utf8ize($array));
+}
+
+// functie gebruikt van: http://stackoverflow.com/a/19366999
+
+function utf8ize($d) {
+    if (is_array($d)) {
+        foreach ($d as $k => $v) {
+            $d[$k] = utf8ize($v);
+        }
+    } else if (is_string ($d)) {
+        return utf8_encode($d);
+    }
+    return $d;
 }
 ?>
