@@ -14,23 +14,23 @@
 				<h2 id="h2-login">Registreren: </h2>
 				<div class="login-line-content">
 					<p class="login-p">Gebruiker: </p>
-					<input type="text" name="username"  class='login-input'>
+					<input required type="text" name="username"  class='login-input'>
 				</div>
 				<div class="login-line-content">
 					<p class="login-p">Wachtwoord: </p>
-					<input type="password" name="password"  class='login-input'>
+					<input required type="password" name="password"  class='login-input'>
 				</div>
 				<div class="login-line-content">
 					<p class="login-p">E-mail: </p>
-					<input type="text" name="email"  class='login-input'>
+					<input required type="text" name="email"  class='login-input'>
 				</div>
 				<div class="login-line-content">
 					<p class="login-p">Naam: </p>
-					<input type="text" name="naam"  class='login-input'>
+					<input required type="text" name="naam"  class='login-input'>
 				</div>
 				<div class="login-line-content">
 					<p class="login-p">Voornaam: </p>
-					<input type="text" name="voornaam"  class='login-input'>
+					<input required type="text" name="voornaam"  class='login-input'>
 				</div>
 				<div class="login-line-content-submit-button">
 					<input type="submit" name="submit">

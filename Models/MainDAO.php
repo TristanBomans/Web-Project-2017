@@ -1,9 +1,10 @@
 <?php
 
-include_once "../Entities/ProductEntity.php";
-
+require_once "../Entities/ProductEntity.php";
+require_once "../Entities/UserEntity.php";
 
 class MainDAO {
+    // PRODUCT
     static function getProduct($id) {
     	require '../Credentials.php';
         $mysqli = new mysqli($host, $user, $passwd, $database);
@@ -81,6 +82,8 @@ class MainDAO {
         mysqli_close($mysqli);
     }
 
+    // USERS
+
     static function addUser($username, $password, $naam, $voornaam, $authority, $emailadres)
     {
         require '../Credentials.php';
@@ -89,6 +92,28 @@ class MainDAO {
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }
+
+    static function getUser($username) {
+        require '../Credentials.php';
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("SELECT * FROM users where username='$username'");
+        $user = null;
+
+        if ($row = mysqli_fetch_array($result)) {
+            $username = $row[0];
+            $password = $row[1];
+            $naam = $row[2];
+            $voornaam = $row[3];
+            $authority = $row[4];
+            $emailadres = $row[5];
+
+            $user = new UserEntity($username, $password, $naam, $voornaam, $authority, $emailadres);
+        }
+
+        mysqli_close($mysqli);
+        return $user;
+    }
+
 }
 
 ?>

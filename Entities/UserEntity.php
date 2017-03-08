@@ -1,8 +1,7 @@
 <?php
 
-class ProductEntity
+class UserEntity
 {
-    public $id;
     public $username;
     public $password;
     public $naam;
@@ -11,14 +10,13 @@ class ProductEntity
     public $emailadres;
 
 
-    function __construct( $id, $username, $password, $naam, $voornaam, $authority, $emailadres) {
-        $this->id = $id;
-        $this->$username = $username;
-        $this->$password = $password;
-        $this->$naam = $naam;
-        $this->$voornaam = $voornaam;
-        $this->$authority = $authority;
-        $this->$emailadres = $emailadres;
+    function __construct($username, $password, $naam, $voornaam, $authority, $emailadres) {
+        $this->username = $username;
+        $this->password = $password;
+        $this->naam = $naam;
+        $this->voornaam = $voornaam;
+        $this->authority = $authority;
+        $this->emailadres = $emailadres;
     }
 }
 

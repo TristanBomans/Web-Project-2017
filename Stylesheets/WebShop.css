@@ -107,6 +107,7 @@ h3{
     right: 0px !important;
     display: none;
     transition: all 0.2s ease-in 0s;
+    margin-right: 20px;
 
     border:none;
     background-color: transparent !important;
@@ -328,3 +329,60 @@ h3{
 .p-styled-justify{
     text-align: justify;
 }
+#producten-alle{
+    margin-bottom: 50px;
+}
+#allproductsandsort-wrapper{
+    position: relative;
+    height: 15vh;
+}
+
+#allproductsandsort-filteren{
+    position: absolute;
+    right: 30px;
+    top: 3vh;
+}
+
+#allproductsandsort-title{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+#allproductsandsort-filteren:hover #allproductsandsort-dropdown{
+    display: block;
+}
+
+/*#allproductsandsort-filteren:hover {
+    cursor: pointer;
+}*/
+
+#allproductsandsort-dropdown{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: #DBD6D6;
+    right: 0px;
+    top: 15px;
+    z-index: 10000;
+    border-radius: 20px;
+    opacity: 0.9;
+    display: none;
+    overflow: hidden;
+}
+
+.allproductsandsort-dropdown-line-item{
+    display: block;
+    width: 100%
+    height 20px;
+    padding: 5px;
+    padding-left: 15px;
+}
+
+.allproductsandsort-dropdown-line-item:hover{
+    background-color: grey;
+    cursor: pointer;
+}
+/*#allproductsandsort-dropdown-line-item-top{
+    margin-top: 20px;
+}*/

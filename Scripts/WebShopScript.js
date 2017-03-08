@@ -15,5 +15,18 @@ $(function(){
 			}
 		});
 	});
-	
+
+	$(".allproductsandsort-dropdown-line-item").on('click', function(e){
+		var attrClicked = $(this).attr("id");
+		// console.log("Clicked on: " + attrClicked);
+		$.ajax({
+			type: "POST",
+			url: "http://localhost/Web-Project-2017/Controllers/RequestController.php",
+			data: {'sortMethode' : attrClicked},
+			success: function(data){
+
+			}
+		})
+
+	});
 });
