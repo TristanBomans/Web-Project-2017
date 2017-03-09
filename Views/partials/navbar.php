@@ -8,7 +8,12 @@
     <ul class="nav nav-pills" id="parent-winkelmandje-dropdown">
         <li role="presentation" class="navpils"><a href="http://localhost/Web-Project-2017/Views/" class="navpils-color">Home</a></li>
         <li role="presentation" class="navpils"><a href='http://localhost/Web-Project-2017/Views/allproducts.php' class="navpils-color">Alle Producten</a></li>
-        <li role="presentation" class="navpils"><a href='http://localhost/Web-Project-2017/Views/profile.php' class="navpils-color">Profiel</a></li>
+        <?php 
+        if(isset($_SESSION['user'])){
+            echo  "<li role='presentation' class='navpils'><a href='http://localhost/Web-Project-2017/Views/profile.php' class='navpils-color'>Profiel</a></li>";
+        }
+        ?>
+       
         <div id="instellingen-dropdown" title="Instellingen">
             <div id="instellingen-dropdown-content">         
            <?php
@@ -41,7 +46,7 @@
             else{
                 $_SESSION['winkelmandje']  = [];
             }
-            echo "<hr><div class='individuele-item-div-dropdown'><p  class='naam-product-dropdown'>Totaal: </p><p class='prijs-product-dropdown'><b>€ ".$total."</b></p></div>";
+            echo "<hr id='float-hr'><div class='individuele-item-div-dropdown' id='prijs-totaal-rand'><p  class='naam-product-dropdown'>Totaal: </p><p class='prijs-product-dropdown'><b>€ ".$total."</b></p></div>";
             ?>
 
             </div>

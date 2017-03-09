@@ -27,7 +27,7 @@ $(function(){
 				var html = "";
 		        
 				for (var i = 0; i < data.length; i++) {
-					html += "<div class='col-lg-3 col-md-4 col-sm-4 col-xs-6 parent-thumb-cont'>"
+					html += "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 parent-thumb-cont'>"
 					+ "<div class='thumbnail thumb-cont'>"
 					+ "<div class='thumb-cont-money-circle'>€ " + data[i].prijs + "</div>"
 					+ "<img src='" + data[i].img_path + "'class='image-thumb' alt='Deze afbeelding kon niet gevonden worden'>"
