@@ -20,6 +20,10 @@ class LogicController
 		$product = MainDAO::getProduct($id);
 		return $product;	
 	}
+//    static function getCurrent($id){
+//		$product = MainDAO::getProduct($id);
+//		return $product;	
+//	}
 
 }
 ?>

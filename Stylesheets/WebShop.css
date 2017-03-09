@@ -270,6 +270,13 @@ h3 {
     overflow: hidden;
 }
 
+#instellingen-dropdown-content-line-item-username{
+    background-color: #921515;
+    cursor: default;
+    color: white;
+    font-weight: bold;
+}
+
 .instellingen-dropdown-content-line-item {
     width: 100%;
     padding: 10px;
@@ -409,7 +416,7 @@ h3 {
     height: auto;
     background-color: #DBD6D6;
     right: 0px;
-    top: 40px;
+    top: 45px;
     z-index: 10000;
     border-radius: 20px;
     opacity: 0.9;

@@ -30,7 +30,7 @@
             <entry file="file://$PROJECT_DIR$/Views/Index.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="16" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="37" />
+                  <caret line="18" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="37" />
                   <folding />
                 </state>
               </provider>
@@ -69,8 +69,8 @@
           <file leaf-file-name="detail.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Views/detail.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.077294685">
-                  <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+                <state vertical-scroll-proportion="0.21256039">
+                  <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
                   <folding />
                 </state>
               </provider>
@@ -114,7 +114,7 @@
             <entry file="file://$PROJECT_DIR$/Views/login.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="36" column="22" selection-start-line="34" selection-start-column="16" selection-end-line="36" selection-end-column="22" />
+                  <caret line="47" column="18" selection-start-line="34" selection-start-column="16" selection-end-line="36" selection-end-column="22" />
                   <folding />
                 </state>
               </provider>
@@ -150,21 +150,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="LogicController.php" pinned="false" current-in-tab="false">
+          <file leaf-file-name="LogicController.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Controllers/LogicController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
+                <state vertical-scroll-proportion="0.019323671">
                   <caret line="1" column="45" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="45" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="WebShop.css" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Stylesheets/WebShop.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="367" column="13" selection-start-line="367" selection-start-column="13" selection-end-line="367" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
@@ -192,8 +182,8 @@
         <option value="$PROJECT_DIR$/Views/partials/navbar.php" />
         <option value="$PROJECT_DIR$/Views/partials/footer.php" />
         <option value="$PROJECT_DIR$/Views/partials/home-producten-nieuw.php" />
-        <option value="$PROJECT_DIR$/Views/detail.php" />
         <option value="$PROJECT_DIR$/Stylesheets/WebShop.css" />
+        <option value="$PROJECT_DIR$/Views/detail.php" />
       </list>
     </option>
   </component>
@@ -238,6 +228,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -360,7 +351,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -461,11 +451,35 @@
       <option name="project" value="LOCAL" />
       <updated>1489018382260</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Nieuwste Versie - Gechecked">
+      <created>1489081356476</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1489081356476</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Bug Fix">
+      <created>1489081404312</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1489081404312</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added a before previous url method">
+      <created>1489084229145</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1489084229145</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Changed it so that you can get your password/username wrong and still end up at the page you were looking at before you tried to log in">
+      <created>1489087140134</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1489087140134</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="2576" height="1066" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09609375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -510,7 +524,11 @@
     <MESSAGE value="Fixed A typo" />
     <MESSAGE value="[OK]- Functies naar util&#10;[OK]- Beschrijving weg doen &amp; prijs op homepage // CSS aanpassen&#10;- css file cleaner maken?&#10;[OK]- DAO Object meesturen &#10;[OK]- sorteer functies allemaal&#10;[OK]- Datum Fixen&#10;[OK]- categorie in CSS fixen (Bij detail en bij overzicht) &#10;[OK]- Javascript ajax call Css gefixt [juiste tags terugsturen]" />
     <MESSAGE value="Css beetje gefixt, vooral schoonheidsfixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Css beetje gefixt, vooral schoonheidsfixes" />
+    <MESSAGE value="Nieuwste Versie - Gechecked" />
+    <MESSAGE value="Bug Fix" />
+    <MESSAGE value="Added a before previous url method" />
+    <MESSAGE value="Changed it so that you can get your password/username wrong and still end up at the page you were looking at before you tried to log in" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed it so that you can get your password/username wrong and still end up at the page you were looking at before you tried to log in" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -627,7 +645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -739,7 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -762,7 +778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -842,14 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/LogicController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="45" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/WebShopScript.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -877,7 +884,7 @@
     <entry file="file://$PROJECT_DIR$/Views/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="22" selection-start-line="34" selection-start-column="16" selection-end-line="36" selection-end-column="22" />
+          <caret line="47" column="18" selection-start-line="34" selection-start-column="16" selection-end-line="36" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -893,7 +900,7 @@
     <entry file="file://$PROJECT_DIR$/Views/Index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="37" />
+          <caret line="18" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -906,18 +913,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/detail.php">
+    <entry file="file://$PROJECT_DIR$/Stylesheets/WebShop.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.077294685">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        <state vertical-scroll-proportion="-0.3130129">
+          <caret line="368" column="1" selection-start-line="368" selection-start-column="1" selection-end-line="368" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/LogicController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.019323671">
+          <caret line="1" column="45" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stylesheets/WebShop.css">
+    <entry file="file://$PROJECT_DIR$/Views/detail.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="367" column="13" selection-start-line="367" selection-start-column="13" selection-end-line="367" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.21256039">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
           <folding />
         </state>
       </provider>

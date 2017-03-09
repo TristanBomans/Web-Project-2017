@@ -8,13 +8,13 @@
     <ul class="nav nav-pills" id="parent-winkelmandje-dropdown">
         <li role="presentation" class="navpils"><a href="http://localhost/Web-Project-2017/Views/" class="navpils-color">Home</a></li>
         <li role="presentation" class="navpils"><a href='http://localhost/Web-Project-2017/Views/allproducts.php' class="navpils-color">Alle Producten</a></li>
-        <li role="presentation" class="navpils"><a href='#' class="navpils-color">Profiel</a></li>
+        <li role="presentation" class="navpils"><a href='http://localhost/Web-Project-2017/Views/profile.php' class="navpils-color">Profiel</a></li>
         <div id="instellingen-dropdown" title="Instellingen">
             <div id="instellingen-dropdown-content">         
            <?php
                 if(isset($_SESSION['user']))
                 {
-                    echo "<a class='link-dropdown-instellingen' href='#'><div class='instellingen-dropdown-content-line-item'>Welkom ".$_SESSION['user']->username."</div></a>";
+                    echo "<a class='link-dropdown-instellingen'><div class='instellingen-dropdown-content-line-item' id='instellingen-dropdown-content-line-item-username'>Welkom ".$_SESSION['user']->username."</div></a>";
                     echo "<a class='link-dropdown-instellingen' href='http://localhost/Web-Project-2017/Controllers/RequestController.php?action=logout'><div class='instellingen-dropdown-content-line-item'>Afmelden</div></a>";
                 } 
                 else
