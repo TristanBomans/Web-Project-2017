@@ -116,7 +116,7 @@ h3 {
 }
 
 #detail-img-product {
-    height: 40vh;
+    height: 25vw ;
     display: block;
     margin: auto;
 }
@@ -124,7 +124,6 @@ h3 {
 #product-detail-wrapper {
     width: 60%;
     margin: auto;
-    /*position: relative;*/
 }
 
 #producten-uitgelicht {
