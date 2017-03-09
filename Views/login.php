@@ -36,6 +36,7 @@
 					<input type="submit" name="submit">
 				</div>
 				<input type="hidden" name="typeRequest" value="loginuser">
+				<?php echo "<input type='hidden' name='befPrevUrl' value='".$_SERVER['HTTP_REFERER']."'>"; ?>
 			</form>
 		</div>
 

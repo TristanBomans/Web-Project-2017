@@ -4,6 +4,8 @@ require_once ("../Entities/ProductEntity.php");
 require_once ("../Entities/UserEntity.php");
 require_once ("../Models/MainDAO.php");
 require_once ("../Controllers/Util.php");
+
+if (isset($_POST['befPrevUrl'])) {define('bURL', "location: ".$_POST['befPrevUrl']);}
 define('URL',"location: http://localhost/Web-Project-2017/Views/" );
 define('prevURL', "location: ".$_SERVER['HTTP_REFERER']);
 session_start();
@@ -45,8 +47,7 @@ if (isset($_POST['typeRequest'])){
             {
                 echo "password correct";
                 $_SESSION['user'] = $gebruiker;
-                 $url = URL."index.php";
-                header($url);
+                header(bURL);
             }
             else
             {
