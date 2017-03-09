@@ -5,6 +5,7 @@ require_once ("../Entities/UserEntity.php");
 require_once ("../Models/MainDAO.php");
 require_once ("../Controllers/Util.php");
 define('URL',"location: http://localhost/Web-Project-2017/Views/" );
+define('prevURL', "location: ".$_SERVER['HTTP_REFERER']);
 session_start();
 
 // REQUEST HANDLING
@@ -21,8 +22,7 @@ if (isset($_POST['toAddProduct']))
     $_SESSION['winkelmandje']  = [];
     } 
     array_push($_SESSION['winkelmandje'],  $product);
-    $url = URL."index.php";
-    header($url);
+    header(prevURL);
 }
 
 if (isset($_POST['typeRequest'])){
@@ -67,8 +67,7 @@ if (isset($_POST['typeRequest'])){
 if (isset($_GET['action'])){
     if ($_GET['action'] == "logout") {
         unset($_SESSION['user']);
-        $url = URL."index.php";
-        header($url);
+        header(prevURL);
     }
 }
 

@@ -9,8 +9,9 @@
 <body class="container-fluid">
 	<?php include("partials/navbar.php"); ?>
 	<div id='detailwrap'>
-		<?php include("partials/detail-product-data.php"); ?>
+			<?php include("partials/detail-product-data.php"); ?>
 		<?php include("partials/review.php"); ?>
+		</div>
 	</div>
 	<?php include("partials/footer.php"); ?>
 </body>

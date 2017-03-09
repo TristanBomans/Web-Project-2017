@@ -8,7 +8,9 @@
 
  		<?php include("partials/navbar.php"); ?>
  		
-		<h1>Nieuw: </h1><br>
+		<div id="allproductsandsort-wrapper">
+			<div id="allproductsandsort-title">Nieuw: </div>
+		</div>
 		<div id="producten-nieuw" class="row">
 			<?php include("partials/home-producten-nieuw.php"); ?>
 		</div>
