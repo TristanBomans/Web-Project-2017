@@ -5,9 +5,8 @@ require_once ("../Entities/UserEntity.php");
 require_once ("../Models/MainDAO.php");
 require_once ("../Controllers/Util.php");
 
-if (isset($_POST['befPrevUrl'])) {define('bURL', "location: ".$_POST['befPrevUrl']);}
 define('URL',"location: http://localhost/Web-Project-2017/Views/" );
-define('prevURL', "location: ".$_SERVER['HTTP_REFERER']);
+if (isset($_SERVER['HTTP_REFERER'])){define('prevURL', "location: ".$_SERVER['HTTP_REFERER']);}
 session_start();
 
 // REQUEST HANDLING
@@ -47,11 +46,20 @@ if (isset($_POST['typeRequest'])){
             {
                 echo "password correct";
                 $_SESSION['user'] = $gebruiker;
-                header(bURL);
+                if (isset($_SESSION['alternative_befURL'])){
+                    var_dump($_SESSION['alternative_befURL']);
+                    header("location: ".$_SESSION['alternative_befURL']);
+                }
+                else{
+                    var_dump($_POST['befPrevUrl']);
+                    header("location: ".$_POST['befPrevUrl']);
+                }
+                unset($_SESSION['alternative_befURL']);
             }
             else
             {
                  echo "password false";
+                 $_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
                  $url = URL."login.php";
                  header($url);
             }
@@ -59,6 +67,7 @@ if (isset($_POST['typeRequest'])){
         else
         {
             echo "user not found";
+            $_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
             $url = URL."login.php";
             header($url);
         }

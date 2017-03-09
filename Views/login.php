@@ -36,7 +36,16 @@
 					<input type="submit" name="submit">
 				</div>
 				<input type="hidden" name="typeRequest" value="loginuser">
-				<?php echo "<input type='hidden' name='befPrevUrl' value='".$_SERVER['HTTP_REFERER']."'>"; ?>
+				<?php 
+				if (isset($_SESSION['alternative_befURL'])) 
+				{
+					echo "<input type='hidden' name='befPrevUrl' value='".$_SESSION['alternative_befURL']."'>"; 
+				}
+				else
+				{
+					echo "<input type='hidden' name='befPrevUrl' value='".$_SERVER['HTTP_REFERER']."'>"; 
+				}
+				?>
 			</form>
 		</div>
 
