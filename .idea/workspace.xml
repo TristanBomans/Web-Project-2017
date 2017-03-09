@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c441c3f7-0a20-4ebc-b0af-447cfe648e81" name="Default" comment="Added more to contentcontroller, added css &amp; js file.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/toDoWebProject.txt" />
-      <change type="DELETED" beforePath="C:\wamp64\www\Web-Project-2017\Controllers\LogicController" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Models/MainDAO.php" afterPath="$PROJECT_DIR$/Models/MainDAO.php" />
+    <list default="true" id="c441c3f7-0a20-4ebc-b0af-447cfe648e81" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/RequestController.php" afterPath="$PROJECT_DIR$/Controllers/RequestController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/Util.php" afterPath="$PROJECT_DIR$/Controllers/Util.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stylesheets/WebShop.css" afterPath="$PROJECT_DIR$/Stylesheets/WebShop.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/WebShopScript.js" afterPath="$PROJECT_DIR$/Scripts/WebShopScript.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/partials/alleproducts-producten-all.php" afterPath="$PROJECT_DIR$/Views/partials/alleproducts-producten-all.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/allproducts.php" afterPath="$PROJECT_DIR$/Views/allproducts.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/credentials.php" afterPath="$PROJECT_DIR$/credentials.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/detail.php" afterPath="$PROJECT_DIR$/Views/detail.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/partials/home-producten-nieuw.php" afterPath="$PROJECT_DIR$/Views/partials/home-producten-nieuw.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/partials/home-producten-uitgelicht.php" afterPath="$PROJECT_DIR$/Views/partials/home-producten-uitgelicht.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/login.php" afterPath="$PROJECT_DIR$/Views/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/partials/navbar.php" afterPath="$PROJECT_DIR$/Views/partials/navbar.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Web-Project-2017.iws" />
@@ -82,8 +79,8 @@
           <file leaf-file-name="detail.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Views/detail.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.42802548">
-                  <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
+                <state vertical-scroll-proportion="0.08152866">
+                  <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
                   <folding />
                 </state>
               </provider>
@@ -103,7 +100,7 @@
             <entry file="file://$PROJECT_DIR$/Views/partials/navbar.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="8" column="120" selection-start-line="8" selection-start-column="120" selection-end-line="8" selection-end-column="120" />
+                  <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
                   <folding />
                 </state>
               </provider>
@@ -127,7 +124,7 @@
             <entry file="file://$PROJECT_DIR$/Views/login.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="32" column="22" selection-start-line="30" selection-start-column="16" selection-end-line="32" selection-end-column="22" />
+                  <caret line="36" column="22" selection-start-line="34" selection-start-column="16" selection-end-line="36" selection-end-column="22" />
                   <folding />
                 </state>
               </provider>
@@ -147,7 +144,7 @@
             <entry file="file://$PROJECT_DIR$/Scripts/WebShopScript.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+                  <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -176,8 +173,8 @@
           <file leaf-file-name="WebShop.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Stylesheets/WebShop.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.8296296">
-                  <caret line="365" column="13" selection-start-line="365" selection-start-column="13" selection-end-line="365" selection-end-column="13" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="367" column="13" selection-start-line="367" selection-start-column="13" selection-end-line="367" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
@@ -250,6 +247,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -373,7 +371,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -462,7 +459,13 @@
       <option name="project" value="LOCAL" />
       <updated>1488930903358</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="[OK]- Functies naar util&#10;[OK]- Beschrijving weg doen &amp; prijs op homepage // CSS aanpassen&#10;- css file cleaner maken?&#10;[OK]- DAO Object meesturen &#10;[OK]- sorteer functies allemaal&#10;[OK]- Datum Fixen&#10;[OK]- categorie in CSS fixen (Bij detail en bij overzicht) &#10;[OK]- Javascript ajax call Css gefixt [juiste tags terugsturen]">
+      <created>1489015153145</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1489015153145</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -509,7 +512,8 @@
     <MESSAGE value="Fixed The include problem where I was getting incomplete php classes." />
     <MESSAGE value="Working version, added a lot of css &amp; Users can now register, also  added user model &amp; New function @DAO" />
     <MESSAGE value="Fixed A typo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed A typo" />
+    <MESSAGE value="[OK]- Functies naar util&#10;[OK]- Beschrijving weg doen &amp; prijs op homepage // CSS aanpassen&#10;- css file cleaner maken?&#10;[OK]- DAO Object meesturen &#10;[OK]- sorteer functies allemaal&#10;[OK]- Datum Fixen&#10;[OK]- categorie in CSS fixen (Bij detail en bij overzicht) &#10;[OK]- Javascript ajax call Css gefixt [juiste tags terugsturen]" />
+    <option name="LAST_COMMIT_MESSAGE" value="[OK]- Functies naar util&#10;[OK]- Beschrijving weg doen &amp; prijs op homepage // CSS aanpassen&#10;- css file cleaner maken?&#10;[OK]- DAO Object meesturen &#10;[OK]- sorteer functies allemaal&#10;[OK]- Datum Fixen&#10;[OK]- categorie in CSS fixen (Bij detail en bij overzicht) &#10;[OK]- Javascript ajax call Css gefixt [juiste tags terugsturen]" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -852,7 +856,7 @@
     <entry file="file://$PROJECT_DIR$/Scripts/WebShopScript.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -860,7 +864,7 @@
     <entry file="file://$PROJECT_DIR$/Views/partials/navbar.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="120" selection-start-line="8" selection-start-column="120" selection-end-line="8" selection-end-column="120" />
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -876,7 +880,7 @@
     <entry file="file://$PROJECT_DIR$/Views/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="22" selection-start-line="30" selection-start-column="16" selection-end-line="32" selection-end-column="22" />
+          <caret line="36" column="22" selection-start-line="34" selection-start-column="16" selection-end-line="36" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -907,16 +911,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Views/detail.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42802548">
-          <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.08152866">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Stylesheets/WebShop.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8296296">
-          <caret line="365" column="13" selection-start-line="365" selection-start-column="13" selection-end-line="365" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="367" column="13" selection-start-line="367" selection-start-column="13" selection-end-line="367" selection-end-column="13" />
           <folding />
         </state>
       </provider>

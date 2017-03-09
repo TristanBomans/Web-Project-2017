@@ -1,10 +1,8 @@
 $(document).ready(function(){
 console.log("JavaScript Works!");})
 
-
 $(function(){
 	$("#instellingen-dropdown").on('click', function(e){
-		console.log("lol");
 		$("#instellingen-dropdown-content").toggle();
 
 		e.stopPropagation();

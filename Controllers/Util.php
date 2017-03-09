@@ -1,6 +1,7 @@
 <?php
 class Util{
-	static function compareByName(&$unsortedA,$order){
+	static function compareByName(&$unsortedA,$order)
+	{
 		if ($order == "asc") {
 			return usort($unsortedA, function($a,$b){
 				$at = strtolower($a->naam);
@@ -18,7 +19,8 @@ class Util{
 		}
 	}
 
-	static function compareByPrijs(&$unsortedA,$order){
+	static function compareByPrijs(&$unsortedA,$order)
+	{
 		if ($order == "asc") {
 			return usort($unsortedA, function($a,$b){
 				return $a->prijs > $b->prijs;
@@ -32,7 +34,8 @@ class Util{
 		}
 	}
 
-	static function compareByDatum(&$unsortedA,$order){	
+	static function compareByDatum(&$unsortedA,$order)
+	{	
 		if ($order == "asc") {
 			return usort($unsortedA, function($a,$b){
 				return strtotime($a->datum_toegevoegd) - strtotime($b->datum_toegevoegd);
@@ -46,7 +49,8 @@ class Util{
 		}
 	}
 
-	static function compareByCat(&$unsortedA,$order){
+	static function compareByCat(&$unsortedA,$order)
+	{
 		if ($order == "asc") {
 			return usort($unsortedA, function($a,$b){
 				return strtotime($a->datum_toegevoegd) - strtotime($b->datum_toegevoegd);
@@ -77,6 +81,16 @@ class Util{
 		}
 		
 		return $array;
+	}
+
+	static function productArrayDateConversion($Array)
+	{
+		for ($i=0; $i < sizeof($Array) ; $i++) 
+		{ 
+			$Array[$i]['datum_toegevoegd'] = explode("-", $Array[$i]['datum_toegevoegd'])[2]."-".explode("-", $Array[$i]['datum_toegevoegd'])[1]."-".explode("-", $Array[$i]['datum_toegevoegd'])[0];
+		}
+		
+		return $Array;
 	}
 
 	// functie gebruikt van: http://stackoverflow.com/a/19366999

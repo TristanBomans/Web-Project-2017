@@ -12,11 +12,15 @@
 </head>
 	<body class="container-fluid">
 
-		<?php include("partials/navbar.php"); 
-		if(isset($_SESSION['user'])){
-		$url = "location: http://localhost/Web-Project-2017/Views/index.php";
-        header($url);
-	}?>
+		<?php include("partials/navbar.php"); ?>
+		<?php
+		if(isset($_SESSION['user']))
+		{
+			$url = "location: http://localhost/Web-Project-2017/Views/index.php";
+        	header($url);
+    	}
+		?>
+		
 		<div id='detailwrap-log-reg'>
 			<form id="login-form" method="POST" action="../Controllers/RequestController.php">
 				<h2 id="h2-login">Log in </h2>

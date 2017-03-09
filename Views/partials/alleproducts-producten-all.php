@@ -5,7 +5,9 @@
     $html = "";
 
     for ($i=0; $i < sizeof($producten) ; $i++) {
-     $html .= "<div class='col-lg-3 col-md-4 col-sm-4 col-xs-6 parent-thumb-cont'>"
+        $producten[$i]->datum_toegevoegd =  explode("-",$producten[$i]->datum_toegevoegd)[2]."-".explode("-",$producten[$i]->datum_toegevoegd)[1]."-".explode("-",$producten[$i]->datum_toegevoegd)[0];
+
+        $html .= "<div class='col-lg-3 col-md-4 col-sm-4 col-xs-6 parent-thumb-cont'>"
          . "<div class='thumbnail thumb-cont'>"
          . "<div class='thumb-cont-money-circle'>€ ".$producten[$i]->prijs."</div>"
          . "<img src='".$producten[$i]->img_path."'class='image-thumb' alt='Deze afbeelding kon niet gevonden worden'>"

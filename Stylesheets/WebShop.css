@@ -1,99 +1,93 @@
-h1{
-    font-size: 25px;
-}
-h3{
-    font-size: 20px;
-}
 *:focus {
    outline: 0;
 }
 
-.navpils{
+h1 {
+    font-size: 25px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+
+.navpils {
     margin-right: 20px;
 }
 
-.navpils-color{
+.navpils-color {
     color: #921515;
     font-style: oblique;
 }
 
-#titelbar{
+#titelbar {
     color: #6F0101;
     background-color: #921515;
     height: 17vh;
-    /*text-align: center;*/
     font-size: 30px;
     display: block;
-    /*width: calc(100vw - 16px);*/
     width: 100%;
     margin-bottom: 15px;
-    /*line-height: 16vh;*/
     border-radius: 10px;
 }
 
-#titelbar-tekst{
+#titelbar-tekst {
     width: 100%;
     height: auto;
     padding: 5px;
     background-color: #881010;
     box-sizing: border-box;
     font-size: 40px;
-    /*opacity: 0.6;*/
-
-}
-
-#test-knop{
-    float: left;
-    margin-right: 5px;
 }
 
 .image-thumb{
-    /*width: 50px;*/
     height: 200px !important;
 }
 
-.form-btn-detail{
+.form-btn-detail {
     position: absolute;
     top: 0px;
     right: 0px;
     width: 100%;
     height: 100%;
-    
 }
-.btn-detail{
+
+.btn-detail {
     position: absolute;
     top: 65px;
     right: 0px;
     display: none;
 }
+
 .thumb-cont-money-circle {
     display: block;
     width: 70px;
     height: 70px;
     background-color: #921515;
-    /*z-index: 1000;*/
     position: absolute;
     border-radius: 70px;
     text-align: center;
     line-height: 70px;
-
     font-weight: bold;
     font-size: 18px;
     color: white;
 }
-.thumb-categorie{
+
+.thumb-categorie {
     position: absolute;
     right: 0px;
     bottom: 0px;
 }
-.wrapper-date-cat{
+
+.wrapper-date-cat {
     position: relative;
 }
-.parent-thumb-cont:hover .btn-detail{
+
+.parent-thumb-cont:hover .btn-detail {
     display: block;
 }
 
-.thumb-cont{
+.thumb-cont {
     height: 300px;
     overflow-y: scroll;
     position: relative;
@@ -109,7 +103,7 @@ h3{
     height: 15px;
 }
 
-#footer{
+#footer {
     background-color: #921515;
     text-align: center;
     border-radius: 15px 15px 0 0;
@@ -121,41 +115,41 @@ h3{
     color: #6F0101;
 }
 
-#detail-img-product{
+#detail-img-product {
     height: 40vh;
     display: block;
     margin: auto;
-    display: block;
 }
 
-#product-detail-wrapper{
+#product-detail-wrapper {
     width: 60%;
     margin: auto;
     /*position: relative;*/
 }
 
-#producten-uitgelicht{
+#producten-uitgelicht {
     margin-bottom: 50px;
 }
 
-.winkelwagen-btn{
-    background-image: url("../Resources/S-cart.png") !important;
+.winkelwagen-btn {
+    background-image: url("../Resources/S-cart.png");
     background-size: 35px 35px;
     width: 50px;
     height: 50px;
     background-repeat: no-repeat;
-    position: absolute !important;
-    top: 10px !important;
-    right: 0px !important;
+    position: absolute ;
+    top: 10px ;
+    right: 0px ;
     display: none;
     transition: all 0.2s ease-in 0s;
     margin-right: 20px;
 
+    /*Overriding shit, afblijven*/
     border:none;
     background-color: transparent !important;
 }
 
-.parent-thumb-cont:hover .winkelwagen-btn{
+.parent-thumb-cont:hover .winkelwagen-btn {
     display: block;
 }
 
@@ -225,20 +219,23 @@ h3{
     height: 20px;
     width: 100%;
 }
+
 .prijs-product-dropdown{
     position: absolute;
     right: 10px;
 }
-.naam-product-dropdown{
+
+.naam-product-dropdown {
     position: absolute;
     left: 10px;
 }
+
 #detailwrap { 
     width: 70vw;
     margin: auto; 
 }
 
-#instellingen-dropdown{
+#instellingen-dropdown {
     background-image: url("../Resources/settings.png");
     background-size: 40px 40px;
     width: 40px;
@@ -253,7 +250,12 @@ h3{
     border:none;
     background-color: transparent !important;
 }
-#instellingen-dropdown-content{
+
+#instellingen-dropdown {
+    cursor: pointer;
+}
+
+#instellingen-dropdown-content {
     width: 150px;
     height: auto;
     background-color: grey;
@@ -268,7 +270,7 @@ h3{
     overflow: hidden;
 }
 
-.instellingen-dropdown-content-line-item{
+.instellingen-dropdown-content-line-item {
     width: 100%;
     padding: 10px;
     line-height: normal;
@@ -295,6 +297,7 @@ h3{
     left: 0px;
 
 }
+
 .login-input{
     position: absolute;
     right: 0px;
@@ -305,6 +308,7 @@ h3{
     height: 50px;
     position: relative;
 }
+
 .login-line-content-submit-button{
     width: 100%;
 }
@@ -314,16 +318,16 @@ h3{
     border: none;
     background-color: #DBD6D6;
     width: 150px;
-    margin: auto !important;
+    margin: auto;
     border-radius: 15px;
     padding: 10px;
     transition: all 0.2s ease-in 0s;
 }
-.login-line-content-submit-button input:hover{
+.login-line-content-submit-button input:hover {
     background-color: #BA9696;
 }
 
-#login-form{
+#login-form {
     margin: auto;
     height: auto;
     width: 100%
@@ -338,10 +342,9 @@ h3{
     margin-top: 10vh;
     border-radius: 40px;
     border: 1px solid black;
-
 }
 
-#detailwrap-detail{
+#detailwrap-detail {
     width: 40vw;
     padding: 40px;
     padding-top: 10px;
@@ -350,7 +353,6 @@ h3{
     margin-bottom: 90px;
     border-radius: 40px;
     border: 1px solid black;
-
 }
 
 #h2-login{
@@ -365,15 +367,19 @@ h3{
     right: 0px;
     top: 0px;
 }
+
 #text-detail-product{
     position: relative;
 }
+
 .p-styled-justify{
     text-align: justify;
 }
+
 #producten-alle{
     margin-bottom: 50px;
 }
+
 #allproductsandsort-wrapper{
     position: relative;
     height: 8.2vh;
@@ -382,7 +388,7 @@ h3{
 #allproductsandsort-filteren{
     position: absolute;
     right: 30px;
-    top: 3vh;
+    color: #921515;
 }
 
 #allproductsandsort-title{
@@ -394,10 +400,6 @@ h3{
 #allproductsandsort-filteren:hover #allproductsandsort-dropdown{
     display: block;
 }
-
-/*#allproductsandsort-filteren:hover {
-    cursor: pointer;
-}*/
 
 #allproductsandsort-dropdown{
     position: absolute;
@@ -425,6 +427,3 @@ h3{
     background-color: grey;
     cursor: pointer;
 }
-/*#allproductsandsort-dropdown-line-item-top{
-    margin-top: 20px;
-}*/
