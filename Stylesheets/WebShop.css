@@ -117,6 +117,7 @@ h3 {
 
 #detail-img-product {
     height: 25vw ;
+    max-height: 400px;
     display: block;
     margin: auto;
 }
