@@ -5,3 +5,4 @@
 [OK]- sorteer functies allemaal
 [OK]- Datum Fixen
 [OK]- categorie in CSS fixen (Bij detail en bij overzicht) 
+[OK]- Javascript ajax call Css gefixt [juiste tags terugsturen]
