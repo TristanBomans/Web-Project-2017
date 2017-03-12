@@ -2,11 +2,14 @@
 
 require_once "../Entities/ProductEntity.php";
 require_once "../Entities/UserEntity.php";
+require_once "../Entities/ReviewEntity.php";
+
 
 class MainDAO {
     // PRODUCT
-    static function getProduct($id) {
-    	require '../Credentials.php';
+    static function getProduct($id) 
+    {
+        require "../Credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM producten where id='$id'");
         $product = null;
@@ -27,8 +30,9 @@ class MainDAO {
         return $product;
     }
 
-    static function getAll() {
-    	require '../Credentials.php';
+    static function getAllProducts() 
+    {
+        require "../Credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM producten");
         $product = null;
@@ -50,8 +54,10 @@ class MainDAO {
         mysqli_close($mysqli);
         return $productenArray;
     }
-    static function getAllUitgelichte() {
-    	require '../Credentials.php';
+
+    static function getAllUitgelichte() 
+    {
+        require "../Credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM producten where uitgelicht = 1");
         $product = null;
@@ -74,8 +80,9 @@ class MainDAO {
         return $productenArray;
     }
 
-    static function addProduct($toAddProduct){
-    	require '../Credentials.php';
+    static function addProduct($toAddProduct)
+    {
+        require "../Credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("INSERT INTO producten (cat_id, naam, prijs, beschrijving, datum_toegevoegd, img_path) VALUES ('$toAddProduct->cat_id', '$toAddProduct->naam', '$toAddProduct->prijs', '$toAddProduct->beschrijving', '$toAddProduct->datum_toegevoegd', '$toAddProduct->img_path')");
         if(!($result)) die(mysqli_error($mysqli));
@@ -86,16 +93,16 @@ class MainDAO {
 
     static function addUser($toAddUser)
     {
-        require '../Credentials.php';
+        require "../Credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        var_dump($toAddUser);
         $result = $mysqli->query("INSERT INTO users (username, password, naam, voornaam, authority, emailadres) VALUES ('$toAddUser->username', '$toAddUser->password', '$toAddUser->naam', '$toAddUser->voornaam', '$toAddUser->authority', '$toAddUser->emailadres')");
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }
 
-    static function getUser($username) {
-        require '../Credentials.php';
+    static function getUser($username) 
+    {
+        require "../Credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM users where username='$username'");
         $user = null;
@@ -113,6 +120,40 @@ class MainDAO {
 
         mysqli_close($mysqli);
         return $user;
+    }
+
+    // REVIEWS
+
+    static function addReview($toAddReview)
+    {
+        require "../Credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("INSERT INTO reviews (username, product_id, comment, rating) VALUES ('$toAddReview->username', '$toAddReview->product_id', '$toAddReview->comment', '$toAddReview->rating')");
+        if(!($result)) die(mysqli_error($mysqli));
+        mysqli_close($mysqli);
+    }
+
+     static function getAllReviewForProduct($id) 
+    {
+     require "../Credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("SELECT * FROM reviews where product_id = '$id'");
+        $review = null;
+        $reviewArray =  [];
+
+        while ($row = mysqli_fetch_array($result)) {
+            $id = $row[0];
+            $username = $row[1];
+            $product_id = $row[2];
+            $comment = $row[3];
+            $rating = $row[4];
+            
+            $review = new ReviewEntity($id, $username, $product_id, $comment, $rating);
+            array_push($reviewArray, $review);
+        }
+
+        mysqli_close($mysqli);
+        return $reviewArray;
     }
 
 }

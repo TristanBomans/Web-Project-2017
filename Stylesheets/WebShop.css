@@ -365,7 +365,7 @@ h3 {
     padding-top: 10px;
     margin: auto;
     margin-top: 3vh;
-    margin-bottom: 90px;
+    margin-bottom: 30px;
     border-radius: 40px;
     border: 1px solid black;
 }
@@ -444,4 +444,53 @@ h3 {
 .allproductsandsort-dropdown-line-item:hover{
     background-color: grey;
     cursor: pointer;
+}
+
+.review-comment {
+    float: left;
+    width: 80%;
+    display: block;
+}
+
+.review-rating {
+    float: right;
+    text-align: right;
+    width: 20%;
+}
+
+.review-user{
+    color: #C0B8B8;
+}
+
+.review-line-item {
+    border: 1px solid grey;  
+    padding: 5px 15px 5px 15px; 
+    border-radius: 20px;    
+    width: 80%;
+    height: 60px;
+    margin: auto;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+#ratingwrap{
+    width: 40vw;
+    padding: 10px;
+    padding-bottom: 0px;
+    margin: auto;
+    height: auto;
+    margin-bottom: 90px;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+#margin-div{
+    width: 40vw;
+    height: 90px;
+    margin-bottom: 90px;
+
+}
+#disabled-rating:hover{
+    background-color: red;
+    color: white;
 }

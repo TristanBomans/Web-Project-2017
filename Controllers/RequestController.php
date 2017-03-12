@@ -1,6 +1,7 @@
 <?php
 // GLOBAL REQUIREMENTS
 require_once ("../Entities/ProductEntity.php");
+require_once ("../Entities/ReviewEntity.php");
 require_once ("../Entities/UserEntity.php");
 require_once ("../Models/MainDAO.php");
 require_once ("../Controllers/Util.php");
@@ -26,7 +27,8 @@ if (isset($_POST['toAddProduct']))
     header(prevURL);
 }
 
-if (isset($_POST['typeRequest'])){
+if (isset($_POST['typeRequest']))
+{
     if($_POST['typeRequest'] == "registeruser")
     {
         $toAddUser = new UserEntity($_POST['username'], $_POST['password'], $_POST['naam'], $_POST['voornaam'], 0, $_POST['email']);
@@ -111,4 +113,14 @@ if (isset($_POST['sortMethode']))
 
     echo json_encode(Util::utf8ize($array));
 }
+
+if (isset($_POST['toAddReview']))
+{
+    $review = new ReviewEntity( -1, $_SESSION['user']->username, $_POST['product_ID'], $_POST['comment'],  $_POST['rating'] );
+
+    var_dump($review);
+    MainDAO::addReview($review);
+    header(prevURL);
+}
+
 ?>

@@ -6,7 +6,7 @@ require_once("../Controllers/Util.php");
 class LogicController
 {
 	static function getAlleProducten(){
-		$alleProducten = MainDAO::getAll();
+		$alleProducten = MainDAO::getAllProducts();
 		Util::compareByDatum($alleProducten,"desc");
 		return $alleProducten;
 
