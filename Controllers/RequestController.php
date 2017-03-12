@@ -88,7 +88,7 @@ if (isset($_POST['sortMethode']))
     $methode = $_POST['sortMethode'];
     $teSorteren = explode("-", $methode)[0];
     $directie =  explode("-",$methode)[1];
-    $alleProducten = MainDAO::getAll();
+    $alleProducten = MainDAO::getAllProducts();
    
     if($teSorteren == "naam")
     {
