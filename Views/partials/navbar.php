@@ -1,5 +1,9 @@
-<?php   require_once "../includesns.php";
-        // session_start(); ?>
+<?php    
+    require_once "../Entities/ProductEntity.php";       
+    require_once "../Entities/UserEntity.php";
+    session_start(); 
+?>
+
 <div id='titelbar'>
     <div id="titelbar-tekst">Webshop</div>
 </div>
@@ -45,7 +49,7 @@
             else{
                 $_SESSION['winkelmandje']  = [];
             }
-            echo "<hr id='float-hr'><div class='individuele-item-div-dropdown' id='prijs-totaal-rand'><p  class='naam-product-dropdown'>Totaal: </p><p class='prijs-product-dropdown'><b>€ ".$total."</b></p></div>";
+            echo "<div class='individuele-item-div-dropdown' id='prijs-totaal-rand'><p  class='naam-product-dropdown'>Totaal: </p><p class='prijs-product-dropdown'><b>€ ".$total."</b></p></div>";
             ?>
 
             </div>

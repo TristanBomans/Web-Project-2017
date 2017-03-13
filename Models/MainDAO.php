@@ -1,6 +1,9 @@
 <?php
-
-require_once "../includesns.php"; 
+//GLOBAL REQUIREMENTS
+require_once "../Entities/ProductEntity.php";       
+require_once "../Entities/UserEntity.php";        
+require_once "../Entities/ReviewEntity.php";
+require_once "../Entities/CategorieEntity.php";  
 
 
 class MainDAO {

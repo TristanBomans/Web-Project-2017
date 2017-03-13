@@ -1,5 +1,8 @@
+<?php 
+	require_once("../Controllers/LogicController.php");
+?>
 <div id='detailwrap-detail'>
-	<form action="../Controllers/RequestController.php" method="POST">
+	<form action="../Controllers/RequestController.php" method="POST" class="clearfix">
 		<h2 id="h2-login">Schrijf een Review: </h2>
 		<div class="login-line-content clearfix">
 			<p class="login-p">Rating: </p>
@@ -24,19 +27,6 @@
 	</form>
 </div>
 
-	<?php 
-		$alleReviews = MainDAO::getAllReviewForProduct($product->id);
-		if($alleReviews!=null){
-			echo "<div id='ratingwrap'>";
-			echo "<h1>Reviews:</h1>";
-			foreach ($alleReviews as $review) 
-			{
-				echo "<div class='review-line-item clearfix'><div class='review-user'>".$review->username."</div><div class='review-comment'>".$review->comment."</div><div class='review-rating'> ".$review->rating."/10</div></div>";
-			}
-			echo "</div>";
-		}
-		else{
-
-			echo "<div id='margin-div'></div>";
-		}
-	?>
+<?php 
+	LogicController::outputUserReviews($product->id);
+?>

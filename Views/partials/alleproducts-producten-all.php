@@ -1,11 +1,13 @@
 <?php
-    require_once "../includesns.php";
+    require_once "../Controllers/LogicController.php";
+
     if(!isset($_SESSION['filterData'])){
-    $producten = LogicController::getAlleProducten();
+        $producten = LogicController::getAlleProducten();
     }
     else{
         $producten = $_SESSION['filterData'];
     }
+    
     $html = "";
 
     for ($i=0; $i < sizeof($producten) ; $i++) {

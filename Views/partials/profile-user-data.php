@@ -1,5 +1,6 @@
 <?php 
-    if(!isset($_SESSION['user'])){
+    if(!isset($_SESSION['user']))
+    {
         header("location: http://localhost/Web-Project-2017/Views/index.php");
     }
     echo "<h1>".$_SESSION['user']->username."</h1>";
