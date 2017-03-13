@@ -9,8 +9,11 @@ class ProductEntity
     public $beschrijving;
     public $datum_toegevoegd;
     public $img_path;
+    public $uitgelicht;
+    public $avg_rating;
+    public $numb_ratings;
     
-    function __construct($id, $cat_naam, $naam, $prijs, $beschrijving, $datum_toegevoegd, $img_path) {
+    function __construct($id, $cat_naam, $naam, $prijs, $beschrijving, $datum_toegevoegd, $img_path, $uitgelicht, $avg_rating, $numb_ratings) {
         $this->id = $id;
         $this->cat_naam = $cat_naam;
         $this->naam = $naam;
@@ -18,6 +21,9 @@ class ProductEntity
         $this->beschrijving = $beschrijving;
         $this->datum_toegevoegd = $datum_toegevoegd;
         $this->img_path = $img_path;
+        $this->uitgelicht = $uitgelicht;
+        $this->avg_rating = $avg_rating;
+        $this->numb_ratings = $numb_ratings;
     }
 }
 

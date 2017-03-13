@@ -64,6 +64,21 @@ class Util{
 		}
 	}
 
+	static function compareByRating(&$unsortedA,$order)
+	{
+		if ($order == "asc") {
+			return usort($unsortedA, function($a,$b){
+				return $a->avg_rating > $b->avg_rating;
+			});
+		}
+
+		if ($order == "desc") {
+			return usort($unsortedA, function($a,$b){
+				return $b->avg_rating > $a->avg_rating;
+			});
+		}
+	}
+
 	static function productObjectToArray($Object)
 	{
 		$array = [];

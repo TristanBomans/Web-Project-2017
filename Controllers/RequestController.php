@@ -1,15 +1,9 @@
 <?php
-// GLOBAL REQUIREMENTS
-require_once ("../Entities/ProductEntity.php");
-require_once ("../Entities/ReviewEntity.php");
-require_once ("../Entities/UserEntity.php");
-require_once ("../Models/MainDAO.php");
-require_once ("../Controllers/Util.php");
+require_once "../includesns.php"; 
 
 define('URL',"location: http://localhost/Web-Project-2017/Views/" );
 if (isset($_SERVER['HTTP_REFERER'])){define('prevURL', "location: ".$_SERVER['HTTP_REFERER']);}
-session_start();
-
+ session_start();
 // REQUEST HANDLING
 if (isset($_GET['opgevraagdProduct']))
 {
@@ -31,6 +25,7 @@ if (isset($_POST['typeRequest']))
 {
     if($_POST['typeRequest'] == "registeruser")
     {
+        $_POST['password'] =password_hash($_POST['password'], PASSWORD_DEFAULT);
         $toAddUser = new UserEntity($_POST['username'], $_POST['password'], $_POST['naam'], $_POST['voornaam'], 0, $_POST['email']);
         MainDAO::addUser($toAddUser);
         $_SESSION['user'] = $toAddUser;
@@ -44,7 +39,7 @@ if (isset($_POST['typeRequest']))
         $gebruiker = MainDAO::getUser($_POST['username']);
         if ($gebruiker != null)
         {
-            if ($gebruiker->password == $_POST['password']) 
+            if (password_verify($_POST['password'], $gebruiker->password))
             {
                 echo "password correct";
                 $_SESSION['user'] = $gebruiker;
@@ -85,11 +80,19 @@ if (isset($_GET['action'])){
 
 if (isset($_POST['sortMethode']))
 {
+   
     $methode = $_POST['sortMethode'];
     $teSorteren = explode("-", $methode)[0];
     $directie =  explode("-",$methode)[1];
-    $alleProducten = MainDAO::getAllProducts();
-   
+    if (isset($_SESSION['filterData'])) 
+    {
+        $alleProducten = $_SESSION['filterData'];
+    }
+    else
+    {
+        $alleProducten = MainDAO::getAllProducts();
+    }
+
     if($teSorteren == "naam")
     {
         Util::compareByName($alleProducten,$directie);
@@ -107,6 +110,10 @@ if (isset($_POST['sortMethode']))
     {
         Util::compareByPrijs($alleProducten,$directie);
     }
+     elseif($teSorteren == "rating")
+    {
+        Util::compareByRating($alleProducten,$directie);
+    }
 
     $array = Util::productObjectToArray($alleProducten);
     $array = Util::productArrayDateConversion($array);
@@ -120,6 +127,30 @@ if (isset($_POST['toAddReview']))
 
     var_dump($review);
     MainDAO::addReview($review);
+    header(prevURL);
+}
+
+if (isset($_POST['Filteren'])) {
+    $cats = MainDAO::getAllCategorien();
+    $gevraagdeFilters = [];
+    foreach ($cats as $cat) {
+
+       if(in_array($cat->naam, $_POST))
+       {
+            array_push($gevraagdeFilters, $cat->naam);
+       }
+    }
+  
+
+    $toReturnArray = [];
+    $data = null;
+
+    foreach ($gevraagdeFilters as $filter) {
+        $data = MainDAO::getAllByCat($filter);
+        $toReturnArray += $data;
+        $data = null;
+    }
+    $_SESSION['filterData'] = $toReturnArray;
     header(prevURL);
 }
 

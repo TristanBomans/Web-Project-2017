@@ -1,7 +1,11 @@
 <?php
-    require_once "../Controllers/LogicController.php";
-
+    require_once "../includesns.php";
+    if(!isset($_SESSION['filterData'])){
     $producten = LogicController::getAlleProducten();
+    }
+    else{
+        $producten = $_SESSION['filterData'];
+    }
     $html = "";
 
     for ($i=0; $i < sizeof($producten) ; $i++) {

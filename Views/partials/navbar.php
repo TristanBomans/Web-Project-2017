@@ -1,6 +1,5 @@
-<?php   require_once "../Entities/ProductEntity.php"; 
-        require_once "../Entities/UserEntity.php";
-        session_start(); ?>
+<?php   require_once "../includesns.php";
+        // session_start(); ?>
 <div id='titelbar'>
     <div id="titelbar-tekst">Webshop</div>
 </div>
