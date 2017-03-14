@@ -1,8 +1,8 @@
-# Web Project 2017
+# Web Project 2017 <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/14639876_10211243781798102_7188846470396156500_n.jpg?oh=b2ed35683ff9d3218adf0f1e363f6bc5&oe=592AADC4" width="150" height="150" alt="infoBlueColor" />
 ## Deadline
 This is a private Project for school that needs to be finished by the 20th of April
 ## The assignment
-The assignment says that we need to make a webshop that contains the following features (With OK is Finished)
+The assignment says that we need to make a webshop that contains the following features
 ### Homepage
 - All four random featured products
 - All four new products
