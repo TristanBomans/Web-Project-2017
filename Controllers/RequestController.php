@@ -17,12 +17,37 @@ if (isset($_GET['opgevraagdProduct']))
     LogicController::getDetailPage();
 }
 
-if (isset($_POST['toAddProduct']))
+if (isset($_POST['toAddProduct'])) //IS VOOR WINKELMANDJE
 {
     LogicController::addNewProduct();
 }
 
+if (isset($_POST['newDBProd'])) {
+    if (isset($_POST['img_path'])){
+        $img_path = $_POST['img_path'];
+    }
+    else{
+        $img_path = "../Resources/dummypng.png";
+    }
+
+    $_POST['prijs'] = str_replace(",",".",$_POST['prijs']);
+    $_POST['prijs'] = floatval($_POST['prijs']);
+
+
+
+    $product = new ProductEntity(-1, $_POST['categorie'], $_POST['naam'],floatval($_POST['prijs']),$_POST['beschrijving'], date("Y-m-d H:i:s"),$img_path,0,0,0);
+    
+    var_dump($_POST['prijs']);
+    LogicController::addDBNewProd($product);
+    header("location: http://localhost/Web-Project-2017/Views/admin-product.php");
+}
+
+
 if (isset($_POST['editProduct'])) {
+
+    $_POST['prijs'] = str_replace(",",".",$_POST['prijs']);
+    $_POST['prijs'] = floatval($_POST['prijs']);
+
     $id = $_POST['id'];
     $naam = $_POST['naam'];
     $prijs = $_POST['prijs'];
@@ -33,9 +58,11 @@ if (isset($_POST['editProduct'])) {
     
     $productt->id = $id;
     $productt->naam = $naam;
-    $productt->prijs = $prijs;
-    $productt->categorie = $categorie;
+    $productt->prijs = floatval($prijs);
+    $productt->cat_naam = $categorie;
     $productt->beschrijving = $beschrijving;
+
+    var_dump($productt);
 
     MainDAO::updateProduct($productt);
     header("location: ".$_SERVER['HTTP_REFERER']);
@@ -75,6 +102,10 @@ if (isset($_POST['sortMethode']))
     $objectArray = LogicController::sortAllProducts();
 
     $array = Util::productObjectToArray($objectArray);
+
+    for ($i=0; $i < sizeof($array); $i++) { 
+        $array[$i]['datum_toegevoegd'] = date("d-m-Y",strtotime($array[$i]['datum_toegevoegd']));
+    }
 
     echo json_encode(Util::utf8ize($array));
 }

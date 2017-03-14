@@ -226,5 +226,18 @@ class LogicController
     	return MainDAO::getAllByCat($cat); 
     }
 
+
+    static function getAllCategorien(){
+    	$categorien = MainDao::getAllCategorien();
+    	return $categorien;
+    }
+
+    static function addDBNewProd($product)
+    {
+    	MainDAO::addProduct($product); 
+    	return true;	
+    }
+
+
 }
 ?>

@@ -29,6 +29,10 @@ a:hover{
     cursor: default;
 }
 
+textarea {
+    resize: none;
+}
+
 /* 
 _____ ___ _____ _____ _     ____    _    ____  
 |_   _|_ _|_   _| ____| |   | __ )  / \  |  _ \ 
@@ -65,6 +69,10 @@ _____ ___ _____ _____ _     ____    _    ____
 
 .navpils {
     margin-right: 20px;
+}
+
+.navpills:hover {
+    cursor: pointer !important;
 }
 
 .navpils-color {
@@ -223,13 +231,13 @@ _____ ___ _____ _____ _     ____    _    ____
 
 .thumb-cont-money-circle {
     display: block;
-    width: 70px;
-    height: 70px;
+    width: 85px;
+    height: 85px;
     background-color: #921515;
     position: absolute;
-    border-radius: 70px;
+    border-radius: 85px;
     text-align: center;
-    line-height: 70px;
+    line-height: 85px;
     font-weight: bold;
     font-size: 18px;
     color: white;
@@ -677,7 +685,7 @@ _____ ___ _____ _____ _     ____    _    ____
 
 #selecteer-item-titel{
     position: absolute;
-    top: -70px;
+    top: -80px;
     left: 0px;
 }
 #admin-parent-edit-selected-product{
@@ -774,7 +782,23 @@ _____ ___ _____ _____ _     ____    _    ____
     transform: translateX(-50%);
 }
 
+#add-item-icon {
+    position: absolute;
+    top: -65px;
+    right: -5px;
+    height: 40px;
+    width: 40px;
+    /*background-color: black;*/
+    background-image: url("../Resources/add-icon.png");
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+}
 
+#add-item-icon:hover {
+    filter: invert(50%);
+    cursor: pointer;
+
+}
 
 
 

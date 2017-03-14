@@ -22,7 +22,7 @@
          . "<img src='".$producten[$i]->img_path."'class='image-thumb' alt='Deze afbeelding kon niet gevonden worden'>"
          . "<div class='caption'>"
          . "<h3>".$producten[$i]->naam."</h3>"
-         . "<div class='wrapper-date-cat'><b>".$producten[$i]->datum_toegevoegd."</b>"
+         . "<div class='wrapper-date-cat'><b>".date("d-m-Y",strtotime($producten[$i]->datum_toegevoegd))."</b>"
          . "<b class='thumb-categorie'>".$producten[$i]->cat_naam."</b></div>"
          . "<form action='../Controllers/RequestController.php' method='GET' class='form-btn-detail'>"
          . "<input type='hidden' name='opgevraagdProduct' value='".$producten[$i]->id."'>"

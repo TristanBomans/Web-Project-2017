@@ -1,4 +1,4 @@
-<div id="product-detail-wrapper">
+<!-- <div id="product-detail-wrapper"> -->
 	<?php
 	$OGproduct = LogicController::getProduct($_GET['opgevraagdProduct']);
 	$product = $OGproduct;
@@ -12,4 +12,4 @@
 	echo "<div class='wrapper-date-cat'><b>".$product->datum_toegevoegd."</b></div>";
 	echo "<b class='thumb-categorie'>".$product->cat_naam."</b></div>";
 	?>
-</div>
+<!-- </div> -->
