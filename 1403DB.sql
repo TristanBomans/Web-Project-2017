@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 13 mrt 2017 om 20:31
+-- Gegenereerd op: 14 mrt 2017 om 22:36
 -- Serverversie: 5.7.14
 -- PHP-versie: 5.6.25
 
@@ -63,12 +63,12 @@ CREATE TABLE `producten` (
   `id` int(11) NOT NULL,
   `cat_naam` varchar(20) NOT NULL,
   `naam` varchar(500) NOT NULL,
-  `prijs` decimal(11,0) NOT NULL,
+  `prijs` float NOT NULL,
   `beschrijving` varchar(500) NOT NULL,
   `datum_toegevoegd` date NOT NULL,
   `img_path` varchar(50) NOT NULL,
   `uitgelicht` tinyint(1) NOT NULL DEFAULT '0',
-  `avg_rating` float NOT NULL,
+  `avg_rating` float NOT NULL DEFAULT '0',
   `numb_ratings` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -77,14 +77,15 @@ CREATE TABLE `producten` (
 --
 
 INSERT INTO `producten` (`id`, `cat_naam`, `naam`, `prijs`, `beschrijving`, `datum_toegevoegd`, `img_path`, `uitgelicht`, `avg_rating`, `numb_ratings`) VALUES
-(4, 'Multi Media', 'iPhone 7', '50', 'iPhone 7 dramatically improves the most important aspects of the iPhone experience. It introduces advanced new camera systems. The best performance and battery life ever in an iPhone. Immersive stereo speakers. The brightest, most colorful iPhone display. Splash and water resistance.1 And it looks every bit as powerful as it is. This is iPhone 7.', '2017-03-08', '../Resources/iPhone7.png', 1, 0, 0),
-(5, 'Multi Media', 'Samsung S7', '90', 'So, Finally Samsung Galaxy S7 Series Smartphone’s are released and Yes they are really impressive. Both device are now available for sale. Take a look on design and curves of Samsung Galaxy S7 | S7 Edge from Samsung’s official Youtube channel here:\n\nWhat if your next phone could take photos like a professional?\nWhat if it worked in low light?\nWhat if it gave you enough expandable memory to store all your pictures?', '2016-09-12', '../Resources/GalaxyS7.jpg', 0, 0, 0),
-(6, 'Multi Media', 'OnePlus 3T', '347', 'The OnePlus 3T delivers the best user experience, thanks to the latest hardware upgrades and carefully tested software enhancements.', '2015-08-13', '../Resources/OnePlus.png', 1, 0, 0),
-(7, 'Brol', 'HTC 10', '749', '\r\nTHE POWER OF 10\r\n\r\nHTC 10. Alles wat jij zoekt in een toonaangevende telefoon; ongeëvenaarde prestaties, geweldig 24-bits Hi-Res audio, ’s werelds eerste voor- en hoofdcamera met optische beeldstabilisatie (OIS) en een van de hoogste scores voor telefooncamera ooit van DxOMark. Alles in een prachtig gevormd metalen behuizing.', '2017-06-15', '../Resources/htc10.png', 1, 8.5, 2),
-(8, 'Multi Media', 'Samsung\r\nGalaxy A5 Zwart (2016)\r\n ', '329', 'Schitterende combinatie van glas en metaal\r\nDe nieuwe premium Galaxy A5 is een combinatie van stevig metaal en prachtig Gorilla Glass. Je geniet van een stabiele en comfortabele grip dankzij het slanke ontwerp.', '2017-08-16', '../Resources/samsunga5.png', 0, 7.5, 2),
-(9, 'Multi Media', 'Apple\r\niPhone 5s Spacegrijs 16GB\r\n ', '320', 'Een technologisch pareltje\r\nDe iPhone is altijd al een voorloper geweest. En voor de iPhone 5s is dit niet anders : een technologisch pareltje die nog beter presteert. Zonder in te boeten aan batterijduur natuurlijk.', '2017-03-24', '../Resources/iphone5.png', 1, 0, 0),
-(10, 'Brol', 'Wiko\r\nSunny Turkoois', '1', 'DE LEUKSTE!\r\nWil je een smartphone die super makkelijk te hanteren en te gebruiken is, maar zoek je ook een zoet ontwerp en een vleugje waanzin? We hebben het! SUNNY is de perfecte dagelijkse vriend met een compact formaat en leuke kleuren. Hoe zit het met de camera? Nou, 5MP en leuke opties om je beste momenten vast te leggen. En hebben we al Marshmallow 6.0. gezegd? Ja, ook dat heeft de SUNNY!', '2017-03-24', '../Resources/brol.png', 1, 0, 0),
-(11, 'Multi Media', 'Huawei\r\nP8 Titanium', '280', 'Designed to inspire\r\nDe nieuwe Huawei P8 laat zien dat design en techniek geen concessies voor elkaar hoeven te doen. Deze high-end smartphone is gemaakt met uitsluitend premium materialen en heeft een uniek ‘gelaagd’ ontwerp. Het resultaat: esthetische lijnen die leiden tot pure schoonheid en innovaties die je creativiteit een boost zullen geven.', '2002-01-08', '../Resources/huawei.png', 1, 0, 0);
+(4, 'Multi Media', 'iPhone 7', 50, 'iPhone 7 dramatically improves the most important aspects of the iPhone experience. It introduces advanced new camera systems. The best performance and battery life ever in an iPhone. Immersive stereo speakers. The brightest, most colorful iPhone display. Splash and water resistance.1 And it looks every bit as powerful as it is. This is iPhone 7.', '2017-03-08', '../Resources/iPhone7.png', 1, 8.5, 2),
+(5, 'Multi Media', 'Samsung S7', 90, 'So, Finally Samsung Galaxy S7 Series Smartphone’s are released and Yes they are really impressive. Both device are now available for sale. Take a look on design and curves of Samsung Galaxy S7 | S7 Edge from Samsung’s official Youtube channel here:\n\nWhat if your next phone could take photos like a professional?\nWhat if it worked in low light?\nWhat if it gave you enough expandable memory to store all your pictures?', '2016-09-12', '../Resources/GalaxyS7.jpg', 0, 0, 0),
+(6, 'Multi Media', 'OnePlus 3T', 347, 'The OnePlus 3T delivers the best user experience, thanks to the latest hardware upgrades and carefully tested software enhancements.', '2015-08-13', '../Resources/OnePlus.png', 1, 0, 0),
+(7, 'Brol', 'HTC 10', 749, '\r\nTHE POWER OF 10\r\n\r\nHTC 10. Alles wat jij zoekt in een toonaangevende telefoon; ongeëvenaarde prestaties, geweldig 24-bits Hi-Res audio, ’s werelds eerste voor- en hoofdcamera met optische beeldstabilisatie (OIS) en een van de hoogste scores voor telefooncamera ooit van DxOMark. Alles in een prachtig gevormd metalen behuizing.', '2017-06-15', '../Resources/htc10.png', 1, 8.5, 2),
+(8, 'Multi Media', 'Samsung Galaxy A5 Zwart (2016)', 321, 'Schitterende combinatie van glas en metaal\r\nDe nieuwe premium Galaxy A5 is een combinatie van stevig metaal en prachtig Gorilla Glass. Je geniet van een stabiele en comfortabele grip dankzij het slanke ontwerp.', '2017-08-16', '../Resources/samsunga5.png', 0, 7.5, 2),
+(9, 'Multi Media', 'Apple iPhone 5s Spacegrijs 16GB ', 320, 'Een technologisch pareltje\r\nDe iPhone is altijd al een voorloper geweest. En voor de iPhone 5s is dit niet anders : een technologisch pareltje die nog beter presteert. Zonder in te boeten aan batterijduur natuurlijk.', '2017-03-24', '../Resources/iphone5.png', 1, 0, 0),
+(10, 'Brol', 'Wiko Sunny Turkoois', 1, 'DE LEUKSTE!\r\nWil je een smartphone die super makkelijk te hanteren en te gebruiken is, maar zoek je ook een zoet ontwerp en een vleugje waanzin? We hebben het! SUNNY is de perfecte dagelijkse vriend met een compact formaat en leuke kleuren. Hoe zit het met de camera? Nou, 5MP en leuke opties om je beste momenten vast te leggen. En hebben we al Marshmallow 6.0. gezegd? Ja, ook dat heeft de SUNNY!', '2017-03-24', '../Resources/brol.png', 1, 0, 0),
+(11, 'Multi Media', 'Huawei P8 Titanium', 280, 'Designed to inspire\r\nDe nieuwe Huawei P8 laat zien dat design en techniek geen concessies voor elkaar hoeven te doen. Deze high-end smartphone is gemaakt met uitsluitend premium materialen en heeft een uniek ï¿½gelaagdï¿½ ontwerp. Het resultaat: esthetische lijnen die leiden tot pure schoonheid en innovaties die je creativiteit een boost zullen geven.', '2002-01-08', '../Resources/huawei.png', 1, 0, 0),
+(15, 'Multi Media', 'Samsung iPhone 3', 5747.22, 'xDDDDD', '2017-03-14', '../Resources/dummypng.png', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -106,7 +107,9 @@ CREATE TABLE `reviews` (
 
 INSERT INTO `reviews` (`id`, `username`, `product_id`, `comment`, `rating`) VALUES
 (24, 'dev', 8, 'Goeie GSM', 8),
-(25, 'dev', 8, 'Super gsm', 7);
+(25, 'dev', 8, 'Super gsm', 7),
+(26, 'devke', 4, 'Schitterende combinatie van glas en metaal De nieuwe premium Galaxy A5 is een combinatie van stevig metaal en prachtig Gorilla Glass. Je geniet van een stabiele en comfortabele grip dankzij het slanke ontwerp.', 8),
+(27, 'devke', 4, 'Super gsm', 9);
 
 -- --------------------------------------------------------
 
@@ -129,6 +132,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`username`, `password`, `naam`, `voornaam`, `authority`, `emailadres`) VALUES
 ('dev', '$2y$10$8pRBSo2Hx3Rx6pscq6jwju0h1xMW.W7Bu2s3QIJTf7HNCcvBjjZfK', 'Bomans', 'Tristan', 1, 'tristan.bomans@telenet.be'),
+('devke', '$2y$10$vy1DwMwNUIEPWSTaNsk1JOGag8SNLz12cBsiEFraxbzVVFkIdNn9C', 'Bomans', 'Tristan', 0, 'tristan.bomans@telenet.be'),
 ('tristan550505', '$2y$10$IXr3ja8gxkFZlUmPYj4vpepIg3bb/0kUGbA/WfxDPljZEDPlgwqnG', 'Bomans', 'Tristan', 0, 'tristan.bomans@telenet.be');
 
 --
@@ -177,12 +181,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT voor een tabel `producten`
 --
 ALTER TABLE `producten`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT voor een tabel `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- Beperkingen voor geëxporteerde tabellen
 --

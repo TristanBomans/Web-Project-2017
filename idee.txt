@@ -1,2 +1,0 @@
-- Voor detail pagina: de geerequeste detail verwijzen door een header GET request te maken met de benodigde details voor te zien welk product da ge nodig hebt
-- Ge zou het ook in u session kunnen bijhouden ma dan is de link ni te hergebruiken ..
