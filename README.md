@@ -1,4 +1,4 @@
-# Web-Project-2017
+# Web Project 2017
 ## Deadline
 This is a private Project for school that needs to be finished by the 20th of April
 ## The assignment
