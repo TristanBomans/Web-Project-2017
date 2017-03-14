@@ -124,5 +124,18 @@ class Util{
 	    return $d;
 	}
 
+	public static function unsetValue(array $array, $value){
+        if(($key = array_search($value, $array)) !== FALSE) {
+            unset($array[$key]);
+        }
+        return $array;
+    }
+
+    static function redirect($url, $statusCode = 303)
+	{
+   		header('Location: ' . $url, true, $statusCode);
+   		die();
+	}
 }
+
 ?>

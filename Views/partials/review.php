@@ -22,11 +22,11 @@
 				?>		
 		</div>
 		
-		<?php echo "<input type='hidden' name='product_ID' value='".$product->id."'>"?>
+		<?php echo "<input type='hidden' name='product_ID' value='".$OGproduct->id."'>"?>
 		<input type="hidden" name="toAddReview" value="true" >
 	</form>
 </div>
 
 <?php 
-	LogicController::outputUserReviews($product->id);
+	LogicController::outputUserReviews($OGproduct->id);
 ?>

@@ -1,7 +1,9 @@
 <?php    
     require_once "../Entities/ProductEntity.php";       
     require_once "../Entities/UserEntity.php";
-    session_start(); 
+    if(!(isset($_SESSION)) ){
+        session_start();
+    }
 ?>
 
 <div id='titelbar'>
@@ -24,6 +26,9 @@
                 {
                     echo "<a class='link-dropdown-instellingen'><div class='instellingen-dropdown-content-line-item' id='instellingen-dropdown-content-line-item-username'>Welkom ".$_SESSION['user']->username."</div></a>";
                     echo "<a class='link-dropdown-instellingen' href='http://localhost/Web-Project-2017/Controllers/RequestController.php?action=logout'><div class='instellingen-dropdown-content-line-item'>Afmelden</div></a>";
+                    if($_SESSION['user']->authority == 1){
+                     echo "<a class='link-dropdown-instellingen' href='http://localhost/Web-Project-2017/Views/admin.php'><div class='instellingen-dropdown-content-line-item'>Admin menu</div></a>";
+                    }
                 } 
                 else
                 {

@@ -22,6 +22,26 @@ if (isset($_POST['toAddProduct']))
     LogicController::addNewProduct();
 }
 
+if (isset($_POST['editProduct'])) {
+    $id = $_POST['id'];
+    $naam = $_POST['naam'];
+    $prijs = $_POST['prijs'];
+    $categorie = $_POST['categorie'];
+    $beschrijving = $_POST['beschrijving'];
+
+    $productt = LogicController::getProduct($_POST['id']);
+    
+    $productt->id = $id;
+    $productt->naam = $naam;
+    $productt->prijs = $prijs;
+    $productt->categorie = $categorie;
+    $productt->beschrijving = $beschrijving;
+
+    MainDAO::updateProduct($productt);
+    header("location: ".$_SERVER['HTTP_REFERER']);
+
+}
+
 if (isset($_POST['typeRequest']))
 {
     if($_POST['typeRequest'] == "registeruser")
@@ -38,7 +58,15 @@ if (isset($_POST['typeRequest']))
 if (isset($_GET['action'])){
     if ($_GET['action'] == "logout") {
         unset($_SESSION['user']);
-        header(prevURL);
+        if(prevURL == "location: http://localhost/Web-Project-2017/Views/admin.php"){
+            var_dump(prevURL);
+            header(URL);
+            die();
+        }
+        else{
+            header(prevURL);
+            die();
+        }
     }
 }
 
@@ -64,6 +92,7 @@ if (isset($_POST['Filteren']))
     
     $_SESSION['filterData'] = $filteredData;
     header(prevURL);
+    die();
 }
 
 ?>

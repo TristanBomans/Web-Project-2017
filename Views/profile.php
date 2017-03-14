@@ -1,3 +1,10 @@
+<?php  
+require_once("../Entities/UserEntity.php"); 
+if(!(isset($_SESSION)) ){
+    session_start();
+} 
+?>
+
 <!doctype HTML>
 <html lang="nl">
 	<head>

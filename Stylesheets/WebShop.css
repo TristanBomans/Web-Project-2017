@@ -19,6 +19,16 @@ h3 {
     font-size: 20px;
 }
 
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    text-decoration: none;
+    color: black;
+    cursor: default;
+}
+
 /* 
 _____ ___ _____ _____ _     ____    _    ____  
 |_   _|_ _|_   _| ____| |   | __ )  / \  |  _ \ 
@@ -206,7 +216,7 @@ _____ ___ _____ _____ _     ____    _    ____
   |_| |_| |_|\___/|_|  |_|____/|_| \_/_/   \_\___|_____|*/
 
 .thumb-cont {
-    height: 300px;
+    height: 350px;
     overflow-y: scroll;
     position: relative;
 }
@@ -616,8 +626,153 @@ _____ ___ _____ _____ _     ____    _    ____
 
 
 
+.admin-icons{
+    color: black;
+    height: 40vh;
+    background-color: #921515;
+    margin: 4vw;
+    line-height: 40vh;
+    text-align: center;
+    border-radius: 20px;
+    font-size: 30px;
+    transition: all 0.1s ease-in 0s;
+}
 
+.admin-icons:hover {
+    color: white;
+    cursor: pointer;
+    background-color: #AA1717;
+   -webkit-box-shadow: 0px 0px 4px 6px rgba(0,0,0,0.75);
+   -moz-box-shadow: 0px 0px 4px 6px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 4px 6px rgba(0,0,0,0.75);
+}
 
+#admin-main-content{
+    width: 50vw;
+    margin: auto;
+}
+
+.admin-edit-lineitem{
+    height: 40px;
+    padding: 5px;
+    transition: all 0.2s ease-in 0s;
+}
+
+#admin-edit-content{
+    position: relative;
+    margin: auto;
+    width: 60%;
+    border: 1px solid #AA1717;
+    margin-top: 60px;
+}
+.admin-edit-lineitem:hover{   
+    cursor: pointer;
+    background-color: #AA1717;   
+}
+
+.a-admin-edit:hover {
+    color: white;
+    font-weight: bold;
+}
+
+#selecteer-item-titel{
+    position: absolute;
+    top: -70px;
+    left: 0px;
+}
+#admin-parent-edit-selected-product{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(73, 73, 73, 0.78);
+}
+
+#admin-edit-selected-product{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 60%;
+    height: 55%;
+    background-color: #C6BCBC;
+    border-radius: 40px;
+}
+
+#banner-popup-admin{
+    border-radius: 40px 40px 0px 0px;
+    width: 100%;
+    height: 60px;
+    top: 0px;
+    background-color: #A36A6A;
+    overflow: hidden;
+    text-align: center;
+    line-height: 60px;
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
+}
+
+#exit-icon-admin{
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    height: 40px;
+    width: 40px;
+    /*background-color: black;*/
+    background-image: url("../Resources/exit-icon.png");
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+
+}
+
+#exit-icon-admin:hover {
+    cursor: pointer;
+}
+
+.pop-up-edit-lineitem{
+    margin: auto;
+    height: 40px;
+    width: 80%;
+    font-size: 18px;
+}
+
+.pop-up-edit-lineitem input{
+    width: 60%;
+}
+
+.popup-label{
+    float: left;
+}
+
+.input-popup{
+    float: right;
+}
+
+#pop-up-content{
+    position: relative;
+    padding-top: 40px;
+    height: calc(100% - 60px);
+}
+
+#input-popup-beschrijving{
+    height: 180px;
+    width: 60%;
+}
+
+.pop-up-edit-lineitem-beschrijving{
+    height: auto !important;
+    position: relative;
+}
+
+#pop-up-sumbit{
+    position: absolute;
+    width: 150px;
+    left: 50%;
+    bottom: 50px;
+    transform: translateX(-50%);
+}
 
 
 

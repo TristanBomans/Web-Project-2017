@@ -8,23 +8,8 @@
 
     if (sizeof($Tproducten) < 4){$e = sizeof($Tproducten);}
 
-    $randomIndexes = [];
-    $randomIndex;
-
-   for ($i=0; $i < 4; $i++) { 
-        $randomIndex = rand(0,sizeof($Tproducten)-1);
-        while (in_array($randomIndex, $randomIndexes)) {
-            $randomIndex = rand(0,sizeof($Tproducten)-1);
-        }
-        array_push($randomIndexes, $randomIndex);                  
-    }
-
-    for ($i=0; $i < sizeof($Tproducten) ; $i++) { 
-        if (in_array($i, $randomIndexes)) {
-            array_push($producten, $Tproducten[$i]);
-        }
-    }
-
+    shuffle($Tproducten);
+    $producten = array_slice($Tproducten,0,4);
    
     
     for ($i=0; $i < $e; $i++) 

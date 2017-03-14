@@ -1,4 +1,8 @@
-<?php require_once "../Controllers/LogicController.php";?>
+<?php require_once "../Controllers/LogicController.php";
+	if(!(isset($_SESSION)) ){
+		session_start();
+	}
+?>
 
 <!DOCTYPE html>
 <html>

@@ -43,6 +43,7 @@ class LogicController
 
         $url = URL."index.php";
         header($url);
+        die();
 	}
 
 	static function userLogIn()
@@ -56,12 +57,14 @@ class LogicController
                 echo "password correct";
                 $_SESSION['user'] = $gebruiker;
                 if (isset($_SESSION['alternative_befURL'])){
-                    var_dump($_SESSION['alternative_befURL']);
+                    // var_dump($_SESSION['alternative_befURL']);
                     header("location: ".$_SESSION['alternative_befURL']);
+                	die();
                 }
                 else{
-                    var_dump($_POST['befPrevUrl']);
+                    // var_dump($_POST['befPrevUrl']);
                     header("location: ".$_POST['befPrevUrl']);
+					die();                
                 }
                 unset($_SESSION['alternative_befURL']);
             }
@@ -71,6 +74,7 @@ class LogicController
                  $_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
                  $url = URL."login.php";
                  header($url);
+                 die();
             }
         } 
         else
@@ -79,6 +83,7 @@ class LogicController
             $_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
             $url = URL."login.php";
             header($url);
+        	die();
         }
 	}
 
@@ -164,6 +169,7 @@ class LogicController
 		$review = new ReviewEntity( -1, $_SESSION['user']->username, $_POST['product_ID'], $_POST['comment'],  $_POST['rating'] );
 	    MainDAO::addReview($review);
 	    header(prevURL);
+	    die();
 	}
 
 	static function outputFilterDropdown()
@@ -211,7 +217,13 @@ class LogicController
 		if(isset($_SESSION['user']))
 		{
         	header(URL);
+        	die();
     	}
+    }
+
+    static function getComparableProducts($cat)
+    {
+    	return MainDAO::getAllByCat($cat); 
     }
 
 }
