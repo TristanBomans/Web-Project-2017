@@ -47,7 +47,6 @@ if (isset($_POST['sortMethode']))
     $objectArray = LogicController::sortAllProducts();
 
     $array = Util::productObjectToArray($objectArray);
-    $array = Util::productArrayDateConversion($array);
 
     echo json_encode(Util::utf8ize($array));
 }

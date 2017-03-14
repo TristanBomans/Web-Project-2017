@@ -47,8 +47,11 @@
          . "</div>"
          . "<form action='../Controllers/RequestController.php' method='POST'>"
          . "<input type='hidden' name='toAddProduct' value='".$producten[$i]->id."'>"
-         . "<input type='submit' value='' class='winkelwagen-btn' title='Voeg toe aan winkelmandje'>"
+         . "<input type='submit' value='' class='winkelwagen-btn winkelwagen-add' title='Voeg toe aan winkelmandje'>"
          ."</form>"
+         . "<div class='product-metadata-id metadata'>".$producten[$i]->id."</div>"
+         . "<div class='product-metadata-naam metadata'>".$producten[$i]->naam."</div>"
+         . "<div class='product-metadata-prijs metadata'>".$producten[$i]->prijs."</div>"
          . "</div>";
     }
     echo $html;

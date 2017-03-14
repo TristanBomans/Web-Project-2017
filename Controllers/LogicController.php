@@ -142,7 +142,7 @@ class LogicController
 	    foreach ($catArray as $cat) 
 	    {
 	        $data = MainDAO::getAllByCat($cat);
-	        $result += $data;
+	        $result = array_merge($result, $data);
 	        $data = null;
 	    }
 	    return $result;

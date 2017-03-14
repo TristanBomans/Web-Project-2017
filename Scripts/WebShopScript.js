@@ -54,4 +54,29 @@ $(function(){
 		});
 
 	});
+
+	$(".winkelwagen-add").on("click", function(e){
+		e.preventDefault();
+
+		var productId = $(this).parent().parent().find(".product-metadata-id").html();
+		var productNaam = $(this).parent().parent().find(".product-metadata-naam").html();
+		var productPrijs = $(this).parent().parent().find(".product-metadata-prijs").html();
+		var totalPrijs = $("#winkelmandje-totalprice").html();
+		totalPrijs = Number(totalPrijs.split(" ")[1]);
+		totalPrijs += Number(productPrijs);
+
+		$.ajax({
+	        type: "POST",
+	        url: "../Controllers/RequestController.php",
+	        data: {'toAddProduct' : productId},
+	        success: function() {
+	        	var html = "<div class='individuele-item-div-dropdown'><p class='naam-product-dropdown'>"+productNaam+
+	        	"</p> <p class='prijs-product-dropdown'>€ "+productPrijs+"</p></div>";
+	        	$("#winkelmandje-items").append(html);
+
+	        	var html ="€ " + totalPrijs;
+	        	$("#winkelmandje-totalprice").html(html);
+	        }
+	    });
+	});
 });

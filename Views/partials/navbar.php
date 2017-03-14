@@ -40,16 +40,18 @@
             
             if(isset($_SESSION['winkelmandje']))
             {
+                echo "<div id='winkelmandje-items'>";
                 foreach ($_SESSION['winkelmandje'] as $product) 
                 {
                     echo "<div class='individuele-item-div-dropdown'><p class='naam-product-dropdown'>".$product->naam."</p> <p class='prijs-product-dropdown'>€ ".$product->prijs. "</p></div>";
                     $total += $product->prijs;
                 }
+                echo "</div>";
             }
             else{
                 $_SESSION['winkelmandje']  = [];
             }
-            echo "<div class='individuele-item-div-dropdown' id='prijs-totaal-rand'><p  class='naam-product-dropdown'>Totaal: </p><p class='prijs-product-dropdown'><b>€ ".$total."</b></p></div>";
+            echo "<div class='individuele-item-div-dropdown' id='prijs-totaal-rand'><p  class='naam-product-dropdown'>Totaal: </p><p class='prijs-product-dropdown'><b id='winkelmandje-totalprice'>€ ".$total."</b></p></div>";
             ?>
 
             </div>
