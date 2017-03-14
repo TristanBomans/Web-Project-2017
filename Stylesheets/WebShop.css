@@ -486,13 +486,13 @@ _____ ___ _____ _____ _     ____    _    ____
     font-size: 30px;
 }
 
+/*SORTEREN*/
+
 #allproducts-sort{
     position: absolute;
     right: 30px;
     color: #921515;
 }
-
-/*SORTEREN*/
 #allproducts-dropdown-sort{
     position: absolute;
     width: 200px;

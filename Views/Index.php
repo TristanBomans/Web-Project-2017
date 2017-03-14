@@ -8,8 +8,8 @@
 
  		<?php include("partials/navbar.php"); ?>
  		
-		<div id="allproductsandsort-wrapper">
-			<div id="allproductsandsort-title">Nieuw: </div>
+		<div id="allproducts-wrapper">
+			<div id="allproducts-title">Nieuw: </div>
 		</div>
 		<div id="producten-nieuw" class="row">
 			<?php include("partials/home-producten-nieuw.php"); ?>
