@@ -238,6 +238,17 @@ class LogicController
     	return true;	
     }
 
+   static function getAllBestellingenMetInh()
+    {
+   		$dataA = [];
+    	$alB = MainDAO::getAllBestellingen();
+   
+
+    	foreach ($alB as $B) {
+        $dataA[$B->id] = MainDAO::getBestellingInhoudBestelling($B->id);
+   		}
+    	return $dataA;
+	}
 
 }
 ?>

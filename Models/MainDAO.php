@@ -4,6 +4,9 @@ require_once "../Entities/ProductEntity.php";
 require_once "../Entities/UserEntity.php";        
 require_once "../Entities/ReviewEntity.php";
 require_once "../Entities/CategorieEntity.php";  
+require_once "../Entities/BestelinhoudEntity.php";  
+require_once "../Entities/BestellingEntity.php";  
+
 
 
 class MainDAO {
@@ -236,6 +239,84 @@ class MainDAO {
         mysqli_close($mysqli);
         return $categorieArray;
     }
+
+    //BESTELLINGEN
+
+    static function getAllBestellingen() 
+    {
+        require "../Credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("SELECT * FROM Bestellingen");
+        $bestelling = null;
+        $BestellingenArray =  [];
+
+        while ($row = mysqli_fetch_array($result)) {
+            $id = $row[0];
+            $username = $row[1];
+            $factuuradres= $row[2];
+            $leveradres= $row[3];
+            $levermethode= $row[4];
+            $betaalmethode= $row[5];
+
+
+
+          $bestelling = new BestellingEntity($id, $username, $factuuradres, $leveradres, $levermethode, $betaalmethode);
+            array_push($BestellingenArray, $bestelling);
+        }
+
+        mysqli_close($mysqli);
+        return $BestellingenArray;
+    }
+
+
+    static function getBestelling($id) 
+    {
+        require "../Credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("SELECT * FROM Bestellingen where id = $id");
+        $bestelling = null;
+        $BestellingenArray =  [];
+
+        while ($row = mysqli_fetch_array($result)) {
+            $id = $row[0];
+            $username = $row[1];
+            $factuuradres= $row[2];
+            $leveradres= $row[3];
+            $levermethode= $row[4];
+            $betaalmethode= $row[5];
+
+
+            $bestelling = new BestellingEntity($id, $username, $factuuradres, $leveradres, $levermethode, $betaalmethode);
+           
+        }
+
+        mysqli_close($mysqli);
+        return $bestelling;
+    }
+
+     static function getBestellingInhoudBestelling($id) 
+    {
+        require "../Credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("SELECT * FROM bestelinhoud where bestelling_id = $id");
+        $bestellingInh = null;
+        $bestelInhArr =  [];
+
+        while ($row = mysqli_fetch_array($result)) {
+            $id = $row[0];     
+            $bestelling_id = $row[1];
+            $product_id = $row[2];
+
+
+
+            $bestellingInh = new BestelinhoudEntity($id, $bestelling_id, $product_id);
+            array_push($bestelInhArr, $bestellingInh);
+        }
+
+        mysqli_close($mysqli);
+        return $bestelInhArr;
+    }
+
 
 }
 
