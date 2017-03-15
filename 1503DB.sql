@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 14 mrt 2017 om 22:36
+-- Gegenereerd op: 15 mrt 2017 om 14:44
 -- Serverversie: 5.7.14
 -- PHP-versie: 5.6.25
 
@@ -23,6 +23,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `bestelinhoud`
+--
+
+CREATE TABLE `bestelinhoud` (
+  `id` int(11) NOT NULL,
+  `bestelling_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `bestelinhoud`
+--
+
+INSERT INTO `bestelinhoud` (`id`, `bestelling_id`, `product_id`) VALUES
+(1, 1, 7),
+(2, 1, 11),
+(3, 2, 6);
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `bestellingen`
 --
 
@@ -34,6 +55,14 @@ CREATE TABLE `bestellingen` (
   `Levermethode` varchar(50) NOT NULL,
   `betaalmethode` varchar(35) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `bestellingen`
+--
+
+INSERT INTO `bestellingen` (`id`, `username`, `Factuuradres`, `Leveradres`, `Levermethode`, `betaalmethode`) VALUES
+(1, 'dev', 'Xd Straat', 'Xd Straat', 'Truk', 'Paypal'),
+(2, 'dev', 'LOL', 'LOL', 'LOL', 'LOL');
 
 -- --------------------------------------------------------
 
@@ -140,6 +169,14 @@ INSERT INTO `users` (`username`, `password`, `naam`, `voornaam`, `authority`, `e
 --
 
 --
+-- Indexen voor tabel `bestelinhoud`
+--
+ALTER TABLE `bestelinhoud`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `bestelling_id` (`bestelling_id`),
+  ADD KEY `product_id` (`product_id`);
+
+--
 -- Indexen voor tabel `bestellingen`
 --
 ALTER TABLE `bestellingen`
@@ -178,6 +215,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT voor een tabel `bestelinhoud`
+--
+ALTER TABLE `bestelinhoud`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT voor een tabel `bestellingen`
+--
+ALTER TABLE `bestellingen`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT voor een tabel `producten`
 --
 ALTER TABLE `producten`
@@ -190,6 +237,13 @@ ALTER TABLE `reviews`
 --
 -- Beperkingen voor geëxporteerde tabellen
 --
+
+--
+-- Beperkingen voor tabel `bestelinhoud`
+--
+ALTER TABLE `bestelinhoud`
+  ADD CONSTRAINT `fk_bestelling_id` FOREIGN KEY (`bestelling_id`) REFERENCES `bestellingen` (`id`),
+  ADD CONSTRAINT `fk_prod_3` FOREIGN KEY (`product_id`) REFERENCES `producten` (`id`);
 
 --
 -- Beperkingen voor tabel `bestellingen`
