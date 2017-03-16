@@ -1,5 +1,6 @@
 <?php  
 require_once("../Entities/UserEntity.php"); 
+require_once("../Entities/ProductEntity.php"); 
 if(!(isset($_SESSION)) ){
     session_start();
 } 

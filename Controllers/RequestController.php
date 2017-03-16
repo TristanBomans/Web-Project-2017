@@ -75,7 +75,7 @@ if (isset($_POST['editProduct'])) {
     if(!empty($_FILES["file"]["name"])){
         $uploadedFile = "../Resources/" . $_FILES["file"]["name"];
         move_uploaded_file($_FILES["file"]["tmp_name"], $uploadedFile);
-        $productt->img_path = $_FILES["file"]["name"];
+        $productt->img_path = "../Resources/" . $_FILES["file"]["name"];
     }
     var_dump($productt);
     MainDAO::updateProduct($productt);
