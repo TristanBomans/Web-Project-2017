@@ -29,7 +29,11 @@
          . "<input type='submit' value='' class='winkelwagen-btn winkelwagen-add' title='Voeg toe aan winkelmandje'>"
          . "<div class='product-metadata-id metadata'>".$producten[$i]->id."</div>"
          . "<div class='product-metadata-naam metadata'>".$producten[$i]->naam."</div>"
-         . "<div class='product-metadata-prijs metadata'>".$producten[$i]->prijs."</div>"
+         . "<div class='product-metadata-prijs metadata'>".$producten[$i]->prijs."</div>";
+         if ($producten[$i]->avg_rating != 0) {
+            $html .= "<div class='product-rating-icon'>".$producten[$i]->avg_rating."</div>";
+         }
+         $html .=""
          . "</form>"
          . "</div>";
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 15 mrt 2017 om 14:44
+-- Gegenereerd op: 16 mrt 2017 om 19:41
 -- Serverversie: 5.7.14
 -- PHP-versie: 5.6.25
 
@@ -53,16 +53,17 @@ CREATE TABLE `bestellingen` (
   `Factuuradres` varchar(100) NOT NULL,
   `Leveradres` varchar(100) NOT NULL,
   `Levermethode` varchar(50) NOT NULL,
-  `betaalmethode` varchar(35) NOT NULL
+  `betaalmethode` varchar(35) NOT NULL,
+  `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `bestellingen`
 --
 
-INSERT INTO `bestellingen` (`id`, `username`, `Factuuradres`, `Leveradres`, `Levermethode`, `betaalmethode`) VALUES
-(1, 'dev', 'Xd Straat', 'Xd Straat', 'Truk', 'Paypal'),
-(2, 'dev', 'LOL', 'LOL', 'LOL', 'LOL');
+INSERT INTO `bestellingen` (`id`, `username`, `Factuuradres`, `Leveradres`, `Levermethode`, `betaalmethode`, `datum`) VALUES
+(1, 'dev', 'Xd Straat', 'Xd Straat', 'Truk', 'Paypal', '2017-03-08'),
+(2, 'dev', 'LOL', 'LOL', 'LOL', 'LOL', '2017-03-21');
 
 -- --------------------------------------------------------
 
@@ -95,7 +96,7 @@ CREATE TABLE `producten` (
   `prijs` float NOT NULL,
   `beschrijving` varchar(500) NOT NULL,
   `datum_toegevoegd` date NOT NULL,
-  `img_path` varchar(50) NOT NULL,
+  `img_path` varchar(250) NOT NULL,
   `uitgelicht` tinyint(1) NOT NULL DEFAULT '0',
   `avg_rating` float NOT NULL DEFAULT '0',
   `numb_ratings` int(11) NOT NULL DEFAULT '0'
@@ -114,7 +115,8 @@ INSERT INTO `producten` (`id`, `cat_naam`, `naam`, `prijs`, `beschrijving`, `dat
 (9, 'Multi Media', 'Apple iPhone 5s Spacegrijs 16GB ', 320, 'Een technologisch pareltje\r\nDe iPhone is altijd al een voorloper geweest. En voor de iPhone 5s is dit niet anders : een technologisch pareltje die nog beter presteert. Zonder in te boeten aan batterijduur natuurlijk.', '2017-03-24', '../Resources/iphone5.png', 1, 0, 0),
 (10, 'Brol', 'Wiko Sunny Turkoois', 1, 'DE LEUKSTE!\r\nWil je een smartphone die super makkelijk te hanteren en te gebruiken is, maar zoek je ook een zoet ontwerp en een vleugje waanzin? We hebben het! SUNNY is de perfecte dagelijkse vriend met een compact formaat en leuke kleuren. Hoe zit het met de camera? Nou, 5MP en leuke opties om je beste momenten vast te leggen. En hebben we al Marshmallow 6.0. gezegd? Ja, ook dat heeft de SUNNY!', '2017-03-24', '../Resources/brol.png', 1, 0, 0),
 (11, 'Multi Media', 'Huawei P8 Titanium', 280, 'Designed to inspire\r\nDe nieuwe Huawei P8 laat zien dat design en techniek geen concessies voor elkaar hoeven te doen. Deze high-end smartphone is gemaakt met uitsluitend premium materialen en heeft een uniek ï¿½gelaagdï¿½ ontwerp. Het resultaat: esthetische lijnen die leiden tot pure schoonheid en innovaties die je creativiteit een boost zullen geven.', '2002-01-08', '../Resources/huawei.png', 1, 0, 0),
-(15, 'Multi Media', 'Samsung iPhone 3', 5747.22, 'xDDDDD', '2017-03-14', '../Resources/dummypng.png', 0, 0, 0);
+(15, 'Multi Media', 'Samsung iPhone 3', 5747.22, 'xDDDDD', '2017-03-14', '../Resources/dummypng.png', 0, 0, 0),
+(19, 'Brol', 'Samsung Galaxy S4', 440.3, 'XDDDDDDD', '2017-03-16', '../Resources/10275580_10154117497140440_3031077272733934198_o.jpg', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -228,7 +230,7 @@ ALTER TABLE `bestellingen`
 -- AUTO_INCREMENT voor een tabel `producten`
 --
 ALTER TABLE `producten`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT voor een tabel `reviews`
 --

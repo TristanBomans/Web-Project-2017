@@ -93,6 +93,7 @@ class Util{
 			$array[$i]['beschrijving'] = $Object[$i]->beschrijving;
 			$array[$i]['datum_toegevoegd'] = $Object[$i]->datum_toegevoegd;
 			$array[$i]['img_path'] = $Object[$i]->img_path;
+			$array[$i]['avg_rating'] = $Object[$i]->avg_rating;
 		}
 		
 		return $array;

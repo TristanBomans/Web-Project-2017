@@ -43,8 +43,11 @@ $(function(){
 			        + "</div>"
 			        + "<form action='../Controllers/RequestController.php' method='POST'>"
 			        + "<input type='hidden' name='toAddProduct' value='" + data[i].id + "'>"
-			        + "<input type='submit' value='' class='winkelwagen-btn' title='Voeg toe aan winkelmandje'>"
-			        +"</form>"
+			        + "<input type='submit' value='' class='winkelwagen-btn' title='Voeg toe aan winkelmandje'>";
+			        if (data[i].avg_rating != 0) {
+			        html +=  "<div class='product-rating-icon'>" + data[i].avg_rating +"</div>";
+			 	  	}
+			        html += "</form>"
 			        + "</div>";
 				}
 		  

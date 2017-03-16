@@ -101,12 +101,12 @@
 			echo "<div id='banner-popup-admin'>Nieuw Product<a href='http://localhost/Web-Project-2017/Views/admin-product.php'><div id='exit-icon-admin'></div></a></div>";
 
 			echo "<div id='pop-up-content'>";
-			echo "<form action='../Controllers/RequestController.php' method='POST'>";
-			echo "<div class='pop-up-edit-lineitem'><div class='popup-label'>Naam:</div><input class='input-popup' type='text' name='naam'></div>";
-			echo "<div class='pop-up-edit-lineitem'><div class='popup-label'>Prijs:</div><input class='input-popup' type='text' name='prijs'></div>";
+			echo "<form action='../Controllers/RequestController.php' method='POST' enctype='multipart/form-data'>";
+			echo "<div class='pop-up-edit-lineitem clearfix'><div class='popup-label'>Naam:</div><input class='input-popup' type='text' name='naam'></div>";
+			echo "<div class='pop-up-edit-lineitem clearfix'><div class='popup-label'>Prijs:</div><input class='input-popup' type='text' name='prijs'></div>";
 
 
-			echo "<div class='pop-up-edit-lineitem'><div class='popup-label'>Categorie:</div>";
+			echo "<div class='pop-up-edit-lineitem clearfix'><div class='popup-label'>Categorie:</div>";
 
 
 			echo "<select class='input-popup' name='categorie'>";
@@ -119,10 +119,12 @@
 
 
 
-			echo "<div class='pop-up-edit-lineitem pop-up-edit-lineitem-beschrijving'><div class='popup-label'>Beschrijving:</div><textarea name='beschrijving' class='input-popup' id='input-popup-beschrijving' type='text'></textarea></div>";
+			echo "<div class='pop-up-edit-lineitem pop-up-edit-lineitem-beschrijving clearfix'><div class='popup-label'>Beschrijving:</div><textarea name='beschrijving' class='input-popup' id='input-popup-beschrijving' type='text'></textarea></div>";
+
+			echo "<div class='pop-up-edit-lineitem pop-up-edit-lineitem-img clearfix'><div class='popup-label'>Afbeelding:</div><img id='img-editprod' src='../Resources/dummypng.png'><input name='file' type='file' /></div>";
 
 			echo "<input type='hidden' name='newDBProd' value='#'>";
-			echo "<input id='pop-up-sumbit' type='submit'>";
+			echo "<div class='pop-up-edit-lineitem pop-up-edit-lineitem-beschrijving clearfix'><input id='pop-up-sumbit' type='submit'></div>";
 
 
 			echo "</form>";

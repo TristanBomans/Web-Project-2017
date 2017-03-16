@@ -23,12 +23,19 @@ if (isset($_POST['toAddProduct'])) //IS VOOR WINKELMANDJE
 }
 
 if (isset($_POST['newDBProd'])) {
-    if (isset($_POST['img_path'])){
-        $img_path = $_POST['img_path'];
+    if(!empty($_FILES["file"]["name"])){
+        $uploadedFile = "../Resources/" . $_FILES["file"]["name"];
+        move_uploaded_file($_FILES["file"]["tmp_name"], $uploadedFile);
+    }
+    
+    if (isset($_FILES['file']['name'])){
+        $img_path = "../Resources/".$_FILES["file"]["name"];
     }
     else{
         $img_path = "../Resources/dummypng.png";
     }
+
+
 
     $_POST['prijs'] = str_replace(",",".",$_POST['prijs']);
     $_POST['prijs'] = floatval($_POST['prijs']);
@@ -36,8 +43,10 @@ if (isset($_POST['newDBProd'])) {
 
 
     $product = new ProductEntity(-1, $_POST['categorie'], $_POST['naam'],floatval($_POST['prijs']),$_POST['beschrijving'], date("Y-m-d H:i:s"),$img_path,0,0,0);
+
+var_dump($product);
+ 
     
-    var_dump($_POST['prijs']);
     LogicController::addDBNewProd($product);
     header("location: http://localhost/Web-Project-2017/Views/admin-product.php");
 }
@@ -61,14 +70,14 @@ if (isset($_POST['editProduct'])) {
     $productt->prijs = floatval($prijs);
     $productt->cat_naam = $categorie;
     $productt->beschrijving = $beschrijving;
-    $productt->img_path = $img_path;
-    
-     if(!empty($_FILES["file"]["name"])){
+       
+
+    if(!empty($_FILES["file"]["name"])){
         $uploadedFile = "../Resources/" . $_FILES["file"]["name"];
         move_uploaded_file($_FILES["file"]["tmp_name"], $uploadedFile);
-        $product->img_path = $_FILES["file"]["name"];
+        $productt->img_path = $_FILES["file"]["name"];
     }
-
+    var_dump($productt);
     MainDAO::updateProduct($productt);
     header("location: ".$_SERVER['HTTP_REFERER']);
 

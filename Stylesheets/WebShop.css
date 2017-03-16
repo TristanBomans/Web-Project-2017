@@ -271,6 +271,21 @@ _____ ___ _____ _____ _     ____    _    ____
     display: none;
 }
 
+.product-rating-icon{
+    position: absolute;
+    right: 30px;
+    top: 10px;
+
+    background-image: url("../Resources/rating.png");
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
 /*
  ____  _   _ _____ _____ ___  _   _ ____  
 | __ )| | | |_   _|_   _/ _ \| \ | / ___| 
@@ -319,6 +334,9 @@ _____ ___ _____ _____ _     ____    _    ____
 
 .parent-thumb-cont:hover .winkelwagen-btn {
     display: block;
+}
+.parent-thumb-cont:hover .product-rating-icon{
+    top: 120px;
 }
 
 .winkelwagen-btn:hover {
@@ -710,6 +728,9 @@ _____ ___ _____ _____ _     ____    _    ____
 
 #img-editprod{
     height: 280px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 470px;
 }
 
 
@@ -734,7 +755,7 @@ _____ ___ _____ _____ _     ____    _    ____
     height: auto;
     width: 80%;
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .pop-up-edit-lineitem-img{
@@ -749,7 +770,7 @@ _____ ___ _____ _____ _     ____    _    ____
     text-align: center;
     display: block;
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     background-color: #9E8484;
     border-radius: 10px;
     font-weight: bold;
@@ -774,8 +795,8 @@ _____ ___ _____ _____ _     ____    _    ____
 
 #pop-up-content{
     position: relative;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     height: calc(100% - 60px);
 }
 

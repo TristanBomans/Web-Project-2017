@@ -37,7 +37,11 @@ require_once "../Controllers/Util.php";
          . "</div>"
          . "<form action='../Controllers/RequestController.php' method='POST'>"
          . "<input type='hidden' name='toAddProduct' value='".$productt->id."'>"
-         . "<input type='submit' value='' class='winkelwagen-btn winkelwagen-add' title='Voeg toe aan winkelmandje'>"
+         . "<input type='submit' value='' class='winkelwagen-btn winkelwagen-add' title='Voeg toe aan winkelmandje'>";
+          if ($productt->avg_rating != 0) {
+            $html .= "<div class='product-rating-icon'>".$productt->avg_rating."</div>";
+          }
+         $html.= "</form>"
          ."</form>"
          . "<div class='product-metadata-id metadata'>".$productt->id."</div>"
          . "<div class='product-metadata-naam metadata'>".$productt->naam."</div>"
