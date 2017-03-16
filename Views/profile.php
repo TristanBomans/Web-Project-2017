@@ -9,7 +9,7 @@ if(!(isset($_SESSION)) ){
 <!doctype HTML>
 <html lang="nl">
 	<head>
-		<title>Home</title>
+		<title>Profile</title>
 		<?php include("partials/includes.php"); ?>
 	</head>
 	<body class="container-fluid">

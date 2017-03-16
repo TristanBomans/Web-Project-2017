@@ -23,7 +23,7 @@
 <!doctype HTML>
 <html lang="nl">
 	<head>
-		<title>Home</title>
+		<title>AdminBestelling</title>
 		<?php include("partials/includes.php"); ?>
 	</head>
 	<body class="container-fluid">

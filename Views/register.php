@@ -9,7 +9,7 @@ require_once("../Entities/UserEntity.php");
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>detail</title>
+		<title>Register</title>
 		<?php include("partials/includes.php"); ?>
 	</head>
 	<body class="container-fluid">
