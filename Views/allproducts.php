@@ -1,7 +1,7 @@
 <!doctype HTML>
 <html lang="nl">
 	<head>
-		<title>Home</title>
+		<title>AllProducts</title>
 		<?php include("partials/includes.php"); ?>
 	</head>
 	<body class="container-fluid">
