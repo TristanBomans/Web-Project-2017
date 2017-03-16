@@ -606,31 +606,15 @@ _____ ___ _____ _____ _     ____    _    ____
     margin-bottom: 90px;
 }
 
-/*
- _____ ___   ___ _____ _____ ____  
-|  ___/ _ \ / _ \_   _| ____|  _ \ 
-| |_ | | | | | | || | |  _| | |_) |
-|  _|| |_| | |_| || | | |___|  _ < 
-|_|   \___/ \___/ |_| |_____|_| \_\*/
-
-#footer {
-    background-color: #921515;
-    text-align: center;
-    border-radius: 15px 15px 0 0;
-    width: calc(100% - 30px);
-    padding: 5px;
-    bottom: 0px;
-    position: fixed;
-    margin: auto;
-    color: #6F0101;
-}
 
 
 
 
-
-
-
+/*    _    ____  __  __ ___ _   _ 
+   / \  |  _ \|  \/  |_ _| \ | |
+  / _ \ | | | | |\/| || ||  \| |
+ / ___ \| |_| | |  | || || |\  |
+/_/   \_\____/|_|  |_|___|_| \_|*/
 
 
 
@@ -703,9 +687,11 @@ _____ ___ _____ _____ _     ____    _    ____
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     width: 60%;
-    height: 55%;
+    height: auto;
     background-color: #C6BCBC;
     border-radius: 40px;
+    overflow-y: hidden;
+    z-index: 100000;
 }
 
 #banner-popup-admin{
@@ -722,13 +708,17 @@ _____ ___ _____ _____ _     ____    _    ____
     font-weight: bold;
 }
 
+#img-editprod{
+    height: 280px;
+}
+
+
 #exit-icon-admin{
     position: absolute;
     top: 10px;
     right: 25px;
     height: 40px;
     width: 40px;
-    /*background-color: black;*/
     background-image: url("../Resources/exit-icon.png");
     background-size: 40px 40px;
     background-repeat: no-repeat;
@@ -741,9 +731,33 @@ _____ ___ _____ _____ _     ____    _    ____
 
 .pop-up-edit-lineitem{
     margin: auto;
-    height: 40px;
+    height: auto;
     width: 80%;
     font-size: 18px;
+    margin-top: 10px;
+}
+
+.pop-up-edit-lineitem-img{
+    width: 70%;
+    text-align: center;
+    border-radius: 15px;
+    border: 1px solid #AFAAAA;
+    padding: 15px;
+}
+
+.pop-up-edit-lineitem-img .popup-label{
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    background-color: #9E8484;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.pop-up-edit-lineitem-img input{
+    display: block;
+    margin: auto;
 }
 
 .pop-up-edit-lineitem input{
@@ -761,6 +775,7 @@ _____ ___ _____ _____ _     ____    _    ____
 #pop-up-content{
     position: relative;
     padding-top: 40px;
+    padding-bottom: 40px;
     height: calc(100% - 60px);
 }
 
@@ -769,17 +784,11 @@ _____ ___ _____ _____ _     ____    _    ____
     width: 60%;
 }
 
-.pop-up-edit-lineitem-beschrijving{
-    height: auto !important;
-    position: relative;
-}
 
 #pop-up-sumbit{
-    position: absolute;
     width: 150px;
-    left: 50%;
-    bottom: 50px;
-    transform: translateX(-50%);
+    margin: auto;
+    display: block;
 }
 
 #add-item-icon {
@@ -788,7 +797,6 @@ _____ ___ _____ _____ _     ____    _    ____
     right: -5px;
     height: 40px;
     width: 40px;
-    /*background-color: black;*/
     background-image: url("../Resources/add-icon.png");
     background-size: 40px 40px;
     background-repeat: no-repeat;
@@ -800,9 +808,147 @@ _____ ___ _____ _____ _     ____    _    ____
 
 }
 
+#bestellingen-content{
+    position: relative;
+    overflow: hidden;
+    height: auto;
+    width: 60%;
+    margin: auto;
+    border: 3px solid #C74B4B;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
+}
+
+.bestelling-lineitem{
+    height: auto;
+    width: 100%;
+    padding: 5px 15px 5px 15px;
+    border-bottom: 1px solid #C74B4B;
+    font-size: 15px;
+    transition: all 0.12s ease-in 0s;
+}
+
+.bestelling-lineitem:hover {
+    background-color: #F24949;
+    font-size: 18px;
+    cursor: pointer;
+    color: white;
+    padding: 5px 10% 5px 10%;
+}
+
+.bestelling-titel{
+    width: 100%;
+    float: left;
+}
+
+.bestelling-datum{
+    width: 50%;
+    float: left;
+}
+.bestelling-username{
+    width: 50%;
+    float: right;
+    text-align: right;
+}
+
+#pop-up-bestelling-parent{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(73, 73, 73, 0.78);
+}
+
+#pop-up-bestelling-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 50%;
+    height: auto;
+    background-color: #C6BCBC;
+    border-radius: 40px;
+}
+
+#pop-up-bestelling-banner{
+    border-radius: 40px 40px 0px 0px;
+    width: 100%;
+    height: 60px;
+    top: 0px;
+    background-color: #A36A6A;
+    overflow: hidden;
+    text-align: center;
+    line-height: 60px;
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
+}
+
+.bestel-popup-linitem{
+    margin: auto;
+    height: 40px;
+    width: 80%;
+    font-size: 18px;
+}
 
 
+.bestel-popup-prod-naam{
+    float: left;
+}
 
+.bestel-popup-prod-cat{
+    font-size: 15px;
+    float: left;
+    padding-left: 20px;
+}
+
+.bestel-popup-prod-prijs{
+    float: right;
+}
+
+#pop-up-content-bestelling{
+    position: relative;
+    padding: 40px 0px 40px 0px;
+    height: calc(100% - 60px);
+}
+
+#popup-bestellingen-total{
+    border-top: 1px solid  #A36A6A;
+    font-weight: bold;
+}
+#popup-bestelling-betaalmethode{
+    float: left;
+    font-weight: normal;
+    font-style: oblique;
+}
+#bestellingen-titel-admin{
+    margin-left: 20%;
+    margin-bottom: 20px;
+}
+
+
+/*
+ _____ ___   ___ _____ _____ ____  
+|  ___/ _ \ / _ \_   _| ____|  _ \ 
+| |_ | | | | | | || | |  _| | |_) |
+|  _|| |_| | |_| || | | |___|  _ < 
+|_|   \___/ \___/ |_| |_____|_| \_\*/
+
+
+#footer {
+    background-color: #921515;
+    text-align: center;
+    border-radius: 15px 15px 0 0;
+    width: calc(100% - 30px);
+    padding: 5px;
+    bottom: 0px;
+    position: fixed;
+    margin: auto;
+    color: #6F0101;
+}
 
 
 

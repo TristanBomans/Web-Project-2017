@@ -257,10 +257,11 @@ class MainDAO {
             $leveradres= $row[3];
             $levermethode= $row[4];
             $betaalmethode= $row[5];
+            $datum = $row[6];
 
 
 
-          $bestelling = new BestellingEntity($id, $username, $factuuradres, $leveradres, $levermethode, $betaalmethode);
+          $bestelling = new BestellingEntity($id, $username, $factuuradres, $leveradres, $levermethode, $betaalmethode, $datum);
             array_push($BestellingenArray, $bestelling);
         }
 
@@ -284,9 +285,11 @@ class MainDAO {
             $leveradres= $row[3];
             $levermethode= $row[4];
             $betaalmethode= $row[5];
+            $datum = $row[6];
 
 
-            $bestelling = new BestellingEntity($id, $username, $factuuradres, $leveradres, $levermethode, $betaalmethode);
+
+          $bestelling = new BestellingEntity($id, $username, $factuuradres, $leveradres, $levermethode, $betaalmethode, $datum);
            
         }
 

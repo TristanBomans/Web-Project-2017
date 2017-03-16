@@ -53,7 +53,7 @@ if (isset($_POST['editProduct'])) {
     $prijs = $_POST['prijs'];
     $categorie = $_POST['categorie'];
     $beschrijving = $_POST['beschrijving'];
-
+    $img_path = "../Resources/".$_FILES["file"]["name"];
     $productt = LogicController::getProduct($_POST['id']);
     
     $productt->id = $id;
@@ -61,8 +61,13 @@ if (isset($_POST['editProduct'])) {
     $productt->prijs = floatval($prijs);
     $productt->cat_naam = $categorie;
     $productt->beschrijving = $beschrijving;
-
-    var_dump($productt);
+    $productt->img_path = $img_path;
+    
+     if(!empty($_FILES["file"]["name"])){
+        $uploadedFile = "../Resources/" . $_FILES["file"]["name"];
+        move_uploaded_file($_FILES["file"]["tmp_name"], $uploadedFile);
+        $product->img_path = $_FILES["file"]["name"];
+    }
 
     MainDAO::updateProduct($productt);
     header("location: ".$_SERVER['HTTP_REFERER']);
