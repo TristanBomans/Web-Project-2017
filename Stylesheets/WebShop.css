@@ -284,6 +284,7 @@ _____ ___ _____ _____ _     ____    _    ____
     line-height: 50px;
     text-align: center;
     font-weight: bold;
+    transition: all 0.1s ease-in 0s;
 }
 
 /*
@@ -706,10 +707,16 @@ _____ ___ _____ _____ _     ____    _    ____
     transform: translateX(-50%) translateY(-50%);
     width: 60%;
     height: auto;
+    max-height: 85%;
+    overflow-y: scroll;
+
     background-color: #C6BCBC;
     border-radius: 40px;
-    overflow-y: hidden;
     z-index: 100000;
+}
+#admin-edit-selected-product::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
 }
 
 #banner-popup-admin{
@@ -853,10 +860,10 @@ _____ ___ _____ _____ _     ____    _    ____
 
 .bestelling-lineitem:hover {
     background-color: #F24949;
-    font-size: 18px;
+    /*font-size: 18px;*/
     cursor: pointer;
     color: white;
-    padding: 5px 10% 5px 10%;
+    /*padding: 5px 10% 5px 10%;*/
 }
 
 .bestelling-titel{
@@ -949,6 +956,95 @@ _____ ___ _____ _____ _     ____    _    ____
     margin-left: 20%;
     margin-bottom: 20px;
 }
+
+
+
+
+#full-winkelmandje-content {
+
+    width: 70%;
+    margin: auto;
+    background-color: #E7E3E3;
+    border: 1px solid #BEA6A6;
+    padding: 10px 0px 10px 0px;
+    margin-top: 20px;
+    margin-bottom: 90px; 
+}
+
+.full-winkelmandje-content-lineitem{
+    padding: 0px 10px 0px 10px;
+    margin: 0px !important;
+    margin-bottom: 10px;
+    width: 100%;
+
+}
+
+.full-winkelmandje-content-naam{
+    width: 80%;
+    float: left;
+}
+
+.full-winkelmandje-content-prijs{
+    width: 70px;
+    float: right;
+    text-align: right;
+    font-weight: bold;
+
+
+}
+
+.full-winkelmandje-content-besch{
+    width: 75%;
+    font-style: italic;
+    font-size: 10px;
+    text-align: justify;
+    margin-top: 3px;
+
+}
+
+
+#fw-total{
+    float: right;
+    font-size: 22px;
+    color: #A1DC74;
+}
+
+#fw-total-lbl{
+    float: left;
+    font-size: 22px;
+}
+
+.exit-icon-fw{ 
+    float: right;
+    width: 15px;
+    height: 15px;
+    background-image: url("../Resources/exit-icon.png");
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    transition: all 0.2s ease-in 0s;
+}
+
+.exit-icon-fw:hover { 
+    filter: invert(80%);
+    cursor: pointer;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*

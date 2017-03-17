@@ -1,6 +1,5 @@
 <?php
-    require_once "../Controllers/LogicController.php";
-
+    include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
     $producten = LogicController::getAlleProducten();
     $html = "";
     $e = 4;
@@ -18,9 +17,7 @@
          . "<h3>".$producten[$i]->naam."</h3>"
          . "<div class='wrapper-date-cat'><b>".date("d-m-Y",strtotime($producten[$i]->datum_toegevoegd))."</b>"
          . "<b class='thumb-categorie'>".$producten[$i]->cat_naam."</b></div>"
-         . "<form action='../Controllers/RequestController.php' method='GET' class='form-btn-detail'>"
-         . "<input type='hidden' name='opgevraagdProduct' value='".$producten[$i]->id."'>"
-         . "<input type='submit' value='Detail' class='btn btn-default btn-lg btn-detail'>"
+         . "<a value='Detail' class='btn btn-default btn-lg btn-detail' href='".URL."Views/detail?opgevraagdProduct=".$producten[$i]->id."'>Detail</a>"
          . "</form>"
          . "</div>"   
          . "</div>"

@@ -1,11 +1,12 @@
 <?php
 //GLOBAL REQUIREMENTS
-require_once "../Entities/ProductEntity.php";       
-require_once "../Entities/UserEntity.php";        
-require_once "../Entities/ReviewEntity.php";
-require_once "../Entities/CategorieEntity.php";  
-require_once "../Entities/BestelinhoudEntity.php";  
-require_once "../Entities/BestellingEntity.php";  
+// require_once "../Entities/ProductEntity.php";       
+// require_once "../Entities/UserEntity.php";        
+// require_once "../Entities/ReviewEntity.php";
+// require_once "../Entities/CategorieEntity.php";  
+// require_once "../Entities/BestelinhoudEntity.php";  
+// require_once "../Entities/BestellingEntity.php";  
+ include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
 
 
 

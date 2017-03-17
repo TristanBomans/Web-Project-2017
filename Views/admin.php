@@ -1,6 +1,8 @@
 <?php 
-	require_once "../Controllers/Util.php";
-	require_once "../Entities/UserEntity.php";
+	// require_once "../Controllers/Util.php";
+	// require_once "../Entities/UserEntity.php";
+ include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
+ 
 	if(!(isset($_SESSION)) ){
 		session_start();
 	}
@@ -28,9 +30,9 @@
  		<!-- <div id="detailwrap"> -->
 			<h1>Admin</h1>
 			<div class="row">
-				<a href="http://localhost/Web-Project-2017/Views/admin-product.php"><div class='col-lg-3 col-md-3 col-sm-6 col-xs-12 admin-icons'>Producten</div></a>
+				<a href="http://localhost/Web-Project-2017/Views/admin-product"><div class='col-lg-3 col-md-3 col-sm-6 col-xs-12 admin-icons'>Producten</div></a>
 				<div class='col-lg-3 col-md-3 col-sm-6 col-xs-12 admin-icons'>Categorieën</div>
-				<a href="http://localhost/Web-Project-2017/Views/admin-bestellingen.php"><div class='col-lg-3 col-md-3 col-sm-6 col-xs-12 admin-icons'>Bestellingen</div></a>
+				<a href="http://localhost/Web-Project-2017/Views/admin-bestellingen"><div class='col-lg-3 col-md-3 col-sm-6 col-xs-12 admin-icons'>Bestellingen</div></a>
 			</div>
 		<!-- </div> -->
 		<?php include("partials/footer.php"); ?>

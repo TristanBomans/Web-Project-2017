@@ -1,3 +1,5 @@
+
+ <?php include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php"; ?>
 <!doctype HTML>
 <html lang="nl">
 	<head>

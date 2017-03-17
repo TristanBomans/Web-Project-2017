@@ -1,13 +1,14 @@
 <?php
- require_once ("../Entities/ProductEntity.php");       
- require_once ("../Entities/ReviewEntity.php");        
- require_once ("../Entities/UserEntity.php");      
- require_once ("../Models/MainDAO.php");       
- require_once ("../Controllers/Util.php");
+ // require_once ("../Entities/ProductEntity.php");       
+ // require_once ("../Entities/ReviewEntity.php");        
+ // require_once ("../Entities/UserEntity.php");      
+ // require_once ("../Models/MainDAO.php");       
+ // require_once ("../Controllers/Util.php");
+    include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
 
 //DEFINEN NIET NODIG -> AL IN REQUEST CONTROLLER GEDAAN
-define('URL',"location: http://localhost/Web-Project-2017/Views/" );
-if (isset($_SERVER['HTTP_REFERER'])){define('prevURL', "location: ".$_SERVER['HTTP_REFERER']);}
+
+
 
 class LogicController
 {
@@ -27,11 +28,11 @@ class LogicController
 		return $product;	
 	}
 
-	static function getDetailPage()
-	{
-		$url = URL."detail.php?opgevraagdProduct=".$_GET['opgevraagdProduct'];
-    	header($url);
-	}
+	// static function getDetailPage()
+	// {
+	// 	$url = "location: ".URL."detail.php?opgevraagdProduct=".$_GET['opgevraagdProduct'];
+ //    	header($url);
+	// }
 
 	static function registerUser()
 	{
@@ -41,7 +42,7 @@ class LogicController
         MainDAO::addUser($toAddUser);
         $_SESSION['user'] = $toAddUser;
 
-        $url = URL."index.php";
+        $url = "location: ".URL."index.php";
         header($url);
         die();
 	}
@@ -72,7 +73,7 @@ class LogicController
             {
                  echo "password false";
                  $_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
-                 $url = URL."login.php";
+                 $url = "location: ".URL."login.php";
                  header($url);
                  die();
             }
@@ -81,7 +82,7 @@ class LogicController
         {
             echo "user not found";
             $_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
-            $url = URL."login.php";
+            $url = "location: ".URL."login.php";
             header($url);
         	die();
         }
@@ -216,7 +217,7 @@ class LogicController
 	{
 		if(isset($_SESSION['user']))
 		{
-        	header(URL);
+        	header("location: ".URL);
         	die();
     	}
     }

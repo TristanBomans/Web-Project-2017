@@ -1,21 +1,25 @@
 <?php
 
 // GLOBAL REQUIREMENTS      
- require_once ("../Entities/ProductEntity.php");       
- require_once ("../Entities/ReviewEntity.php");        
- require_once ("../Entities/UserEntity.php");      
- require_once ("../Models/MainDAO.php");       
- require_once ("../Controllers/Util.php");
- require_once ("../Controllers/LogicController.php");
+ // require_once ("../Entities/ProductEntity.php");       
+ // require_once ("../Entities/ReviewEntity.php");        
+ // require_once ("../Entities/UserEntity.php");      
+ // require_once ("../Models/MainDAO.php");       
+ // require_once ("../Controllers/Util.php");
+ // require_once ("../Controllers/LogicController.php");
+ include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
+ 
+if(!(isset($_SESSION)) ){
+    session_start();
+}
 
 
-session_start();
 
 // REQUEST HANDLING
-if (isset($_GET['opgevraagdProduct']))
-{
-    LogicController::getDetailPage();
-}
+// if (isset($_GET['opgevraagdProduct']))
+// {
+//     LogicController::getDetailPage();
+// }
 
 if (isset($_POST['toAddProduct'])) //IS VOOR WINKELMANDJE
 {
@@ -101,7 +105,7 @@ if (isset($_GET['action'])){
         unset($_SESSION['user']);
         if(prevURL == "location: http://localhost/Web-Project-2017/Views/admin.php"){
             var_dump(prevURL);
-            header(URL);
+            header("location: ".URL);
             die();
         }
         else{

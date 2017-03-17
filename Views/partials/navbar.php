@@ -1,6 +1,8 @@
 <?php    
-    require_once "../Entities/ProductEntity.php";       
-    require_once "../Entities/UserEntity.php";
+    // require_once "../Entities/ProductEntity.php";       
+    // require_once "../Entities/UserEntity.php";
+    include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
+    
     if(!(isset($_SESSION)) ){
         session_start();
     }
@@ -12,10 +14,10 @@
 <div class="container-fluid">
     <ul class="nav nav-pills" id="parent-winkelmandje-dropdown">
         <li role="presentation" class="navpils"><a href="http://localhost/Web-Project-2017/Views/" class="navpils-color">Home</a></li>
-        <li role="presentation" class="navpils"><a href='http://localhost/Web-Project-2017/Views/allproducts.php' class="navpils-color">Alle Producten</a></li>
+        <li role="presentation" class="navpils"><a href='http://localhost/Web-Project-2017/Views/allproducts' class="navpils-color">Alle Producten</a></li>
         <?php 
         if(isset($_SESSION['user'])){
-            echo  "<li role='presentation' class='navpils'><a href='http://localhost/Web-Project-2017/Views/profile.php' class='navpils-color'>Profiel</a></li>";
+            echo  "<li role='presentation' class='navpils'><a href='http://localhost/Web-Project-2017/Views/profile' class='navpils-color'>Profiel</a></li>";
         }
         ?>
        
@@ -27,17 +29,19 @@
                     echo "<a class='link-dropdown-instellingen'><div class='instellingen-dropdown-content-line-item' id='instellingen-dropdown-content-line-item-username'>Welkom ".$_SESSION['user']->username."</div></a>";
                     echo "<a class='link-dropdown-instellingen' href='http://localhost/Web-Project-2017/Controllers/RequestController.php?action=logout'><div class='instellingen-dropdown-content-line-item'>Afmelden</div></a>";
                     if($_SESSION['user']->authority == 1){
-                     echo "<a class='link-dropdown-instellingen' href='http://localhost/Web-Project-2017/Views/admin.php'><div class='instellingen-dropdown-content-line-item'>Admin menu</div></a>";
+                     echo "<a class='link-dropdown-instellingen' href='http://localhost/Web-Project-2017/Views/admin'><div class='instellingen-dropdown-content-line-item'>Admin menu</div></a>";
                     }
                 } 
                 else
                 {
-                    echo "<a class='link-dropdown-instellingen' href='http://localhost/Web-Project-2017/Views/login.php'><div class='instellingen-dropdown-content-line-item'>Aanmelden</div></a>";
-                    echo "<a class='link-dropdown-instellingen' href='http://localhost/Web-Project-2017/Views/register.php'><div class='instellingen-dropdown-content-line-item'>Registreren</div></a>";
+                    echo "<a class='link-dropdown-instellingen' href='http://localhost/Web-Project-2017/Views/login'><div class='instellingen-dropdown-content-line-item'>Aanmelden</div></a>";
+                    echo "<a class='link-dropdown-instellingen' href='http://localhost/Web-Project-2017/Views/register'><div class='instellingen-dropdown-content-line-item'>Registreren</div></a>";
                 }
                 ?>
             </div>
         </div>
+        
+
         <div id="winkelmandje-dropdown">
             <div id="winkelmandje-dropdown-content"><b>Winkelmandje</b>
             <?php
@@ -58,7 +62,7 @@
             }
             echo "<div class='individuele-item-div-dropdown' id='prijs-totaal-rand'><p  class='naam-product-dropdown'>Totaal: </p><p class='prijs-product-dropdown'><b id='winkelmandje-totalprice'>€ ".$total."</b></p></div>";
             ?>
-
+                <a href="http://localhost/Web-Project-2017/Views/winkelmandje-full">KLIK!</a>
             </div>
         </div>
     </ul>
