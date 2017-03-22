@@ -6,3 +6,7 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d 
 RewriteCond %{REQUEST_FILENAME}\.php -f 
 RewriteRule ^(.*)$ $1.php
+
+Options All -Indexes
+
+Redirect 301 http://localhost/Web-Project-2017/  http://localhost/Web-Project-2017/Views/ 

@@ -20,7 +20,7 @@
 		                echo "<hr class='hr-winkelmandje-full'>";
 
 
-		                $total += $product->prijs;
+		              
 		            }
 		            echo "<div class='full-winkelmandje-content-lineitem clearfix'><div id='fw-total-lbl'>Totaal:</div><div id='fw-total'>€ ".$total."</div></div>";
 		            echo "</div>";
