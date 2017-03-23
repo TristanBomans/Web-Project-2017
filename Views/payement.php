@@ -73,7 +73,8 @@ if ($_SESSION['winkelmandje'] == null)
 
 <?php
 if(isset($_POST['payementinfo'])){
-    $bestelling = new BestellingEntity(-1, $_SESSION['user']->username, $_POST['factuuradres'],$_POST['leveradres'],$_POST['levermethode'],$_POST['betaalmethode'],date("Y-m-d H:i:s"));
+    $dt = new DateTime("now", new DateTimeZone("Europe/berlin"));
+    $bestelling = new BestellingEntity(-1, $_SESSION['user']->username, $_POST['factuuradres'],$_POST['leveradres'],$_POST['levermethode'],$_POST['betaalmethode'],$dt->format("Y-m-d H:i:s"));
     MainDAO::addBestelling($bestelling);
 
     $laatsteId = MainDAO::getAllBestellingen();

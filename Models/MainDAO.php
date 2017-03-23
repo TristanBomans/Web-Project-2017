@@ -1,11 +1,5 @@
 <?php
 //GLOBAL REQUIREMENTS
-// require_once "../Entities/ProductEntity.php";       
-// require_once "../Entities/UserEntity.php";        
-// require_once "../Entities/ReviewEntity.php";
-// require_once "../Entities/CategorieEntity.php";  
-// require_once "../Entities/BestelinhoudEntity.php";  
-// require_once "../Entities/BestellingEntity.php";  
  include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
 
 
@@ -241,6 +235,25 @@ class MainDAO {
         return $categorieArray;
     }
 
+    static function addCategory($toCategory)
+    {
+        require "../Credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("INSERT INTO categorie (naam) VALUES ('$toCategory->naam')");
+        if(!($result)) die(mysqli_error($mysqli));
+        mysqli_close($mysqli);
+    }
+
+    static function updateCategorie($toUpdateCategorie, $oldName)
+    {
+        require "../Credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("UPDATE categorie SET naam = '$toUpdateCategorie->naam' where naam = '$oldName';");
+        if(!($result)) die(mysqli_error($mysqli));
+        mysqli_close($mysqli);
+    }
+
+
     //BESTELLINGEN
 
     static function getAllBestellingen() 
@@ -338,6 +351,42 @@ class MainDAO {
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }
+
+    //CONTACT
+
+    static function addContactMessage($toAddContact)
+    {
+        require "../Credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("INSERT INTO contact (username, subject, message, datum) VALUES ('$toAddContact->username', '$toAddContact->subject','$toAddContact->message','$toAddContact->datum')");
+        if(!($result)) die(mysqli_error($mysqli));
+        mysqli_close($mysqli);
+    }
+
+      static function getAllContact() 
+    {
+        require "../Credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("SELECT * FROM contact");
+        $Contact = null;
+        $ContactArray =  [];
+
+        while ($row = mysqli_fetch_array($result)) {
+            $id = $row[0];
+            $username = $row[1];
+            $subject = $row[2];
+            $message = $row[3];
+            $datum = $row[4];
+
+          $Contact = new ContactEntity($id, $username, $subject, $message, $datum);
+            array_push($ContactArray, $Contact);
+        }
+
+        mysqli_close($mysqli);
+        return $ContactArray;
+    }
+
+
 
 }
 

@@ -36,9 +36,9 @@ if (isset($_POST['newDBProd'])) {
     $_POST['prijs'] = str_replace(",",".",$_POST['prijs']);
     $_POST['prijs'] = floatval($_POST['prijs']);
 
+    $dt = new DateTime("now", new DateTimeZone("Europe/berlin"));
 
-
-    $product = new ProductEntity(-1, $_POST['categorie'], $_POST['naam'],floatval($_POST['prijs']),$_POST['beschrijving'], date("Y-m-d H:i:s"),$img_path,0,0,0);
+    $product = new ProductEntity(-1, $_POST['categorie'], $_POST['naam'],floatval($_POST['prijs']),$_POST['beschrijving'], $dt->format("Y-m-d H:i:s"),$img_path,0,0,0);
 
 var_dump($product);
  
@@ -155,5 +155,25 @@ if (isset($_POST['deleteProdWinkelMandje']))
     $_SESSION['winkelmandje'] = array_udiff($_SESSION['winkelmandje'],[$product], 'Util::compare_objects');
     header(prevURL);
 }
+
+if (isset($_POST['contactSend'])) {
+    $dt = new DateTime("now", new DateTimeZone("Europe/berlin"));
+    $toAddContact = new ContactEntity(-1, $_SESSION['user']->username, $_POST['subject'], $_POST['message'],$dt->format("Y-m-d H:i:s"));
+    MainDAO::addContactMessage($toAddContact);
+    header("location: ".URL."Views");
+}
+
+if (isset($_POST['editCat'])) {
+    $newCategorie = new CategorieEntity($_POST['naam']);
+    MainDAO::updateCategorie($newCategorie, $_POST['editCatName']);
+    header("location: ".URL."Views/admin-category");
+}
+
+if (isset($_POST['newCat'])) {
+    $toAddCat = new CategorieEntity($_POST['naam']);
+    MainDAO::addCategory($toAddCat);
+    header("location: ".URL."Views/admin-category");
+}
+
 
 ?>

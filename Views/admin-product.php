@@ -1,9 +1,4 @@
 <?php 
-	// require_once "../Controllers/Util.php";
-	// require_once "../Controllers/LogicController.php";
-	// require_once "../Entities/UserEntity.php";
-	// require_once ("../Models/MainDAO.php");
-	// require_once ("../Entities/ProductEntity.php");
  include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
 
 	if(!(isset($_SESSION)) ){

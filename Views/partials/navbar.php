@@ -30,6 +30,7 @@
                     echo "<a class='link-dropdown-instellingen' href='http://localhost/Web-Project-2017/Controllers/RequestController.php?action=logout'><div class='instellingen-dropdown-content-line-item'>Afmelden</div></a>";
                     if($_SESSION['user']->authority == 1){
                      echo "<a class='link-dropdown-instellingen' href='http://localhost/Web-Project-2017/Views/admin'><div class='instellingen-dropdown-content-line-item'>Admin menu</div></a>";
+                     echo "<a class='link-dropdown-instellingen' href='http://localhost/Web-Project-2017/Views/contact'><div class='instellingen-dropdown-content-line-item'>Neem contact op</div></a>";
                     }
                 } 
                 else
