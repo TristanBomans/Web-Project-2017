@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Tristan
@@ -9,6 +10,12 @@ include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
 if(!(isset($_SESSION)) ){
     session_start();
 }
+
+if ($_SESSION['winkelmandje'] == null) 
+{
+    header("location: ". URL."/Views");
+}
+
 
 ?>
 

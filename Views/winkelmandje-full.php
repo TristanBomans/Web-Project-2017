@@ -27,7 +27,15 @@
 		        }
         ?>
 			<div id="full-winkelmandje-afreken-icon-content">
-				<a href="payement.php"><div id="full-winkelmandje-afreken-icon" title="Afrekenen"></div></a>
+			<?php 
+		
+			if ($_SESSION['winkelmandje'] != null) 
+			{
+				echo "<a href='payement.php'><div id='full-winkelmandje-afreken-icon' title='Afrekenen'></div></a>";
+			}
+			 
+			?>
+				
 			</div>
         </div>
 		<hr>
