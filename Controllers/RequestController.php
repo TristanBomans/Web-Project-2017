@@ -13,14 +13,6 @@ if(!(isset($_SESSION)) ){
     session_start();
 }
 
-
-
-// REQUEST HANDLING
-// if (isset($_GET['opgevraagdProduct']))
-// {
-//     LogicController::getDetailPage();
-// }
-
 if (isset($_POST['toAddProduct'])) //IS VOOR WINKELMANDJE
 {
     LogicController::addNewProduct();
@@ -157,5 +149,11 @@ if (isset($_GET['xD']))
 
 }
 
+if (isset($_POST['deleteProdWinkelMandje']))
+{
+    $product = LogicController::getProduct($_POST['productID']);
+    $_SESSION['winkelmandje'] = array_udiff($_SESSION['winkelmandje'],[$product], 'Util::compare_objects');
+    header(prevURL);
+}
 
 ?>

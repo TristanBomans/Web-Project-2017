@@ -321,6 +321,23 @@ class MainDAO {
         return $bestelInhArr;
     }
 
+    static function addBestelling($toAddBestelling)
+    {
+        require "../Credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("INSERT INTO bestellingen (username, Factuuradres, Leveradres, Levermethode, betaalmethode, datum ) VALUES ('$toAddBestelling->username', '$toAddBestelling->factuuradres', '$toAddBestelling->leveradres', '$toAddBestelling->levermethode', '$toAddBestelling->betaalmethode', '$toAddBestelling->datum')");
+        if(!($result)) die(mysqli_error($mysqli));
+        mysqli_close($mysqli);
+    }
+
+    static function addBestellingInhoud($toAddBestelInhoud)
+    {
+        require "../Credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("INSERT INTO bestelinhoud (bestelling_id, product_id) VALUES ('$toAddBestelInhoud->bestelling_id', '$toAddBestelInhoud->product_id')");
+        if(!($result)) die(mysqli_error($mysqli));
+        mysqli_close($mysqli);
+    }
 
 }
 

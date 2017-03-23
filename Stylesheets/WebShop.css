@@ -136,6 +136,18 @@ _____ ___ _____ _____ _     ____    _    ____
     height: 15px;
 }
 
+#winkelmandje-dropdown-meer-detail{
+    position: absolute;
+    left: 17px;
+    color: forestgreen;
+
+}
+
+#winkelmandje-dropdown-meer-detail:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .individuele-item-div-dropdown{ /*GAAT OVER LINE ITEM VAN WINKELMANDJE DROPDOWN*/
     height: 30px;
     width: auto;
@@ -751,6 +763,8 @@ _____ ___ _____ _____ _     ____    _    ____
     background-size: 40px 40px;
     background-repeat: no-repeat;
 
+
+
 }
 
 #exit-icon-admin:hover {
@@ -957,9 +971,6 @@ _____ ___ _____ _____ _     ____    _    ____
     margin-bottom: 20px;
 }
 
-
-
-
 #full-winkelmandje-content {
 
     width: 70%;
@@ -968,7 +979,7 @@ _____ ___ _____ _____ _     ____    _    ____
     border: 1px solid #BEA6A6;
     padding: 10px 0px 10px 0px;
     margin-top: 20px;
-    margin-bottom: 90px; 
+    margin-bottom: 20px;
 }
 
 .full-winkelmandje-content-lineitem{
@@ -1022,6 +1033,10 @@ _____ ___ _____ _____ _     ____    _    ____
     background-size: 15px 15px;
     background-repeat: no-repeat;
     transition: all 0.2s ease-in 0s;
+
+    /*Overriding shit, afblijven*/
+    border:none;
+    background-color: transparent !important;
 }
 
 .exit-icon-fw:hover { 
@@ -1030,7 +1045,127 @@ _____ ___ _____ _____ _     ____    _    ____
 
 }
 
+#full-winkelmandje-afreken-icon{
 
+    width: 80px;
+    height: 80px;
+    background-image: url("../Resources/walletpng.png");
+    background-size: 80px 80px;
+    background-repeat: no-repeat;
+    transition: all 0.2s ease-in 0s;
+
+    /*Overriding shit, afblijven*/
+    border:none;
+    background-color: transparent !important;
+}
+
+#full-winkelmandje-afreken-icon:hover {
+    cursor: pointer;
+    background-image: url("../Resources/cash.png");
+}
+
+#full-winkelmandje-afreken-icon-content{
+    width: 80px;
+    margin: auto;
+}
+
+#pay-icon-container{
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 90px;
+    display: table;
+}
+
+.pay-icon{
+    float: left;
+    height: 250px;
+    width: 250px;
+}
+
+#pay-icon-center{
+    width: 80%;
+    margin: auto;
+}
+
+#paypal-icon{
+    background-image: url("../Resources/paypal.png");
+    background-size: 230px 230px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.2s ease-in 0s;
+}
+
+#mastercard-icon{
+    background-image: url("../Resources/mastercard.png");
+    background-size: 230px 230px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.2s ease-in 0s;
+}
+
+#americanexpress-icon{
+    background-image: url("../Resources/American-Express-icon.png");
+    background-size: 230px 230px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.2s ease-in 0s;
+}
+
+.pay-icon:hover {
+    filter: sepia(75%) drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
+    /*cursor: crosshair;*/
+}
+
+
+#paypal-pay-img{
+    background-image: url("../Resources/paypal.png");
+    background-size: 45px 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#mastercard-pay-img{
+    background-image: url("../Resources/mastercard.png");
+    background-size: 45px 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#americanexpress-pay-img{
+    background-image: url("../Resources/American-Express-icon.png");
+    background-size: 45px 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.betaalmethode-float{
+    float: left;
+}
+
+.betaalmethode-icon-fuullpay{
+    height: 40px;
+    width: 45px;
+    /*background-color: red;*/
+    margin-left: 20px;
+    margin-top: -10px;
+
+}
+
+#submit-btn-payement{
+    margin-top: 15px;
+    display: block;
+    border: none;
+    background-color: #DBD6D6;
+    width: 100px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 7px;
+    transition: all 0.2s ease-in 0s;
+}
+#submit-btn-payement:hover {
+    background-color: #BA9696;
+    cursor: pointer;
+}
 
 
 

@@ -10,7 +10,7 @@
 		</div>
 		<div class="login-line-content clearfix">
 			<p class="login-p">Opmerking: </p>
-			<input type="text" name="comment" class="login-input">
+			<textarea type="text" name="comment" class="login-input"></textarea>
 		</div>
 		<div class="login-line-content-submit-button clearfix">			
 				<?php if(isset($_SESSION['user'])){

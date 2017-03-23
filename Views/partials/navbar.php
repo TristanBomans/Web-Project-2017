@@ -62,7 +62,10 @@
             }
             echo "<div class='individuele-item-div-dropdown' id='prijs-totaal-rand'><p  class='naam-product-dropdown'>Totaal: </p><p class='prijs-product-dropdown'><b id='winkelmandje-totalprice'>€ ".$total."</b></p></div>";
             ?>
-                <a href="http://localhost/Web-Project-2017/Views/winkelmandje-full">KLIK!</a>
+                <div  class="individuele-item-div-dropdown clearfix">
+                   <div> <a id ='winkelmandje-dropdown-meer-detail'  href="http://localhost/Web-Project-2017/Views/winkelmandje-full">Meer detail</a>
+                   </div>
+                </div>
             </div>
         </div>
     </ul>

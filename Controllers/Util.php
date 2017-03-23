@@ -137,6 +137,12 @@ class Util{
    		header('Location: ' . $url, true, $statusCode);
    		die();
 	}
+
+	//Functie gebruikt van: http://stackoverflow.com/a/6472227
+	function compare_objects($obj_a, $obj_b) {
+		return $obj_a->id - $obj_b->id;
+	}
+
 }
 
 ?>
