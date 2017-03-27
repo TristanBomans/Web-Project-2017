@@ -6,14 +6,14 @@
  * Date: 23/03/2017
  * Time: 0:20
  */
-include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
+include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
 if(!(isset($_SESSION)) ){
     session_start();
 }
 
 if ($_SESSION['winkelmandje'] == null) 
 {
-    header("location: ". URL."/Views");
+    header("location: ". URL."/");
 }
 
 
@@ -22,14 +22,14 @@ if ($_SESSION['winkelmandje'] == null)
 <!doctype HTML>
 <html lang="nl">
 <head>
-    <title>Payement</title>
+    <title>Payment</title>
     <?php include("partials/includes.php"); ?>
 </head>
 <body class="container-fluid">
 
 <?php include("partials/navbar.php"); ?>
 
-<form action="../Views/payement.php" method="post">
+<form action="../Views/payment.php" method="post">
     <div>
         <p>Betaalmethode: </p>
         <div class="clearfix">
@@ -67,7 +67,7 @@ if ($_SESSION['winkelmandje'] == null)
 
 
     </div>
-    <input type="submit" id="submit-btn-payement" />
+    <input type="submit" class="submit-btn-payment" />
     <input type="hidden" name="payementinfo" value="true">
 </form>
 
@@ -78,6 +78,7 @@ if(isset($_POST['payementinfo'])){
     MainDAO::addBestelling($bestelling);
 
     $laatsteId = MainDAO::getAllBestellingen();
+    
     $laatsteId= $laatsteId[sizeof($laatsteId)-1]->id;
     foreach($_SESSION['winkelmandje'] as $wm){
         $tempBI = new BestelinhoudEntity(-1 , $laatsteId, $wm->id);
@@ -92,7 +93,7 @@ if(isset($_POST['payementinfo'])){
 
     if($_POST['betaalmethode'] == "paypal")
     {
-        echo"<a id='submit-btn-payement' href='https://www.paypal.com/us/home'>Betaling voltooien</a>";
+        echo"<a class='submit-btn-payment' href='https://www.paypal.com/us/home'>Betaling voltooien</a>";
     }
 
 }?>

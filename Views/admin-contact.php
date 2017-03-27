@@ -1,5 +1,5 @@
 <?php 
- include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
+ include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
 
 	if(!(isset($_SESSION)) ){
 		session_start();
@@ -9,11 +9,11 @@
 	{
 		if( $_SESSION['user']->authority != 1)
 		{
-			Util::redirect("http://localhost/Web-Project-2017/Views/");
+			Util::redirect("/Views/");
 		} 
 	}
 	else{
-		Util::redirect("http://localhost/Web-Project-2017/Views/");
+		Util::redirect("/Views/");
 	}
 ?>
 <!doctype HTML>
@@ -35,7 +35,7 @@
 			echo "<div id='bestellingen-content' class='clearfix'>";
 
 			foreach ($berichten as $bericht) {
-				echo "<a href='http://localhost/Web-Project-2017/Views/admin-contact.php?viewMess=".$bericht->id."'><div class='bestelling-lineitem clearfix' title='Bekijk bericht'>";
+				echo "<a href='admin-contact?viewMess=".$bericht->id."'><div class='bestelling-lineitem clearfix' title='Bekijk bericht'>";
 				echo "<div class='bestelling-titel'>Bericht</div>";
 				echo "<div class='bestelling-datum'>".date("d-m-Y",strtotime($bericht->datum))."</div>";
 				echo "<div class='bestelling-username'>".$bericht->username."</div>";
@@ -58,7 +58,7 @@
 	
 			echo "<div id='pop-up-bestelling-parent'>";
 			echo "<div id='pop-up-bestelling-content'>";		
-			echo "<div id='pop-up-bestelling-banner'>".$reqBericht->username.": ".date("d-m-Y",strtotime($reqBericht->datum))."<a href='http://localhost/Web-Project-2017/Views/admin-contact.php'><div id='exit-icon-admin'></div></a></div>";
+			echo "<div id='pop-up-bestelling-banner'>".$reqBericht->username.": ".date("d-m-Y",strtotime($reqBericht->datum))."<a href='admin-contact'><div id='exit-icon-admin'></div></a></div>";
 
 
 			echo "<div id='contact-content'>

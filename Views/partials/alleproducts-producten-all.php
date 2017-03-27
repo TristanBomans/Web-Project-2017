@@ -1,11 +1,14 @@
 <?php
     require_once "../Controllers/LogicController.php";
 
-    if(!isset($_SESSION['filterData'])){
+    if (!($_SERVER['HTTP_REFERER'] == $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["SERVER_NAME"]."/Views/allproducts")) {
+       $_SESSION['selectedCats'] = null;
+    }
+    if(!isset($_SESSION['selectedCats'])){
         $producten = LogicController::getAlleProducten();
     }
     else{
-        $producten = $_SESSION['filterData'];
+        $producten = $_SESSION['selectedCats'];
     }
     
     $html = "";
@@ -36,4 +39,7 @@
          . "</div>";
      }
      echo $html;
+
+
+     // var_dump($_SERVER);
  ?>

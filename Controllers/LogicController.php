@@ -4,10 +4,13 @@
  // require_once ("../Entities/UserEntity.php");      
  // require_once ("../Models/MainDAO.php");       
  // require_once ("../Controllers/Util.php");
-    include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
+    include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
 
 //DEFINEN NIET NODIG -> AL IN REQUEST CONTROLLER GEDAAN
 
+if(!(isset($_SESSION)) ){
+    session_start();
+}
 
 
 class LogicController
@@ -28,11 +31,6 @@ class LogicController
 		return $product;	
 	}
 
-	// static function getDetailPage()
-	// {
-	// 	$url = "location: ".URL."detail.php?opgevraagdProduct=".$_GET['opgevraagdProduct'];
- //    	header($url);
-	// }
 
 	static function registerUser()
 	{
@@ -42,7 +40,7 @@ class LogicController
         MainDAO::addUser($toAddUser);
         $_SESSION['user'] = $toAddUser;
 
-        $url = "location: ".URL."index.php";
+        $url = "location: ".URL;
         header($url);
         die();
 	}
@@ -73,7 +71,7 @@ class LogicController
             {
                  echo "password false";
                  $_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
-                 $url = "location: ".URL."login.php";
+                 $url = "location: ".URL."Views/login";
                  header($url);
                  die();
             }
@@ -82,7 +80,7 @@ class LogicController
         {
             echo "user not found";
             $_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
-            $url = "location: ".URL."login.php";
+            $url = "location: ".URL."Views/login";
             header($url);
         	die();
         }
@@ -93,9 +91,9 @@ class LogicController
 		$methode = $_POST['sortMethode'];
     	$teSorteren = explode("-", $methode)[0];
     	$directie =  explode("-",$methode)[1];
-    	if (isset($_SESSION['filterData'])) 
+    	if (isset($_SESSION['selectedCats'])) 
     	{
-    	    $alleProducten = $_SESSION['filterData'];
+    	    $alleProducten = $_SESSION['selectedCats'];
     	}
     	else
     	{

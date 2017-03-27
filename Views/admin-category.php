@@ -1,5 +1,5 @@
 <?php 
- include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
+ include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
 
 	if(!(isset($_SESSION)) ){
 		session_start();
@@ -9,11 +9,11 @@
 	{
 		if( $_SESSION['user']->authority != 1)
 		{
-			Util::redirect("http://localhost/Web-Project-2017/Views/");
+			Util::redirect("/Views/");
 		} 
 	}
 	else{
-		Util::redirect("http://localhost/Web-Project-2017/Views/");
+		Util::redirect("/Views/");
 	}
 ?>
 <!doctype HTML>
@@ -31,11 +31,11 @@
 				<div id='selecteer-item-titel'><h1>Categorieën:</h1></div>
 				
 					<?php 
-						echo "<a href='http://localhost/Web-Project-2017/Views/admin-category?newCat=#'><div id='add-item-icon'></div>";
+						echo "<a href='/Views/admin-category.php?newCat=#'><div id='add-item-icon'></div>";
 					
 						$allCategorieën = LogicController:: getAllCategorien();
 						foreach ($allCategorieën as $categorie) {
-							echo "<a class='a-admin-edit' href='http://localhost/Web-Project-2017/Views/admin-category?editCat=".$categorie->naam."'><div title='Bewerk dit product'class='admin-edit-lineitem'>".$categorie->naam."</div></a>";	
+							echo "<a class='a-admin-edit' href='/Views/admin-category?editCat=".$categorie->naam."'><div title='Bewerk dit product'class='admin-edit-lineitem'>".$categorie->naam."</div></a>";	
 						}
 					?> 
 				</div>	
@@ -49,7 +49,7 @@
 
 			echo "<div id='admin-parent-edit-selected-product'>";
 			echo "<div id='admin-edit-selected-product'>";
-			echo "<div id='banner-popup-admin'>".$_GET['editCat']."<a href='http://localhost/Web-Project-2017/Views/admin-category'><div id='exit-icon-admin'></div></a></div>";
+			echo "<div id='banner-popup-admin'>".$_GET['editCat']."<a href='/Views/admin-category'><div id='exit-icon-admin'></div></a></div>";
 
 			echo "<div id='pop-up-content'>";
 			echo "<form action='../Controllers/RequestController.php' method='POST'>";
@@ -71,7 +71,7 @@
 		<?php if (isset($_GET['newCat'])) {
 					echo "<div id='admin-parent-edit-selected-product'>";
 			echo "<div id='admin-edit-selected-product'>";
-			echo "<div id='banner-popup-admin'>Nieuwe Categorie<a href='http://localhost/Web-Project-2017/Views/admin-category'><div id='exit-icon-admin'></div></a></div>";
+			echo "<div id='banner-popup-admin'>Nieuwe Categorie<a href='/Views/admin-category.'><div id='exit-icon-admin'></div></a></div>";
 
 			echo "<div id='pop-up-content'>";
 			echo "<form action='../Controllers/RequestController.php' method='POST'>";

@@ -1,5 +1,5 @@
 <?php
-	require_once "../Controllers/LogicController.php";
+    include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; 
 
     $Tproducten = LogicController::getAlleUitgelichteProducten();
     $html = "";
@@ -24,10 +24,10 @@
          . "<h3>".$producten[$i]->naam."</h3>"
          . "<div class='wrapper-date-cat'><b>".date("d-m-Y",strtotime($producten[$i]->datum_toegevoegd))."</b>"
          . "<b class='thumb-categorie'>".$producten[$i]->cat_naam."</b></div>"
-         . "<a value='Detail' class='btn btn-default btn-lg btn-detail' href='".URL."Views/detail?opgevraagdProduct=".$producten[$i]->id."'>Detail</a>"
+         . "<a value='Detail' class='btn btn-default btn-lg btn-detail' href='/Views/detail?opgevraagdProduct=".$producten[$i]->id."'>Detail</a>"
          . "</div>"   
          . "</div>"
-         . "<form action='../Controllers/RequestController.php' method='POST'>"
+         . "<form action='/Controllers/RequestController.php' method='POST'>"
          . "<input type='hidden' name='toAddProduct' value='".$producten[$i]->id."'>"
          . "<input type='submit' value='' class='winkelwagen-btn winkelwagen-add' title='Voeg toe aan winkelmandje'>";
         if ($producten[$i]->avg_rating != 0) {

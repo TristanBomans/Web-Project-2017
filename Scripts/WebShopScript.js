@@ -19,7 +19,7 @@ $(function(){
 		console.log("Clicked on: " + attrClicked);
 		$.ajax({
 			type: "POST",
-			url: "http://localhost/Web-Project-2017/Controllers/RequestController.php",
+			url: "../Controllers/RequestController.php",
 			data: {'sortMethode' : attrClicked},
 			dataType: "JSON",
 			success: function(data){
@@ -35,7 +35,7 @@ $(function(){
 			        + "<h3>" + data[i].naam + "</h3>"
 			        + "<div class='wrapper-date-cat'><b>" + data[i].datum_toegevoegd + "</b>"
 			        + "<b class='thumb-categorie'>" + data[i].cat_naam + "</b></div>"        
-			        + "<a value='Detail' class='btn btn-default btn-lg btn-detail' href='http:/Web-Project-2017/Views/detail?opgevraagdProduct="+ data[i].id + "'>Detail</a>"
+			        + "<a value='Detail' class='btn btn-default btn-lg btn-detail' href='/Views/detail?opgevraagdProduct="+ data[i].id + "'>Detail</a>"
 			        + "</div>"   
 			        + "</div>"
 			        + "<form action='../Controllers/RequestController.php' method='POST'>"

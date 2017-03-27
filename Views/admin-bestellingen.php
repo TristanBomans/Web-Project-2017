@@ -1,10 +1,5 @@
 <?php 
-	// require_once "../Controllers/Util.php";
-	// require_once "../Controllers/LogicController.php";
-	// require_once "../Entities/UserEntity.php";
-	// require_once ("../Models/MainDAO.php");
-	// require_once ("../Entities/ProductEntity.php");
- include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
+ include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
 
 	if(!(isset($_SESSION)) ){
 		session_start();
@@ -14,11 +9,11 @@
 	{
 		if( $_SESSION['user']->authority != 1)
 		{
-			Util::redirect("http://localhost/Web-Project-2017/Views/");
+			Util::redirect("/Views/");
 		} 
 	}
 	else{
-		Util::redirect("http://localhost/Web-Project-2017/Views/");
+		Util::redirect("/Views/");
 	}
 ?>
 <!doctype HTML>
@@ -39,7 +34,7 @@
 			echo "<div id='bestellingen-content' class='clearfix'>";
 			foreach ($bestelMetInh as $BMI) {
 				$best = MainDAO::getBestelling($BMI[0]->bestelling_id);
-				echo "<a href='http://localhost/Web-Project-2017/Views/admin-bestellingen.php?viewBest=".$BMI[0]->bestelling_id."'><div class='bestelling-lineitem clearfix' title='Bekijk bestelling'>";
+				echo "<a href='admin-bestellingen.php?viewBest=".$BMI[0]->bestelling_id."'><div class='bestelling-lineitem clearfix' title='Bekijk bestelling'>";
 				echo "<div class='bestelling-titel'>Bestelling</div>";
 				echo "<div class='bestelling-datum'>".date("d-m-Y",strtotime($best->datum))."</div>";
 				echo "<div class='bestelling-username'>".$best->username."</div>";
@@ -56,7 +51,7 @@
 			$total = 0;
 			echo "<div id='pop-up-bestelling-parent'>";
 			echo "<div id='pop-up-bestelling-content'>";		
-			echo "<div id='pop-up-bestelling-banner'>".$reqBest->username.": ".date("d-m-Y",strtotime($reqBest->datum))."<a href='http://localhost/Web-Project-2017/Views/admin-bestellingen.php'><div id='exit-icon-admin'></div></a></div>";
+			echo "<div id='pop-up-bestelling-banner'>".$reqBest->username.": ".date("d-m-Y",strtotime($reqBest->datum))."<a href='admin-bestellingen.php'><div id='exit-icon-admin'></div></a></div>";
 			echo "<div id='pop-up-content-bestelling'>";
 
 

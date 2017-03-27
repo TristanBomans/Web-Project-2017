@@ -2,7 +2,7 @@
     
     if(!isset($_SESSION['user']))
     {
-        header("location: http://localhost/Web-Project-2017/Views/index.php");
+        header("location: /");
     }
     echo "<h1>".$_SESSION['user']->username."</h1>";
     echo "<p>Naam: ".$_SESSION['user']->naam."</p>";

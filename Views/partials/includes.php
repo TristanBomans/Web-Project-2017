@@ -7,8 +7,8 @@
 <!--Eigen Styles & Scripts-->
 <!-- <script src='../Scripts/WebShopScript.js'></script>
  -->
-<?php echo "<script src='".URL."Scripts/WebShopScript.js'></script>"; ?>
-<?php echo "<link rel='stylesheet' href='".URL."Stylesheets/WebShop.css'>"; ?>
+<?php echo "<script src='../Scripts/WebShopScript.js'></script>"; ?>
+<?php echo "<link rel='stylesheet' href='../Stylesheets/WebShop.css'>"; ?>
 
 
             

@@ -1,13 +1,8 @@
 <?php
 
 // GLOBAL REQUIREMENTS      
- // require_once ("../Entities/ProductEntity.php");       
- // require_once ("../Entities/ReviewEntity.php");        
- // require_once ("../Entities/UserEntity.php");      
- // require_once ("../Models/MainDAO.php");       
- // require_once ("../Controllers/Util.php");
- // require_once ("../Controllers/LogicController.php");
- include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
+
+ include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
  
 if(!(isset($_SESSION)) ){
     session_start();
@@ -44,7 +39,7 @@ var_dump($product);
  
     
     LogicController::addDBNewProd($product);
-    header("location: http://localhost/Web-Project-2017/Views/admin-product.php");
+    header("location: /Views/admin-product");
 }
 
 
@@ -95,7 +90,7 @@ if (isset($_POST['typeRequest']))
 if (isset($_GET['action'])){
     if ($_GET['action'] == "logout") {
         unset($_SESSION['user']);
-        if(prevURL == "location: http://localhost/Web-Project-2017/Views/admin.php"){
+        if(prevURL == "location: /Views/admin"){
             var_dump(prevURL);
             header("location: ".URL);
             die();
@@ -109,6 +104,8 @@ if (isset($_GET['action'])){
 
 if (isset($_POST['sortMethode']))
 {
+
+
     $objectArray = LogicController::sortAllProducts();
 
     $array = Util::productObjectToArray($objectArray);
@@ -116,6 +113,7 @@ if (isset($_POST['sortMethode']))
     for ($i=0; $i < sizeof($array); $i++) { 
         $array[$i]['datum_toegevoegd'] = date("d-m-Y",strtotime($array[$i]['datum_toegevoegd']));
     }
+
 
     echo json_encode(Util::utf8ize($array));
 }
@@ -130,8 +128,10 @@ if (isset($_POST['Filteren']))
    
     $selectedCats = LogicController::getSelectedCats();
     $filteredData = LogicController::makeFilteredArray($selectedCats);
-    
-    $_SESSION['filterData'] = $filteredData;
+
+    $_SESSION['selectedCats'] = $filteredData;
+ 
+
     header(prevURL);
     die();
 }
@@ -160,7 +160,7 @@ if (isset($_POST['contactSend'])) {
     $dt = new DateTime("now", new DateTimeZone("Europe/berlin"));
     $toAddContact = new ContactEntity(-1, $_SESSION['user']->username, $_POST['subject'], $_POST['message'],$dt->format("Y-m-d H:i:s"));
     MainDAO::addContactMessage($toAddContact);
-    header("location: ".URL."Views");
+    header("location: ".URL);
 }
 
 if (isset($_POST['editCat'])) {
@@ -175,5 +175,8 @@ if (isset($_POST['newCat'])) {
     header("location: ".URL."Views/admin-category");
 }
 
-
+if (isset($_GET['debugging'])) {
+    // session_start();
+    var_dump($_SESSION);
+}
 ?>

@@ -1,6 +1,6 @@
 <?php
 //GLOBAL REQUIREMENTS
- include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
+ include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
 
 
 
@@ -8,7 +8,7 @@ class MainDAO {
     // PRODUCT
     static function getProduct($id) 
     {
-        require "../Credentials.php";
+        require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM producten where id='$id'");
         $product = null;
@@ -35,7 +35,7 @@ class MainDAO {
 
     static function getAllProducts() 
     {
-        require "../Credentials.php";
+        require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM producten");
         $product = null;
@@ -63,7 +63,7 @@ class MainDAO {
 
     static function getAllUitgelichte() 
     {
-        require "../Credentials.php";
+        require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM producten where uitgelicht = 1");
         $product = null;
@@ -91,7 +91,7 @@ class MainDAO {
 
      static function getAllByCat($cat) 
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM producten where cat_naam = '$cat'");
         $product = null;
@@ -119,7 +119,7 @@ class MainDAO {
 
     static function addProduct($toAddProduct)
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("INSERT INTO producten (cat_naam, naam, prijs, beschrijving, datum_toegevoegd, img_path) VALUES ('$toAddProduct->cat_naam', '$toAddProduct->naam', '$toAddProduct->prijs', '$toAddProduct->beschrijving', '$toAddProduct->datum_toegevoegd', '$toAddProduct->img_path')");
         if(!($result)) die(mysqli_error($mysqli));
@@ -128,7 +128,7 @@ class MainDAO {
 
     static function updateProduct($toUpdateProduct)
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("UPDATE producten SET cat_naam = '$toUpdateProduct->cat_naam' , naam = '$toUpdateProduct->naam', prijs = '$toUpdateProduct->prijs', beschrijving = '$toUpdateProduct->beschrijving', datum_toegevoegd = '$toUpdateProduct->datum_toegevoegd', img_path = '$toUpdateProduct->img_path', avg_rating = '$toUpdateProduct->avg_rating', numb_ratings = '$toUpdateProduct->numb_ratings'  where id = '$toUpdateProduct->id';");
         if(!($result)) die(mysqli_error($mysqli));
@@ -140,7 +140,7 @@ class MainDAO {
 
     static function addUser($toAddUser)
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("INSERT INTO users (username, password, naam, voornaam, authority, emailadres) VALUES ('$toAddUser->username', '$toAddUser->password', '$toAddUser->naam', '$toAddUser->voornaam', '$toAddUser->authority', '$toAddUser->emailadres')");
         if(!($result)) die(mysqli_error($mysqli));
@@ -149,7 +149,7 @@ class MainDAO {
 
     static function getUser($username) 
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM users where username='$username'");
         $user = null;
@@ -173,7 +173,7 @@ class MainDAO {
 
     static function addReview($toAddReview)
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $product = MainDAO::getProduct($toAddReview->product_id);
         
@@ -192,7 +192,7 @@ class MainDAO {
 
      static function getAllReviewForProduct($id) 
     {
-     require "../Credentials.php";
+     require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM reviews where product_id = '$id'");
         $review = null;
@@ -218,7 +218,7 @@ class MainDAO {
 
   static function getAllCategorien() 
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM categorie");
         $categorie = null;
@@ -237,7 +237,7 @@ class MainDAO {
 
     static function addCategory($toCategory)
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("INSERT INTO categorie (naam) VALUES ('$toCategory->naam')");
         if(!($result)) die(mysqli_error($mysqli));
@@ -246,7 +246,7 @@ class MainDAO {
 
     static function updateCategorie($toUpdateCategorie, $oldName)
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("UPDATE categorie SET naam = '$toUpdateCategorie->naam' where naam = '$oldName';");
         if(!($result)) die(mysqli_error($mysqli));
@@ -258,12 +258,11 @@ class MainDAO {
 
     static function getAllBestellingen() 
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("SELECT * FROM Bestellingen");
+        $result = $mysqli->query("SELECT * FROM bestellingen");
         $bestelling = null;
         $BestellingenArray =  [];
-
         while ($row = mysqli_fetch_array($result)) {
             $id = $row[0];
             $username = $row[1];
@@ -286,9 +285,9 @@ class MainDAO {
 
     static function getBestelling($id) 
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("SELECT * FROM Bestellingen where id = $id");
+        $result = $mysqli->query("SELECT * FROM bestellingen where id = $id");
         $bestelling = null;
         $BestellingenArray =  [];
 
@@ -313,7 +312,7 @@ class MainDAO {
 
      static function getBestellingInhoudBestelling($id) 
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM bestelinhoud where bestelling_id = $id");
         $bestellingInh = null;
@@ -336,7 +335,7 @@ class MainDAO {
 
     static function addBestelling($toAddBestelling)
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("INSERT INTO bestellingen (username, Factuuradres, Leveradres, Levermethode, betaalmethode, datum ) VALUES ('$toAddBestelling->username', '$toAddBestelling->factuuradres', '$toAddBestelling->leveradres', '$toAddBestelling->levermethode', '$toAddBestelling->betaalmethode', '$toAddBestelling->datum')");
         if(!($result)) die(mysqli_error($mysqli));
@@ -345,7 +344,7 @@ class MainDAO {
 
     static function addBestellingInhoud($toAddBestelInhoud)
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("INSERT INTO bestelinhoud (bestelling_id, product_id) VALUES ('$toAddBestelInhoud->bestelling_id', '$toAddBestelInhoud->product_id')");
         if(!($result)) die(mysqli_error($mysqli));
@@ -356,7 +355,7 @@ class MainDAO {
 
     static function addContactMessage($toAddContact)
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("INSERT INTO contact (username, subject, message, datum) VALUES ('$toAddContact->username', '$toAddContact->subject','$toAddContact->message','$toAddContact->datum')");
         if(!($result)) die(mysqli_error($mysqli));
@@ -365,7 +364,7 @@ class MainDAO {
 
       static function getAllContact() 
     {
-        require "../Credentials.php";
+        require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM contact");
         $Contact = null;

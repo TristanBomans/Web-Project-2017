@@ -287,7 +287,6 @@ _____ ___ _____ _____ _     ____    _    ____
     position: absolute;
     right: 30px;
     top: 10px;
-
     background-image: url("../Resources/rating.png");
     background-size: 50px 50px;
     width: 50px;
@@ -308,7 +307,7 @@ _____ ___ _____ _____ _     ____    _    ____
 
 
 
-.form-btn-detail {
+.form-btn-detail{
     position: absolute;
     top: 0px;
     right: 0px;
@@ -316,14 +315,14 @@ _____ ___ _____ _____ _     ____    _    ____
     height: 100%;
 }
 
-.btn-detail {
+.btn-detail{
     position: absolute;
     top: 65px;
     right: 0px;
     display: none;
 }
 
-.winkelwagen-btn {
+.winkelwagen-btn{
     background-image: url("../Resources/S-cart.png");
     background-size: 35px 35px;
     width: 50px;
@@ -442,7 +441,7 @@ _____ ___ _____ _____ _     ____    _    ____
 |_____\___/ \____|___|_| \_| |_| /_/   \_\____|_____|
                                                      */
 
-.login-p {
+.login-p{
     float: left;
     width: 60%;
 }
@@ -473,7 +472,7 @@ _____ ___ _____ _____ _     ____    _    ____
     transition: all 0.2s ease-in 0s;
 }
 
-.login-line-content-submit-button input:hover {
+.login-line-content-submit-button input:hover{
     background-color: #BA9696;
 }
 
@@ -546,6 +545,7 @@ _____ ___ _____ _____ _     ____    _    ____
     right: 30px;
     color: #921515;
 }
+
 #allproducts-dropdown-sort{
     position: absolute;
     width: 200px;
@@ -721,7 +721,6 @@ _____ ___ _____ _____ _     ____    _    ____
     height: auto;
     max-height: 85%;
     overflow-y: scroll;
-
     background-color: #C6BCBC;
     border-radius: 40px;
     z-index: 100000;
@@ -762,9 +761,6 @@ _____ ___ _____ _____ _     ____    _    ____
     background-image: url("../Resources/exit-icon.png");
     background-size: 40px 40px;
     background-repeat: no-repeat;
-
-
-
 }
 
 #exit-icon-admin:hover {
@@ -847,7 +843,6 @@ _____ ___ _____ _____ _     ____    _    ____
 #add-item-icon:hover {
     filter: invert(50%);
     cursor: pointer;
-
 }
 
 #bestellingen-content{
@@ -973,7 +968,6 @@ _____ ___ _____ _____ _     ____    _    ____
 }
 
 #full-winkelmandje-content {
-
     width: 70%;
     margin: auto;
     background-color: #E7E3E3;
@@ -988,7 +982,6 @@ _____ ___ _____ _____ _     ____    _    ____
     margin: 0px !important;
     margin-bottom: 10px;
     width: 100%;
-
 }
 
 .full-winkelmandje-content-naam{
@@ -1001,8 +994,6 @@ _____ ___ _____ _____ _     ____    _    ____
     float: right;
     text-align: right;
     font-weight: bold;
-
-
 }
 
 .full-winkelmandje-content-besch{
@@ -1011,7 +1002,6 @@ _____ ___ _____ _____ _     ____    _    ____
     font-size: 10px;
     text-align: justify;
     margin-top: 3px;
-
 }
 
 
@@ -1043,7 +1033,6 @@ _____ ___ _____ _____ _     ____    _    ____
 .exit-icon-fw:hover { 
     filter: invert(80%);
     cursor: pointer;
-
 }
 
 #full-winkelmandje-afreken-icon{
@@ -1149,10 +1138,9 @@ _____ ___ _____ _____ _     ____    _    ____
     /*background-color: red;*/
     margin-left: 20px;
     margin-top: -10px;
-
 }
 
-#submit-btn-payement{
+.submit-btn-payment{
     margin-top: 15px;
     display: block;
     border: none;
@@ -1163,7 +1151,7 @@ _____ ___ _____ _____ _     ____    _    ____
     padding: 7px;
     transition: all 0.2s ease-in 0s;
 }
-#submit-btn-payement,#contact-submit:hover {
+.submit-btn-payment,#contact-submit:hover {
     background-color: #BA9696;
     cursor: pointer;
 }
@@ -1245,13 +1233,55 @@ _____ ___ _____ _____ _     ____    _    ____
     color: #6F0101;
 }
 
+.footericons{
+    filter: drop-shadow( 0px 5px 3px rgba(0,0,0,0.75));
+
+    margin: 10px;
+    background-repeat: no-repeat;
+    background-position: center; 
+    float: left;
+}
+
+#global-secure{  
+    background-image: url("../Resources/secureglobal.png");
+    width: 90px;
+    height: 35px;
+    background-size: 90px 35px;
+}
 
 
+#commerce{
+    background-image: url("../Resources/ecommerce.png");
+    width: 45px;
+    height: 35px;
+    background-size: 45px 35px;
+
+}
 
 
+#safeonweb{
+    background-image: url("../Resources/safeonweb.png");
+    width: 130px;
+    height: 35px;
+    background-size: 130px 35px;
+    filter: drop-shadow( 0px 0px 0px rgba(0,0,0,0.75));;
+      /*filter: contrast(50%);*/
+}
 
+#footertext{
+    display: block;
+    line-height: 50px;
+    height: 100%;
+    float: left;
+    margin-left: 20%;
+}
 
+#icons-footer{
+    width: 30%;
+    float: left;
+}
 
-
-
-
+#footertext-cont{
+    width: 70%;
+    float: left;
+}

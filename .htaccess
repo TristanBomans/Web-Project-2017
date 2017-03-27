@@ -1,5 +1,5 @@
 
-ErrorDocument 404 http://localhost/Web-Project-2017/404
+ErrorDocument 404 https://tristanb.tk/404
 
 RewriteEngine on
 
@@ -9,4 +9,4 @@ RewriteRule ^(.*)$ $1.php
 
 Options All -Indexes
 
-Redirect 301 http://localhost/Web-Project-2017/  http://localhost/Web-Project-2017/Views/ 
+

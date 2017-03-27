@@ -1,4 +1,4 @@
-<?php include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; ?>
 <!doctype HTML>
 <html lang="nl">
 	<head>
@@ -31,7 +31,7 @@
 		
 			if ($_SESSION['winkelmandje'] != null) 
 			{
-				echo "<a href='payement.php'><div id='full-winkelmandje-afreken-icon' title='Afrekenen'></div></a>";
+				echo "<a href='payment.php'><div id='full-winkelmandje-afreken-icon' title='Afrekenen'></div></a>";
 			}
 			 
 			?>

@@ -29,7 +29,7 @@ require_once "../Controllers/Util.php";
          . "<h3>".$productt->naam."</h3>"
          . "<div class='wrapper-date-cat'><b>".$productt->datum_toegevoegd."</b>"
          . "<b class='thumb-categorie'>".$productt->cat_naam."</b></div>"
-         . "<a value='Detail' class='btn btn-default btn-lg btn-detail' href='".URL."Views/detail?opgevraagdProduct=".$productt->id."'>Detail</a>"
+         . "<a value='Detail' class='btn btn-default btn-lg btn-detail' href='detail.php?opgevraagdProduct=".$productt->id."'>Detail</a>"
          . "</div>"   
          . "</div>"
          . "<form action='../Controllers/RequestController.php' method='POST'>"

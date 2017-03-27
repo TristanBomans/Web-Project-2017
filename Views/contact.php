@@ -1,7 +1,7 @@
- <?php include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php"; 
+ <?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; 
 if (!(isset($_SESSION['user']))) 
 	{
-		Util::redirect("http://localhost/Web-Project-2017/Views/");	
+		Util::redirect("/");	
 	}
  ?>
 <!doctype HTML>

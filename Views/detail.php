@@ -1,6 +1,6 @@
 <?php 
-include $_SERVER['DOCUMENT_ROOT']."/Web-Project-2017/namespaces.php";
-// require_once "../Controllers/LogicController.php";
+include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
+
 if(!(isset($_SESSION)) ){
 	session_start();
 }
