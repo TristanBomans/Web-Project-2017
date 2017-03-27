@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 /*     ___       __        _______  _______ .___  ___.  _______  _______ .__   __.
     /   \     |  |      /  _____||   ____||   \/   | |   ____||   ____||  \ |  |
@@ -5,6 +6,10 @@
   /  /_\  \   |  |     |  | |_ | |   __|  |  |\/|  | |   __|  |   __|  |  . `  |
  /  _____  \  |  `----.|  |__| | |  |____ |  |  |  | |  |____ |  |____ |  |\   |
 /__/     \__\ |_______| \______| |_______||__|  |__| |_______||_______||__| \__|*/
+
+body{
+  font-family: 'open sans';  
+}
 
 
 *:focus {
@@ -33,6 +38,9 @@ textarea {
     resize: none;
 }
 
+
+
+
 /* 
 _____ ___ _____ _____ _     ____    _    ____  
 |_   _|_ _|_   _| ____| |   | __ )  / \  |  _ \ 
@@ -48,7 +56,8 @@ _____ ___ _____ _____ _     ____    _    ____
     display: block;
     width: 100%;
     margin-bottom: 15px;
-    border-radius: 10px;
+    border-radius: 4px;
+
 }
 
 #titelbar-tekst {
@@ -57,7 +66,9 @@ _____ ___ _____ _____ _     ____    _    ____
     padding: 5px;
     background-color: #881010;
     box-sizing: border-box;
-    font-size: 40px;
+    font-size: 45px;
+    font-weight: bolder;
+    color: #330F0F;
 }
 
 /* 
@@ -378,6 +389,7 @@ _____ ___ _____ _____ _     ____    _    ____
 
 #detailwrap { 
     width: 70vw;
+    max-width: 600px;
     margin: auto; 
 }
 
@@ -391,9 +403,9 @@ _____ ___ _____ _____ _     ____    _    ____
     padding-top: 10px;
     margin: auto;
     margin-top: 3vh;
-    margin-bottom: 30px;
-    border-radius: 40px;
-    border: 1px solid black;
+    /*margin-bottom: 30px;*/
+    border-radius: 10px;
+    border: 1px solid #CFC8C8;
 }
 
 .review-comment {
@@ -413,9 +425,9 @@ _____ ___ _____ _____ _     ____    _    ____
 }
 
 .review-line-item {
-    border: 1px solid grey;  
+    border: 1px solid #E4E1E1;  
     padding: 5px 15px 5px 15px; 
-    border-radius: 20px;    
+    border-radius: 10px;    
     margin: auto;
     margin-bottom: 10px;
     overflow: hidden;
@@ -425,12 +437,18 @@ _____ ___ _____ _____ _     ____    _    ____
     width: 40vw;
     margin: auto;
     height: auto;
-    margin-bottom: 90px;
+    margin-bottom: 20px;
 }
 
 #disabled-rating:hover{
     background-color: red;
     color: white;
+}
+
+#vergelijkbare-producten{
+    width: 80vw;
+    margin: auto;
+    margin-bottom: 90px;
 }
 
 /*
@@ -685,8 +703,9 @@ _____ ___ _____ _____ _     ____    _    ____
     position: relative;
     margin: auto;
     width: 60%;
-    border: 1px solid #AA1717;
+    border: 1px solid #E4E1E1;
     margin-top: 60px;
+    border-radius: 10px;
 }
 .admin-edit-lineitem:hover{   
     cursor: pointer;
@@ -827,6 +846,21 @@ _____ ___ _____ _____ _     ____    _    ____
     width: 150px;
     margin: auto;
     display: block;
+
+    margin-top: 15px;
+   
+    border: none;
+    background-color: #DBD6D6;
+    width: 150px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 15px;
+    transition: all 0.2s ease-in 0s;
+}
+
+#pop-up-sumbit:hover{
+    background-color: #BA9696;
+    color: #D6C1C1;
 }
 
 #add-item-icon {
@@ -1224,13 +1258,14 @@ _____ ___ _____ _____ _     ____    _    ____
 #footer {
     background-color: #921515;
     text-align: center;
-    border-radius: 15px 15px 0 0;
+    border-radius: 5px 5px 0 0;
     width: calc(100% - 30px);
     padding: 5px;
     bottom: 0px;
     position: fixed;
     margin: auto;
     color: #6F0101;
+    color: #4A2F2F;
 }
 
 .footericons{
@@ -1239,7 +1274,7 @@ _____ ___ _____ _____ _     ____    _    ____
     margin: 10px;
     background-repeat: no-repeat;
     background-position: center; 
-    float: left;
+   
 }
 
 #global-secure{  
@@ -1247,6 +1282,7 @@ _____ ___ _____ _____ _     ____    _    ____
     width: 90px;
     height: 35px;
     background-size: 90px 35px;
+     float: left;
 }
 
 
@@ -1255,7 +1291,7 @@ _____ ___ _____ _____ _     ____    _    ____
     width: 45px;
     height: 35px;
     background-size: 45px 35px;
-
+     float: left;
 }
 
 
@@ -1266,6 +1302,7 @@ _____ ___ _____ _____ _     ____    _    ____
     background-size: 130px 35px;
     filter: drop-shadow( 0px 0px 0px rgba(0,0,0,0.75));;
       /*filter: contrast(50%);*/
+    float: left;
 }
 
 #footertext{
@@ -1284,4 +1321,54 @@ _____ ___ _____ _____ _     ____    _    ____
 #footertext-cont{
     width: 70%;
     float: left;
+}
+#git-footer{
+    background-image: url("../Resources/git.png");
+    width: 130px;
+    height: 35px;
+    background-size: 130px 45px;
+    float: right;
+}
+
+#git-footer:hover{
+    filter: invert(100%);
+    cursor: pointer;
+}
+
+#profilewrap{
+    width: 70vw;
+    max-width: 600px;
+    margin: auto;
+    border: 1px solid #E4E1E1;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.profile-label{
+ float: left;
+ height: 35px;
+ line-height: 35px;
+}
+
+.profile-lineitem{
+    width: 100%;
+}
+
+.edit-icon-profile{
+    background-image: url("../Resources/edit.png");
+    width: 35px;
+    height: 35px;
+    background-size: 35px 35px;
+    background-repeat: no-repeat;
+    float: right;
+    top: -5px;
+}
+
+.edit-icon-profile:hover{
+    filter: invert(75%);
+    cursor: pointer;
+}
+
+#profile-h1{
+    margin-top: 0px;
 }

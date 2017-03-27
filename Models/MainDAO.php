@@ -138,6 +138,14 @@ class MainDAO {
 
     // USERS
 
+    static function updateUser($toUpdateUser)
+    {
+        require "../credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("UPDATE users SET username = '$toUpdateUser->username', password = '$toUpdateUser->password', naam = '$toUpdateUser->naam', voornaam = '$toUpdateUser->voornaam', authority = '$toUpdateUser->authority', emailadres = '$toUpdateUser->emailadres' where username = '$toUpdateUser->username';");
+        if(!($result)) die(mysqli_error($mysqli));
+        mysqli_close($mysqli);
+    }
     static function addUser($toAddUser)
     {
         require "../credentials.php";

@@ -7,14 +7,15 @@
 	</div>
 	<div id="footertext-cont">
 		<div id="footertext" class="">All Rights Reserved By Tristan Bomans &copy; </div>
+		<a href="https://github.com/TristanBomans"><div class="footericons" id="git-footer"></div></a>
 	</div>
 </div>
 
 <?php 
-if (isset($_SERVER['HTTP_REFERER'])) {
-	if (!($_SERVER['HTTP_REFERER'] == "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']))
-	{
-		unset($_SESSION['filterData']); 
-	}
-}
+// if (isset($_SERVER['HTTP_REFERER'])) {
+// 	if (!($_SERVER['HTTP_REFERER'] ==  $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["SERVER_NAME"].$_SERVER['REQUEST_URI']))
+// 	{
+// 		unset($_SESSION['filterData']); 
+// 	}
+// }
 ?>

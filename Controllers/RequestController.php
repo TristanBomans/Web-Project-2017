@@ -179,4 +179,24 @@ if (isset($_GET['debugging'])) {
     // session_start();
     var_dump($_SESSION);
 }
+
+if (isset($_POST['editUserData'])) {
+    $user = $_SESSION['user'];
+    switch ($_POST['editUserData']) {
+        case 'naam':
+            $user->naam = $_POST['toEditUserdata'];
+            break;
+       case 'voornaam':
+            $user->voornaam = $_POST['toEditUserdata'];
+            break;
+        case 'emailadres':
+            $user->emailadres = $_POST['toEditUserdata'];
+            break;
+        default:
+            break;
+    }
+
+    MainDAO::updateUser($user);
+    header("location: /Views/profile");
+}
 ?>

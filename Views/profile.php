@@ -14,13 +14,12 @@ if(!(isset($_SESSION)) ){
 	<body class="container-fluid">
 
  		<?php include("partials/navbar.php"); ?>
-        <div id="detailwrap">
-            <div id="product-detail-wrapper">
-                <div id="text-detail-product">
+        <div id="profilewrap" class="clearfix">
+            
+                <div id="text-detail-product" class="clearfix">
                   <?php include("partials/profile-user-data.php"); ?>               
                 </div>	
                 
-            </div>
         </div>
         <?php include("partials/footer.php"); ?>
 	</body>

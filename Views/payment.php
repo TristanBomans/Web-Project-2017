@@ -78,8 +78,8 @@ if(isset($_POST['payementinfo'])){
     MainDAO::addBestelling($bestelling);
 
     $laatsteId = MainDAO::getAllBestellingen();
-    
     $laatsteId= $laatsteId[sizeof($laatsteId)-1]->id;
+
     foreach($_SESSION['winkelmandje'] as $wm){
         $tempBI = new BestelinhoudEntity(-1 , $laatsteId, $wm->id);
         MainDAO::addBestellingInhoud($tempBI);
