@@ -381,8 +381,10 @@ _____ ___ _____ _____ _     ____    _    ____
 }
 
 #detail-img-product {
-    height: 25vw ;
+    
     max-height: 400px;
+    max-width: 600px;
+    width: 100%;
     display: block;
     margin: auto;
 }
@@ -522,9 +524,17 @@ _____ ___ _____ _____ _     ____    _    ____
     font-weight: bold;
     font-size: 18px;
     color: #23D123;
+    float: right;
+    width: 20%;
+    text-align: right;
+    height: 100%;
     position: absolute;
-    right: 0px;
     top: 0px;
+    right: 0px;
+}
+
+#h1-naam-detail{
+    width: 80%;
 }
 
 #text-detail-product{
@@ -533,6 +543,12 @@ _____ ___ _____ _____ _     ____    _    ____
 
 .p-styled-justify{
     text-align: justify;
+}
+
+#prijs-titel-detail{
+    height: auto;
+    width: 100%;
+    display: flex;
 }
 
 /*

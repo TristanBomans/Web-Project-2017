@@ -6,7 +6,7 @@
 	
 	echo "<img src='".$product->img_path."' id='detail-img-product'></img>";
 	echo "<div id='text-detail-product'>";
-	echo "<h1>".$product->naam."</h1>";
+	echo "<h1 id='h1-naam-detail'>".$product->naam."</h1>";
 	echo "<p class='p-styled-justify'>".$product->beschrijving."</p>";
 	echo "<p id=detail-product-prijs> &euro; ".$product->prijs."<p>";
 	echo "<div class='wrapper-date-cat'><b>".$product->datum_toegevoegd."</b></div>";
