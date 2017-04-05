@@ -76,6 +76,9 @@ $(function(){
 
 	        	var html ="€ " + totalPrijs;
 	        	$("#winkelmandje-totalprice").html(html);
+	        	
+	        	var html =" <a id ='winkelmandje-dropdown-meer-detail'  href='/Views/winkelmandje-full'>Meer detail</a>"
+	        	$("#meer-detail-invoeg").html(html);
 	        }
 	    });
 	});

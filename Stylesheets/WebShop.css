@@ -106,10 +106,19 @@ _____ ___ _____ _____ _     ____    _    ____
     right: 0px ;
     transition: all 0.2s ease-in 0s;
 
+   
+
     /*Overriding shit, afblijven*/
     border:none;
     background-color: transparent !important;
 }
+
+
+#winkelmandje-dropdown-content::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
 
 #winkelmandje-dropdown-content {
     padding: 15px;
@@ -126,6 +135,11 @@ _____ ___ _____ _____ _     ____    _    ____
     transition: all 0.2s ease-in 0s;
     overflow-y: scroll;
     display: none;
+
+    max-height: 50vh;
+    overflow: scroll;
+
+
 }
 
 #prijs-totaal-rand{
@@ -148,8 +162,8 @@ _____ ___ _____ _____ _     ____    _    ____
 }
 
 #winkelmandje-dropdown-meer-detail{
-    position: absolute;
-    left: 17px;
+/*    position: absolute;
+    left: 17px;*/
     color: forestgreen;
 
 }
@@ -160,17 +174,18 @@ _____ ___ _____ _____ _     ____    _    ____
 }
 
 .individuele-item-div-dropdown{ /*GAAT OVER LINE ITEM VAN WINKELMANDJE DROPDOWN*/
-    height: 30px;
+    height: auto;
     width: auto;
 }
 
 .prijs-product-dropdown{
-    width: auto;
+    width: 30%;
+    text-align: right;
     float: right;
 }
 
 .naam-product-dropdown {
-    width: auto;
+    width: 70%;
     float: left;
     min-width: 60%;
 }
@@ -499,7 +514,7 @@ _____ ___ _____ _____ _     ____    _    ____
 .login-line-content-submit-button{
     width: 100%;
     height: auto;
-    margin-top: 30px;
+    margin-top: 15px;
     float: left;
 }
 
@@ -1256,6 +1271,56 @@ _____ ___ _____ _____ _     ____    _    ____
     margin-bottom: 20px;
 }
 
+#login-err{
+
+    border: 2px solid #B20505;
+    background-color: #F58D8D;
+    width: 40%;
+    /*height: 30px;*/
+    margin: auto;
+    /*float: left;*/
+    text-align: center;
+    display: block;
+    border-radius: 7px;
+    color: #6A4D4D;
+}
+
+#errloginwrap{
+    margin-top: 10px;
+    float: left;
+    position: relative;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1326,16 +1391,16 @@ _____ ___ _____ _____ _     ____    _    ____
     line-height: 50px;
     height: 100%;
     float: left;
-    margin-left: 20%;
+    /*margin-left: 20%;*/
 }
 
 #icons-footer{
-    width: 30%;
+    width: 40%;
     float: left;
 }
 
 #footertext-cont{
-    width: 70%;
+    width: 60%;
     float: left;
 }
 #git-footer{

@@ -136,19 +136,6 @@ if (isset($_POST['Filteren']))
     die();
 }
 
-if (isset($_GET['xD'])) 
-{
-    $dataA = [];
-    $alB = MainDAO::getAllBestellingen();
-   
-
-    foreach ($alB as $B) {
-        $dataA[$B->id] = MainDAO::getBestellingInhoudBestelling($B->id);
-    }
-    var_dump($dataA);
-
-}
-
 if (isset($_POST['deleteProdWinkelMandje']))
 {
     $product = LogicController::getProduct($_POST['productID']);

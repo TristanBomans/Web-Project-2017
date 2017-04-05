@@ -49,10 +49,10 @@
             
             if(isset($_SESSION['winkelmandje']))
             {
-                echo "<div id='winkelmandje-items'>";
+                echo "<div id='winkelmandje-items' class='clearfix'>";
                 foreach ($_SESSION['winkelmandje'] as $product) 
                 {
-                    echo "<div class='individuele-item-div-dropdown'><p class='naam-product-dropdown'>".$product->naam."</p> <p class='prijs-product-dropdown'>€ ".$product->prijs. "</p></div>";
+                    echo "<div class='individuele-item-div-dropdown clearfix'><p class='naam-product-dropdown'>".$product->naam."</p> <p class='prijs-product-dropdown'>€ ".$product->prijs. "</p></div>";
                     $total += $product->prijs;
                 }
                 echo "</div>";
@@ -63,9 +63,11 @@
             echo "<div class='individuele-item-div-dropdown' id='prijs-totaal-rand'><p  class='naam-product-dropdown'>Totaal: </p><p class='prijs-product-dropdown'><b id='winkelmandje-totalprice'>€ ".$total."</b></p></div>";
             ?>
                 <div  class="individuele-item-div-dropdown clearfix">
-                   <div> <a id ='winkelmandje-dropdown-meer-detail'  href="/Views/winkelmandje-full">Meer detail</a>
-                   </div>
+                <br>
+                   
                 </div>
+             <div id="meer-detail-invoeg"> <a id ='winkelmandje-dropdown-meer-detail'  href="/Views/winkelmandje-full">Meer detail</a>
+                   </div>   
             </div>
         </div>
     </ul>

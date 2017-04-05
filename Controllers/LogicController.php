@@ -1,10 +1,7 @@
 <?php
- // require_once ("../Entities/ProductEntity.php");       
- // require_once ("../Entities/ReviewEntity.php");        
- // require_once ("../Entities/UserEntity.php");      
- // require_once ("../Models/MainDAO.php");       
- // require_once ("../Controllers/Util.php");
-    include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
+// GLOBAL REQUIREMENTS      
+
+include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
 
 //DEFINEN NIET NODIG -> AL IN REQUEST CONTROLLER GEDAAN
 
@@ -55,13 +52,11 @@ class LogicController
             {
                 echo "password correct";
                 $_SESSION['user'] = $gebruiker;
-                if (isset($_SESSION['alternative_befURL'])){
-                    // var_dump($_SESSION['alternative_befURL']);
+                if (isset($_SESSION['alternative_befURL'])){         
                     header("location: ".$_SESSION['alternative_befURL']);
                 	die();
                 }
-                else{
-                    // var_dump($_POST['befPrevUrl']);
+                else{            
                     header("location: ".$_POST['befPrevUrl']);
 					die();                
                 }
@@ -71,7 +66,7 @@ class LogicController
             {
                  echo "password false";
                  $_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
-                 $url = "location: ".URL."Views/login";
+                 $url = "location: ".URL."Views/login?err=wpw";
                  header($url);
                  die();
             }
@@ -80,7 +75,7 @@ class LogicController
         {
             echo "user not found";
             $_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
-            $url = "location: ".URL."Views/login";
+            $url = "location: ".URL."Views/login?err=unf";
             header($url);
         	die();
         }
