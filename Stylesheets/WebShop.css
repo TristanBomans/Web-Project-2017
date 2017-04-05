@@ -399,7 +399,7 @@ _____ ___ _____ _____ _     ____    _    ____
     
     max-height: 400px;
     max-width: 600px;
-    width: 100%;
+    width: auto;
     display: block;
     margin: auto;
 }
@@ -1272,13 +1272,10 @@ _____ ___ _____ _____ _     ____    _    ____
 }
 
 #login-err{
-
     border: 2px solid #B20505;
     background-color: #F58D8D;
     width: 40%;
-    /*height: 30px;*/
     margin: auto;
-    /*float: left;*/
     text-align: center;
     display: block;
     border-radius: 7px;
@@ -1292,40 +1289,38 @@ _____ ___ _____ _____ _     ____    _    ____
     width: 100%;
 }
 
+#detailAddShoppingCart{
+    background-image: url("../Resources/detailaddSC.png");
+    background-size: 150px 150px;
+    width: 150px;
+    height: 150px;
+    background-repeat: no-repeat;
+    position: absolute ;
+    top: calc(50% - 75px);
+    right: calc(50% - 75px);
+    display: none;
+    transition: all 0.2s ease-in 0s;
+    line-height: 400px;
+    border:none;
+    background-color: transparent !important;
+}
 
+#product-img-sc-wrapper{
+    position: relative;
+}
 
+#product-img-sc-wrapper:hover #detailAddShoppingCart{
+    display: block;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#detailAddShoppingCart:hover{
+    cursor: pointer;
+    background-size: 175px 175px;
+    width: 175px;
+    height: 175px;
+    top: calc(50% - 87px);
+    right: calc(50% - 87px);
+}
 
 
 /*

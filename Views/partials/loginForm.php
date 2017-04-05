@@ -19,7 +19,6 @@
 				echo "<div id='errloginwrap'><div id='login-err' class='clearfix'>Gebruiker niet gevonden!</div></div>";
 			}
 		}
-
 		 ?>
 
 		<div class="login-line-content-submit-button clearfix">

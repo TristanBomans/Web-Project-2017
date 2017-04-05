@@ -16,7 +16,11 @@ if ($_SESSION['winkelmandje'] == null)
     header("location: ". URL."/");
 }
 
-
+if (!(isset($_SESSION['user']))) 
+{
+    Util::redirect("/?err=nli");
+}
+    
 ?>
 
 <!doctype HTML>

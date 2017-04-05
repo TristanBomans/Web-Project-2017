@@ -14,16 +14,21 @@ if(!(isset($_SESSION)) ){
 </head>
 <body class="container-fluid">
 	<?php include("partials/navbar.php"); ?>
+
+	<?php
+		if (isset($_GET['err'])) {
+			if ($_GET['err'] == 'fara') {
+				echo "<div id='errloginwrap'><div id='login-err' class='clearfix'>Oops, foutieve invoer bij het 'Rating' veldje.</div></div>";
+			}
+		}
+	?>
 	<div id='detailwrap'>
-		<?php include("partials/detail-product-data.php"); ?>
-		
-
-
-		
+		<?php include("partials/detail-product-data.php"); ?>	
 	</div>
 	<?php include("partials/review.php"); ?>
 	<div id='vergelijkbare-producten' class="clearfix">
 		<h2 id="h2-login">Vergelijkbare Producten:</h2>
+
 		<?php include("partials/comparableProds.php"); ?>
 	</div>
 	<?php include("partials/footer.php"); ?>

@@ -9,7 +9,15 @@
 	<body class="container-fluid">
 
  		<?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/navbar.php"); ?>
- 		
+
+ 		<?php 
+		
+		if (isset($_GET['err'])) {
+			if ($_GET['err'] == 'nli') {
+				echo "<div id='errloginwrap'><div id='login-err' class='clearfix'>U dient in te loggen voor deze actie kan uitvoeren.</div></div>";
+			}
+		}?>
+
 		<div id="allproducts-wrapper">
 			<div id="allproducts-title">Nieuw: </div>
 		</div>

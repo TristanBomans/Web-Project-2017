@@ -160,9 +160,21 @@ class LogicController
 
 	static function addReview()
 	{
-		$review = new ReviewEntity( -1, $_SESSION['user']->username, $_POST['product_ID'], $_POST['comment'],  $_POST['rating'] );
-	    MainDAO::addReview($review);
-	    header(prevURL);
+		$allowedToAdd = false;
+
+		if ($_POST['rating'] < 0 || $_POST['rating'] > 10) {
+			header(prevURL."&err=fara");
+		}
+		else{
+			$allowedToAdd = true;
+		}
+
+		 if ($allowedToAdd == true) {
+			$review = new ReviewEntity( -1, $_SESSION['user']->username, $_POST['product_ID'], $_POST['comment'],  $_POST['rating'] );
+			MainDAO::addReview($review);
+			$previousURL = explode("&err", prevURL)[0];
+			header($previousURL);
+		 }
 	    die();
 	}
 
