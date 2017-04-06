@@ -3,7 +3,7 @@
 
 include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
 
-//DEFINEN NIET NODIG -> AL IN REQUEST CONTROLLER GEDAAN
+//DEFINEN NIET NODIG VAN URL EN PREVURL -> AL IN NAMESPACES CONTROLLER GEDAAN
 
 if(!(isset($_SESSION)) ){
     session_start();
@@ -12,23 +12,26 @@ if(!(isset($_SESSION)) ){
 
 class LogicController
 {
+	#GEEFT ALLE PRODUCTEN TERUG IN EEN ARRAY
 	static function getAlleProducten(){
 		$alleProducten = MainDAO::getAllProducts();
 		Util::compareByDatum($alleProducten,"desc");
 		return $alleProducten;
-
 	}
+
+	#GEEFT ALLEEN DE UITGELICHTE PRODUCTEN TERUG IN EEN ARRAY
 	static function getAlleUitgelichteProducten(){
 		$alleProducten = MainDAO::getAllUitgelichte();
 		return $alleProducten;
 	}
 
+	#GEEFT 1 SPECIFIEK PRODUCT TERUG, WORDT AANGEROEPEN MET PARAMETER ID
 	static function getProduct($id){
 		$product = MainDAO::getProduct($id);
 		return $product;	
 	}
 
-
+	#DIT IS DE CODE DIE IN DE REQUESTCONTROLLER WORDT AANGESPROKEN VOOR EEN GEBRUIKER TE REGISTREREN/ DUS TOE TE VOEGEN AAN DB EN IN SESSION STEKEN
 	static function registerUser()
 	{
 		$_POST['password'] =password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -42,6 +45,8 @@ class LogicController
         die();
 	}
 
+	#DIT IS DE CODE DIE OOK IN DE REQUESTCONTROLLER WORDT AANGEROEPEN/ STEEKT USER IN SESSION ALS ALLES OKE IS
+	#ANDERS RETURN HET DE ERROR EN STUURT HIJ JE TERUG, WORDT OOK STEEDS GEKEKEN NAAR DE VORIGE URL
 	static function userLogIn()
 	{
 		echo "true";
@@ -81,6 +86,9 @@ class LogicController
         }
 	}
 
+	#DIT IS CODE DIE OOK IN DE REQUESTCONTROLLER WORDT AANGESPROKEN VOOR HET SORTEREN VAN DE PRODUCTEN/ 
+	#JE KRIJGT IN DE POST MEE WELK EN IN WELKE DIRECTIE
+	#ER GESORTEERD MOET WORDEN EN AAN DE HAND DAARVAN GAAT ER IN DEZE FUNCTIE GESORTEERD WORDEN
 	static function sortAllProducts()
 	{
 		$methode = $_POST['sortMethode'];
@@ -119,6 +127,8 @@ class LogicController
     	return $alleProducten;
 	}
 
+	#DEZE FUNCTIE WORDT GEBRUIKT BIJ HET FILTEREN, HIER WORDT BEPAALD WELKE CATEGORIEN ER GESELECTEERD
+	#ZIJN ADHV WAARDES DIE MEEGEGEVN ZIJN IN DE GEGENEREERDE POST
 	static function getSelectedCats()
 	{
 		$cats = MainDAO::getAllCategorien();
@@ -133,6 +143,8 @@ class LogicController
 	    return $gevraagdeFilters;
 	}
 
+	#DEZE FUNCTIE WORDT GEBRUIKT VOOR 1 ARRAY TE MAKEN VAN DE VERSCHILLENDE PRODUCTEN VAN VERSCHILLENDE CATEGORIEN
+	#ZE WORDEN DAN 'GEMERGED'
 	static function makeFilteredArray($catArray)
 	{
 		$result = [];
@@ -147,6 +159,7 @@ class LogicController
 	    return $result;
 	}
 
+	#DIT IS VOOR EEN PRODUCT AAN HET WINKELMANDJE TOE TE VOEGEN
 	static function addNewProduct()
 	{
 		$product = MainDAO::getProduct($_POST['toAddProduct']);
@@ -154,10 +167,19 @@ class LogicController
 		{
 			$_SESSION['winkelmandje']  = [];
 		} 
-		array_push($_SESSION['winkelmandje'],  $product);
+
+		
+		if (isset($_SESSION['aantallen'][$product->id])) {
+			$_SESSION['aantallen'][$product->id] += 1;
+		}
+		else{
+			$_SESSION['aantallen'][$product->id] = 1;
+			array_push($_SESSION['winkelmandje'],  $product);
+		}
 		header(prevURL);
 	}
 
+	#DIT IS VOOR EEN REVIEW OP EEN BEPAALD PRODUCT VIA DE DETAILPAGE TOE TE VOEGEN, WORDT OP FOUTEN GECHECKED
 	static function addReview()
 	{
 		$allowedToAdd = false;
@@ -178,16 +200,18 @@ class LogicController
 	    die();
 	}
 
+	#DIT IS VOOR IN DE NAVBAR ALLE CATEGORIËN WEER TE GEVEN
 	static function outputFilterDropdown()
 	{
 		$cats = MainDAO::getAllCategorien();
 						
 		foreach ($cats as $cat) 
 		{
-			echo "<div class='allproducts-dropdown-lineitem-filter' value='".$cat->naam."'><input type='checkbox' name='".$cat->naam."' value='".$cat->naam."'> ".$cat->naam."</div>";					
+			echo "<div class='allproducts-dropdown-lineitem-filter' value='".$cat->naam."'><input class='input-js-filter' type='checkbox' name='".$cat->naam."' value='".$cat->naam."'> ".$cat->naam."</div>";					
 		}
 	}
 
+	#DIT IS VOOR ALLE REVIEWS BIJ EEN BEPAALD PRODUCT WEER TE GEVEN, WORDT BEPAALD ADHV DE ID 
 	static function outputUserReviews($id)
 	{
 		$alleReviews = MainDAO::getAllReviewForProduct($id);
@@ -206,6 +230,7 @@ class LogicController
 		}
 	}
 
+	#DIT IS VOOR DE VORIGE URL TE BEPALEN BIJ HET INLOGGEN
 	static function outPutHiddenInputUrlLogin()
 	{
 		if (isset($_SESSION['alternative_befURL'])) 
@@ -218,6 +243,7 @@ class LogicController
 		}	
 	}
 
+	#DIT IS VOOR TE BEPALEN OF EEN USER IS INGELOGD, ZONIET STUUR HEM TERUG NAAR DE HOME
 	static function loginRedirectCheck()
 	{
 		if(isset($_SESSION['user']))
@@ -227,23 +253,27 @@ class LogicController
     	}
     }
 
+    #VOOR DE COMPARABLE PRODUCTEN TE KRIJGEN: ALLE PRODUCTEN DIE IN DEZELFDE CATEGORIE ZITTEN ..  
     static function getComparableProducts($cat)
     {
     	return MainDAO::getAllByCat($cat); 
     }
 
 
+    #DIT IS VOOR ALLE CATEGORIËN TE KRIJGEN
     static function getAllCategorien(){
     	$categorien = MainDao::getAllCategorien();
     	return $categorien;
     }
 
+    #DIT IS VOOR EEN NIEUW PRODUCT IN DE DATABASE TOE TE VOEGEN, WORDT AANGESPROKEN IN DE REQUESTCONTROLLER 
     static function addDBNewProd($product)
     {
     	MainDAO::addProduct($product); 
     	return true;	
     }
 
+	#DIT WORDT GEBRUIKT BIJ DE ADMIN BESTELLINGEN PAGINA, DIT ZIJN ALLE BESTELLINGEN MET DE BESTELLIJNEN ERBIJ
    static function getAllBestellingenMetInh()
     {
    		$dataA = [];
@@ -254,6 +284,11 @@ class LogicController
         $dataA[$B->id] = MainDAO::getBestellingInhoudBestelling($B->id);
    		}
     	return $dataA;
+	}
+
+	#DIT GEEFT ALLE GEBRUIKERS TERUG
+	static function getAllUsers(){
+		return MainDAO::getAllUsers();
 	}
 
 }

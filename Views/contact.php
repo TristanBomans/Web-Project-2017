@@ -13,6 +13,8 @@ if (!(isset($_SESSION['user'])))
 	<body class="container-fluid">
 
  		<?php include("partials/navbar.php"); ?>
+
+ 		<?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/errormess.php"); ?> 
  		
 		<div id="contact-container">
 			<form action="../Controllers/RequestController.php" method="post">

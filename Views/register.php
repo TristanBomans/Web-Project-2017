@@ -15,6 +15,8 @@ require_once("../Entities/UserEntity.php");
 	<body class="container-fluid">
 
 		<?php include("partials/navbar.php"); ?>
+
+		<?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/errormess.php"); ?> 
 	
 		<?php include("partials/registerForm.php"); ?>
 

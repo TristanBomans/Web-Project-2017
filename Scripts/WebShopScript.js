@@ -1,15 +1,21 @@
 $(document).ready(function(){
-console.log("JavaScript Works!");})
+	console.log("JavaScript Works!");
+
+})
+
+//UNUSED CURRENTLY
+
 
 $(function(){
 	$("#instellingen-dropdown").on('click', function(e){
-		$("#instellingen-dropdown-content").toggle();
+		// $("#instellingen-dropdown-content").toggle();
+		$("#instellingen-dropdown-content").slideToggle(200);
 
 		e.stopPropagation();
 
 		$("body").on('click', function(e){
 			if(!($(e.target).parents("#instellingen-dropdown-content").length > 0)){
-				$("#instellingen-dropdown-content").hide();
+				$("#instellingen-dropdown-content").slideUp(100)
 			}
 		});
 	});
@@ -70,7 +76,20 @@ $(function(){
 	        url: "../Controllers/RequestController.php",
 	        data: {'toAddProduct' : productId},
 	        success: function() {
-	        	var html = "<div class='individuele-item-div-dropdown'><p class='naam-product-dropdown'>"+productNaam+
+	        	var aantal = "";
+	        	console.log(productId);
+	        	console.log($("#" + productId).length != 0);
+	        	if($("#" + productId).length != 0) {
+	        		
+	        		aantal = $("#" + productId).html().substring(2);
+	        		aantal = aantal.substring(0,aantal.length-1);
+	        		aantal = +aantal + 1; 
+	        		console.log(aantal);
+
+					$("#" + productId).html("(x"+aantal+")");
+				}
+				else{
+	        	var html = "<div class='individuele-item-div-dropdown'><p class='naam-product-dropdown'>"+productNaam+" <i id='"+productId+"'>(x1)</i>"+
 	        	"</p> <p class='prijs-product-dropdown'>€ "+productPrijs+"</p></div>";
 	        	$("#winkelmandje-items").append(html);
 
@@ -79,7 +98,56 @@ $(function(){
 	        	
 	        	var html =" <a id ='winkelmandje-dropdown-meer-detail'  href='/Views/winkelmandje-full'>Meer detail</a>"
 	        	$("#meer-detail-invoeg").html(html);
+	        	}
 	        }
 	    });
 	});
+
+	$("#filteren-submit").on("click", function(e){
+		e.preventDefault();
+		var checkedCats = [];
+
+		
+		$('.input-js-filter:checked').each(function(){
+			var waarde = $(this).val();
+			checkedCats.push(waarde);
+			console.log(waarde);
+		});
+		console.log(checkedCats);
+		$.ajax({
+	        type: "POST",
+	        url: "../Controllers/RequestController.php",
+	        data: {'FilterenAJAX' : true, 'checkedcats' : checkedCats},
+	        dataType: "JSON",
+	        success: function(data) {
+	        	console.log(data);
+	        	var html = "";
+	        	for (var i = 0; i < data.length; i++) {
+					html += "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 parent-thumb-cont'>"
+					+ "<div class='thumbnail thumb-cont'>"
+					+ "<div class='thumb-cont-money-circle'>€ " + data[i].prijs + "</div>"
+					+ "<img src='" + data[i].img_path + "'class='image-thumb' alt='Deze afbeelding kon niet gevonden worden'>"
+			        + "<div class='caption'>"
+			        + "<h3>" + data[i].naam + "</h3>"
+			        + "<div class='wrapper-date-cat'><b>" + data[i].datum_toegevoegd + "</b>"
+			        + "<b class='thumb-categorie'>" + data[i].cat_naam + "</b></div>"        
+			        + "<a value='Detail' class='btn btn-default btn-lg btn-detail' href='/Views/detail?opgevraagdProduct="+ data[i].id + "'>Detail</a>"
+			        + "</div>"   
+			        + "</div>"
+			        + "<form action='../Controllers/RequestController.php' method='POST'>"
+			        + "<input type='hidden' name='toAddProduct' value='" + data[i].id + "'>"
+			        + "<input type='submit' value='' class='winkelwagen-btn' title='Voeg toe aan winkelmandje'>";
+			        if (data[i].avg_rating != 0) {
+			        html +=  "<div class='product-rating-icon'>" + data[i].avg_rating +"</div>";
+			 	  	}
+			        html += "</form>"
+			        + "</div>";
+				}
+
+        	$("#producten-alle").html(html);
+	        }
+	    });
+	});
+
+
 });

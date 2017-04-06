@@ -9,17 +9,17 @@
 	{
 		if( $_SESSION['user']->authority != 1)
 		{
-			Util::redirect("/Views/");
+			Util::redirect("/");
 		} 
 	}
 	else{
-		Util::redirect("/Views/");
+		Util::redirect("/");
 	}
 ?>
 <!doctype HTML>
 <html lang="nl">
 	<head>
-		<title>AdminProduct</title>
+		<title>Admin Product</title>
 		<?php include("partials/includes.php"); ?>
 	</head>
 	<body class="container-fluid">

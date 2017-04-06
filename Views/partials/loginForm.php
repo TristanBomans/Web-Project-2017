@@ -13,10 +13,10 @@
 		<?php 
 		if (isset($_GET['err'])) {
 			if ($_GET['err'] == 'wpw') {
-				echo "<div id='errloginwrap'><div id='login-err' class='clearfix'>Fout Wachtwoord!</div></div>";
+				echo "<div id='errloginwrap' class='errloginwrap'><div id='login-err' class='clearfix'>Fout Wachtwoord!</div></div>";
 			}
 			if ($_GET['err'] == 'unf') {
-				echo "<div id='errloginwrap'><div id='login-err' class='clearfix'>Gebruiker niet gevonden!</div></div>";
+				echo "<div id='errloginwrap' class='errloginwrap'><div id='login-err' class='clearfix'>Gebruiker niet gevonden!</div></div>";
 			}
 		}
 		 ?>

@@ -4,13 +4,16 @@
 	include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; 
 	if (!(isset($_SESSION['user']))) 
 	{
-		Util::redirect("/?err=nli");
+		if (strpos( $_SERVER['HTTP_REFERER'], "detail" )) {
+			Util::redirect($_SERVER['HTTP_REFERER']."&err=nli");
+		}
+		Util::redirect($_SERVER['HTTP_REFERER']."?err=nli");
 	}
 ?>
 <!doctype HTML>
 <html lang="nl">
 	<head>
-		<title>WinkelMandje</title>
+		<title>Winkelmandje vol</title>
 		<?php include("partials/includes.php"); ?>
 	</head>
 	<body class="container-fluid">

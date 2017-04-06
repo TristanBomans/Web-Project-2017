@@ -146,6 +146,7 @@ class MainDAO {
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }
+    
     static function addUser($toAddUser)
     {
         require "../credentials.php";
@@ -175,6 +176,30 @@ class MainDAO {
 
         mysqli_close($mysqli);
         return $user;
+    }
+
+       static function getAllUsers() 
+    {
+          require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("SELECT * FROM users");
+        $user = null;
+        $userArray =  [];
+
+        while ($row = mysqli_fetch_array($result)) {
+            $username = $row[0];
+            $password = $row[1];
+            $naam = $row[2];
+            $voornaam = $row[3];
+            $authority = $row[4];
+            $emailadres = $row[5];
+
+            $user = new UserEntity($username, $password, $naam, $voornaam, $authority, $emailadres);
+            array_push($userArray, $user);
+        }
+
+        mysqli_close($mysqli);
+        return $userArray;
     }
 
     // REVIEWS
@@ -363,8 +388,11 @@ class MainDAO {
 
     static function addContactMessage($toAddContact)
     {
+        var_dump($toAddContact);
         require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
+        $toAddContact->subject = addslashes( $toAddContact->subject);
+        $toAddContact->message = addslashes( $toAddContact->message);
         $result = $mysqli->query("INSERT INTO contact (username, subject, message, datum) VALUES ('$toAddContact->username', '$toAddContact->subject','$toAddContact->message','$toAddContact->datum')");
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);

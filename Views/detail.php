@@ -9,12 +9,14 @@ if(!(isset($_SESSION)) ){
 <!DOCTYPE html>
 <html>
 <head>
-	<title>detail</title>
+	<title>Detail</title>
 	<?php include("partials/includes.php"); ?>
 </head>
 <body class="container-fluid">
 	<?php include("partials/navbar.php"); ?>
 
+	<?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/errormess.php"); ?> 
+	
 	<?php
 		if (isset($_GET['err'])) {
 			if ($_GET['err'] == 'fara') {

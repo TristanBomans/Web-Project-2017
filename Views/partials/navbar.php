@@ -47,19 +47,21 @@
             <?php
             $total = 0;
             
+            echo "<div id='winkelmandje-items' class='clearfix'>";
             if(isset($_SESSION['winkelmandje']))
             {
-                echo "<div id='winkelmandje-items' class='clearfix'>";
                 foreach ($_SESSION['winkelmandje'] as $product) 
                 {
-                    echo "<div class='individuele-item-div-dropdown clearfix'><p class='naam-product-dropdown'>".$product->naam."</p> <p class='prijs-product-dropdown'>€ ".$product->prijs. "</p></div>";
-                    $total += $product->prijs;
+                    $aantal = $_SESSION['aantallen'][$product->id];
+                    echo "<div class='individuele-item-div-dropdown clearfix'><p class='naam-product-dropdown'>".$product->naam." <i id='".$product->id."'>(x".$aantal.")</i></p> <p class='prijs-product-dropdown'>€ ".$product->prijs*$aantal. "</p></div>";
+                    $total += ($product->prijs * $aantal);
                 }
-                echo "</div>";
-            }
+                
+            } 
             else{
                 $_SESSION['winkelmandje']  = [];
             }
+            echo "</div>";
             echo "<div class='individuele-item-div-dropdown' id='prijs-totaal-rand'><p  class='naam-product-dropdown'>Totaal: </p><p class='prijs-product-dropdown'><b id='winkelmandje-totalprice'>€ ".$total."</b></p></div>";
             ?>
                 <div  class="individuele-item-div-dropdown clearfix">

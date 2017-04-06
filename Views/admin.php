@@ -32,7 +32,11 @@
 				<a href="admin-category"><div class='col-lg-3 col-md-3 col-sm-5 col-xs-10 admin-icons'>Categorieën</div></a>
 				<a href="admin-bestellingen"><div class='col-lg-3 col-md-3 col-sm-5 col-xs-10 admin-icons'>Bestellingen</div></a>
 				<a href="admin-contact"><div class='col-lg-3 col-md-3 col-sm-5 col-xs-10 admin-icons'>Berichten</div></a>
+				<a href="admin-users"><div class='col-lg-3 col-md-3 col-sm-5 col-xs-10 admin-icons'>Gebruikers</div></a>
+				<a href="admin-config-webshop"><div class='col-lg-3 col-md-3 col-sm-5 col-xs-10 admin-icons'>Configureer uw Webshop</div></a>
+
 			</div>
+			<div id="margin-div"></div>
 		<!-- </div> -->
 		<?php include("partials/footer.php"); ?>
 

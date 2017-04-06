@@ -9,11 +9,11 @@
 	{
 		if( $_SESSION['user']->authority != 1)
 		{
-			Util::redirect("/Views/");
+			Util::redirect("/");
 		} 
 	}
 	else{
-		Util::redirect("/Views/");
+		Util::redirect("/");
 	}
 ?>
 <!doctype HTML>
