@@ -165,6 +165,9 @@ if (isset($_POST['deleteProdWinkelMandje']))
 {
     $product = LogicController::getProduct($_POST['productID']);
     $_SESSION['winkelmandje'] = array_udiff($_SESSION['winkelmandje'],[$product], 'Util::compare_objects');
+    unset($_SESSION['aantallen'][$product->id]);
+
+    // $_SESSION
     header(prevURL);
 }
 

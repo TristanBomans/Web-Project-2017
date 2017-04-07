@@ -79,25 +79,39 @@ $(function(){
 	        	var aantal = "";
 	        	console.log(productId);
 	        	console.log($("#" + productId).length != 0);
+	        	// console.log();
+
 	        	if($("#" + productId).length != 0) {
-	        		
+	        		// AANTAL AANPASSEN
 	        		aantal = $("#" + productId).html().substring(2);
 	        		aantal = aantal.substring(0,aantal.length-1);
 	        		aantal = +aantal + 1; 
-	        		console.log(aantal);
 
 					$("#" + productId).html("(x"+aantal+")");
+
+					// PRIJS PER STUK AANPASSEN
+					var eenhPrijs = $("#prijs-" + productId).html().substring(2);
+					eenhPrijs = +eenhPrijs + +productPrijs;
+					
+					 $("#prijs-" + productId).html("€ " + eenhPrijs);
+					console.log(+eenhPrijs);
+
+					// TOTAALPRIJS AANPASSEN
+					var totPrijs = $("#winkelmandje-totalprice").html().substring(2);
+					totPrijs = +totPrijs + +productPrijs;
+
+					 $("#winkelmandje-totalprice").html("€ " + totPrijs);
+
 				}
 				else{
-	        	var html = "<div class='individuele-item-div-dropdown'><p class='naam-product-dropdown'>"+productNaam+" <i id='"+productId+"'>(x1)</i>"+
-	        	"</p> <p class='prijs-product-dropdown'>€ "+productPrijs+"</p></div>";
-	        	$("#winkelmandje-items").append(html);
+		        	var html ="<div class='individuele-item-div-dropdown clearfix'><p class='naam-product-dropdown'>"+productNaam+" <i id='"+productId+"'>(x1)</i></p> <p class='prijs-product-dropdown' id='prijs-"+productId+"'>€ "+productPrijs+ "</p></div>"; 
+		        	$("#winkelmandje-items").append(html);
 
-	        	var html ="€ " + totalPrijs;
-	        	$("#winkelmandje-totalprice").html(html);
-	        	
-	        	var html =" <a id ='winkelmandje-dropdown-meer-detail'  href='/Views/winkelmandje-full'>Meer detail</a>"
-	        	$("#meer-detail-invoeg").html(html);
+		        	var html ="€ " + totalPrijs;
+		        	$("#winkelmandje-totalprice").html(html);
+		        	
+		        	var html =" <a id ='winkelmandje-dropdown-meer-detail'  href='/Views/winkelmandje-full'>Meer detail</a>"
+		        	$("#meer-detail-invoeg").html(html);
 	        	}
 	        }
 	    });

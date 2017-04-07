@@ -53,8 +53,9 @@
                 foreach ($_SESSION['winkelmandje'] as $product) 
                 {
                     $aantal = $_SESSION['aantallen'][$product->id];
-                    echo "<div class='individuele-item-div-dropdown clearfix'><p class='naam-product-dropdown'>".$product->naam." <i id='".$product->id."'>(x".$aantal.")</i></p> <p class='prijs-product-dropdown'>€ ".$product->prijs*$aantal. "</p></div>";
-                    $total += ($product->prijs * $aantal);
+                    echo "<div class='individuele-item-div-dropdown clearfix'><p class='naam-product-dropdown'>".$product->naam." <i id='".$product->id."'>(x".$aantal.")</i></p> <p class='prijs-product-dropdown' id='prijs-".$product->id."'>€ ".$product->prijs*$aantal. "</p></div>";
+                    $deelPrijs = $product->prijs * $aantal;
+                    $total += $deelPrijs;
                 }
                 
             } 
