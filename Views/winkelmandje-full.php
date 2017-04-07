@@ -26,7 +26,7 @@
 		            echo "<div id='full-winkelmandje-content'>";
 		            foreach ($_SESSION['winkelmandje'] as $product) 
 		            {
-		                echo "<div class='full-winkelmandje-content-lineitem clearfix'><div class='full-winkelmandje-content-naam'>".$product->naam."</div> <div class='full-winkelmandje-content-prijs'>€ ".$product->prijs. "</div><form action='../Controllers/RequestController.php' method='POST'><input type='submit' class='exit-icon-fw' value=''/><input type='hidden' name='productID' value='".$product->id."'/><input name='deleteProdWinkelMandje' type='hidden' value='true'/></form><div class='full-winkelmandje-content-besch'>".$product->beschrijving."</div></div>";
+		                echo "<form action='../Controllers/RequestController.php' method='POST'><input type='submit' class='exit-icon-fw' value=''/><input type='hidden' name='productID' value='".$product->id."'/><input name='deleteProdWinkelMandje' type='hidden' value='true'/></form><div class='full-winkelmandje-content-lineitem clearfix'><div class='full-winkelmandje-content-naam'>".$product->naam."</div><input type='submit' value='Aanpassen'><div class='aantal-ehprijs-fw'><input class='aantal-fw' type='number' value='".$_SESSION["aantallen"][$product->id]."'></input><div class='full-winkelmandje-content-prijs'> € ".$product->prijs. "</div></div><div class='full-winkelmandje-content-besch'>".$product->beschrijving."</div><div class='eenh-fullprijs-fw'>€ ".$product->prijs*$_SESSION["aantallen"][$product->id]."</div></div>";
 
 		                echo "<hr class='hr-winkelmandje-full'>";
 

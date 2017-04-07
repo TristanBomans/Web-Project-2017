@@ -43,6 +43,8 @@
         
 
         <div id="winkelmandje-dropdown">
+            <div id='add-green-icon'></div>
+
             <div id="winkelmandje-dropdown-content"><b>Winkelmandje</b>
             <?php
             $total = 0;

@@ -97,7 +97,9 @@ if(isset($_POST['payementinfo'])){
 
     if($_POST['betaalmethode'] == "paypal")
     {
-        echo"<a class='submit-btn-payment' href='https://www.paypal.com/us/home'>Betaling voltooien</a>";
+        echo"<a class='submit-btn-payment' href='https://www.paypal.me/tristanbomans'>Betaling voltooien</a>";
+        // echo "<iframe src=''></iframe>";
+        
     }
 
 }?>

@@ -1060,8 +1060,9 @@ _____ ___ _____ _____ _     ____    _    ____
 .full-winkelmandje-content-prijs{
     width: 70px;
     float: right;
-    text-align: right;
-    font-weight: bold;
+    font-size: 12px;
+    /*text-align: right;*/
+    /*font-weight: bold;*/
 }
 
 .full-winkelmandje-content-besch{
@@ -1085,9 +1086,11 @@ _____ ___ _____ _____ _     ____    _    ____
 }
 
 .exit-icon-fw{ 
-    float: right;
+    float: left;
     width: 15px;
     height: 15px;
+    margin-left: 10px;
+    margin-right: 5px;
     background-image: url("../Resources/exit-icon.png");
     background-size: 15px 15px;
     background-repeat: no-repeat;
@@ -1341,6 +1344,53 @@ _____ ___ _____ _____ _     ____    _    ____
     margin-top: 45px;
     transform: translateY(-13px);
 }
+
+
+
+#add-green-icon{
+    background-image: url("../Resources/add_green.png");
+    background-size: 40px 40px;
+    width: 75px;
+    height: 75px;
+    background-repeat: no-repeat;
+    position: absolute ;
+   /* top: calc(50% - 75px);
+    right: calc(50% - 75px);*/
+    /*top: 0px;*/
+    top: 7px;
+    right: -16px;
+    /*filter: invert(50%);*/
+    /*transform: translateY(-50%) translateX(-50%); */
+    display: none;
+    transition: all 0.2s ease-in 0s;
+    line-height: 400px;
+    border:none;
+    background-color: transparent !important;
+    z-index: 50000;
+}
+
+.aantal-fw{
+width: 35px;
+height: 21px;
+background-color: #D8C9C9;
+margin-right: 10px;
+
+}
+
+.aantal-ehprijs-fw{
+    float: right;
+}
+
+.full-winkelmandje-content-prijs{
+width: auto;
+}
+
+.eenh-fullprijs-fw{
+    float: right;
+    font-weight: bold;
+
+}
+
 
 
 

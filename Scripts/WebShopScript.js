@@ -76,6 +76,10 @@ $(function(){
 	        url: "../Controllers/RequestController.php",
 	        data: {'toAddProduct' : productId},
 	        success: function() {
+	        	$("#add-green-icon").toggle(500);
+	        	$("#add-green-icon").hide(500);
+	        	// $("#add-green-icon").delay(3000).fadeOut("slow");
+
 	        	var aantal = "";
 	        	console.log(productId);
 	        	console.log($("#" + productId).length != 0);
