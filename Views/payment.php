@@ -85,12 +85,13 @@ if(isset($_POST['payementinfo'])){
     $laatsteId= $laatsteId[sizeof($laatsteId)-1]->id;
 
     foreach($_SESSION['winkelmandje'] as $wm){
-        $tempBI = new BestelinhoudEntity(-1 , $laatsteId, $wm->id);
+        $tempBI = new BestelinhoudEntity(-1 , $laatsteId, $wm->id, $_SESSION["aantallen"][$product->id]);
         MainDAO::addBestellingInhoud($tempBI);
     }
     unset($_SESSION['winkelmandje']);
-
-
+    $_SESSION['winkelmandje'] = [];
+    unset($_SESSION['aantallen']);
+    $_SESSION['aantallen'] = [];
 
 
     echo "<div>U bestelling is geplaatst!</div> ";

@@ -59,11 +59,11 @@
 			$prod = MainDAO::getProduct($IH->product_id);
 			echo "<div class='bestel-popup-linitem clearfix'>";
 
-			echo "<div class='bestel-popup-prod-naam'>".$prod->naam."</div>";
+			echo "<div class='bestel-popup-prod-naam'>".$prod->naam." (x ".$IH->aantal.")</div>";
 			echo "<div class='bestel-popup-prod-cat'>".$prod->cat_naam."</div>";
-			echo "<div class='bestel-popup-prod-prijs'>€ ".$prod->prijs."</div>";
+			echo "<div class='bestel-popup-prod-prijs'>€ ".$prod->prijs * $IH->aantal."</div>";
 			echo "</div>";
-			$total += $prod->prijs;
+			$total += $prod->prijs * $IH->aantal;
 		}
 
 		echo "<div class='bestel-popup-linitem clearfix' id='popup-bestellingen-total'><div id='popup-bestelling-betaalmethode'>Betaalmethode: ".$reqBest->betaalmethode."</div><div class='bestel-popup-prod-prijs' >€ ".$total."</div></div>";

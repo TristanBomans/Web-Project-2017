@@ -1,4 +1,4 @@
-<div id='detailwrap-log-reg'>
+<div id='detailwrap-log-reg' class='clearfix'>
 	<form id="login-form" class="clearfix" method="POST" action="../Controllers/RequestController.php">
 		<h2 id="h2-login">Log in </h2>
 		<div class="login-line-content clearfix">

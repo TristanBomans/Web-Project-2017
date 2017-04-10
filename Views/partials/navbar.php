@@ -35,6 +35,9 @@
                 else
                 {
                     echo "<a class='link-dropdown-instellingen' href='/Views/login'><div class='instellingen-dropdown-content-line-item'>Aanmelden</div></a>";
+                   
+                    echo "<a class='link-dropdown-instellingen' href='Controllers/FacebookControl.php?fb=x'><div class='instellingen-dropdown-content-line-item'>Aanmelden met Facebook</div></a>";
+
                     echo "<a class='link-dropdown-instellingen' href='/Views/register'><div class='instellingen-dropdown-content-line-item'>Registreren</div></a>";
                 }
                 ?>

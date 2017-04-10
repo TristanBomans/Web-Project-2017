@@ -10,7 +10,7 @@
     echo "<div class='profile-lineitem clearfix'><div class='profile-label'>Email: ".$_SESSION['user']->emailadres."</div><a href='profile?edit=emailadres'><div class='edit-icon-profile'></div></a></div>";
     if ($_SESSION['user']->authority == 0)
     {
-        echo "<div class='profile-lineitem clearfix'><div class='profile-label'>Bevoegdheid: Normale gebruiker</div><div class='edit-icon-profile'></div></div>";
+        echo "<div class='profile-lineitem clearfix'><div class='profile-label'>Bevoegdheid: Normale gebruiker</div></div>";
     }
     elseif($_SESSION['user']->authority == 1)
     {

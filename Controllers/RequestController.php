@@ -10,6 +10,10 @@ if(!(isset($_SESSION)) ){
     session_start();
 }
 
+// $fbook = new FacebookWS($_SERVER['HTTP_REFERER']);
+
+
+
 #VOOR HET WINKELMANDJE, PRODUCTEN TOE TE VOEGEN, STEEKT PROD IN SESSION
 if (isset($_POST['toAddProduct'])) 
 {
@@ -249,13 +253,16 @@ if (isset($_POST['editUser'])) {
     header(prevURL);
 }
 
+if (isset($_POST['aanpassen-fw-aantal'])) {
+    $prodID = intval($_POST['product-id']);
+    $_SESSION['aantallen'][$prodID] = $_POST['aantal'];
 
+    if ($_POST['aantal'] == 0) {
+        unset($_SESSION['aantallen'][$prodID]);
+        $_SESSION['winkelmandje'] = array_udiff($_SESSION['winkelmandje'],[MainDAO::getProduct($prodID)], 'Util::compare_objects');  
+    }
 
-
-if (isset($_GET['testWM'])) {
-
-    var_dump($_SESSION);
+    header(prevURL);
 }
-
 
 ?>

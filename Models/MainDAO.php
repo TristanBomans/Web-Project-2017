@@ -2,8 +2,6 @@
 //GLOBAL REQUIREMENTS
  include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
 
-
-
 class MainDAO {
     // PRODUCT
     static function getProduct($id) 
@@ -135,9 +133,7 @@ class MainDAO {
         mysqli_close($mysqli);
     }
 
-
     // USERS
-
     static function updateUser($toUpdateUser)
     {
         require "../credentials.php";
@@ -149,7 +145,8 @@ class MainDAO {
     
     static function addUser($toAddUser)
     {
-        require "../credentials.php";
+        require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
+        
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("INSERT INTO users (username, password, naam, voornaam, authority, emailadres) VALUES ('$toAddUser->username', '$toAddUser->password', '$toAddUser->naam', '$toAddUser->voornaam', '$toAddUser->authority', '$toAddUser->emailadres')");
         if(!($result)) die(mysqli_error($mysqli));
@@ -158,7 +155,7 @@ class MainDAO {
 
     static function getUser($username) 
     {
-        require "../credentials.php";
+        require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM users where username='$username'");
         $user = null;
@@ -178,7 +175,7 @@ class MainDAO {
         return $user;
     }
 
-       static function getAllUsers() 
+    static function getAllUsers() 
     {
           require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
@@ -203,7 +200,6 @@ class MainDAO {
     }
 
     // REVIEWS
-
     static function addReview($toAddReview)
     {
         require "../credentials.php";
@@ -223,7 +219,7 @@ class MainDAO {
         mysqli_close($mysqli);
     }
 
-     static function getAllReviewForProduct($id) 
+    static function getAllReviewForProduct($id) 
     {
      require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
@@ -248,8 +244,7 @@ class MainDAO {
 
 
     //CATEGORIEËN
-
-  static function getAllCategorien() 
+    static function getAllCategorien() 
     {
         require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
@@ -288,7 +283,6 @@ class MainDAO {
 
 
     //BESTELLINGEN
-
     static function getAllBestellingen() 
     {
         require "../credentials.php";
@@ -315,7 +309,6 @@ class MainDAO {
         return $BestellingenArray;
     }
 
-
     static function getBestelling($id) 
     {
         require "../credentials.php";
@@ -333,17 +326,14 @@ class MainDAO {
             $betaalmethode= $row[5];
             $datum = $row[6];
 
-
-
-          $bestelling = new BestellingEntity($id, $username, $factuuradres, $leveradres, $levermethode, $betaalmethode, $datum);
-           
+          $bestelling = new BestellingEntity($id, $username, $factuuradres, $leveradres, $levermethode, $betaalmethode, $datum);  
         }
 
         mysqli_close($mysqli);
         return $bestelling;
     }
 
-     static function getBestellingInhoudBestelling($id) 
+    static function getBestellingInhoudBestelling($id) 
     {
         require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
@@ -355,10 +345,9 @@ class MainDAO {
             $id = $row[0];     
             $bestelling_id = $row[1];
             $product_id = $row[2];
+            $aantal = $row[3];
 
-
-
-            $bestellingInh = new BestelinhoudEntity($id, $bestelling_id, $product_id);
+            $bestellingInh = new BestelinhoudEntity($id, $bestelling_id, $product_id, $aantal);
             array_push($bestelInhArr, $bestellingInh);
         }
 
@@ -379,13 +368,12 @@ class MainDAO {
     {
         require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("INSERT INTO bestelinhoud (bestelling_id, product_id) VALUES ('$toAddBestelInhoud->bestelling_id', '$toAddBestelInhoud->product_id')");
+        $result = $mysqli->query("INSERT INTO bestelinhoud (bestelling_id, product_id, aantal) VALUES ('$toAddBestelInhoud->bestelling_id', '$toAddBestelInhoud->product_id', '$toAddBestelInhoud->aantal')");
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }
 
     //CONTACT
-
     static function addContactMessage($toAddContact)
     {
         var_dump($toAddContact);
@@ -398,7 +386,7 @@ class MainDAO {
         mysqli_close($mysqli);
     }
 
-      static function getAllContact() 
+    static function getAllContact() 
     {
         require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
@@ -420,9 +408,5 @@ class MainDAO {
         mysqli_close($mysqli);
         return $ContactArray;
     }
-
-
-
 }
-
 ?>

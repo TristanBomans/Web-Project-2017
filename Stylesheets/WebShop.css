@@ -995,7 +995,7 @@ _____ ___ _____ _____ _     ____    _    ____
 
 .bestel-popup-linitem{
     margin: auto;
-    height: 40px;
+    height: auto;
     width: 80%;
     font-size: 18px;
 }
@@ -1003,16 +1003,19 @@ _____ ___ _____ _____ _     ____    _    ____
 
 .bestel-popup-prod-naam{
     float: left;
+    max-width: 65%;
 }
 
 .bestel-popup-prod-cat{
     font-size: 15px;
     float: left;
-    padding-left: 20px;
+    margin-left: 20px;
 }
 
 .bestel-popup-prod-prijs{
     float: right;
+    width: 15%;
+    text-align: right;
 }
 
 #pop-up-content-bestelling{
@@ -1068,7 +1071,7 @@ _____ ___ _____ _____ _     ____    _    ____
 .full-winkelmandje-content-besch{
     width: 75%;
     font-style: italic;
-    font-size: 10px;
+    font-size: 12px;
     text-align: justify;
     margin-top: 3px;
 }

@@ -9,7 +9,7 @@ $(document).ready(function(){
 $(function(){
 	$("#instellingen-dropdown").on('click', function(e){
 		// $("#instellingen-dropdown-content").toggle();
-		$("#instellingen-dropdown-content").slideToggle(200);
+		$("#instellingen-dropdown-content").toggle(200);
 
 		e.stopPropagation();
 
