@@ -71,6 +71,19 @@
 
 			echo "</select></div>";
 
+			echo "<div class='pop-up-edit-lineitem clearfix'><div class='popup-label'>Uitgelicht:</div>";
+			echo "<select class='input-popup' name='uitgelicht'>";
+			if ($requestedEditProd->uitgelicht == 0){
+				echo "<option selected class='input-popup' type='text' value='0'>Nee</input>";
+				echo "<option class='input-popup' type='text' value='1'>Ja</input>";
+			}
+			else{
+				echo "<option class='input-popup' type='text' value='0'>Nee</input>";
+				echo "<option selected class='input-popup' type='text' value='1'>Ja</input>";
+			}
+			
+			
+			echo "</select></div>";
 
 
 			echo "<div class='pop-up-edit-lineitem pop-up-edit-lineitem-beschrijving clearfix'><div class='popup-label'>Beschrijving:</div><textarea name='beschrijving' class='input-popup' id='input-popup-beschrijving' type='text'>".$requestedEditProd->beschrijving."</textarea></div>";

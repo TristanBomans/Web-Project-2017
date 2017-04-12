@@ -128,7 +128,7 @@ class MainDAO {
     {
         require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("UPDATE producten SET cat_naam = '$toUpdateProduct->cat_naam' , naam = '$toUpdateProduct->naam', prijs = '$toUpdateProduct->prijs', beschrijving = '$toUpdateProduct->beschrijving', datum_toegevoegd = '$toUpdateProduct->datum_toegevoegd', img_path = '$toUpdateProduct->img_path', avg_rating = '$toUpdateProduct->avg_rating', numb_ratings = '$toUpdateProduct->numb_ratings'  where id = '$toUpdateProduct->id';");
+        $result = $mysqli->query("UPDATE producten SET cat_naam = '$toUpdateProduct->cat_naam' , naam = '$toUpdateProduct->naam', prijs = '$toUpdateProduct->prijs', beschrijving = '$toUpdateProduct->beschrijving', datum_toegevoegd = '$toUpdateProduct->datum_toegevoegd', img_path = '$toUpdateProduct->img_path', avg_rating = '$toUpdateProduct->avg_rating', numb_ratings = '$toUpdateProduct->numb_ratings', uitgelicht = '$toUpdateProduct->uitgelicht'  where id = '$toUpdateProduct->id';");
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }

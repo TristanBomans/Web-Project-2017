@@ -56,6 +56,7 @@ if (isset($_POST['editProduct'])) {
     $id = $_POST['id'];
     $naam = $_POST['naam'];
     $prijs = $_POST['prijs'];
+    $uitgelicht = $_POST['uitgelicht'];
     $categorie = $_POST['categorie'];
     $beschrijving = $_POST['beschrijving'];
     $img_path = "../Resources/".$_FILES["file"]["name"];
@@ -66,6 +67,7 @@ if (isset($_POST['editProduct'])) {
     $productt->naam = $naam;
     $productt->prijs = floatval($prijs);
     $productt->cat_naam = $categorie;
+    $productt->uitgelicht = $uitgelicht;
     $productt->beschrijving = $beschrijving;
        
 
