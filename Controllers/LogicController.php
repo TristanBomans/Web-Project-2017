@@ -220,7 +220,7 @@ class LogicController
 			echo "<h1>Reviews:</h1>";
 			foreach ($alleReviews as $review) 
 			{
-				echo "<div class='review-line-item clearfix'><div class='review-user'>".$review->username."</div><div class='review-comment'>".$review->comment."</div><div class='review-rating'> ".$review->rating."/10</div></div>";
+				echo "<div class='review-line-item clearfix'><a href='/Views/user?u=".$review->username."'><div class='review-user link-review-profile'>".$review->username."</div></a><div class='review-comment'>".$review->comment."</div><div class='review-rating'> ".$review->rating."/10</div></div>";
 			}
 			echo "</div>";
 		}

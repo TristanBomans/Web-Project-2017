@@ -133,6 +133,16 @@ class MainDAO {
         mysqli_close($mysqli);
     }
 
+    static function deleteProduct($id)
+    {
+        require "../credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("DELETE FROM producten WHERE id = '$id';");
+        if(!($result)) die(mysqli_error($mysqli));
+        mysqli_close($mysqli);
+    }
+
+
     // USERS
     static function updateUser($toUpdateUser)
     {

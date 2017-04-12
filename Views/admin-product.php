@@ -35,7 +35,7 @@
 					
 						$optChangeProd = LogicController:: getAlleProducten();
 						foreach ($optChangeProd as $CP) {
-							echo "<a class='a-admin-edit' href='admin-product?editProd=".$CP->id."'><div title='Bewerk dit product'class='admin-edit-lineitem'>".$CP->naam."</div></a>";	
+							echo "<div class='prod-adm-topwrapper'><a class='a-admin-edit' href='admin-product?editProd=".$CP->id."'><div class='wrapper-product-admin'><div title='Bewerk dit product'class='admin-edit-lineitem'>".$CP->naam."</div></div></a><a href='/Controllers/RequestController?deleteProd=".$CP->id."'><div class='deleteprodicon' title='verwijder ".$CP->naam."'></div></a></div>";	
 						}
 					?> 
 				</div>	

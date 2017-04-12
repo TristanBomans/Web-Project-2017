@@ -15,7 +15,7 @@ $(function(){
 
 		$("body").on('click', function(e){
 			if(!($(e.target).parents("#instellingen-dropdown-content").length > 0)){
-				$("#instellingen-dropdown-content").slideUp(100)
+				$("#instellingen-dropdown-content").slideUp(200)
 			}
 		});
 	});

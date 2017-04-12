@@ -10,10 +10,6 @@ if(!(isset($_SESSION)) ){
     session_start();
 }
 
-// $fbook = new FacebookWS($_SERVER['HTTP_REFERER']);
-
-
-
 #VOOR HET WINKELMANDJE, PRODUCTEN TOE TE VOEGEN, STEEKT PROD IN SESSION
 if (isset($_POST['toAddProduct'])) 
 {
@@ -22,12 +18,12 @@ if (isset($_POST['toAddProduct']))
 
 #DIT IS CODE VOOR EEN NIEUW PRODUCT TOE TE VOEGEN MET FOTO ETC
 if (isset($_POST['newDBProd'])) {
-    if(!empty($_FILES["file"]["name"])){
+    if(!(empty($_FILES["file"]["name"]))){
         $uploadedFile = "../Resources/" . $_FILES["file"]["name"];
         move_uploaded_file($_FILES["file"]["tmp_name"], $uploadedFile);
     }
     
-    if (isset($_FILES['file']['name'])){
+    if ($_FILES['file']['name'] != ""){
         $img_path = "../Resources/".$_FILES["file"]["name"];
     }
     else{
@@ -265,6 +261,12 @@ if (isset($_POST['aanpassen-fw-aantal'])) {
         $_SESSION['winkelmandje'] = array_udiff($_SESSION['winkelmandje'],[MainDAO::getProduct($prodID)], 'Util::compare_objects');  
     }
 
+    header(prevURL);
+}
+
+#DIT IS VOOR HET VERWIJSEREN VAN EEN PRODUCT VANUIT HET ADMIN PANEEL
+if (isset($_GET['deleteProd'])) {
+    MainDAO::deleteProduct($_GET['deleteProd']);
     header(prevURL);
 }
 

@@ -728,7 +728,8 @@ _____ ___ _____ _____ _     ____    _    ____
 }
 
 .admin-edit-lineitem{
-    height: 40px;
+    max-width: 90%;
+    height: auto;
     padding: 5px;
     transition: all 0.2s ease-in 0s;
 }
@@ -747,7 +748,7 @@ _____ ___ _____ _____ _     ____    _    ____
 }
 
 .a-admin-edit:hover {
-    color: white;
+    /*color: white;*/
     font-weight: bold;
 }
 
@@ -1537,4 +1538,43 @@ width: auto;
 
 #profile-h1{
     margin-top: 0px;
+}
+.deleteprodicon{
+    /*float: left;*/
+    position: absolute;
+    width: 40px;
+    height: 25px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url("../Resources/exit-icon.png");
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    background-position: center; 
+    transition: all 0.2s ease-in 0s;
+
+    /*Overriding shit, afblijven*/
+    border:none;
+    background-color: transparent !important;
+    max-width: 10%;
+}
+
+.deleteprodicon:hover{
+    filter: invert(50%);
+    cursor: pointer;
+}
+
+.wrapper-product-admin{
+    position: relative;
+    cursor: pointer;
+}
+
+.prod-adm-topwrapper{
+   position: relative;  
+}
+.link-review-profile:hover {
+    cursor: pointer;
+    color: #756060;
+    font-weight: bold;
+
 }
