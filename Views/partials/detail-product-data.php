@@ -6,8 +6,6 @@
 	
 	echo "<div id='product-img-sc-wrapper'><img src='".$product->img_path."' id='detail-img-product'>";
 
-
-
 echo "<form action='/Controllers/RequestController.php' method='POST'>";
 echo"<input type='hidden' name='toAddProduct' value='".$product->id."'>";
 echo "<input type='submit' id='detailAddShoppingCart' value='' class='winkelwagen-add' title='Voeg toe aan winkelmandje'>";

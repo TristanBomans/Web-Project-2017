@@ -118,6 +118,9 @@ if (isset($_POST['sortMethode']))
 
     for ($i=0; $i < sizeof($array); $i++) { 
         $array[$i]['datum_toegevoegd'] = date("d-m-Y",strtotime($array[$i]['datum_toegevoegd']));
+        $array[$i]['prijs'] = round($array[$i]['prijs'], 1);
+        $array[$i]['avg_rating'] = round($array[$i]['avg_rating'], 1);
+        
     }
 
     echo json_encode(Util::utf8ize($array));
@@ -153,11 +156,12 @@ if (isset($_POST['FilterenAJAX']))
 
     $filteredData = util::productObjectToArray($filteredData);
 
-      for ($i=0; $i < sizeof($filteredData); $i++) { 
+    for ($i=0; $i < sizeof($filteredData); $i++) { 
         $filteredData[$i]['datum_toegevoegd'] = date("d-m-Y",strtotime($filteredData[$i]['datum_toegevoegd']));
-    }
+        $filteredData[$i]['prijs'] = round($filteredData[$i]['prijs'], 1);
+        $filteredData[$i]['avg_rating'] = round($filteredData[$i]['avg_rating'], 1);
 
-    // echo Util::utf8ize($filteredData);
+    }
     echo json_encode(Util::utf8ize($filteredData));
 }
 
