@@ -27,6 +27,8 @@
                 {
                     echo "<a class='link-dropdown-instellingen'><div class='instellingen-dropdown-content-line-item' id='instellingen-dropdown-content-line-item-username'>Welkom ".$_SESSION['user']->username."</div></a>";
                     echo "<a class='link-dropdown-instellingen' href='/Controllers/RequestController.php?action=logout'><div class='instellingen-dropdown-content-line-item'>Afmelden</div></a>";
+                    echo "<a class='link-dropdown-instellingen' href='/Views/user-bestellingen'><div class='instellingen-dropdown-content-line-item'>Jouw bestellingen</div></a>";
+
                     if($_SESSION['user']->authority == 1){
                      echo "<a class='link-dropdown-instellingen' href='/Views/admin'><div class='instellingen-dropdown-content-line-item'>Admin menu</div></a>";     
                     }

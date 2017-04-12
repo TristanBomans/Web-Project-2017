@@ -59,6 +59,8 @@ if(isset($_GET['fb'])){
 
 		if(!(MainDAO::getUser($voornaam." ".$naam))){
 			MainDAO::addUser($toAddUser);
+		}else{
+			$toAddUser = MainDAO::getUser($voornaam." ".$naam);
 		}
 
 		unset($_SESSION['facebook_access_token']);

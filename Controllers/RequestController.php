@@ -253,6 +253,7 @@ if (isset($_POST['editUser'])) {
     header(prevURL);
 }
 
+#DIT IS VOOR HET AANTAL IN HET VOLLEDIGE WINKELMANDJE AAN TE PASSEN
 if (isset($_POST['aanpassen-fw-aantal'])) {
     $prodID = intval($_POST['product-id']);
     $_SESSION['aantallen'][$prodID] = $_POST['aantal'];
