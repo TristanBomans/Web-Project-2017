@@ -13,18 +13,13 @@ echo"<input type='hidden' name='toAddProduct' value='".$product->id."'>";
 echo "<input type='submit' id='detailAddShoppingCart' value='' class='winkelwagen-add' title='Voeg toe aan winkelmandje'>";
 echo "<div class='product-metadata-id metadata'>".$product->id."</div>";
 echo "<div class='product-metadata-naam metadata'>".$product->naam."</div>";
-echo "<div class='product-metadata-prijs metadata'>".$product->prijs."</div>";
+echo "<div class='product-metadata-prijs metadata'>".round($product->prijs, 2)."</div>";
 if ($product->avg_rating != 0) {
-	echo "<div class='product-rating-icon'>".$product->avg_rating."</div>";
+	echo "<div class='product-rating-icon'>".round($product->avg_rating, 1)."</div>";
 }
-
-
-
-
-
 echo "</form></div>";
- // echo "<div id='detailAddShoppingCart'></div></form></div>";
 
+ // echo "<div id='detailAddShoppingCart'></div></form></div>";
 
 	echo "<div id='text-detail-product'>";
 	echo "<h1 id='h1-naam-detail'>".$product->naam."</h1>";

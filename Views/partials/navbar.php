@@ -16,7 +16,7 @@
         <li role="presentation" class="navpils"><a href='/Views/allproducts' class="navpils-color">Alle Producten</a></li>
         <?php 
         if(isset($_SESSION['user'])){
-            echo  "<li role='presentation' class='navpils'><a href='/Views/profile' class='navpils-color'>Profiel</a></li>";
+            echo  "<li role='presentation' class='navpils'><a href='/Views/user?u=".$_SESSION['user']->username."' class='navpils-color'>Profiel</a></li>";
         }
         ?>
        
@@ -28,21 +28,21 @@
                 {
                     $html .= "<a class='link-dropdown-instellingen'><div class='instellingen-dropdown-content-line-item' id='instellingen-dropdown-content-line-item-username'>Welkom ".$_SESSION['user']->username."</div></a>";
                     $html .= "<a class='link-dropdown-instellingen' href='/Controllers/RequestController.php?action=logout'><div class='instellingen-dropdown-content-line-item'>Afmelden</div></a>";
-                    $html .= "<a class='link-dropdown-instellingen' href='/Views/user-bestellingen'><div class='instellingen-dropdown-content-line-item'>Jouw bestellingen</div></a>";
 
                     if($_SESSION['user']->authority == 1){
-                     $html .= "<a class='link-dropdown-instellingen' href='/Views/admin'><div class='instellingen-dropdown-content-line-item'>Admin menu</div></a>";     
+                        $html .= "<a class='link-dropdown-instellingen' href='/Views/admin'><div class='instellingen-dropdown-content-line-item'>Admin menu</div></a>";     
                     }
+                    $html .= "<a class='link-dropdown-instellingen' href='/Views/user-bestellingen'><div class='instellingen-dropdown-content-line-item'>Uw bestellingen</div></a>";
                     $html .= "<a class='link-dropdown-instellingen' href='/Views/contact'><div class='instellingen-dropdown-content-line-item'>Neem contact op</div></a>";
                 } 
                 else
                 {
-                    $html .= "<a class='link-dropdown-instellingen' href='/Views/login'><div class='instellingen-dropdown-content-line-item'>Aanmelden</div></a>";
-                   
-                    $html .= "<a class='link-dropdown-instellingen' href='Controllers/FacebookControl.php?fb=x'><div class='instellingen-dropdown-content-line-item'>Aanmelden met Facebook</div></a>";
-
+                    $html .= "<a class='link-dropdown-instellingen' href='/Views/login'><div class='instellingen-dropdown-content-line-item'>Aanmelden</div></a>";   
+                    $html .= "<a class='link-dropdown-instellingen' href='/Controllers/FacebookControl.php?fb=x'><div class='instellingen-dropdown-content-line-item'>Aanmelden met Facebook</div></a>";
                     $html .= "<a class='link-dropdown-instellingen' href='/Views/register'><div class='instellingen-dropdown-content-line-item'>Registreren</div></a>";
                 }
+
+               
                 echo $html;
                 ?>
             </div>

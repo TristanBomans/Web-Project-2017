@@ -212,33 +212,19 @@ if (isset($_POST['newCat'])) {
     header("location: ".URL."Views/admin-category");
 }
 
-#DIT IS VOOR DE USER ZIJN EIGEN INFORMATIE TE LATEN AANPASSEN VANUIT DE "PROFIEL" NAV PAGE
-if (isset($_POST['editUserData'])) {
-    $user = $_SESSION['user'];
-    switch ($_POST['editUserData']) {
-        case 'naam':
-            $user->naam = $_POST['toEditUserdata'];
-            break;
-       case 'voornaam':
-            $user->voornaam = $_POST['toEditUserdata'];
-            break;
-        case 'emailadres':
-            $user->emailadres = $_POST['toEditUserdata'];
-            break;
-        default:
-            break;
-    }
 
-    MainDAO::updateUser($user);
-    header("location: /Views/profile");
-}
 
 #DIT IS VOOR DE ADMIN DE USERS TE LATEN BEWERKEN
 if (isset($_POST['editUser'])) {
 
     $userpw = MainDAO::getUser(($_POST['toEditUser']));
     $userpw = $userpw->password;
-    $user = new UserEntity($_POST['toEditUser'], $userpw, $_POST['naam'], $_POST['voornaam'], $_POST['authority'], $_POST['emailadres']);
+    $user = MainDAO::getUser($_POST['toEditUser']);
+    $user->naam = $_POST['naam'];
+    $user->voornaam = $_POST['voornaam'];
+    $user->authority = $_POST['authority'];
+    $user->emailadres = $_POST['emailadres'];
+    
 
     var_dump($user);
     MainDAO::updateUser($user);
@@ -264,9 +250,29 @@ if (isset($_POST['aanpassen-fw-aantal'])) {
     header(prevURL);
 }
 
-#DIT IS VOOR HET VERWIJSEREN VAN EEN PRODUCT VANUIT HET ADMIN PANEEL
+#DIT IS VOOR HET VERWIJDEREN VAN EEN PRODUCT VANUIT HET ADMIN PANEEL
 if (isset($_GET['deleteProd'])) {
     MainDAO::deleteProduct($_GET['deleteProd']);
+    header(prevURL);
+}
+
+#DIT IS VOOR DE USER ZIJN EIGEN INFORMATIE TE LATEN AANPASSEN VANUIT DE "PROFIEL" NAV PAGE
+if (isset($_GET['editUserdataPuser'])) {
+    $user = $_SESSION['user'];
+    switch ($_GET['editUserdataPuser']) {
+        case 'naam':
+            $user->naam = $_GET['toEditUserdata'];
+            break;
+       case 'voornaam':
+            $user->voornaam = $_GET['toEditUserdata'];
+            break;
+        case 'emailadres':
+            $user->emailadres = $_GET['toEditUserdata'];
+            break;
+        default:
+            break;
+    }
+    MainDAO::updateUser($user);
     header(prevURL);
 }
 

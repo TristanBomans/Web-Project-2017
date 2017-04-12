@@ -32,17 +32,19 @@
 				
 					<?php 
 						echo "<a href='admin-product?newProd=#'><div id='add-item-icon'></div>";
-					
+						echo "<div id='admin-line-items-content'>";
 						$optChangeProd = LogicController:: getAlleProducten();
 						foreach ($optChangeProd as $CP) {
 							echo "<div class='prod-adm-topwrapper'><a class='a-admin-edit' href='admin-product?editProd=".$CP->id."'><div class='wrapper-product-admin'><div title='Bewerk dit product'class='admin-edit-lineitem'>".$CP->naam."</div></div></a><a href='/Controllers/RequestController?deleteProd=".$CP->id."'><div class='deleteprodicon' title='verwijder ".$CP->naam."'></div></a></div>";	
 						}
+						echo "</div>";
 					?> 
 				</div>	
 		</div>
 
 
-		<?php if (isset($_GET['editProd'])) {
+		<?php 
+		if (isset($_GET['editProd'])) {
 			$requestedEditProd = LogicController::getProduct($_GET['editProd']);
 			$categorien = LogicController::getAllCategorien();
 			$tempc = new CategorieEntity($requestedEditProd->cat_naam);

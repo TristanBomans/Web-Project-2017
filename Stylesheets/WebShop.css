@@ -374,7 +374,7 @@ _____ ___ _____ _____ _     ____    _    ____
     display: block;
 }
 .parent-thumb-cont:hover .product-rating-icon{
-    top: 120px;
+    top: 55px;
 }
 
 .winkelwagen-btn:hover {
@@ -1216,6 +1216,7 @@ _____ ___ _____ _____ _     ____    _    ____
 }
 
 .submit-btn-payment{
+    margin: auto;
     margin-top: 15px;
     display: block;
     border: none;
@@ -1225,7 +1226,9 @@ _____ ___ _____ _____ _     ____    _    ____
     border-radius: 8px;
     padding: 7px;
     transition: all 0.2s ease-in 0s;
+
 }
+
 .submit-btn-payment,#contact-submit:hover {
     background-color: #BA9696;
     cursor: pointer;
@@ -1489,6 +1492,7 @@ width: auto;
     width: 60%;
     float: left;
 }
+
 #git-footer{
     background-image: url("../Resources/git.png");
     width: 130px;
@@ -1504,7 +1508,7 @@ width: auto;
 
 #profilewrap{
     width: 70vw;
-    max-width: 600px;
+    max-width: 800px;
     margin: auto;
     border: 1px solid #E4E1E1;
     padding: 15px;
@@ -1512,9 +1516,9 @@ width: auto;
 }
 
 .profile-label{
- float: left;
- height: 35px;
- line-height: 35px;
+     float: left;
+     height: 35px;
+     line-height: 35px;
 }
 
 .profile-lineitem{
@@ -1577,4 +1581,105 @@ width: auto;
     color: #756060;
     font-weight: bold;
 
+}
+
+#usr-img-pic{
+    /*height: 250px;*/
+    width: 50%;
+    float: left;
+    margin-right: 20px;
+}
+
+#user-wrapper-text{
+    float: left;
+    width: 43%;
+}
+
+.profile-label{
+    width: 85%;
+    height: auto;
+}
+
+.edit-icon-profile{
+    float: right;
+
+}
+
+.comments-detail-img{
+    height: 50px;
+    float: left;
+    margin-right: 5px;
+}
+
+.wrapper-comment-text{
+    width: calc(100% - 55px);
+    float: left;
+}
+
+.detail-comment-img-usr{
+    /*width: 20%;*/
+    float: left;
+}
+
+.review-rating{
+    float: right;
+}
+
+#admin-line-items-content{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#algemene-voorwaarden-a{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#algemene-voorwaarden-a:hover{
+    cursor: pointer;
+}
+
+#algemene-voorwaarden-inp{
+    margin-right: 5px;
+    margin-top: 15px;
+}
+
+#payment-all-wrap{
+    width: 80vw;
+    max-width: 900px;
+    margin: auto;
+    margin-top: 15px;
+    background-color: #8F98B6;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#payment-lineitem{
+
+}
+
+#payment-titelbar{
+    font-weight: bold;
+    background-color: #6271A1;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+}
+
+#payment-cont {
+    padding: 20px
+}
+
+.thumb-cont:hover{
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+    cursor: pointer;
+}
+
+.thumb-cont:hover img, h3, .wrapper-date-cat, .product-rating-icon{
+    cursor: pointer;
 }

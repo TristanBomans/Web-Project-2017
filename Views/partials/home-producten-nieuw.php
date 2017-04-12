@@ -9,15 +9,14 @@
     for ($i=0; $i < $e; $i++) 
     {
 
-        $html .= "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 parent-thumb-cont'>"
+        $html .= "<a href='/Views/detail?opgevraagdProduct=".$producten[$i]->id."'><div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 parent-thumb-cont'>"
          . "<div class='thumbnail thumb-cont'>"
-         . "<div class='thumb-cont-money-circle'>€ ".$producten[$i]->prijs."</div>"
+         . "<div class='thumb-cont-money-circle'>€ ".round($producten[$i]->prijs, 1)."</div>"
          . "<img src='".$producten[$i]->img_path."'class='image-thumb' alt='Deze afbeelding kon niet gevonden worden'>"
          . "<div class='caption'>"
          . "<h3>".$producten[$i]->naam."</h3>"
          . "<div class='wrapper-date-cat'><b>".date("d-m-Y",strtotime($producten[$i]->datum_toegevoegd))."</b>"
          . "<b class='thumb-categorie'>".$producten[$i]->cat_naam."</b></div>"
-         . "<a value='Detail' class='btn btn-default btn-lg btn-detail' href='/Views/detail?opgevraagdProduct=".$producten[$i]->id."'>Detail</a>"
          . "</form>"
          . "</div>"   
          . "</div>"
@@ -28,11 +27,11 @@
          . "<div class='product-metadata-naam metadata'>".$producten[$i]->naam."</div>"
          . "<div class='product-metadata-prijs metadata'>".$producten[$i]->prijs."</div>";
          if ($producten[$i]->avg_rating != 0) {
-            $html .= "<div class='product-rating-icon'>".$producten[$i]->avg_rating."</div>";
+            $html .= "<div class='product-rating-icon'>".round($producten[$i]->avg_rating, 1)."</div>";
          }
          $html .=""
          . "</form>"
-         . "</div>";
+         . "</div></a>";
     }
     echo $html;
  ?>

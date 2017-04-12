@@ -220,7 +220,11 @@ class LogicController
 			echo "<h1>Reviews:</h1>";
 			foreach ($alleReviews as $review) 
 			{
-				echo "<div class='review-line-item clearfix'><a href='/Views/user?u=".$review->username."'><div class='review-user link-review-profile'>".$review->username."</div></a><div class='review-comment'>".$review->comment."</div><div class='review-rating'> ".$review->rating."/10</div></div>";
+				$user = MainDAO::getUser($review->username);
+				if ($user->img_path == "0" || $user->img_path == "" ) {
+					$user->img_path = "/Resources/dummypng.png";
+				}
+				echo "<div class='review-line-item clearfix'><div class='detail-comment-img-usr'><img class='comments-detail-img' src='".$user->img_path."'></div><div class='wrapper-comment-text'><a href='/Views/user?u=".$review->username."'><div class='review-user link-review-profile'>".$review->username."</div></a><div class='review-comment'>".$review->comment."</div><div class='review-rating'> ".$review->rating."/10</div></div></div>";
 			}
 			echo "</div>";
 		}
