@@ -188,7 +188,7 @@ class MainDAO {
 
     static function getAllUsers() 
     {
-          require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
+        require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
         $result = $mysqli->query("SELECT * FROM users");
         $user = null;
@@ -420,5 +420,35 @@ class MainDAO {
         mysqli_close($mysqli);
         return $ContactArray;
     }
+
+    //CONFIG
+     static function getWSConfig() 
+    {
+        require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("SELECT * FROM configuratie where id = 1;");
+        $Configuratie = null;
+
+        while ($row = mysqli_fetch_array($result)) {
+            $id = $row[0];
+            $naam_ws = $row[1];
+
+          $Configuratie = new ConfiguratieEntity($naam_ws);
+            
+        }
+
+        mysqli_close($mysqli);
+        return $Configuratie;
+    }
+
+    static function updateWSConfig($toUpdateConfig)
+    {
+        require "../credentials.php";
+        $mysqli = new mysqli($host, $user, $passwd, $database);
+        $result = $mysqli->query("UPDATE configuratie SET naam_ws = '$toUpdateConfig->naam_ws' where id = '$toUpdateConfig->id';");
+        if(!($result)) die(mysqli_error($mysqli));
+        mysqli_close($mysqli);
+    }
+
 }
 ?>

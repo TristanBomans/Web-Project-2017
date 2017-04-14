@@ -528,6 +528,7 @@ _____ ___ _____ _____ _     ____    _    ____
 #detailwrap-log-reg { /*DIT IS DE WRAP ROND DE LOGIN IN DE REGISTER FORM*/
     width: 40vw;
     padding: 40px;
+
     padding-top: 10px;
     margin: auto;
     margin-top: 10vh;
@@ -1682,4 +1683,77 @@ width: auto;
 
 .thumb-cont:hover img, h3, .wrapper-date-cat, .product-rating-icon{
     cursor: pointer;
+}
+
+#error-text-404{
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    font-size: 40px;
+    font-weight: bold; 
+    font-family: 'times new roman';
+}
+
+#aantal-items-page{
+    position: absolute;
+    right: 400px; 
+    z-index: 5000;
+    margin-top: 45px;
+    transform: translateY(-11px);
+}
+
+#allpages-page-numbers{
+    margin: auto;
+    width: 95vw;
+    margin-bottom: 150px;
+    text-align: center;
+  
+    font-size: 22px;
+
+}
+
+#allpages-page-numbers a{
+  text-decoration: underline;
+}
+
+#allpages-page-numbers a:hover{
+    cursor: pointer;
+}
+/*#allpages-page-numbers{*/
+
+#config-wrapper-admin{
+    width: 60vw;
+    max-width: 800px;
+    background-color: #7DB6E7;
+    margin: auto;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+}
+
+
+#config-wrapper-admin input{
+    background-color: #B5D2ED;
+}
+
+#config-wrapper-admin form{
+    padding: 15px;
+    
+}
+
+.schuine-tekst{
+    font-size: 12px;
+}
+
+#configuratie-titel{
+    /*margin: 0px 0px 0px 0px;*/
+    height: 50px;
+    width: 100%;
+    background-color: #607E99;
+    text-align: center;
+    line-height: 50px;
+    font-size: 180%;
+    
 }

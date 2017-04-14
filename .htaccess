@@ -1,6 +1,9 @@
 
 ErrorDocument 404 https://tristanb.tk/404
 
+ErrorDocument 403 https://tristanb.tk/403
+
+
 RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-d 

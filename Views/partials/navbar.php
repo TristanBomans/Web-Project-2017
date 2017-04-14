@@ -6,9 +6,11 @@
         session_start();
     }
 ?>
-
+<?php
+$Configuratie = MainDAO::getWSConfig();
+?>
 <div id='titelbar'>
-    <div id="titelbar-tekst">Webshop</div>
+    <div id="titelbar-tekst"><?php echo $Configuratie->naam_ws; ?></div>
 </div>
 <div class="container-fluid">
     <ul class="nav nav-pills" id="parent-winkelmandje-dropdown">

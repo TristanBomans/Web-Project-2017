@@ -280,4 +280,12 @@ if (isset($_GET['editUserdataPuser'])) {
     header(prevURL);
 }
 
+if (isset($_POST['changewsname'])){
+    $conf = new ConfiguratieEntity($_POST['wsnaam']);
+    MainDAO::updateWSConfig($conf);
+    // echo "string";
+    // $Configuratie = MainDAO::getWSConfig();
+    // var_dump(MainDAO::getWSConfig());
+    header(prevURL);
+}
 ?>

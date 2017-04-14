@@ -25,11 +25,18 @@
 	<body class="container-fluid">
 
  		<?php include("partials/navbar.php"); ?> 
- 		<h1 id='bestellingen-titel-admin'>Configuratie</h1>
-		<form>
-		<div><div>Website mail: <i> Waar Naar de mails worden gestuurd</i></div><input type="text" name="adminmail"></div>
-		</form>
-	
+
+ 		<div id='config-wrapper-admin'>
+ 			<div id='configuratie-titel'>Configuratie</div>
+			<form method="POST" action="/Controllers/RequestController">
+				<div>
+					<div>Website naam: <i class="schuine-tekst"> De naam die vanboven te zien is</i></div>
+					<input type="text" name="wsnaam">
+				</div>
+				<input type="submit" name="" class="submit-btn-payment">
+				<input type="hidden" name="changewsname">
+			</form>
+		</div>
 			
 		<?php include("partials/footer.php"); ?>
 

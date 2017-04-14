@@ -22,8 +22,6 @@
 		<div id="producten-uitgelicht" class="row">
 			<?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/home-producten-uitgelicht.php"); ?>
 		</div>
-
 		<?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/footer.php"); ?>
-
 	</body>
 </html>

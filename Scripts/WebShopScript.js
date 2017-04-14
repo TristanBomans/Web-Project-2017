@@ -16,6 +16,16 @@ $(function(){
 		});
 	});
 
+	$('#select-pages').on("change", function(e){
+		console.log("..");
+		var g = $("#select-pages").val();
+		window.location = "allproducts?g=" + g;
+	});
+
+
+
+
+
 	$(".allproducts-dropdown-lineitem-sort").on('click', function(e){
 		var attrClicked = $(this).attr("id");
 		console.log("Clicked on: " + attrClicked);
@@ -27,7 +37,6 @@ $(function(){
 			success: function(data){
 				console.log(data);
 				var html = "";
-		        
 				for (var i = 0; i < data.length; i++) {
 					html += "<a href='/Views/detail?opgevraagdProduct=" + data[i].id + "'><div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 parent-thumb-cont'>"
 					+ "<div class='thumbnail thumb-cont'>"
@@ -43,14 +52,14 @@ $(function(){
 			        + "<input type='hidden' name='toAddProduct' value='" + data[i].id + "'>"
 			        + "<input type='submit' value='' class='winkelwagen-btn' title='Voeg toe aan winkelmandje'>";
 			        if (data[i].avg_rating != 0) {
-			        html +=  "<div class='product-rating-icon'>" + data[i].avg_rating +"</div>";
+			        	html +=  "<div class='product-rating-icon'>" + data[i].avg_rating +"</div>";
 			 	  	}
-			        html += "</form>"
-			        + "</div></a>";
+			        html += "</form>" + "</div></a>";
 				}
 		  
 				$("#producten-alle").html(html);
-				
+				$("#allpages-page-numbers").html("");
+        		$("#aantal-items-page").html("");
 			}
 		});
 
@@ -157,9 +166,13 @@ $(function(){
 				}
 
         	$("#producten-alle").html(html);
+        	$("#allpages-page-numbers").html("");
+        	$("#aantal-items-page").html("");
+
 	        }
 	    });
 	});
 
 
 });
+
