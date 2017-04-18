@@ -18,8 +18,4 @@
 	if (!defined('prevURL')){
 		if (isset($_SERVER['HTTP_REFERER'])){define('prevURL', "location: ".$_SERVER['HTTP_REFERER']);}
 	}
-
-	// if (isset($_SESSION['erm']) == false) {
-	// 	$_SESSION['erm'] =  [];
-	// }
 ?>

@@ -1,25 +1,18 @@
 <?php
+    include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
+    if(!(isset($_SESSION)) ){
+        session_start();
+    }
 
-/**
- * Created by PhpStorm.
- * User: Tristan
- * Date: 23/03/2017
- * Time: 0:20
- */
-include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
-if(!(isset($_SESSION)) ){
-    session_start();
-}
+    if ($_SESSION['winkelmandje'] == null) 
+    {
+        header("location: ". URL."/");
+    }
 
-if ($_SESSION['winkelmandje'] == null) 
-{
-    header("location: ". URL."/");
-}
-
-if (!(isset($_SESSION['user']))) 
-{
-    Util::redirect("/?err=nli");
-} 
+    if (!(isset($_SESSION['user']))) 
+    {
+        Util::redirect("/?err=nli");
+    } 
 ?>
 
 <!doctype HTML>
@@ -33,7 +26,7 @@ if (!(isset($_SESSION['user'])))
     <?php include("partials/navbar.php"); ?>
 
     <?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/errormess.php"); ?> 
-    
+
     <div id='payment-all-wrap'>
         <div id="payment-titelbar">
             Betaling

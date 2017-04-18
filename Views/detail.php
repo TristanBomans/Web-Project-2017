@@ -17,13 +17,6 @@ if(!(isset($_SESSION)) ){
 
 	<?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/errormess.php"); ?> 
 	
-	<?php
-		if (isset($_GET['err'])) {
-			if ($_GET['err'] == 'fara') {
-				echo "<div id='errloginwrap'><div id='login-err' class='clearfix'>Oops, foutieve invoer bij het 'Rating' veldje.</div></div>";
-			}
-		}
-	?>
 	<div id='detailwrap'>
 		<?php include("partials/detail-product-data.php"); ?>	
 	</div>

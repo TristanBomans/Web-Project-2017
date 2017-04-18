@@ -56,8 +56,6 @@ class LogicController
             if (password_verify($_POST['password'], $gebruiker->password))
             {
                 echo "password correct";
-                // $gebruiker->ip = $_SERVER['REMOTE_ADDR'];
-                // MainDAO::updateUser($gebruiker);
                 $_SESSION['user'] = $gebruiker;
                 if (isset($_POST['stayloggedin'])) {
 					setcookie("WebShopCookie", serialize($_SESSION['user']) , time() + (10 * 365 * 24 * 60 * 60), "/");
@@ -74,18 +72,22 @@ class LogicController
             }
             else
             {
-                 echo "password false";
-                 $_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
-                 $url = "location: ".URL."Views/login?err=wpw";
-                 header($url);
-                 die();
+				echo "password false";
+				$_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
+
+				$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "wpw";
+				$url = "location: ".URL."Views/login";
+				header($url);
+				die();
             }
         } 
         else
         {
             echo "user not found";
             $_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
-            $url = "location: ".URL."Views/login?err=unf";
+
+       		$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "unf";
+            $url = "location: ".URL."Views/login";
             header($url);
         	die();
         }
@@ -190,7 +192,8 @@ class LogicController
 		$allowedToAdd = false;
 
 		if ($_POST['rating'] < 0 || $_POST['rating'] > 10) {
-			header(prevURL."&err=fara");
+        	$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "fara";
+			header(prevURL);
 		}
 		else{
 			$allowedToAdd = true;

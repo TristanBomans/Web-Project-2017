@@ -148,9 +148,11 @@ if (isset($_POST['Filteren']))
 if (isset($_POST['FilterenAJAX'])) 
 {
     $selectedCats = $_POST['checkedcats'];
+    
     foreach ($selectedCats as $cat) {
         $cat = new CategorieEntity($cat);
     }
+
     $filteredData = LogicController::makeFilteredArray($selectedCats);
     $_SESSION['selectedCats'] = $filteredData;
 
@@ -280,12 +282,14 @@ if (isset($_GET['editUserdataPuser'])) {
     header(prevURL);
 }
 
+#VOOR HET AANPASSEN VAN DE TITEL VAN DE WEBSITE DIE VANBOVEN TE ZIEN VALT
 if (isset($_POST['changewsname'])){
     $conf = new ConfiguratieEntity($_POST['wsnaam']);
     MainDAO::updateWSConfig($conf);
     header(prevURL);
 }
 
+#OM EEN PAYMENT AF TE HANDELEN MET POPUP
 if(isset($_POST['payementinfo'])){
     $dt = new DateTime("now", new DateTimeZone("Europe/berlin"));
    
