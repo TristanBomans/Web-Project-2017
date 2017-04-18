@@ -38,6 +38,8 @@
 			</form>
 		</div>
 			
+
+			<!-- <?php $number_of_users = count(scandir(ini_get("session.save_path"))) - 2; echo $number_of_users;?> -->
 		<?php include("partials/footer.php"); ?>
 
 	</body>
