@@ -1757,3 +1757,59 @@ width: auto;
     font-size: 180%;
     
 }
+
+#ingelogd-blijven{
+    float: left;
+    margin-right: 7px;
+}
+
+#bestelling-overzicht-banner{
+    border-radius: 5px 5px 0px 0px ;
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+    height: 60px;
+    top: 0px;
+    background-color: #607E99  ;
+    overflow: hidden;
+    text-align: center;
+    line-height: 60px;
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
+}
+
+#content-bestelling-overzicht{
+    border-radius: 0px 0px 5px 5px ;
+
+    position: relative;
+    padding: 5px 20px 10px 20px;
+    width: 80%;
+    margin: auto;
+    height: calc(100% - 60px);
+    background-color: #7DB6E7;
+}
+
+.bestel-overzicht-linitem{
+    margin: auto;
+    height: auto;
+    font-size: 18px;  
+}
+
+
+#succloginwrap{
+    margin-top: 10px;
+    position: relative;
+    width: 100%;
+}
+
+#login-succ{
+    border: 2px solid #497F13;
+    background-color: #6DA832;
+    width: 40%;
+    margin: auto;
+    text-align: center;
+    display: block;
+    border-radius: 7px;
+    color: #6A4D4D;
+}

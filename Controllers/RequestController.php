@@ -3,7 +3,7 @@
 // GLOBAL REQUIREMENTS      
 #VERWIJST NAAR DE DOC DIE ALLE DOCS MET ELKAAR VERBINDT (NAMESPACES)
 
- include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; 
+include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; 
  
  #ELKE KEER CHECKEN OF ER EEN SESSION IS GESTART, ZO NIET START HET
 if(!(isset($_SESSION)) ){ 
@@ -98,7 +98,7 @@ if (isset($_POST['typeRequest']))
 if (isset($_GET['action'])){
     if ($_GET['action'] == "logout") {
         unset($_SESSION['user']);
-
+        setcookie("WebShopCookie", null, 1, "/");
         if(strpos( prevURL, "admin" )) {
             header("location: ".URL);
             die();}
@@ -283,9 +283,35 @@ if (isset($_GET['editUserdataPuser'])) {
 if (isset($_POST['changewsname'])){
     $conf = new ConfiguratieEntity($_POST['wsnaam']);
     MainDAO::updateWSConfig($conf);
-    // echo "string";
-    // $Configuratie = MainDAO::getWSConfig();
-    // var_dump(MainDAO::getWSConfig());
     header(prevURL);
 }
+
+if(isset($_POST['payementinfo'])){
+    $dt = new DateTime("now", new DateTimeZone("Europe/berlin"));
+   
+    if (isset($_POST['factuuradres']) == true && isset($_POST['leveradres']) == true && isset($_POST['levermethode']) == true && isset($_POST['betaalmethode'])) {
+        $bestelling = new BestellingEntity(-1, $_SESSION['user']->username, $_POST['factuuradres'],$_POST['leveradres'],$_POST['levermethode'],$_POST['betaalmethode'],$dt->format("Y-m-d H:i:s"));
+        MainDAO::addBestelling($bestelling);
+
+        $laatsteId = MainDAO::getAllBestellingen();
+        $laatsteId= $laatsteId[sizeof($laatsteId)-1]->id;
+
+        foreach($_SESSION['winkelmandje'] as $wm){
+
+            $tempBI = new BestelinhoudEntity(-1 , $laatsteId, $wm->id, $_SESSION["aantallen"][$wm->id]);
+            var_dump($_SESSION["aantallen"]);
+            var_dump($tempBI);
+            MainDAO::addBestellingInhoud($tempBI);
+        }
+
+        unset($_SESSION['winkelmandje']);
+        $_SESSION['winkelmandje'] = [];
+        unset($_SESSION['aantallen']);
+        $_SESSION['aantallen'] = [];
+
+        $_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "bsuc";
+        header("location: /Views/bestelling-overzicht?b=$laatsteId");
+    }
+}
+
 ?>

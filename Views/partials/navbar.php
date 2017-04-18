@@ -5,6 +5,19 @@
     if(!(isset($_SESSION)) ){
         session_start();
     }
+ 
+    if (isset($_SESSION['user']) != true) {
+        if (isset($_COOKIE['WebShopCookie'])) {
+            $user = unserialize($_COOKIE['WebShopCookie']);
+            $auth = MainDAO::getUser($user->username);
+            if ($auth == $user ) {
+                $_SESSION['user'] = $auth;
+            }
+        }
+    }
+
+
+
 ?>
 <?php
 $Configuratie = MainDAO::getWSConfig();

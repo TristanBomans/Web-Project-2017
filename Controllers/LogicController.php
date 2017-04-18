@@ -35,7 +35,7 @@ class LogicController
 	static function registerUser()
 	{
 		$_POST['password'] =password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $toAddUser = new UserEntity($_POST['username'], $_POST['password'], $_POST['naam'], $_POST['voornaam'], 0, $_POST['email']);
+        $toAddUser = new UserEntity($_POST['username'], $_POST['password'], $_POST['naam'], $_POST['voornaam'], 0, $_POST['email'], $_SERVER['REMOTE_ADDR']);
 
         MainDAO::addUser($toAddUser);
         $_SESSION['user'] = $toAddUser;
@@ -56,7 +56,12 @@ class LogicController
             if (password_verify($_POST['password'], $gebruiker->password))
             {
                 echo "password correct";
+                // $gebruiker->ip = $_SERVER['REMOTE_ADDR'];
+                // MainDAO::updateUser($gebruiker);
                 $_SESSION['user'] = $gebruiker;
+                if (isset($_POST['stayloggedin'])) {
+					setcookie("WebShopCookie", serialize($_SESSION['user']) , time() + (10 * 365 * 24 * 60 * 60), "/");
+                }
                 if (isset($_SESSION['alternative_befURL'])){         
                     header("location: ".$_SESSION['alternative_befURL']);
                 	die();
@@ -293,6 +298,20 @@ class LogicController
 	#DIT GEEFT ALLE GEBRUIKERS TERUG
 	static function getAllUsers(){
 		return MainDAO::getAllUsers();
+	}
+
+	#DIT ZORGT VOOR DE OUTPUT VAN DE ERROR OF SUCCESS MESSAGES
+	static function outputMess($mess, $code){
+
+		if ($code == 0) {
+			$html =  "<div id='succloginwrap'><div id='login-succ' class='clearfix'>".$mess."</div></div>";
+		}
+
+		if ($code == 1) {
+			$html =  "<div id='errloginwrap'><div id='login-err' class='clearfix'>".$mess."</div></div>";
+		}
+
+		return $html;
 	}
 
 }

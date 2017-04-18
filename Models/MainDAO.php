@@ -148,7 +148,7 @@ class MainDAO {
     {
         require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("UPDATE users SET username = '$toUpdateUser->username', password = '$toUpdateUser->password', naam = '$toUpdateUser->naam', voornaam = '$toUpdateUser->voornaam', authority = '$toUpdateUser->authority', emailadres = '$toUpdateUser->emailadres', img_path = '$toUpdateUser->img_path' where username = '$toUpdateUser->username';");
+        $result = $mysqli->query("UPDATE users SET username = '$toUpdateUser->username', password = '$toUpdateUser->password', naam = '$toUpdateUser->naam', voornaam = '$toUpdateUser->voornaam', authority = '$toUpdateUser->authority', emailadres = '$toUpdateUser->emailadres', img_path = '$toUpdateUser->img_path', ip = '$toUpdateUser->ip' where username = '$toUpdateUser->username';");
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }
@@ -158,7 +158,7 @@ class MainDAO {
         require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
         
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("INSERT INTO users (username, password, naam, voornaam, authority, emailadres, img_path) VALUES ('$toAddUser->username', '$toAddUser->password', '$toAddUser->naam', '$toAddUser->voornaam', '$toAddUser->authority', '$toAddUser->emailadres', '$toAddUser->img_path')");
+        $result = $mysqli->query("INSERT INTO users (username, password, naam, voornaam, authority, emailadres, img_path, ip) VALUES ('$toAddUser->username', '$toAddUser->password', '$toAddUser->naam', '$toAddUser->voornaam', '$toAddUser->authority', '$toAddUser->emailadres', '$toAddUser->img_path', '$toAddUser->ip')");
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }
@@ -178,8 +178,9 @@ class MainDAO {
             $authority = $row[4];
             $emailadres = $row[5];
             $img_path = $row[6];
+            $ip = $row[7];
 
-            $user = new UserEntity($username, $password, $naam, $voornaam, $authority, $emailadres, $img_path);
+            $user = new UserEntity($username, $password, $naam, $voornaam, $authority, $emailadres, $img_path, $ip);
         }
 
         mysqli_close($mysqli);
@@ -202,8 +203,9 @@ class MainDAO {
             $authority = $row[4];
             $emailadres = $row[5];
             $img_path = $row[6];
+            $ip = $row[7];        
 
-            $user = new UserEntity($username, $password, $naam, $voornaam, $authority, $emailadres, $img_path);
+            $user = new UserEntity($username, $password, $naam, $voornaam, $authority, $emailadres, $img_path, $ip);
             array_push($userArray, $user);
         }
 

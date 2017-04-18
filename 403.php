@@ -9,6 +9,7 @@
 	</head>
 	<body class="container-fluid">
  		<?php include( $_SERVER['DOCUMENT_ROOT']."/Views/partials/navbar.php"); ?>
+ 		<img src="/Resources/apolice.png">
  		<div id="error-text-404">VERBODEN!</div>
 		<?php include( $_SERVER['DOCUMENT_ROOT']."/Views/partials/footer.php"); ?>
 	</body>

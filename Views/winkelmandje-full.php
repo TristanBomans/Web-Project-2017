@@ -2,12 +2,15 @@
 
 <?php 
 	include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; 
+
 	if (!(isset($_SESSION['user']))) 
 	{
 		if (strpos( $_SERVER['HTTP_REFERER'], "detail" )) {
-			Util::redirect($_SERVER['HTTP_REFERER']."&err=nli");
+			$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "nli";
+			Util::redirect($_SERVER['HTTP_REFERER']);
 		}
-		Util::redirect($_SERVER['HTTP_REFERER']."?err=nli");
+		$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "nli";
+		Util::redirect($_SERVER['HTTP_REFERER']);
 	}
 ?>
 <!doctype HTML>
@@ -19,6 +22,9 @@
 	<body class="container-fluid">
 
  		<?php include("partials/navbar.php"); ?>
+
+ 		<?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/errormess.php"); ?> 
+ 		
  		<div>
  		<?php
 	 		if(isset($_SESSION['winkelmandje']))
@@ -42,7 +48,7 @@
 		
 			if ($_SESSION['winkelmandje'] != null) 
 			{
-				echo "<a href='payment.php'><div id='full-winkelmandje-afreken-icon' title='Afrekenen'></div></a>";
+				echo "<a href='payment'><div id='full-winkelmandje-afreken-icon' title='Afrekenen'></div></a>";
 			}
 			 
 			?>

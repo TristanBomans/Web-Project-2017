@@ -72,6 +72,9 @@ if(isset($_GET['fb'])){
 		}
 
 		unset($_SESSION['facebook_access_token']);
+
+		$toAddUser->ip = $_SERVER['REMOTE_ADDR'];
+        MainDAO::updateUser($toAddUser);
 		$_SESSION['user'] = $toAddUser;
 
 		header("location: ".URL);

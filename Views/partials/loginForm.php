@@ -11,16 +11,19 @@
 		</div>
 		
 		<?php 
-		if (isset($_GET['err'])) {
-			if ($_GET['err'] == 'wpw') {
-				echo "<div id='errloginwrap' class='errloginwrap'><div id='login-err' class='clearfix'>Fout Wachtwoord!</div></div>";
+			if (isset($_GET['err'])) {
+				if ($_GET['err'] == 'wpw') {
+					echo "<div id='errloginwrap' class='errloginwrap'><div id='login-err' class='clearfix'>Fout Wachtwoord!</div></div>";
+				}
+				if ($_GET['err'] == 'unf') {
+					echo "<div id='errloginwrap' class='errloginwrap'><div id='login-err' class='clearfix'>Gebruiker niet gevonden!</div></div>";
+				}
 			}
-			if ($_GET['err'] == 'unf') {
-				echo "<div id='errloginwrap' class='errloginwrap'><div id='login-err' class='clearfix'>Gebruiker niet gevonden!</div></div>";
-			}
-		}
 		 ?>
-
+		<div class="login-line-content clearfix">
+			<div id="ingelogd-blijven">Ingelogd blijven:</div>
+			<input type="checkbox" name="stayloggedin" class=''>
+		</div>
 		<div class="login-line-content-submit-button clearfix">
 			<input type="submit" name="submit">
 		</div>

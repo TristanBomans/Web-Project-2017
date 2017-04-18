@@ -30,7 +30,7 @@ if (!(isset($_SESSION['user'])))
 			foreach ($bestelMetInh as $BMI) {
 				$best = MainDAO::getBestelling($BMI[0]->bestelling_id);
 				if ($best->username == $_SESSION['user']->username) {
-					echo "<a href='user-bestellingen.php?viewBest=".$BMI[0]->bestelling_id."'><div class='bestelling-lineitem clearfix' title='Bekijk bestelling'>";
+					echo "<a href='user-bestellingen?viewBest=".$BMI[0]->bestelling_id."'><div class='bestelling-lineitem clearfix' title='Bekijk bestelling'>";
 					echo "<div class='bestelling-titel'>Bestelling</div>";
 					echo "<div class='bestelling-datum'>".date("d-m-Y",strtotime($best->datum))."</div>";
 					echo "<div class='bestelling-username'>".$best->username."</div>";
@@ -49,7 +49,7 @@ if (!(isset($_SESSION['user'])))
 			$total = 0;
 			echo "<div id='pop-up-bestelling-parent'>";
 			echo "<div id='pop-up-bestelling-content'>";		
-			echo "<div id='pop-up-bestelling-banner'>".$reqBest->username.": ".date("d-m-Y",strtotime($reqBest->datum))."<a href='user-bestellingen.php'><div id='exit-icon-admin'></div></a></div>";
+			echo "<div id='pop-up-bestelling-banner'>".$reqBest->username.": ".date("d-m-Y",strtotime($reqBest->datum))."<a href='user-bestellingen'><div id='exit-icon-admin'></div></a></div>";
 			echo "<div id='pop-up-content-bestelling'>";
 
 
