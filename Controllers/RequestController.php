@@ -478,7 +478,6 @@ if(isset($_POST['payementinfo'])){
 
     Util::sendMail("Nieuwe Bestelling", $toSendMessage, $_SESSION['user']->emailadres);
 
-
     unset($_SESSION['winkelmandje']);
     $_SESSION['winkelmandje'] = [];
     unset($_SESSION['aantallen']);

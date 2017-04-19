@@ -17,8 +17,8 @@
 			<div id='aantal-items-page'>
 				<form name="g">
 					<?php 
-						if (!(isset($_POST['productZoeken']))) {
-							if (!(isset($_SESSION['selectedCats']))) {
+						// if (!(isset($_POST['productZoeken']))) {
+							// if (!(isset($_SESSION['selectedCats']))) {
 								echo "<select id='select-pages'>";
 								if (isset($_GET['g'])) {
 									switch ($_GET['g']) {
@@ -41,8 +41,8 @@
 									echo '<option value="5">5</option><option selected value="10">10</option><option value="15">15</option><option value="all">all</option>';
 								}
 								echo "</select>";
-							}
-						}
+							// }
+						// }
 					?>	
 				</form>
 			</div>
@@ -83,12 +83,17 @@
 	</div>
 	<div id="producten-alle" class="row">
 		<?php 
-
-	        $alleprod = LogicController::getAlleProducten();
+			if (isset($_SERVER['HTTP_REFERER'])) {
+		        if (strpos($_SERVER['HTTP_REFERER'], "/Views/allproducts") == false) {
+	            	$_SESSION['selectedCats'] = null;
+		        	// }
+		        }
+		    }
+	        // $alleprod = LogicController::getAlleProducten();
  
             // var_dump($p . " " . $g);
 
-			if (isset($_POST['productZoeken'])) {
+			// if (isset($_POST['productZoeken'])) {
 			    
 			    if(!isset($_SESSION['selectedCats'])){
 			        $alleprod = LogicController::getAlleProducten();
@@ -102,7 +107,6 @@
 		        	$_GET['p'] -= 1;
 		        }
 		 
-
 				if (!(isset($_GET['p']))){
 	                $p = -1;
 	            }
@@ -123,14 +127,21 @@
 	            }
 
 			    $returnArr = [];
-			   
-			    foreach ($alleprod as $prod) {
-			       if (strpos(strtoupper($prod->naam), strtoupper($_POST['keyWord']) ) !== false) {
-			            array_push($returnArr, $prod);
-			       }
-			    }
 
-			    $producten = $returnArr;
+				if (isset($_POST['productZoeken'])) {
+				    foreach ($alleprod as $prod) {
+				       if (strpos(strtoupper($prod->naam), strtoupper($_POST['keyWord']) ) !== false) {
+				            array_push($returnArr, $prod);
+				       }
+				    }
+				}
+
+				if (isset($_POST['productZoeken'])) {
+			   		$producten = $returnArr;
+				}
+				else{
+			   		$producten = $alleprod;
+				}
 
 			    $html = "";
 
@@ -165,24 +176,24 @@
 				     }
 			     }
 			     echo $html;
-			}
-			else{
-				include("partials/alleproducts-producten-all.php"); 
-			}
+			// }
+			// else{
+			// 	// include("partials/alleproducts-producten-all.php"); 
+			// }
 		?>
 
 
 	</div>
 	<div id='allpages-page-numbers'>
 		<?php
-			if (!(isset($_POST['productZoeken']))) {
-				if (!(isset($_SESSION['selectedCats']))) {
+			// if (!(isset($_POST['productZoeken']))) {
+			// 	if (!(isset($_SESSION['selectedCats']))) {
 					$aantallinks = sizeof($producten) / $g;
 					for ($i=0; $i < $aantallinks; $i++) { 
 						echo "<a href='allproducts?g=".$g."&p=".($i+1)."'>".($i+1)."</a> ";
 					}
-				}
-			}
+			// 	}
+			// }
 		?>
 	</div>
 		<?php include("partials/footer.php"); ?>
