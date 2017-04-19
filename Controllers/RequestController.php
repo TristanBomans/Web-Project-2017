@@ -110,14 +110,8 @@ if (isset($_GET['action'])){
     if ($_GET['action'] == "logout") {
         unset($_SESSION['user']);
         setcookie("WebShopCookie", null, 1, "/");
-        if(strpos( prevURL, "admin" )) {
-            header("location: ".URL);
-            Util::redirect("/");
-            die();}
-        else{
-            Util::redirect(prevURL);
-            die();
-        }
+        Util::redirect(prevURL);
+        die();
     }
 }
 

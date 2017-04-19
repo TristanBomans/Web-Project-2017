@@ -1,13 +1,18 @@
 <?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; ?>
 <?php Util::authorisation([-1, 0, 1]); ?>
- 
+
+ <!-- PURE PHP WERKT MET FILTEREN EN NOG STEEDS PAGINA's BEHOUDEN!! AJAX NOG NIET -->
+
 <!doctype HTML>
 <html lang="nl">
 	<head>
 		<title>Alle Producten</title>
+
 		<?php include("partials/includes.php"); ?>
+		
 	</head>
 	<body class="container-fluid">
+
  		<?php include("partials/navbar.php"); ?>
 
  		<?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/errormess.php"); ?> 
@@ -17,32 +22,28 @@
 			<div id='aantal-items-page'>
 				<form name="g">
 					<?php 
-						// if (!(isset($_POST['productZoeken']))) {
-							// if (!(isset($_SESSION['selectedCats']))) {
-								echo "<select id='select-pages'>";
-								if (isset($_GET['g'])) {
-									switch ($_GET['g']) {
-										case '5':
-											echo '<option selected value="5">5</option><option value="10">10</option><option value="15">15</option><option value="all">all</option>';
-											break;
-										case '10':
-											echo '<option value="5">5</option><option selected value="10">10</option><option value="15">15</option><option value="all">all</option>';
-											break;
-										case '15':
-											echo '<option value="5">5</option><option value="10">10</option><option selected value="15">15</option><option value="all">all</option>';
-										break;
-										
-										default:
-											echo '<option value="5">5</option><option value="10">10</option><option value="15">15</option><option selected value="all">all</option>';
-										break;
-									}
-								}
-								else{
+						echo "<select id='select-pages'>";
+						if (isset($_GET['g'])) {
+							switch ($_GET['g']) {
+								case '5':
+									echo '<option selected value="5">5</option><option value="10">10</option><option value="15">15</option><option value="all">all</option>';
+									break;
+								case '10':
 									echo '<option value="5">5</option><option selected value="10">10</option><option value="15">15</option><option value="all">all</option>';
-								}
-								echo "</select>";
-							// }
-						// }
+									break;
+								case '15':
+									echo '<option value="5">5</option><option value="10">10</option><option selected value="15">15</option><option value="all">all</option>';
+								break;
+								
+								default:
+									echo '<option value="5">5</option><option value="10">10</option><option value="15">15</option><option selected value="all">all</option>';
+								break;
+							}
+						}
+						else{
+							echo '<option value="5">5</option><option selected value="10">10</option><option value="15">15</option><option value="all">all</option>';
+						}
+						echo "</select>";
 					?>	
 				</form>
 			</div>
@@ -82,120 +83,106 @@
 		</div>
 	</div>
 	<div id="producten-alle" class="row">
-		<?php 
+	 	<?php 
 			if (isset($_SERVER['HTTP_REFERER'])) {
 		        if (strpos($_SERVER['HTTP_REFERER'], "/Views/allproducts") == false) {
 	            	$_SESSION['selectedCats'] = null;
-		        	// }
 		        }
 		    }
-	        // $alleprod = LogicController::getAlleProducten();
- 
-            // var_dump($p . " " . $g);
-
-			// if (isset($_POST['productZoeken'])) {
 			    
-			    if(!isset($_SESSION['selectedCats'])){
-			        $alleprod = LogicController::getAlleProducten();
+		    if(!isset($_SESSION['selectedCats'])){
+		        $alleprod = LogicController::getAlleProducten();
+		    }
+		    else{
+		        $alleprod = $_SESSION['selectedCats'];
+		    }
+
+			if (isset($_GET['p'])) {
+	        	$_GET['p'] -= 1;
+	        }
+	 
+			if (!(isset($_GET['p']))){
+                $p = -1;
+            }
+            else{
+                $p = $_GET['p'];
+            }
+
+            if (!(isset($_GET['g']))){
+                $g = 10;
+            }
+            else{
+            	if ($_GET['g'] == "all") {
+            		$g = sizeof($alleprod);
+            	}
+            	else{
+                	$g = $_GET['g'];
+            	}
+            }
+
+		    $returnArr = [];
+
+		    #ALS ER EEN ZOEK POST REQUEST GEDAAN WERD DAN ZWIERT GE ALLEEN DE DINGEN DIE MATCHEN IN EEN ARRAY
+			if (isset($_POST['productZoeken'])) {
+			    foreach ($alleprod as $prod) {
+			       if (strpos(strtoupper($prod->naam), strtoupper($_POST['keyWord']) ) !== false) {
+			            array_push($returnArr, $prod);
+			       }
 			    }
-			    else{
-			        $alleprod = $_SESSION['selectedCats'];
-			    }
+			}
 
+			if (isset($_POST['productZoeken'])) {
+		   		$producten = $returnArr;
+			}
+			else{
+		   		$producten = $alleprod;
+			}
 
-				if (isset($_GET['p'])) {
-		        	$_GET['p'] -= 1;
-		        }
-		 
-				if (!(isset($_GET['p']))){
-	                $p = -1;
-	            }
-	            else{
-	                $p = $_GET['p'];
-	            }
-
-	            if (!(isset($_GET['g']))){
-	                $g = 10;
-	            }
-	            else{
-	            	if ($_GET['g'] == "all") {
-	            		$g = sizeof($alleprod);
-	            	}
-	            	else{
-	                	$g = $_GET['g'];
-	            	}
-	            }
-
-			    $returnArr = [];
-
-				if (isset($_POST['productZoeken'])) {
-				    foreach ($alleprod as $prod) {
-				       if (strpos(strtoupper($prod->naam), strtoupper($_POST['keyWord']) ) !== false) {
-				            array_push($returnArr, $prod);
-				       }
-				    }
-				}
-
-				if (isset($_POST['productZoeken'])) {
-			   		$producten = $returnArr;
-				}
-				else{
-			   		$producten = $alleprod;
-				}
-
-			    $html = "";
-
-				$toStart = $p * $g;
-
-    			$t = 0;
-	        
-			    for ($i=0; $i < sizeof($producten); $i++) {
-					if ($i >= $toStart && $t < $g) {
-            			$t++;
-				        $html .= "<a href='/Views/detail?opgevraagdProduct=".$producten[$i]->id."'><div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 parent-thumb-cont'>"
-				         . "<div class='thumbnail thumb-cont'>"
-				         . "<div class='thumb-cont-money-circle'>€ ".round($producten[$i]->prijs, 1)."</div>"
-				         . "<img src='".$producten[$i]->img_path."'class='image-thumb' alt='Deze afbeelding kon niet gevonden worden'>"
-				         . "<div class='caption'>"
-				         . "<h3>".$producten[$i]->naam."</h3>"
-				         . "<div class='wrapper-date-cat'><b>".date("d-m-Y",strtotime($producten[$i]->datum_toegevoegd))."</b>"
-				         . "<b class='thumb-categorie'>".$producten[$i]->cat_naam."</b></div>"
-				         . "</div>"   
-				         . "</div>"
-				         . "<form action='../Controllers/RequestController.php' method='POST'>"
-				         . "<input type='hidden' name='toAddProduct' value='".$producten[$i]->id."'>"
-				         . "<input type='submit' value='' class='winkelwagen-btn winkelwagen-add' title='Voeg toe aan winkelmandje'>";
-				          if ($producten[$i]->avg_rating != 0) {
-				            $html .= "<div class='product-rating-icon'>".round($producten[$i]->avg_rating, 1)."</div>";
-				          }
-				         $html.= "</form>"
-				         . "<div class='product-metadata-id metadata'>".$producten[$i]->id."</div>"
-				         . "<div class='product-metadata-naam metadata'>".$producten[$i]->naam."</div>"
-				         . "<div class='product-metadata-prijs metadata'>".$producten[$i]->prijs."</div>"
-				         . "</div></a>";
-				     }
+		    $html = "";
+			$toStart = $p * $g;
+			$t = 0;
+        
+		    for ($i=0; $i < sizeof($producten); $i++) {
+				if ($i >= $toStart && $t < $g) {
+        			$t++;
+			        $html .= "<a href='/Views/detail?opgevraagdProduct=".$producten[$i]->id."'><div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 parent-thumb-cont'>"
+			         . "<div class='thumbnail thumb-cont'>"
+			         . "<div class='thumb-cont-money-circle'>€ ".round($producten[$i]->prijs, 1)."</div>"
+			         . "<img src='".$producten[$i]->img_path."'class='image-thumb' alt='Deze afbeelding kon niet gevonden worden'>"
+			         . "<div class='caption'>"
+			         . "<h3>".$producten[$i]->naam."</h3>"
+			         . "<div class='wrapper-date-cat'><b>".date("d-m-Y",strtotime($producten[$i]->datum_toegevoegd))."</b>"
+			         . "<b class='thumb-categorie'>".$producten[$i]->cat_naam."</b></div>"
+			         . "</div>"   
+			         . "</div>"
+			         . "<form action='../Controllers/RequestController.php' method='POST'>"
+			         . "<input type='hidden' name='toAddProduct' value='".$producten[$i]->id."'>"
+			         . "<input type='submit' value='' class='winkelwagen-btn winkelwagen-add' title='Voeg toe aan winkelmandje'>";
+			          if ($producten[$i]->avg_rating != 0) {
+			            $html .= "<div class='product-rating-icon'>".round($producten[$i]->avg_rating, 1)."</div>";
+			          }
+			         $html.= "</form>"
+			         . "<div class='product-metadata-id metadata'>".$producten[$i]->id."</div>"
+			         . "<div class='product-metadata-naam metadata'>".$producten[$i]->naam."</div>"
+			         . "<div class='product-metadata-prijs metadata'>".$producten[$i]->prijs."</div>"
+			         . "</div></a>";
 			     }
-			     echo $html;
-			// }
-			// else{
-			// 	// include("partials/alleproducts-producten-all.php"); 
-			// }
-		?>
-
-
+		     }
+		     echo $html;
+		?> 
 	</div>
+
 	<div id='allpages-page-numbers'>
 		<?php
-			// if (!(isset($_POST['productZoeken']))) {
-			// 	if (!(isset($_SESSION['selectedCats']))) {
-					$aantallinks = sizeof($producten) / $g;
-					for ($i=0; $i < $aantallinks; $i++) { 
-						echo "<a href='allproducts?g=".$g."&p=".($i+1)."'>".($i+1)."</a> ";
-					}
-			// 	}
-			// }
+			$aantallinks = sizeof($producten) / $g;
+
+			for ($i=0; $i < $aantallinks; $i++) { 
+				echo "<a href='allproducts?g=".$g."&p=".($i+1)."'>".($i+1)."</a> ";
+			}
 		?>
 	</div>
+
 		<?php include("partials/footer.php"); ?>
+
 	</body>
 </html>
