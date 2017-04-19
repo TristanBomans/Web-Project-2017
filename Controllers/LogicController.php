@@ -41,7 +41,7 @@ class LogicController
 		}
 		else{
 			$_POST['password'] =password_hash($_POST['password'], PASSWORD_DEFAULT);
-	        $toAddUser = new UserEntity($_POST['username'], $_POST['password'], $_POST['naam'], $_POST['voornaam'], 0, $_POST['email'], $_SERVER['REMOTE_ADDR']);
+	        $toAddUser = new UserEntity($_POST['username'], $_POST['password'], $_POST['naam'], $_POST['voornaam'], 0, $_POST['email'], 1);
 
 	        MainDAO::addUser($toAddUser);
 	        $_SESSION['user'] = $toAddUser;
@@ -62,27 +62,34 @@ class LogicController
         {
             if (password_verify($_POST['password'], $gebruiker->password))
             {
-                echo "password correct";
-                $_SESSION['user'] = $gebruiker;
-                if (isset($_POST['stayloggedin'])) {
-					setcookie("WebShopCookie", serialize($_SESSION['user']) , time() + (10 * 365 * 24 * 60 * 60), "/");
-                }
-                if (isset($_SESSION['alternative_befURL'])){         
-                    header("location: ".$_SESSION['alternative_befURL']);
-                	die();
-                }
-                else{            
-                    header("location: ".$_POST['befPrevUrl']);
-					die();                
-                }
-                unset($_SESSION['alternative_befURL']);
+            	if ($gebruiker->active == 0) {
+					$_SESSION['mess'][sizeof($_SESSION['mess'])] = "userNonActive";
+					$url = "location: ".URL."Views/login";
+					header($url);	
+            	}
+            	else{
+	                echo "password correct";
+	                $_SESSION['user'] = $gebruiker;
+	                if (isset($_POST['stayloggedin'])) {
+						setcookie("WebShopCookie", serialize($_SESSION['user']) , time() + (10 * 365 * 24 * 60 * 60), "/");
+	                }
+	                if (isset($_SESSION['alternative_befURL'])){         
+	                    header("location: " . $_SESSION['alternative_befURL']);
+	                	die();
+	                }
+	                else{            
+	                    header("location: " . $_POST['befPrevUrl']);
+						die();                
+	                }
+	                unset($_SESSION['alternative_befURL']);
+            	}
             }
             else
             {
 				echo "password false";
 				$_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
 
-				$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "wpw";
+				$_SESSION['mess'][sizeof($_SESSION['mess'])] = "wpw";
 				$url = "location: ".URL."Views/login";
 				header($url);
 				die();
@@ -177,20 +184,28 @@ class LogicController
 	static function addNewProduct()
 	{
 		$product = MainDAO::getProduct($_POST['toAddProduct']);
-		if (isset($_SESSION['winkelmandje']) == false) 
-		{
-			$_SESSION['winkelmandje']  = [];
-		} 
 
-		
-		if (isset($_SESSION['aantallen'][$product->id])) {
-			$_SESSION['aantallen'][$product->id] += 1;
+		if($product->active == 0){
+			$_SESSION['mess'][sizeof($_SESSION['mess'])] = "addVerwijderdProd";
+			header(prevURL); 
 		}
-		else{
-			$_SESSION['aantallen'][$product->id] = 1;
-			array_push($_SESSION['winkelmandje'],  $product);
-		}
-		header(prevURL);
+		else
+		{
+			if (isset($_SESSION['winkelmandje']) == false) 
+			{
+				$_SESSION['winkelmandje']  = [];
+			} 
+
+			
+			if (isset($_SESSION['aantallen'][$product->id])) {
+				$_SESSION['aantallen'][$product->id] += 1;
+			}
+			else{
+				$_SESSION['aantallen'][$product->id] = 1;
+				array_push($_SESSION['winkelmandje'],  $product);
+			}
+			header(prevURL);
+		}	
 	}
 
 	#DIT IS VOOR EEN REVIEW OP EEN BEPAALD PRODUCT VIA DE DETAILPAGE TOE TE VOEGEN, WORDT OP FOUTEN GECHECKED
@@ -202,16 +217,19 @@ class LogicController
         	$_SESSION['mess'][sizeof($_SESSION['mess'])] = "fara";
 			header(prevURL);
 		}
-
-		if ($_POST['rating'] == null || $_POST['comment'] == null) {
+		elseif ($_POST['rating'] == null || $_POST['comment'] == null) {
 			$_SESSION['mess'][sizeof($_SESSION['mess'])] = "leegreview";
+			header(prevURL);
+		}
+		elseif (isset($_SESSION['user']) != true) {
+			$_SESSION['mess'][sizeof($_SESSION['mess'])] = "nli";
 			header(prevURL);
 		}
 		else{
 			$allowedToAdd = true;
 		}
 
-		 if ($allowedToAdd == true) {
+		if ($allowedToAdd == true) {
 			$review = new ReviewEntity( -1, $_SESSION['user']->username, $_POST['product_ID'], $_POST['comment'],  $_POST['rating'] );
 			MainDAO::addReview($review);
         	$_SESSION['mess'][sizeof($_SESSION['mess'])] = "srev";
@@ -324,6 +342,10 @@ class LogicController
 
 		if ($code == 1) {
 			$html =  "<div id='errloginwrap'><div id='login-err' class='clearfix'>".$mess."</div></div>";
+		}
+
+		if ($code == 2) {
+			$html =  "<div id='notifloginwrap'><div id='login-notif' class='clearfix'>".$mess."</div></div>";
 		}
 
 		return $html;

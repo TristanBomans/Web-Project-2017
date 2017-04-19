@@ -24,7 +24,7 @@
 									$woord = "Admin";
 								}
 								
-								echo "<a class='a-admin-edit' href='?editUser=".$singleU->username."'><div title='Bewerk deze Gebruiker'class='admin-edit-lineitem'><b>".$woord.": </b>".$singleU->username."</div></a>";	
+								echo "<div class='prod-adm-topwrapper'><a class='a-admin-edit' href='?editUser=".$singleU->username."'><div class='wrapper-product-admin'><div title='Bewerk deze Gebruiker'class='admin-edit-lineitem'><b>".$woord.": </b>".$singleU->username."</div></div></a><a href='/Controllers/RequestController?deleteUser=".$singleU->username."'><div class='deleteprodicon' title='verwijder ".$singleU->username."'></div></a></div>";	
 							}
 						?> 
 					</div>	

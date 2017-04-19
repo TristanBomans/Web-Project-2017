@@ -68,6 +68,8 @@ $(function(){
 		var productId = $(this).parent().parent().find(".product-metadata-id").html();
 		var productNaam = $(this).parent().parent().find(".product-metadata-naam").html();
 		var productPrijs = $(this).parent().parent().find(".product-metadata-prijs").html();
+		var productActive = $(this).parent().parent().find(".product-metadata-active").html();
+
 		var totalPrijs = $("#winkelmandje-totalprice").html();
 		totalPrijs = Number(totalPrijs.split(" ")[1]);
 		totalPrijs += Number(productPrijs);
@@ -76,47 +78,53 @@ $(function(){
 	        type: "POST",
 	        url: "../Controllers/RequestController.php",
 	        data: {'toAddProduct' : productId},
-	        success: function() {
-	        	$("#add-green-icon").toggle(500);
-	        	$("#add-green-icon").hide(500);
-	        	// $("#add-green-icon").delay(3000).fadeOut("slow");
+	        success: function(data) {
+	        	console.log();
+	        	if (productActive == undefined || productActive == 1) {
+		        	$("#add-green-icon").toggle(500);
+		        	$("#add-green-icon").hide(500);
+		        	// $("#add-green-icon").delay(3000).fadeOut("slow");
 
-	        	var aantal = "";
-	        	console.log(productId);
-	        	console.log($("#" + productId).length != 0);
-	        	// console.log();
+		        	var aantal = "";
+		        	console.log(productId);
+		        	console.log($("#" + productId).length != 0);
+		        	// console.log();
 
-	        	if($("#" + productId).length != 0) {
-	        		// AANTAL AANPASSEN
-	        		aantal = $("#" + productId).html().substring(2);
-	        		aantal = aantal.substring(0,aantal.length-1);
-	        		aantal = +aantal + 1; 
+		        	if($("#" + productId).length != 0) {
+		        		// AANTAL AANPASSEN
+		        		aantal = $("#" + productId).html().substring(2);
+		        		aantal = aantal.substring(0,aantal.length-1);
+		        		aantal = +aantal + 1; 
 
-					$("#" + productId).html("(x"+aantal+")");
+						$("#" + productId).html("(x"+aantal+")");
 
-					// PRIJS PER STUK AANPASSEN
-					var eenhPrijs = $("#prijs-" + productId).html().substring(2);
-					eenhPrijs = +eenhPrijs + +productPrijs;
-					
-					 $("#prijs-" + productId).html("€ " + eenhPrijs);
-					console.log(+eenhPrijs);
+						// PRIJS PER STUK AANPASSEN
+						var eenhPrijs = $("#prijs-" + productId).html().substring(2);
+						eenhPrijs = +eenhPrijs + +productPrijs;
+						
+						 $("#prijs-" + productId).html("€ " + eenhPrijs);
+						console.log(+eenhPrijs);
 
-					// TOTAALPRIJS AANPASSEN
-					var totPrijs = $("#winkelmandje-totalprice").html().substring(2);
-					totPrijs = +totPrijs + +productPrijs;
+						// TOTAALPRIJS AANPASSEN
+						var totPrijs = $("#winkelmandje-totalprice").html().substring(2);
+						totPrijs = +totPrijs + +productPrijs;
 
-					 $("#winkelmandje-totalprice").html("€ " + totPrijs);
+						 $("#winkelmandje-totalprice").html("€ " + totPrijs);
 
-				}
-				else{
-		        	var html ="<div class='individuele-item-div-dropdown clearfix'><p class='naam-product-dropdown'>"+productNaam+" <i id='"+productId+"'>(x1)</i></p> <p class='prijs-product-dropdown' id='prijs-"+productId+"'>€ "+productPrijs+ "</p></div>"; 
-		        	$("#winkelmandje-items").append(html);
+					}
+					else{
+			        	var html ="<div class='individuele-item-div-dropdown clearfix'><p class='naam-product-dropdown'>"+productNaam+" <i id='"+productId+"'>(x1)</i></p> <p class='prijs-product-dropdown' id='prijs-"+productId+"'>€ "+productPrijs+ "</p></div>"; 
+			        	$("#winkelmandje-items").append(html);
 
-		        	var html ="€ " + totalPrijs;
-		        	$("#winkelmandje-totalprice").html(html);
-		        	
-		        	var html =" <a id ='winkelmandje-dropdown-meer-detail'  href='/Views/winkelmandje-full'>Meer detail</a>"
-		        	$("#meer-detail-invoeg").html(html);
+			        	var html ="€ " + totalPrijs;
+			        	$("#winkelmandje-totalprice").html(html);
+			        	
+			        	var html =" <a id ='winkelmandje-dropdown-meer-detail'  href='/Views/winkelmandje-full'>Meer detail</a>"
+			        	$("#meer-detail-invoeg").html(html);
+		        	}
+	        	}
+	        	else{
+	        		$( ".container-fluid" ).after( "<div id='login-err' class='clearfix'>Je kan geen verwijderde producten toevoegen <b>...</b></div>" );
 	        	}
 	        }
 	    });

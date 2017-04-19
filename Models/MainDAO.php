@@ -22,9 +22,9 @@ class MainDAO {
             $uitgelicht = $row[7];
             $avg_rating = $row[8];
             $numb_ratings = $row[9];
-
+            $active = $row[10];
            
-            $product = new ProductEntity($id, $cat_id, $naam, $prijs, $beschrijving, $datum_toegevoegd, $img_path, $uitgelicht, $avg_rating, $numb_ratings);
+            $product = new ProductEntity($id, $cat_id, $naam, $prijs, $beschrijving, $datum_toegevoegd, $img_path, $uitgelicht, $avg_rating, $numb_ratings, $active);
         }
 
         mysqli_close($mysqli);
@@ -35,7 +35,7 @@ class MainDAO {
     {
         require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("SELECT * FROM producten");
+        $result = $mysqli->query("SELECT * FROM producten where active = 1");
         $product = null;
         $productenArray =  [];
 
@@ -50,8 +50,9 @@ class MainDAO {
             $uitgelicht = $row[7];
             $avg_rating = $row[8];
             $numb_ratings = $row[9];
+            $active = $row[10];
 
-            $product = new ProductEntity($id, $cat_id, $naam, $prijs, $beschrijving, $datum_toegevoegd, $img_path, $uitgelicht, $avg_rating, $numb_ratings);
+            $product = new ProductEntity($id, $cat_id, $naam, $prijs, $beschrijving, $datum_toegevoegd, $img_path, $uitgelicht, $avg_rating, $numb_ratings, $active);
             array_push($productenArray, $product);
         }
 
@@ -63,7 +64,7 @@ class MainDAO {
     {
         require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("SELECT * FROM producten where uitgelicht = 1");
+        $result = $mysqli->query("SELECT * FROM producten where uitgelicht = 1 and active = 1");
         $product = null;
         $productenArray =  [];
 
@@ -78,8 +79,9 @@ class MainDAO {
             $uitgelicht = $row[7];
             $avg_rating = $row[8];
             $numb_ratings = $row[9];
+            $active = $row[10];
 
-            $product = new ProductEntity($id, $cat_id, $naam, $prijs, $beschrijving, $datum_toegevoegd, $img_path, $uitgelicht, $avg_rating, $numb_ratings);
+            $product = new ProductEntity($id, $cat_id, $naam, $prijs, $beschrijving, $datum_toegevoegd, $img_path, $uitgelicht, $avg_rating, $numb_ratings, $active);
             array_push($productenArray, $product);
         }
 
@@ -91,7 +93,7 @@ class MainDAO {
     {
         require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("SELECT * FROM producten where cat_naam = '$cat'");
+        $result = $mysqli->query("SELECT * FROM producten where cat_naam = '$cat' and active = 1");
         $product = null;
         $productenArray =  [];
 
@@ -106,8 +108,9 @@ class MainDAO {
             $uitgelicht = $row[7];
             $avg_rating = $row[8];
             $numb_ratings = $row[9];
+            $active = $row[10];
 
-            $product = new ProductEntity($id, $cat_id, $naam, $prijs, $beschrijving, $datum_toegevoegd, $img_path, $uitgelicht, $avg_rating, $numb_ratings);
+            $product = new ProductEntity($id, $cat_id, $naam, $prijs, $beschrijving, $datum_toegevoegd, $img_path, $uitgelicht, $avg_rating, $numb_ratings, $active);
             array_push($productenArray, $product);
         }
 
@@ -128,7 +131,7 @@ class MainDAO {
     {
         require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("UPDATE producten SET cat_naam = '$toUpdateProduct->cat_naam' , naam = '$toUpdateProduct->naam', prijs = '$toUpdateProduct->prijs', beschrijving = '$toUpdateProduct->beschrijving', datum_toegevoegd = '$toUpdateProduct->datum_toegevoegd', img_path = '$toUpdateProduct->img_path', avg_rating = '$toUpdateProduct->avg_rating', numb_ratings = '$toUpdateProduct->numb_ratings', uitgelicht = '$toUpdateProduct->uitgelicht'  where id = '$toUpdateProduct->id';");
+        $result = $mysqli->query("UPDATE producten SET cat_naam = '$toUpdateProduct->cat_naam' , naam = '$toUpdateProduct->naam', prijs = '$toUpdateProduct->prijs', beschrijving = '$toUpdateProduct->beschrijving', datum_toegevoegd = '$toUpdateProduct->datum_toegevoegd', img_path = '$toUpdateProduct->img_path', avg_rating = '$toUpdateProduct->avg_rating', numb_ratings = '$toUpdateProduct->numb_ratings', uitgelicht = '$toUpdateProduct->uitgelicht', active = '$toUpdateProduct->active'  where id = '$toUpdateProduct->id';");
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }
@@ -142,13 +145,12 @@ class MainDAO {
         mysqli_close($mysqli);
     }
 
-
     // USERS
     static function updateUser($toUpdateUser)
     {
         require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("UPDATE users SET username = '$toUpdateUser->username', password = '$toUpdateUser->password', naam = '$toUpdateUser->naam', voornaam = '$toUpdateUser->voornaam', authority = '$toUpdateUser->authority', emailadres = '$toUpdateUser->emailadres', img_path = '$toUpdateUser->img_path', ip = '$toUpdateUser->ip' where username = '$toUpdateUser->username';");
+        $result = $mysqli->query("UPDATE users SET username = '$toUpdateUser->username', password = '$toUpdateUser->password', naam = '$toUpdateUser->naam', voornaam = '$toUpdateUser->voornaam', authority = '$toUpdateUser->authority', emailadres = '$toUpdateUser->emailadres', img_path = '$toUpdateUser->img_path', active = '$toUpdateUser->active' where username = '$toUpdateUser->username';");
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }
@@ -158,7 +160,7 @@ class MainDAO {
         require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
         
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("INSERT INTO users (username, password, naam, voornaam, authority, emailadres, img_path, ip) VALUES ('$toAddUser->username', '$toAddUser->password', '$toAddUser->naam', '$toAddUser->voornaam', '$toAddUser->authority', '$toAddUser->emailadres', '$toAddUser->img_path', '$toAddUser->ip')");
+        $result = $mysqli->query("INSERT INTO users (username, password, naam, voornaam, authority, emailadres, img_path) VALUES ('$toAddUser->username', '$toAddUser->password', '$toAddUser->naam', '$toAddUser->voornaam', '$toAddUser->authority', '$toAddUser->emailadres', '$toAddUser->img_path')");
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }
@@ -178,9 +180,9 @@ class MainDAO {
             $authority = $row[4];
             $emailadres = $row[5];
             $img_path = $row[6];
-            $ip = $row[7];
+            $active = $row[7];
 
-            $user = new UserEntity($username, $password, $naam, $voornaam, $authority, $emailadres, $img_path, $ip);
+            $user = new UserEntity($username, $password, $naam, $voornaam, $authority, $emailadres, $img_path, $active);
         }
 
         mysqli_close($mysqli);
@@ -191,7 +193,7 @@ class MainDAO {
     {
         require $_SERVER['DOCUMENT_ROOT']."/credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("SELECT * FROM users");
+        $result = $mysqli->query("SELECT * FROM users where active = 1");
         $user = null;
         $userArray =  [];
 
@@ -202,10 +204,10 @@ class MainDAO {
             $voornaam = $row[3];
             $authority = $row[4];
             $emailadres = $row[5];
-            $img_path = $row[6];
-            $ip = $row[7];        
+            $img_path = $row[6];      
+            $active = $row[7];
 
-            $user = new UserEntity($username, $password, $naam, $voornaam, $authority, $emailadres, $img_path, $ip);
+            $user = new UserEntity($username, $password, $naam, $voornaam, $authority, $emailadres, $img_path, $active);
             array_push($userArray, $user);
         }
 
@@ -256,20 +258,20 @@ class MainDAO {
         return $reviewArray;
     }
 
-
     //CATEGORIEËN
     static function getAllCategorien() 
     {
         require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("SELECT * FROM categorie");
+        $result = $mysqli->query("SELECT * FROM categorie where active = 1");
         $categorie = null;
         $categorieArray =  [];
 
         while ($row = mysqli_fetch_array($result)) {
            $naam = $row[0];
+           $active = $row[1];
 
-            $categorie = new CategorieEntity($naam);
+            $categorie = new CategorieEntity($naam, $active);
             array_push($categorieArray, $categorie);
         }
 
@@ -290,7 +292,7 @@ class MainDAO {
     {
         require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("UPDATE categorie SET naam = '$toUpdateCategorie->naam' where naam = '$oldName';");
+        $result = $mysqli->query("UPDATE categorie SET naam = '$toUpdateCategorie->naam', active = '$toUpdateCategorie->active' where naam = '$oldName';");
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }
@@ -312,8 +314,6 @@ class MainDAO {
             $levermethode= $row[4];
             $betaalmethode= $row[5];
             $datum = $row[6];
-
-
 
           $bestelling = new BestellingEntity($id, $username, $factuuradres, $leveradres, $levermethode, $betaalmethode, $datum);
             array_push($BestellingenArray, $bestelling);

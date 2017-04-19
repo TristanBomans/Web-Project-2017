@@ -9,10 +9,10 @@ class UserEntity
     public $authority;
     public $emailadres;
     public $img_path;
-    public $ip;
+    public $active;
 
 
-    function __construct($username, $password, $naam, $voornaam, $authority, $emailadres, $img_path, $ip) {
+    function __construct($username, $password, $naam, $voornaam, $authority, $emailadres, $img_path, $active) {
         $this->username = $username;
         $this->password = $password;
         $this->naam = $naam;
@@ -20,7 +20,7 @@ class UserEntity
         $this->authority = $authority;
         $this->emailadres = $emailadres;
         $this->img_path = $img_path;
-        $this->ip = $ip;
+        $this->active = $active;
     }
 }
 

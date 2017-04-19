@@ -41,7 +41,7 @@ if (isset($_POST['newDBProd'])) {
 
     $dt = new DateTime("now", new DateTimeZone("Europe/berlin"));
 
-    $product = new ProductEntity(-1, $_POST['categorie'], $_POST['naam'], floatval($_POST['prijs']), $_POST['beschrijving'], $dt->format("Y-m-d H:i:s"), $img_path, 0, 0, 0);
+    $product = new ProductEntity(-1, $_POST['categorie'], $_POST['naam'], floatval($_POST['prijs']), $_POST['beschrijving'], $dt->format("Y-m-d H:i:s"), $img_path, 0, 0, 0, 1);
 
     var_dump($product);
   
@@ -161,7 +161,7 @@ if (isset($_POST['FilterenAJAX']))
     $selectedCats = $_POST['checkedcats'];
     
     foreach ($selectedCats as $cat) {
-        $cat = new CategorieEntity($cat);
+        $cat = new CategorieEntity($cat, 1);
     }
 
     $filteredData = LogicController::makeFilteredArray($selectedCats);
@@ -230,7 +230,7 @@ if (isset($_POST['editCat'])) {
         Util::redirect("/Views/admin-category");
     } 
     else{
-        $newCategorie = new CategorieEntity($_POST['naam']);
+        $newCategorie = new CategorieEntity($_POST['naam'], 1);
         MainDAO::updateCategorie($newCategorie, $_POST['editCatName']);
         header("location: ".URL."Views/admin-category");
     }
@@ -243,7 +243,7 @@ if (isset($_POST['newCat'])) {
         Util::redirect("/Views/admin-category");
     } 
     else{
-        $toAddCat = new CategorieEntity($_POST['naam']);
+        $toAddCat = new CategorieEntity($_POST['naam'], 1);
         MainDAO::addCategory($toAddCat);
         header("location: ".URL."Views/admin-category");
     }
@@ -299,9 +299,27 @@ if (isset($_POST['aanpassen-fw-aantal'])) {
 
 #DIT IS VOOR HET VERWIJDEREN VAN EEN PRODUCT VANUIT HET ADMIN PANEEL
 if (isset($_GET['deleteProd'])) {
-    MainDAO::deleteProduct($_GET['deleteProd']);
+    $p = MainDAO::getProduct($_GET['deleteProd']);
+    $p->active = 0;
+    MainDAO::updateProduct($p);
     header(prevURL);
 }
+
+#DIT IS VOOR HET VERWIJDEREN VAN EEN USER VANUIT HET ADMIN PANEEL
+if (isset($_GET['deleteUser'])) {
+    $u = MainDAO::getUser($_GET['deleteUser']);
+    $u->active = 0;
+    MainDAO::updateUser($u);
+    header(prevURL);
+}
+
+#DIT IS VOOR HET VERWIJDEREN VAN EEN CATEGORIE VANUIT HET ADMIN PANEEL
+if (isset($_GET['deleteCat'])) {
+    $c = new CategorieEntity($_GET['deleteCat'], 0);
+    MainDAO::updateCategorie($c, $_GET['deleteCat']);
+    header(prevURL);
+}
+
 
 #DIT IS VOOR DE USER ZIJN EIGEN INFORMATIE TE LATEN AANPASSEN VANUIT DE "PROFIEL" NAV PAGE
 if (isset($_GET['editUserdataPuser'])) {

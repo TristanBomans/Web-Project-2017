@@ -23,7 +23,7 @@
 					
 						$allCategorieën = LogicController:: getAllCategorien();
 						foreach ($allCategorieën as $categorie) {
-							echo "<a class='a-admin-edit' href='/Views/admin-category?editCat=".$categorie->naam."'><div title='Bewerk dit product'class='admin-edit-lineitem'>".$categorie->naam."</div></a>";	
+							echo "<div class='prod-adm-topwrapper'><a class='a-admin-edit' href='/Views/admin-category?editCat=".$categorie->naam."'><div class='wrapper-product-admin'><div title='Bewerk dit product'class='admin-edit-lineitem'>".$categorie->naam."</div></div></a><a href='/Controllers/RequestController?deleteCat=".$categorie->naam."'><div class='deleteprodicon' title='verwijder ".$categorie->naam."'></div></a></div>";	
 						}
 					?> 
 				</div>	

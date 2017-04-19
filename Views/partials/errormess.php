@@ -70,10 +70,28 @@
 			if ($e == 'editCatEmpty') {
 				echo LogicController::outputMess("Je kan de categorie niet naar leeg veranderen", 1);
 			}
-
 			if ($e == 'newCatEmpty') {
 				echo LogicController::outputMess("Je kan geen lege categorieën toevoegen", 1);
 			}
+			if ($e == 'userNonActive') {
+				echo LogicController::outputMess("Deze useraccount werd verwijderd.", 1);
+			}
+			if ($e == 'faultyProd') {
+				echo LogicController::outputMess("Niet alle benodigde product-data werd meegegeven.", 1);
+			}
+			if ($e == 'nonExProd') {
+				echo LogicController::outputMess("Dit product bestaat niet!", 1);
+			}
+			if ($e == 'VerwijderdProd') {
+				echo LogicController::outputMess("Dit Product wordt niet meer verkocht ..", 2);
+			}
+			if ($e == 'addVerwijderdProd') {
+				echo LogicController::outputMess("Je kan geen verwijderde producten toevoegen <b>...</b>", 1);
+			}
+
+
+
+
 
 		}
 		unset($_SESSION['mess']);

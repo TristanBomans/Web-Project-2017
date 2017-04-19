@@ -12,6 +12,8 @@ echo "<input type='submit' id='detailAddShoppingCart' value='' class='winkelwage
 echo "<div class='product-metadata-id metadata'>".$product->id."</div>";
 echo "<div class='product-metadata-naam metadata'>".$product->naam."</div>";
 echo "<div class='product-metadata-prijs metadata'>".round($product->prijs, 2)."</div>";
+echo "<div class='product-metadata-active metadata'>".$product->active."</div>";
+
 if ($product->avg_rating != 0) {
 	echo "<div class='product-rating-icon'>".round($product->avg_rating, 1)."</div>";
 }
