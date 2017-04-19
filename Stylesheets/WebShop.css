@@ -1868,3 +1868,8 @@ width: auto;
     padding-bottom: 15px;
     font-size: 17px;
 }
+
+.error-img{
+    display: block;
+    margin: auto;
+}

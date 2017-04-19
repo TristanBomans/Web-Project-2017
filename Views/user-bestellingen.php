@@ -4,7 +4,7 @@
 <!doctype HTML>
 <html lang="nl">
 	<head>
-		<title>Gebruiker Bestelling</title>
+		<title>Gebruiker Bestellingen</title>
 		<?php include("partials/includes.php"); ?>
 	</head>
 	<body class="container-fluid">

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Register</title>
+		<title>Registreer</title>
 		<?php include("partials/includes.php"); ?>
 	</head>
 	<body class="container-fluid">

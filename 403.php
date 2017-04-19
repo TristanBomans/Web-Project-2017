@@ -13,7 +13,7 @@
 
  		<?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/errormess.php"); ?> 
 
- 		<div id="error-text-404">VERBODEN!</div>
+ 		<img class='error-img' src="/Resources/403.png">
 
 		<?php include( $_SERVER['DOCUMENT_ROOT']."/Views/partials/footer.php"); ?>
 

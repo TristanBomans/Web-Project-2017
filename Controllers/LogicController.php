@@ -3,12 +3,9 @@
 
 include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
 
-//DEFINEN NIET NODIG VAN URL EN PREVURL -> AL IN NAMESPACES CONTROLLER GEDAAN
-
 if(!(isset($_SESSION)) ){
     session_start();
 }
-
 
 class LogicController
 {
@@ -34,20 +31,17 @@ class LogicController
 	#DIT IS DE CODE DIE IN DE REQUESTCONTROLLER WORDT AANGESPROKEN VOOR EEN GEBRUIKER TE REGISTREREN/ DUS TOE TE VOEGEN AAN DB EN IN SESSION STEKEN
 	static function registerUser()
 	{
-
-		if ($_POST['username'] != null || $_POST['password'] != null || $_POST['naam'] != null || $_POST['voornaam'] != null || $_POST['email'] != null) {
+		if ($_POST['username'] == null || $_POST['password'] == null || $_POST['naam'] == null || $_POST['voornaam'] == null || $_POST['email'] == null) {
 			$_SESSION['mess'][sizeof($_SESSION['mess'])] = "registerEmpty";
-			header(prevURL);
+			Util::redirect(prevURL);
 		}
 		else{
 			$_POST['password'] =password_hash($_POST['password'], PASSWORD_DEFAULT);
 	        $toAddUser = new UserEntity($_POST['username'], $_POST['password'], $_POST['naam'], $_POST['voornaam'], 0, $_POST['email'], 1);
-
 	        MainDAO::addUser($toAddUser);
 	        $_SESSION['user'] = $toAddUser;
 
-	        $url = "location: ".URL;
-	        header($url);
+			Util::redirect("/");
 	        die();
 	    }
 	}
@@ -64,8 +58,7 @@ class LogicController
             {
             	if ($gebruiker->active == 0) {
 					$_SESSION['mess'][sizeof($_SESSION['mess'])] = "userNonActive";
-					$url = "location: ".URL."Views/login";
-					header($url);	
+					Util::redirect("/Views/login");	
             	}
             	else{
 	                echo "password correct";
@@ -73,12 +66,12 @@ class LogicController
 	                if (isset($_POST['stayloggedin'])) {
 						setcookie("WebShopCookie", serialize($_SESSION['user']) , time() + (10 * 365 * 24 * 60 * 60), "/");
 	                }
-	                if (isset($_SESSION['alternative_befURL'])){         
-	                    header("location: " . $_SESSION['alternative_befURL']);
+	                if (isset($_SESSION['alternative_befURL'])){  
+						Util::redirect($_SESSION['alternative_befURL']);
 	                	die();
 	                }
-	                else{            
-	                    header("location: " . $_POST['befPrevUrl']);
+	                else{    
+						Util::redirect($_POST['befPrevUrl']);
 						die();                
 	                }
 	                unset($_SESSION['alternative_befURL']);
@@ -88,10 +81,8 @@ class LogicController
             {
 				echo "password false";
 				$_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
-
 				$_SESSION['mess'][sizeof($_SESSION['mess'])] = "wpw";
-				$url = "location: ".URL."Views/login";
-				header($url);
+				Util::redirect("/Views/login");
 				die();
             }
         } 
@@ -99,10 +90,8 @@ class LogicController
         {
             echo "user not found";
             $_SESSION['alternative_befURL'] = $_POST['befPrevUrl'];
-
        		$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "unf";
-            $url = "location: ".URL."Views/login";
-            header($url);
+			Util::redirect("/Views/login");    
         	die();
         }
 	}
@@ -187,7 +176,8 @@ class LogicController
 
 		if($product->active == 0){
 			$_SESSION['mess'][sizeof($_SESSION['mess'])] = "addVerwijderdProd";
-			header(prevURL); 
+			// header(); 
+			Util::redirect(prevURL);
 		}
 		else
 		{
@@ -204,7 +194,7 @@ class LogicController
 				$_SESSION['aantallen'][$product->id] = 1;
 				array_push($_SESSION['winkelmandje'],  $product);
 			}
-			header(prevURL);
+			Util::redirect(prevURL);
 		}	
 	}
 
@@ -215,15 +205,16 @@ class LogicController
 
 		if ($_POST['rating'] < 0 || $_POST['rating'] > 10) {
         	$_SESSION['mess'][sizeof($_SESSION['mess'])] = "fara";
-			header(prevURL);
+			Util::redirect(prevURL);
+			
 		}
 		elseif ($_POST['rating'] == null || $_POST['comment'] == null) {
 			$_SESSION['mess'][sizeof($_SESSION['mess'])] = "leegreview";
-			header(prevURL);
+			Util::redirect(prevURL);
 		}
 		elseif (isset($_SESSION['user']) != true) {
 			$_SESSION['mess'][sizeof($_SESSION['mess'])] = "nli";
-			header(prevURL);
+			Util::redirect(prevURL);
 		}
 		else{
 			$allowedToAdd = true;
@@ -233,7 +224,7 @@ class LogicController
 			$review = new ReviewEntity( -1, $_SESSION['user']->username, $_POST['product_ID'], $_POST['comment'],  $_POST['rating'] );
 			MainDAO::addReview($review);
         	$_SESSION['mess'][sizeof($_SESSION['mess'])] = "srev";
-			header(prevURL);
+			Util::redirect(prevURL);
 		 }
 	    die();
 	}
@@ -290,7 +281,7 @@ class LogicController
 	{
 		if(isset($_SESSION['user']))
 		{
-        	header("location: ".URL);
+        	Util::redirect("/");
         	die();
     	}
     }
@@ -350,6 +341,6 @@ class LogicController
 
 		return $html;
 	}
-
 }
+
 ?>

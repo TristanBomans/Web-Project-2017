@@ -4,7 +4,7 @@
 <!doctype HTML>
 <html lang="nl">
 	<head>
-		<title>Winkelmandje vol</title>
+		<title>Winkelmandje volledig</title>
 		<?php include("partials/includes.php"); ?>
 	</head>
 	<body class="container-fluid">

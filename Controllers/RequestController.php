@@ -112,9 +112,10 @@ if (isset($_GET['action'])){
         setcookie("WebShopCookie", null, 1, "/");
         if(strpos( prevURL, "admin" )) {
             header("location: ".URL);
+            Util::redirect("/");
             die();}
         else{
-            header(prevURL);
+            Util::redirect(prevURL);
             die();
         }
     }
@@ -150,8 +151,8 @@ if (isset($_POST['Filteren']))
     $filteredData = LogicController::makeFilteredArray($selectedCats);
 
     $_SESSION['selectedCats'] = $filteredData;
- 
-    header(prevURL);
+    
+    Util::redirect(prevURL);
     die();
 }
 
@@ -186,8 +187,7 @@ if (isset($_POST['deleteProdWinkelMandje']))
     $_SESSION['winkelmandje'] = array_udiff($_SESSION['winkelmandje'],[$product], 'Util::compare_objects');
     unset($_SESSION['aantallen'][$product->id]);
 
-    // $_SESSION
-    header(prevURL);
+    Util::redirect(prevURL);
 }
 
 #DIT IS VOOR EEN BERICHT TE STUREN NAAR DE ADMINS, ELKE USER KAN DIT DOEN, BIJHORENDE MAIL WORDT OOK NAAR DE ADMIN GESTUURD
@@ -195,7 +195,7 @@ if (isset($_POST['contactSend'])) {
     
     if ($_POST['subject'] == null || $_POST['message'] == null ) {
         $_SESSION['mess'][sizeof($_SESSION['mess'])] = "contactEmpty";
-        header(prevURL);
+        Util::redirect(prevURL);
     }
     else{
         $dt = new DateTime("now", new DateTimeZone("Europe/berlin"));
@@ -218,7 +218,7 @@ if (isset($_POST['contactSend'])) {
         }
        
         MainDAO::addContactMessage($toAddContact);
-        header("location: " . URL);
+        Util::redirect("/");
     }
 
 }
@@ -232,7 +232,8 @@ if (isset($_POST['editCat'])) {
     else{
         $newCategorie = new CategorieEntity($_POST['naam'], 1);
         MainDAO::updateCategorie($newCategorie, $_POST['editCatName']);
-        header("location: ".URL."Views/admin-category");
+        Util::redirect("/Views/admin-category");
+       
     }
 }
 
@@ -240,50 +241,45 @@ if (isset($_POST['editCat'])) {
 if (isset($_POST['newCat'])) {
    if ($_POST['naam'] == null) {
         $_SESSION['mess'][sizeof($_SESSION['mess'])] = "newCatEmpty";
-        Util::redirect("/Views/admin-category");
     } 
     else{
         $toAddCat = new CategorieEntity($_POST['naam'], 1);
         MainDAO::addCategory($toAddCat);
-        header("location: ".URL."Views/admin-category");
     }
+    Util::redirect("/Views/admin-category");
 }
 
-
-
 #DIT IS VOOR DE ADMIN DE USERS TE LATEN BEWERKEN
-if (isset($_POST['editUser'])) {
-
+if (isset($_POST['editUser'])) { 
     if ($_POST['naam'] == null ||$_POST['voornaam'] == null ||$_POST['authority'] == null ||$_POST['emailadres'] == null) {
         $_SESSION['mess'][sizeof($_SESSION['mess'])] = "editUserAdmEmpty";
         Util::redirect("/Views/admin-users");
     } 
+    else
+    {
+        $userpw = MainDAO::getUser(($_POST['toEditUser']));
+        $userpw = $userpw->password;
+        $user = MainDAO::getUser($_POST['toEditUser']);
+        $user->naam = $_POST['naam'];
+        $user->voornaam = $_POST['voornaam'];
+        $user->authority = $_POST['authority'];
+        $user->emailadres = $_POST['emailadres'];
 
-    $userpw = MainDAO::getUser(($_POST['toEditUser']));
-    $userpw = $userpw->password;
-    $user = MainDAO::getUser($_POST['toEditUser']);
-    $user->naam = $_POST['naam'];
-    $user->voornaam = $_POST['voornaam'];
-    $user->authority = $_POST['authority'];
-    $user->emailadres = $_POST['emailadres'];
-    
-
-    var_dump($user);
-    MainDAO::updateUser($user);
-   
-    if ($user->username == $_SESSION['user']->username) {
-        unset($_SESSION['user']);
-        $_SESSION['user'] = $user;
+        MainDAO::updateUser($user);
+       
+        if ($user->username == $_SESSION['user']->username) {
+            unset($_SESSION['user']);
+            $_SESSION['user'] = $user;
+        }
+        Util::redirect(prevURL);
     }
-  
-    header(prevURL);
 }
 
 #DIT IS VOOR HET AANTAL IN HET VOLLEDIGE WINKELMANDJE AAN TE PASSEN
 if (isset($_POST['aanpassen-fw-aantal'])) {
     if ($_POST['aantal'] == null) {
         $_SESSION['mess'][sizeof($_SESSION['mess'])] = "aanpassen-fw-aantal-empty";
-        header(split("&",prevURL)[0]);
+        Util::redirect(split("&",prevURL)[0]);
     }
     else{
         $prodID = intval($_POST['product-id']);
@@ -293,7 +289,7 @@ if (isset($_POST['aanpassen-fw-aantal'])) {
             unset($_SESSION['aantallen'][$prodID]);
             $_SESSION['winkelmandje'] = array_udiff($_SESSION['winkelmandje'],[MainDAO::getProduct($prodID)], 'Util::compare_objects');  
         }
-        header(prevURL);
+        Util::redirect(prevURL);
     }
 }
 
@@ -302,7 +298,7 @@ if (isset($_GET['deleteProd'])) {
     $p = MainDAO::getProduct($_GET['deleteProd']);
     $p->active = 0;
     MainDAO::updateProduct($p);
-    header(prevURL);
+    Util::redirect(prevURL);    
 }
 
 #DIT IS VOOR HET VERWIJDEREN VAN EEN USER VANUIT HET ADMIN PANEEL
@@ -310,14 +306,14 @@ if (isset($_GET['deleteUser'])) {
     $u = MainDAO::getUser($_GET['deleteUser']);
     $u->active = 0;
     MainDAO::updateUser($u);
-    header(prevURL);
+    Util::redirect(prevURL);
 }
 
 #DIT IS VOOR HET VERWIJDEREN VAN EEN CATEGORIE VANUIT HET ADMIN PANEEL
 if (isset($_GET['deleteCat'])) {
     $c = new CategorieEntity($_GET['deleteCat'], 0);
     MainDAO::updateCategorie($c, $_GET['deleteCat']);
-    header(prevURL);
+    Util::redirect(prevURL);
 }
 
 
@@ -326,7 +322,7 @@ if (isset($_GET['editUserdataPuser'])) {
     $user = $_SESSION['user'];
     if ($_GET['toEditUserdata'] == null) {
         $_SESSION['mess'][sizeof($_SESSION['mess'])] = "editUserAdmEmpty";
-        header(split("&",prevURL)[0]);
+        Util::redirect(split("&",prevURL)[0]);
     }
     else{
         switch ($_GET['editUserdataPuser']) {
@@ -344,7 +340,7 @@ if (isset($_GET['editUserdataPuser'])) {
         }
         $_SESSION['mess'][sizeof($_SESSION['mess'])] = "succesupdate";
         MainDAO::updateUser($user);
-        header(split("&",prevURL)[0]);
+        Util::redirect(split("&",prevURL)[0]);
     }
 }
 
@@ -353,7 +349,7 @@ if (isset($_POST['changewsconfig'])){
     $conf = MainDAO::getWSConfig();
     if ( $_POST['wsnaam'] == null ||  $_POST['wsup'] == null) {
         $_SESSION['mess'][sizeof($_SESSION['mess'])] = "wsconfigempty";
-        header(split("&",prevURL)[0]);
+        Util::redirect(split("&",prevURL)[0]);
     }
     else{
         $conf->naam_ws = $_POST['wsnaam'];
@@ -361,37 +357,35 @@ if (isset($_POST['changewsconfig'])){
         MainDAO::updateWSConfig($conf);
 
         $_SESSION['mess'][sizeof($_SESSION['mess'])] = "succesupdate";
-        header(prevURL);
+        Util::redirect(prevURL);
     }
 }
 
-#OM EEN PAYMENT AF TE HANDELEN MET POPUP
+#OM EEN PAYMENT AF TE HANDELEN EN NAAR BESTELLING OVERZICHT DOOR TE VERWIJZEN
 if(isset($_POST['payementinfo'])){
     $dt = new DateTime("now", new DateTimeZone("Europe/berlin"));
-   
-   var_dump($_POST); 
 
-   $betaalmethode = $_POST['betaalmethode'];
-   $faland = $_POST['fa-land'];
-   $fagemeente = $_POST['fa-gemeente'];
-   $fastraat = $_POST['fa-straat'];
-   $fanummer = $_POST['fa-nummer'];
-   $fapostcode = $_POST['fa-postcode'];
-   $laland = $_POST['la-land'];
-   $lagemeente = $_POST['la-gemeente'];
-   $lastraat = $_POST['la-straat'];
-   $lanummer = $_POST['la-nummer'];
-   $lapostcode = $_POST['la-postcode'];
-   $levermethode = $_POST['levermethode'];
+    $betaalmethode = $_POST['betaalmethode'];
+    $faland = $_POST['fa-land'];
+    $fagemeente = $_POST['fa-gemeente'];
+    $fastraat = $_POST['fa-straat'];
+    $fanummer = $_POST['fa-nummer'];
+    $fapostcode = $_POST['fa-postcode'];
+    $laland = $_POST['la-land'];
+    $lagemeente = $_POST['la-gemeente'];
+    $lastraat = $_POST['la-straat'];
+    $lanummer = $_POST['la-nummer'];
+    $lapostcode = $_POST['la-postcode'];
+    $levermethode = $_POST['levermethode'];
    
-   if (isset($_POST['avw'])) {
-        $avw = true;
-   }
-   else{
-        $avw = null;
-   }
+    if (isset($_POST['avw'])) {
+    $avw = true;
+    }
+    else{
+    $avw = null;
+    }
 
-   if ($betaalmethode == null){
+    if ($betaalmethode == null){
         $_SESSION['mess'][sizeof($_SESSION['mess'])] = "wpbm";
     }
     if ($faland == null){
@@ -461,12 +455,29 @@ if(isset($_POST['payementinfo'])){
     $laatsteId = MainDAO::getAllBestellingen();
     $laatsteId= $laatsteId[sizeof($laatsteId)-1]->id;
 
+
+    $toSendMessage = "<link rel='stylesheet' href='https://tristanb.tk/Stylesheets/WebShop.css'>";
+    $toSendMessage .= "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>";
+    $toSendMessage .= "<div id='bestelling-overzicht-banner'> ".$_SESSION['user']->username.": ".$bestelling->datum."</div>";
+
+    $toSendMessage .= "<div id='content-bestelling-overzicht'>";
+    $tt = 0;
     foreach($_SESSION['winkelmandje'] as $wm){
         $tempBI = new BestelinhoudEntity(-1 , $laatsteId, $wm->id, $_SESSION["aantallen"][$wm->id]);
-        var_dump($_SESSION["aantallen"]);
-        var_dump($tempBI);
+        $p = MainDAO::getProduct($wm->id);
         MainDAO::addBestellingInhoud($tempBI);
+        $toSendMessage .= "<div class='bestel-overzicht-linitem clearfix'><div class='bestel-popup-prod-naam'>".$p->naam." (x ".$_SESSION["aantallen"][$wm->id].")</div><div class='bestel-popup-prod-prijs'>&euro; ".($p->prijs*$_SESSION["aantallen"][$wm->id])."</div></div>";
+        $tt += ($p->prijs*$_SESSION["aantallen"][$wm->id]);
     }
+
+    $toSendMessage .= "<div class='bestel-overzicht-linitem clearfix' id='popup-bestellingen-total'><div id='popup-bestelling-betaalmethode'>Betaalmethode: ".$betaalmethode."</div><div class='bestel-popup-prod-prijs'>&euro; ".$tt."</div></div>";
+
+    $toSendMessage .= "Facturatieadres: " . $factuuradr . "<br>" ;
+    $toSendMessage .= "Leveradres: " . $leveradr . "<br>" ;
+    $toSendMessage .= "Levermethode: " . $levermethode . "<br></div>" ;
+
+    Util::sendMail("Nieuwe Bestelling", $toSendMessage, $_SESSION['user']->emailadres);
+
 
     unset($_SESSION['winkelmandje']);
     $_SESSION['winkelmandje'] = [];
@@ -474,8 +485,7 @@ if(isset($_POST['payementinfo'])){
     $_SESSION['aantallen'] = [];
 
     $_SESSION['mess'][sizeof($_SESSION['mess'])] = "bsuc";
-    header("location: /Views/bestelling-overzicht?b=$laatsteId");
-    
+    Util::redirect("/Views/bestelling-overzicht?b=$laatsteId");
 }
 
 ?>

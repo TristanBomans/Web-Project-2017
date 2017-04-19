@@ -52,18 +52,16 @@ if(isset($_GET['fb'])){
 		}
 
 		$voornaam = explode(" ",  $userNode->getName())[0];
-		$naam = explode(" ",  $userNode->getName())[1];
+		$naam = substr($userNode->getName(), strpos($userNode->getName(), " "));
+		
+		// $naam = explode(" ",  $userNode->getName())[1];
 		$emailadres = $userNode->getField('email');
 		$id = $userNode->getField('id');
 
 		$fb_avatar = file_get_contents("http://graph.facebook.com/" . $id . "/picture?width=9999");
 		$save = file_put_contents("../Resources/profilepics/fb-" . $id . ".jpg", $fb_avatar);
 
-		$toAddUser = new UserEntity( $voornaam." ".$naam, "" , $naam, $voornaam, 0, $emailadres, "../Resources/profilepics/fb-" . $id . ".jpg");
-
-
-
-
+		$toAddUser = new UserEntity( $voornaam." ".$naam, "" , $naam, $voornaam, 0, $emailadres, "../Resources/profilepics/fb-" . $id . ".jpg", 1);
 
 		if(!(MainDAO::getUser($voornaam." ".$naam))){
 			MainDAO::addUser($toAddUser);

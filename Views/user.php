@@ -4,7 +4,7 @@
 <!doctype HTML>
 <html lang="nl">
 	<head>
-		<title>Profile</title>
+		<title>Profiel</title>
 		
         <?php include("partials/includes.php"); ?>
 
