@@ -1,21 +1,6 @@
-<?php 
- include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
- 
-	if(!(isset($_SESSION)) ){
-		session_start();
-	}
+<?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; ?>
+<?php Util::authorisation([1]); ?>
 
-	if (isset($_SESSION['user'])) 
-	{
-		if( $_SESSION['user']->authority != 1)
-		{
-			Util::redirect("/");
-		} 
-	}
-	else{
-		Util::redirect("/");
-	}
-?>
 <!doctype HTML>
 <html lang="nl">
 	<head>
@@ -23,7 +8,11 @@
 		<?php include("partials/includes.php"); ?>
 	</head>
 	<body class="container-fluid">
+
  		<?php include("partials/navbar.php"); ?> 
+	
+ 		<?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/errormess.php"); ?> 
+
 		<h1>Admin</h1>
 		<div class="row">
 			<a href="admin-product"><div class='col-lg-3 col-md-3 col-sm-5 col-xs-10 admin-icons'>Producten</div></a>

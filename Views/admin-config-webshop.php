@@ -1,21 +1,6 @@
-<?php 
- include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
+<?php  include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; ?>
+<?php Util::authorisation([1]); ?>
 
-	if(!(isset($_SESSION)) ){
-		session_start();
-	}
-
-	if (isset($_SESSION['user'])) 
-	{
-		if( $_SESSION['user']->authority != 1)
-		{
-			Util::redirect("/");
-		} 
-	}
-	else{
-		Util::redirect("/");
-	}
-?>
 <!doctype HTML>
 <html lang="nl">
 	<head>
@@ -26,21 +11,24 @@
 
  		<?php include("partials/navbar.php"); ?> 
 
+ 		<?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/errormess.php"); ?> 
+
  		<div id='config-wrapper-admin'>
  			<div id='configuratie-titel'>Configuratie</div>
 			<form method="POST" action="/Controllers/RequestController">
 				<div>
 					<div>Website naam: <i class="schuine-tekst"> De naam die vanboven te zien is</i></div>
-					<input type="text" name="wsnaam">
+					<input required type="text" name="wsnaam" value="<?php echo $Configuratie->naam_ws; ?>">
+				</div>
+				<div>
+					<div>Aantal uitgelichte producten: <i class="schuine-tekst">Het aantal uitgelichte producten dat op de homepagina te zien zijn</i></div>
+					<input required type="number" name="wsup" id='wsup' value='<?php echo $Configuratie->aantal_up; ?>'>
 				</div>
 				<input type="submit" name="" class="submit-btn-payment">
-				<input type="hidden" name="changewsname">
+				<input type="hidden" name="changewsconfig">
 			</form>
 		</div>
-			
-
-			<!-- <?php $number_of_users = count(scandir(ini_get("session.save_path"))) - 2; echo $number_of_users;?> -->
+	
 		<?php include("partials/footer.php"); ?>
-
 	</body>
 </html>

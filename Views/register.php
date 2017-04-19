@@ -1,10 +1,5 @@
-<?php 
-require_once "../Controllers/LogicController.php";
-require_once("../Entities/UserEntity.php");
-	if(!(isset($_SESSION)) ){
-		session_start();
-	}
-?>
+<?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; ?>
+<?php Util::authorisation([-1]); ?>
 
 <!DOCTYPE html>
 <html>

@@ -184,6 +184,40 @@ class Util{
 	    }
 	}
 
+	#ALLE IN ARRAY MOGEN DOOR
+	static function authorisation($toegelatenA) {
+		#ALLEEN INGELOGDE GEBRUIKERS MOGEN DOOR
+		if (in_array(-1, $toegelatenA) != true) {
+			if (isset($_SESSION['user']) != true) {
+				$_SESSION['mess'][sizeof($_SESSION['mess'])] = "nli";
+				Util::redirect('/');
+			}
+		}
+
+		if (in_array(-1, $toegelatenA) == true) {
+			if (in_array(0, $toegelatenA) != true) {
+				if (isset($_SESSION['user'])) {
+					$_SESSION['mess'][sizeof($_SESSION['mess'])] = "cbli";
+					Util::redirect('/');
+				}
+			}
+		}
+
+		#0 (GEWONE GEBRUIKER) ZIT NIET IN ARRAY, ENKEL ADMINS MOGEN DOOR
+		if (in_array(0, $toegelatenA) != true) {
+			if (isset($_SESSION['user'])) {
+				if ($_SESSION['user']->authority != 1) {
+					$_SESSION['mess'][sizeof($_SESSION['mess'])] = "wu";
+					Util::redirect('/');
+				}
+			}
+		}
+
+		
+
+	}
+
+
 }
 
 ?>

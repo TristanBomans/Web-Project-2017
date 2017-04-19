@@ -434,8 +434,9 @@ class MainDAO {
         while ($row = mysqli_fetch_array($result)) {
             $id = $row[0];
             $naam_ws = $row[1];
+            $aantal_up = $row[2];
 
-          $Configuratie = new ConfiguratieEntity($naam_ws);
+          $Configuratie = new ConfiguratieEntity($naam_ws, $aantal_up);
             
         }
 
@@ -447,7 +448,7 @@ class MainDAO {
     {
         require "../credentials.php";
         $mysqli = new mysqli($host, $user, $passwd, $database);
-        $result = $mysqli->query("UPDATE configuratie SET naam_ws = '$toUpdateConfig->naam_ws' where id = '$toUpdateConfig->id';");
+        $result = $mysqli->query("UPDATE configuratie SET naam_ws = '$toUpdateConfig->naam_ws', aantal_up = '$toUpdateConfig->aantal_up' where id = '$toUpdateConfig->id';");
         if(!($result)) die(mysqli_error($mysqli));
         mysqli_close($mysqli);
     }

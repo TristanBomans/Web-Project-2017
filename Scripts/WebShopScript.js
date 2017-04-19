@@ -23,9 +23,6 @@ $(function(){
 	});
 
 
-
-
-
 	$(".allproducts-dropdown-lineitem-sort").on('click', function(e){
 		var attrClicked = $(this).attr("id");
 		console.log("Clicked on: " + attrClicked);

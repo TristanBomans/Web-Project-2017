@@ -1,21 +1,6 @@
-<?php 
- include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
+<?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; ?>
+<?php Util::authorisation([1]); ?>
 
-	if(!(isset($_SESSION)) ){
-		session_start();
-	}
-
-	if (isset($_SESSION['user'])) 
-	{
-		if( $_SESSION['user']->authority != 1)
-		{
-			Util::redirect("/");
-		} 
-	}
-	else{
-		Util::redirect("/");
-	}
-?>
 <!doctype HTML>
 <html lang="nl">
 	<head>
@@ -25,6 +10,10 @@
 	<body class="container-fluid">
 
  		<?php include("partials/navbar.php"); ?> 
+
+ 		<?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/errormess.php"); ?> 
+
+
  		<div id="admin-main-content">
 			
 				<div id="admin-edit-content">
@@ -57,8 +46,8 @@
 
 			echo "<div id='pop-up-content'>";
 			echo "<form action='../Controllers/RequestController.php' method='POST' enctype='multipart/form-data'>";
-			echo "<div class='pop-up-edit-lineitem clearfix'><div class='popup-label'>Naam:</div><input class='input-popup' type='text' name='naam' value='".$requestedEditProd->naam."'></div>";
-			echo "<div class='pop-up-edit-lineitem clearfix'><div class='popup-label'>Prijs:</div><input class='input-popup' type='text' name='prijs' value='".$requestedEditProd->prijs."'></div>";
+			echo "<div class='pop-up-edit-lineitem clearfix'><div class='popup-label'>Naam:</div><input required  class='input-popup' type='text' name='naam' value='".$requestedEditProd->naam."'></div>";
+			echo "<div class='pop-up-edit-lineitem clearfix'><div class='popup-label'>Prijs:</div><input required class='input-popup'  type='number' step='any' name='prijs' value='".$requestedEditProd->prijs."'></div>";
 
 
 			echo "<div class='pop-up-edit-lineitem clearfix'><div class='popup-label'>Categorie:</div>";
@@ -88,7 +77,7 @@
 			echo "</select></div>";
 
 
-			echo "<div class='pop-up-edit-lineitem pop-up-edit-lineitem-beschrijving clearfix'><div class='popup-label'>Beschrijving:</div><textarea name='beschrijving' class='input-popup' id='input-popup-beschrijving' type='text'>".$requestedEditProd->beschrijving."</textarea></div>";
+			echo "<div class='pop-up-edit-lineitem pop-up-edit-lineitem-beschrijving clearfix'><div class='popup-label'>Beschrijving:</div><textarea required name='beschrijving' class='input-popup' id='input-popup-beschrijving' type='text'>".$requestedEditProd->beschrijving."</textarea></div>";
 
 			echo "<div class='pop-up-edit-lineitem pop-up-edit-lineitem-img'><div class='popup-label'>Afbeelding:</div><img id='img-editprod' src='".$requestedEditProd->img_path."'><input name='file' type='file' /></div>";
 
@@ -113,13 +102,11 @@
 
 			echo "<div id='pop-up-content'>";
 			echo "<form action='../Controllers/RequestController.php' method='POST' enctype='multipart/form-data'>";
-			echo "<div class='pop-up-edit-lineitem clearfix'><div class='popup-label'>Naam:</div><input class='input-popup' type='text' name='naam'></div>";
-			echo "<div class='pop-up-edit-lineitem clearfix'><div class='popup-label'>Prijs:</div><input class='input-popup' type='text' name='prijs'></div>";
+			echo "<div class='pop-up-edit-lineitem clearfix'><div class='popup-label'>Naam:</div><input required class='input-popup' type='text' name='naam'></div>";
+			echo "<div class='pop-up-edit-lineitem clearfix'><div class='popup-label'>Prijs:</div><input required class='input-popup'  type='number' step='any' type='text' name='prijs'></div>";
 
 
 			echo "<div class='pop-up-edit-lineitem clearfix'><div class='popup-label'>Categorie:</div>";
-
-
 			echo "<select class='input-popup' name='categorie'>";
 			foreach ($categorien as $catt) {
 				echo "<option class='input-popup' type='text' value='".$catt->naam."'>".$catt->naam."</input>";
@@ -130,7 +117,7 @@
 
 
 
-			echo "<div class='pop-up-edit-lineitem pop-up-edit-lineitem-beschrijving clearfix'><div class='popup-label'>Beschrijving:</div><textarea name='beschrijving' class='input-popup' id='input-popup-beschrijving' type='text'></textarea></div>";
+			echo "<div class='pop-up-edit-lineitem pop-up-edit-lineitem-beschrijving clearfix'><div class='popup-label'>Beschrijving:</div><textarea required name='beschrijving' class='input-popup' id='input-popup-beschrijving' type='text'></textarea></div>";
 
 			echo "<div class='pop-up-edit-lineitem pop-up-edit-lineitem-img clearfix'><div class='popup-label'>Afbeelding:</div><img id='img-editprod' src='../Resources/dummypng.png'><input name='file' type='file' /></div>";
 

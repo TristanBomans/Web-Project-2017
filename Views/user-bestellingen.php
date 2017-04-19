@@ -1,16 +1,6 @@
-<?php 
- include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
+<?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; ?>
+<?php Util::authorisation([0, 1]); ?>
 
-if(!(isset($_SESSION)) ){
-	session_start();
-}
-
-if (!(isset($_SESSION['user']))) 
-{
-	Util::redirect("/");
-}
-
-?>
 <!doctype HTML>
 <html lang="nl">
 	<head>
@@ -20,6 +10,9 @@ if (!(isset($_SESSION['user'])))
 	<body class="container-fluid">
 
  		<?php include("partials/navbar.php"); ?> 
+
+        <?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/errormess.php"); ?> 
+
  		<h1 id='bestellingen-titel-admin'>Bestellingen</h1>
 		
 		<?php 			
@@ -52,7 +45,6 @@ if (!(isset($_SESSION['user'])))
 			echo "<div id='pop-up-bestelling-banner'>".$reqBest->username.": ".date("d-m-Y",strtotime($reqBest->datum))."<a href='user-bestellingen'><div id='exit-icon-admin'></div></a></div>";
 			echo "<div id='pop-up-content-bestelling'>";
 
-
 			foreach ($bestelInh as $IH ) {
 				$prod = MainDAO::getProduct($IH->product_id);
 				echo "<div class='bestel-popup-linitem clearfix'>";
@@ -71,7 +63,6 @@ if (!(isset($_SESSION['user'])))
 			echo "</div>";
 		}
 		?>	
-	
 			
 		<?php include("partials/footer.php"); ?>
 

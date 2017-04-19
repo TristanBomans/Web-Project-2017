@@ -1,4 +1,5 @@
- <?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; ?>
+<?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; ?>
+<?php Util::authorisation([-1, 0, 1]); ?>
  
 <!doctype HTML>
 <html lang="nl">

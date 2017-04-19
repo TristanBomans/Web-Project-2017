@@ -1,18 +1,6 @@
+<?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; ?>
+<?php Util::authorisation([0, 1]); ?>
 
-
-<?php 
-	include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; 
-
-	if (!(isset($_SESSION['user']))) 
-	{
-		if (strpos( $_SERVER['HTTP_REFERER'], "detail" )) {
-			$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "nli";
-			Util::redirect($_SERVER['HTTP_REFERER']);
-		}
-		$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "nli";
-		Util::redirect($_SERVER['HTTP_REFERER']);
-	}
-?>
 <!doctype HTML>
 <html lang="nl">
 	<head>

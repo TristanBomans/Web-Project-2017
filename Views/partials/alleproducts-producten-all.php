@@ -6,7 +6,7 @@
         }
     }
   
-    if(!isset($_SESSION['selectedCats'])){
+    if(isset($_SESSION['selectedCats']) != true){
         $producten = LogicController::getAlleProducten();
     }
     else{
@@ -45,7 +45,6 @@
     $t = 0;
 
     for ($i=0; $i < sizeof($producten) ; $i++) {
-    // for ($i=0; $i < $g ; $i++) {
         if ($i >= $toStart && $t < $g) {
             $t++;
             $html .= "<a href='/Views/detail?opgevraagdProduct=".$producten[$i]->id."'><div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 parent-thumb-cont'>"

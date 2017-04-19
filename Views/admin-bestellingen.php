@@ -1,21 +1,6 @@
-<?php 
- include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
+<?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; ?>
+<?php Util::authorisation([1]); ?>
 
-	if(!(isset($_SESSION)) ){
-		session_start();
-	}
-
-	if (isset($_SESSION['user'])) 
-	{
-		if( $_SESSION['user']->authority != 1)
-		{
-			Util::redirect("/");
-		} 
-	}
-	else{
-		Util::redirect("/");
-	}
-?>
 <!doctype HTML>
 <html lang="nl">
 	<head>
@@ -25,6 +10,9 @@
 	<body class="container-fluid">
 
  		<?php include("partials/navbar.php"); ?> 
+
+ 		<?php include($_SERVER['DOCUMENT_ROOT']."/Views/partials/errormess.php"); ?> 
+
  		<h1 id='bestellingen-titel-admin'>Bestellingen</h1>
 		
 		<?php 			
@@ -53,7 +41,6 @@
 			echo "<div id='pop-up-bestelling-content'>";		
 			echo "<div id='pop-up-bestelling-banner'>".$reqBest->username.": ".date("d-m-Y",strtotime($reqBest->datum))."<a href='admin-bestellingen.php'><div id='exit-icon-admin'></div></a></div>";
 			echo "<div id='pop-up-content-bestelling'>";
-
 
 		foreach ($bestelInh as $IH ) {
 			$prod = MainDAO::getProduct($IH->product_id);

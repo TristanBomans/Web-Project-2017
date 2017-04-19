@@ -1,18 +1,11 @@
-<?php
-    include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
-    if(!(isset($_SESSION)) ){
-        session_start();
-    }
+<?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; ?>
+<?php Util::authorisation([0, 1]); ?>
 
+<?php
     if ($_SESSION['winkelmandje'] == null) 
     {
         header("location: ". URL."/");
     }
-
-    if (!(isset($_SESSION['user']))) 
-    {
-        Util::redirect("/?err=nli");
-    } 
 ?>
 
 <!doctype HTML>
@@ -36,22 +29,40 @@
                 <p>Betaalmethode: </p>
                 <div class="clearfix">
                     <div class="clearfix">
-                        <input required type="radio" name="betaalmethode" value="paypal" class="betaalmethode-float"><div class="betaalmethode-icon-fuullpay" id="paypal-pay-img"></div>
+                        <input  type="radio" name="betaalmethode" value="paypal" class="betaalmethode-float"><div class="betaalmethode-icon-fuullpay" id="paypal-pay-img"></div>
                     </div>
                     <div class="clearfix">
-                        <input required type="radio" name="betaalmethode" value="mastercard" class="betaalmethode-float"><div class="betaalmethode-icon-fuullpay" id="mastercard-pay-img"></div>
+                        <input  type="radio" name="betaalmethode" value="mastercard" class="betaalmethode-float"><div class="betaalmethode-icon-fuullpay" id="mastercard-pay-img"></div>
                      </div>
                     <div class="clearfix">
-                        <input required type="radio" name="betaalmethode" value="americanexpress" class="betaalmethode-float"><div class="betaalmethode-icon-fuullpay" id="americanexpress-pay-img"></div>
+                        <input  type="radio" name="betaalmethode" value="americanexpress" class="betaalmethode-float"><div class="betaalmethode-icon-fuullpay" id="americanexpress-pay-img"></div>
                     </div>
                 </div>
-                <div>
-                    <div >Factuuradres: </div>
-                    <input required type="text" name="factuuradres">
+                <div id='payment-factuuradres-wrapper'>
+                    <div class='title-lafa'>Factuuradres: </div>
+                     <div >Land: </div>
+                    <input  type="text" name="fa-land">
+                    <div >Gemeente: </div>
+                    <input  type="text" name="fa-gemeente">
+                    <div >Straat: </div>
+                    <input  type="text" name="fa-straat">
+                    <div >Nummer: </div>
+                    <input  type="text" name="fa-nummer">
+                    <div >Postcode: </div>
+                    <input  type="text" name="fa-postcode">
                 </div>
-                <div>
-                    <div >Leveradres: </div>
-                    <input required type="text" name="leveradres">
+                <div id='payment-leveradres-wrapper'>
+                    <div class='title-lafa'>Leveradres: </div>
+                    <div >Land: </div>
+                    <input  type="text" name="la-land">
+                    <div >Gemeente: </div>
+                    <input  type="text" name="la-gemeente">
+                    <div >Straat: </div>
+                    <input  type="text" name="la-straat">
+                    <div >Nummer: </div>
+                    <input  type="text" name="la-nummer">
+                    <div >Postcode: </div>
+                    <input  type="text" name="la-postcode">
                 </div>
                 <div>
                     <div >Levermethode: </div>
@@ -62,15 +73,15 @@
                     </select>
                 </div>
                 <div class="payment-lineitem">
-                    <input id='algemene-voorwaarden-inp' required type="checkbox" name="">Ik accepteer de Algemene voorwaarden onvoorwaardelijk (<a id='algemene-voorwaarden-a' href='https://rule.alibaba.com/rule/detail/2041.htm?spm=2114.48010208.0.0.FNcplH'>lees de Algemene voorwaarden</a>)
+                    <input id='algemene-voorwaarden-inp' type="checkbox" name="avw">Ik accepteer de Algemene voorwaarden onvoorwaardelijk (<a id='algemene-voorwaarden-a' href='https://rule.alibaba.com/rule/detail/2041.htm?spm=2114.48010208.0.0.FNcplH'>lees de Algemene voorwaarden</a>)
                 </div>
             </div>
             <input type="submit" class="submit-btn-payment" />
             <input type="hidden" name="payementinfo" value="true">
         </form>
-
-       
     </div>
+   <div id="margin-div"></div>
+
     <?php include("partials/footer.php"); ?>
 
 </body>

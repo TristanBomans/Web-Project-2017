@@ -1,16 +1,12 @@
-<?php require_once "../Controllers/LogicController.php";
-	if(!(isset($_SESSION)) ){
-		session_start();
-	}
-?>
+<?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; ?>
+<?php Util::authorisation([-1]); ?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Login</title>
-	<?php 
-		include("partials/includes.php");
-	?>
+	
+	<?php include("partials/includes.php"); ?>
 	
 </head>
 	<body class="container-fluid">

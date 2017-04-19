@@ -1,22 +1,21 @@
-<?php 
-	include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; 
+<?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php"; 
+
 	$reqBest = MainDAO::getBestelling($_GET['b']);
 
 	if (isset($_GET['b'])) {
+		if ($reqBest == null) {
+				$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "wem";
+				Util::redirect("/");	
+		}
 		if (!($_SESSION['user']->username == $reqBest->username)) 
 		{
-			if (isset($_SERVER['HTTP_REFERER'])) {
-				$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "wu";
-				Util::redirect($_SERVER['HTTP_REFERER']);
-			}
-			else{
-				$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "wu";
-				Util::redirect("/");
-			}
+			
+			$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "wu";
+			Util::redirect("/");
 		}
 	}
 	else{
-		$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "wu";
+		$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "wem";
 		Util::redirect("/");	
 	}
 ?>

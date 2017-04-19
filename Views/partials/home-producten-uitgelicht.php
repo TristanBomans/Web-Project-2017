@@ -3,14 +3,15 @@
 
     $Tproducten = LogicController::getAlleUitgelichteProducten();
     $html = "";
-    $e = 4;
+    $e = $Configuratie->aantal_up;
     $producten = [];
 
-    if (sizeof($Tproducten) < 4){$e = sizeof($Tproducten);}
+    if (sizeof($Tproducten) < 4 || sizeof($Tproducten) < $e ){
+        $e = sizeof($Tproducten);
+    }
 
     shuffle($Tproducten);
-    $producten = array_slice($Tproducten,0,4);
-   
+    $producten = array_slice($Tproducten, 0, $e);
     
     for ($i=0; $i < $e; $i++) 
     {

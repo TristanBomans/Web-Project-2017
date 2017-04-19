@@ -1,6 +1,4 @@
-<?php    
-
-    include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
+<?php include $_SERVER['DOCUMENT_ROOT']."/namespaces.php";
     
     if(!(isset($_SESSION)) ){
         session_start();
@@ -15,10 +13,8 @@
             }
         }
     }
-
-
-
 ?>
+
 <?php
 $Configuratie = MainDAO::getWSConfig();
 ?>

@@ -34,15 +34,22 @@ class LogicController
 	#DIT IS DE CODE DIE IN DE REQUESTCONTROLLER WORDT AANGESPROKEN VOOR EEN GEBRUIKER TE REGISTREREN/ DUS TOE TE VOEGEN AAN DB EN IN SESSION STEKEN
 	static function registerUser()
 	{
-		$_POST['password'] =password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $toAddUser = new UserEntity($_POST['username'], $_POST['password'], $_POST['naam'], $_POST['voornaam'], 0, $_POST['email'], $_SERVER['REMOTE_ADDR']);
 
-        MainDAO::addUser($toAddUser);
-        $_SESSION['user'] = $toAddUser;
+		if ($_POST['username'] != null || $_POST['password'] != null || $_POST['naam'] != null || $_POST['voornaam'] != null || $_POST['email'] != null) {
+			$_SESSION['mess'][sizeof($_SESSION['mess'])] = "registerEmpty";
+			header(prevURL);
+		}
+		else{
+			$_POST['password'] =password_hash($_POST['password'], PASSWORD_DEFAULT);
+	        $toAddUser = new UserEntity($_POST['username'], $_POST['password'], $_POST['naam'], $_POST['voornaam'], 0, $_POST['email'], $_SERVER['REMOTE_ADDR']);
 
-        $url = "location: ".URL;
-        header($url);
-        die();
+	        MainDAO::addUser($toAddUser);
+	        $_SESSION['user'] = $toAddUser;
+
+	        $url = "location: ".URL;
+	        header($url);
+	        die();
+	    }
 	}
 
 	#DIT IS DE CODE DIE OOK IN DE REQUESTCONTROLLER WORDT AANGEROEPEN/ STEEKT USER IN SESSION ALS ALLES OKE IS
@@ -192,7 +199,12 @@ class LogicController
 		$allowedToAdd = false;
 
 		if ($_POST['rating'] < 0 || $_POST['rating'] > 10) {
-        	$_SESSION['mess'][sizeof($_SESSION['mess']) - 1] = "fara";
+        	$_SESSION['mess'][sizeof($_SESSION['mess'])] = "fara";
+			header(prevURL);
+		}
+
+		if ($_POST['rating'] == null || $_POST['comment'] == null) {
+			$_SESSION['mess'][sizeof($_SESSION['mess'])] = "leegreview";
 			header(prevURL);
 		}
 		else{
@@ -202,8 +214,8 @@ class LogicController
 		 if ($allowedToAdd == true) {
 			$review = new ReviewEntity( -1, $_SESSION['user']->username, $_POST['product_ID'], $_POST['comment'],  $_POST['rating'] );
 			MainDAO::addReview($review);
-			$previousURL = explode("&err", prevURL)[0];
-			header($previousURL);
+        	$_SESSION['mess'][sizeof($_SESSION['mess'])] = "srev";
+			header(prevURL);
 		 }
 	    die();
 	}
