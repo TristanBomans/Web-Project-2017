@@ -152,18 +152,18 @@ class Util{
 	    //Set PHPMailer to use SMTP.
 	    $mail->isSMTP();            
 	    //Set SMTP host name                          
-	    $mail->Host = "smtp.gmail.com";
+	    $mail->Host = "smtp.live.com";
 	    //Set this to true if SMTP host requires authentication to send email
 	    $mail->SMTPAuth = true;                          
 	    //Provide username and password     
-	    $mail->Username = "webshoptristanwebproject@gmail.com";                 
-	    $mail->Password = "Webshop1234";                           
+	    $mail->Username = "lolman550@hotmail.com";                 
+	    $mail->Password = "tris19977";                           
 	    //If SMTP requires TLS encryption then set it
 	    $mail->SMTPSecure = "tls";                           
 	    //Set TCP port to connect to 
 	    $mail->Port = 587;                                   
 
-	    $mail->From = "webshoptristanwebproject@gmail.com";
+	    $mail->From = "lolman550@hotmail.com";
 	    $mail->FromName = "WebShop Tristan Bomans";
 
 	    $mail->addAddress($reciever, "Webshop Klant");

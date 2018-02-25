@@ -64,6 +64,10 @@
                     <div >Postcode: </div>
                     <input  type="text" name="la-postcode">
                 </div>
+                <div id="wrapper-checkbox-fa-la-same">
+                    <input id='checkbox-fa-la-same' type="checkbox" name="la-fa-zelfde">Ik wens mijn leveradres hetzelfde als mijn factuuratieadres
+                </div>
+                <br>
                 <div>
                     <div >Levermethode: </div>
                     <select required name="levermethode">

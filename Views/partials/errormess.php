@@ -88,11 +88,6 @@
 			if ($e == 'addVerwijderdProd') {
 				echo LogicController::outputMess("Je kan geen verwijderde producten toevoegen <b>...</b>", 1);
 			}
-
-
-
-
-
 		}
 		unset($_SESSION['mess']);
 	}

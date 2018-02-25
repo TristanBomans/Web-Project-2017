@@ -38,9 +38,6 @@ textarea {
     resize: none;
 }
 
-
-
-
 /* 
 _____ ___ _____ _____ _     ____    _    ____  
 |_   _|_ _|_   _| ____| |   | __ )  / \  |  _ \ 
@@ -106,8 +103,6 @@ _____ ___ _____ _____ _     ____    _    ____
     right: 0px ;
     transition: all 0.2s ease-in 0s;
 
-   
-
     /*Overriding shit, afblijven*/
     border:none;
     background-color: transparent !important;
@@ -135,11 +130,8 @@ _____ ___ _____ _____ _     ____    _    ____
     transition: all 0.2s ease-in 0s;
     overflow-y: scroll;
     display: none;
-
     max-height: 50vh;
     overflow: scroll;
-
-
 }
 
 #prijs-totaal-rand{
@@ -165,7 +157,6 @@ _____ ___ _____ _____ _     ____    _    ____
 /*    position: absolute;
     left: 17px;*/
     color: forestgreen;
-
 }
 
 #winkelmandje-dropdown-meer-detail:hover{
@@ -211,7 +202,7 @@ _____ ___ _____ _____ _     ____    _    ____
 }
 
 #instellingen-dropdown-content {
-    width: 150px;
+    width: 240px;
     height: auto;
     background-color: grey;
     position: absolute ;
@@ -1872,4 +1863,14 @@ width: auto;
 .error-img{
     display: block;
     margin: auto;
+}
+
+#checkbox-fa-la-same{
+    float: left;
+}
+
+#wrapper-checkbox-fa-la-same{
+    float: left;
+    width: 100%;
+    margin-top: 10px;
 }

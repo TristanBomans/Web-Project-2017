@@ -407,22 +407,22 @@ if(isset($_POST['payementinfo'])){
             $_SESSION['mess'][sizeof($_SESSION['mess'])] = "wfgeg";
         }
     }
-    if ($laland == null){
+    if ($laland == null && isset($_POST['la-fa-zelfde']) != true ){
         if (in_array( "wlgeg", $_SESSION['mess']) != true) {
             $_SESSION['mess'][sizeof($_SESSION['mess'])] = "wlgeg";
         }
     }
-    if ($lastraat == null){
+    if ($lastraat == null && isset($_POST['la-fa-zelfde']) != true ){
         if (in_array( "wlgeg", $_SESSION['mess']) != true) {
             $_SESSION['mess'][sizeof($_SESSION['mess'])] = "wlgeg";
         }
     }
-    if ($lanummer == null){
+    if ($lanummer == null && isset($_POST['la-fa-zelfde']) != true ){
         if (in_array( "wlgeg", $_SESSION['mess']) != true) {
             $_SESSION['mess'][sizeof($_SESSION['mess'])] = "wlgeg";
         }
     }
-    if ($lapostcode == null){
+    if ($lapostcode == null && isset($_POST['la-fa-zelfde']) != true ){
         if (in_array( "wlgeg", $_SESSION['mess']) != true) {
             $_SESSION['mess'][sizeof($_SESSION['mess'])] = "wlgeg";
         }
@@ -442,6 +442,10 @@ if(isset($_POST['payementinfo'])){
 
     $factuuradr = $faland . ", " . $fastraat . " " . $fanummer .", " . $fapostcode . " " . $fagemeente;
     $leveradr = $laland . ", " . $lastraat . " " . $lanummer .", " . $lapostcode . " " . $lagemeente;
+
+    if (isset($_POST['la-fa-zelfde'])) {
+        $leveradr = $factuuradr;
+    }
 
     $bestelling = new BestellingEntity(-1, $_SESSION['user']->username, $factuuradr , $leveradr , $levermethode, $betaalmethode, $dt->format("Y-m-d H:i:s"));
     MainDAO::addBestelling($bestelling);

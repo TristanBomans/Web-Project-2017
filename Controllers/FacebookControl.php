@@ -17,7 +17,7 @@ if(isset($_GET['fb'])){
 	$loginUrl = $helper->getLoginUrl($_SERVER["REQUEST_SCHEME"]."://".$_SERVER["SERVER_NAME"].$_SERVER['REQUEST_URI'], $permissions);
 
 	if (!(isset($_GET['code']))) {
-		header("location: ".$loginUrl);
+		header("location: " . $loginUrl);
 	}
 
 	try {

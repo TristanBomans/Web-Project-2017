@@ -1,13 +1,23 @@
 $(document).ready(function(){
 	console.log("JavaScript Works!");
-
 })
+
+function navigateFbook(){
+	window.location.href = 'https://www.tristanb.tk/Controllers/FacebookControl.php?fb=x';
+}
+
+
+
+if (window.location.hash == '#_=_'){
+	history.replaceState ? history.replaceState(null, null, window.location.href.split('#')[0]): window.location.hash = '';
+}
+
 
 $(function(){
 	$("#instellingen-dropdown").on('click', function(e){
 		$("#instellingen-dropdown-content").toggle(100);
 
-		e.stopPropagation();
+		 e.stopPropagation();
 
 		$("body").on('click', function(e){
 			if(!($(e.target).parents("#instellingen-dropdown-content").length > 0)){

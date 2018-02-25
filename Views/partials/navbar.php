@@ -18,6 +18,17 @@
 <?php
 $Configuratie = MainDAO::getWSConfig();
 ?>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v2.11&appId=1881976598685166';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
 <div id='titelbar'>
     <div id="titelbar-tekst"><?php echo $Configuratie->naam_ws; ?></div>
 </div>
@@ -48,12 +59,11 @@ $Configuratie = MainDAO::getWSConfig();
                 } 
                 else
                 {
+                    $html .= "<div class='fb-login-button' data-width='120' data-max-rows='1' data-size='large' data-button-type='continue_with' data-show-faces='false' data-auto-logout-link='false' data-use-continue-as='true' onlogin='navigateFbook()'></div>";
                     $html .= "<a class='link-dropdown-instellingen' href='/Views/login'><div class='instellingen-dropdown-content-line-item'>Aanmelden</div></a>";   
-                    $html .= "<a class='link-dropdown-instellingen' href='/Controllers/FacebookControl.php?fb=x'><div class='instellingen-dropdown-content-line-item'>Aanmelden met Facebook</div></a>";
                     $html .= "<a class='link-dropdown-instellingen' href='/Views/register'><div class='instellingen-dropdown-content-line-item'>Registreren</div></a>";
                 }
 
-               
                 echo $html;
                 ?>
             </div>

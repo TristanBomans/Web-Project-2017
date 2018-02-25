@@ -37,7 +37,7 @@ class LogicController
 		}
 		else{
 			$_POST['password'] =password_hash($_POST['password'], PASSWORD_DEFAULT);
-	        $toAddUser = new UserEntity($_POST['username'], $_POST['password'], $_POST['naam'], $_POST['voornaam'], 0, $_POST['email'], 1);
+	        $toAddUser = new UserEntity($_POST['username'], $_POST['password'], $_POST['naam'], $_POST['voornaam'], 0, $_POST['email'], 0 ,1);
 	        MainDAO::addUser($toAddUser);
 	        $_SESSION['user'] = $toAddUser;
 
@@ -311,10 +311,9 @@ class LogicController
     {
    		$dataA = [];
     	$alB = MainDAO::getAllBestellingen();
-   
-
+    	
     	foreach ($alB as $B) {
-        $dataA[$B->id] = MainDAO::getBestellingInhoudBestelling($B->id);
+			$dataA[$B->id] = MainDAO::getBestellingInhoudBestelling($B->id);
    		}
     	return $dataA;
 	}
@@ -328,15 +327,16 @@ class LogicController
 	static function outputMess($mess, $code){
 
 		if ($code == 0) {
-			$html =  "<div id='succloginwrap'><div id='login-succ' class='clearfix'>".$mess."</div></div>";
+			$html = '<script>notification.notify( "success", "'.$mess.'");</script>';
+			//$html =  "<div  id='succloginwrap'><div id='login-succ' class='clearfix'>".$mess."</div></div>";
 		}
-
 		if ($code == 1) {
-			$html =  "<div id='errloginwrap'><div id='login-err' class='clearfix'>".$mess."</div></div>";
+			$html = '<script>notification.notify( "error", "'.$mess.'");</script>';
+			//$html =  "<div  id='errloginwrap'><div id='login-err' class='clearfix'>".$mess."</div></div>";
 		}
-
 		if ($code == 2) {
-			$html =  "<div id='notifloginwrap'><div id='login-notif' class='clearfix'>".$mess."</div></div>";
+			$html = '<script>notification.notify( "global", "'.$mess.'");</script>';
+			// $html =  "<div  id='notifloginwrap'><div id='login-notif' class='clearfix'>".$mess."</div></div>";
 		}
 
 		return $html;

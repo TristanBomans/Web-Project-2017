@@ -38,7 +38,7 @@
 
                 $user = MainDAO::getUser($_GET['u']);
 
-                if ($user->img_path == "0" || $user->img_path == "" ) {
+                if ($user->img_path == "0" || $user->img_path == "" || $user->img_path == 1) {
                     $user->img_path = "/Resources/dummypng.png";
                 }
 
